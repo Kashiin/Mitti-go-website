@@ -227,7 +227,8 @@ section{padding-block:clamp(64px,9vw,112px)}
 /* parents */
 .parents{background:var(--soft);border-block:1px solid var(--line)}
 .p-grid{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
-.p-list{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;margin-top:8px}
+.p-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.p-list .pi{background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);padding:18px;box-shadow:var(--shadow-s)}
 .pi{display:grid;grid-template-columns:44px 1fr;gap:14px}
 .pi .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--bgc);color:var(--c)}
 .pi p{font-size:15px;color:var(--ink2);margin-top:3px}
