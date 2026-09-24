@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Блог Mitti GO</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Caveat:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0&display=block">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<body data-page="post">
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" aria-label="Mitti GO"><img class="logo l" src="assets/images/logo-main.png" alt="Mitti GO"><img class="logo d" src="assets/images/logo-white.png" alt="Mitti GO"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#how" data-nav="how">Как это работает</a>
+      <a href="index.html#model" data-nav="model">Разрешения</a>
+      <a href="index.html#parents" data-nav="parents">Для родителей</a>
+      <a href="index.html#privacy" data-nav="privacy">Приватность</a>
+      <a href="index.html#plans" data-nav="plans">Тарифы</a>
+      <a href="blog.html" data-nav="blog" aria-current="page">Блог</a>
+      <a href="index.html#faq" data-nav="faq">Вопросы</a>
+    </nav>
+    <button class="tbtn" id="themeBtn" type="button" aria-label="Светлая / тёмная тема"><span class="ms" id="themeIc">dark_mode</span></button>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="uz" aria-pressed="false">UZ</button>
+      <button type="button" data-l="ru" aria-pressed="true">RU</button>
+      <button type="button" data-l="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span class="ms" id="burgerIc">menu</span></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"></nav>
+</header>
+
+<main>
+<section class="post-page">
+  <div class="wrap">
+    <a class="back-link" href="blog.html"><span class="ms">arrow_back</span><span data-t="back">Все статьи</span></a>
+    <div class="post-layout">
+      <article class="article" id="article"></article>
+      <aside class="post-aside" id="aside">
+        <div class="aside-card">
+          <h3 id="otherT">Другие статьи</h3>
+          <div class="aside-list" id="otherPosts"></div>
+        </div>
+        <div class="aside-promo">
+          <img src="assets/images/mascot.png" alt="">
+          <b id="promoT">Mitti GO скоро в магазинах</b>
+          <p id="promoS">Безопасное детское видео, которое выбираете вы.</p>
+          <a class="btn" href="index.html"><span id="promoB">Узнать больше</span><span class="ms">arrow_forward</span></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+<section class="post-more-sec" id="moreWrap">
+  <div class="wrap">
+    <h2 id="moreT">Читайте также</h2>
+    <div class="post-grid" id="morePosts"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo l" src="assets/images/logo-main.png" alt="Mitti GO"><img class="logo d" src="assets/images/logo-white.png" alt="Mitti GO">
+    <span id="ft">Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC.</span>
+  </div>
+</footer>
+
+<script src="assets/js/posts.js"></script>
+<script src="assets/js/blog.js"></script>
+</body>

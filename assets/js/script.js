@@ -2,7 +2,8 @@
 const MASCOT="assets/images/mascot.png";
 const T={
 uz:{
-"nav.how":"Qanday ishlaydi","nav.model":"Ruxsatlar","nav.parents":"Ota-onalar uchun","nav.privacy":"Maxfiylik","nav.plans":"Tariflar","nav.faq":"Savollar",
+"nav.how":"Qanday ishlaydi","nav.model":"Ruxsatlar","nav.parents":"Ota-onalar uchun","nav.privacy":"Maxfiylik","nav.plans":"Tariflar","nav.faq":"Savollar","nav.blog":"Blog",
+"b.e":"Blog","b.t":"Ota-onalar uchun maslahatlar va yangiliklar","b.all":"Barcha maqolalar",
 "hero.eyebrow":"Siz tanlagan bolalar videolari","hero.title":"Kanallarni siz tanlaysiz. <em>Bola faqat ularni ko‘radi.</em>",
 "hero.sub":"Mitti GO — YouTube asosidagi bolalar uchun yorqin va sodda ilova. Ota-ona kanal va pleylistlarga ruxsat beradi, bola esa faqat ularni ko‘radi — telefon, planshet va Android TV’da: tavsiyalar lentasi, izohlar va YouTube’ga chiqib ketish yo‘q.",
 "hero.cta":"Qanday ishlaydi","soon":"Tez kunda","hero.try":"Kanalni yoqing",
@@ -65,7 +66,8 @@ uz:{
 "ft":"O‘zbekistondagi oilalar uchun yaratilgan. YouTube — Google LLC’ning savdo belgisi."
 },
 en:{
-"nav.how":"How it works","nav.model":"Permissions","nav.parents":"For parents","nav.privacy":"Privacy","nav.plans":"Plans","nav.faq":"FAQ",
+"nav.how":"How it works","nav.model":"Permissions","nav.parents":"For parents","nav.privacy":"Privacy","nav.plans":"Plans","nav.faq":"FAQ","nav.blog":"Blog",
+"b.e":"Blog","b.t":"Tips and news for parents","b.all":"All posts",
 "hero.eyebrow":"Kids' video, chosen by you","hero.title":"You pick the channels. <em>Your child sees only those.</em>",
 "hero.sub":"Mitti GO is a bright, simple app for kids, built on YouTube. Parents allow channels and playlists, and the child sees only those — on phone, tablet and Android TV. No recommendation feed, no comments, no way out to YouTube.",
 "hero.cta":"How it works","soon":"Coming soon","hero.try":"Switch a channel on",
@@ -205,6 +207,7 @@ function setLang(l){
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
   if(l==="ru"&&ruCache["d.lgv"])document.querySelector("[data-i='d.lgv']").innerHTML="Русский";
   renderPanel();renderPhone(false);renderTree();renderPlayer();buildMnav();
+  if(window.MGBlog)MGBlog.renderList($("#homePosts"),l,3);
   try{localStorage.setItem("mg-lang",l)}catch(e){}
 }
 document.addEventListener("click",e=>{
