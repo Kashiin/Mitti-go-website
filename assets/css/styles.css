@@ -366,8 +366,8 @@ footer img{height:30px;width:auto}
 .st-i .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--bgc);color:var(--c)}
 .st-i p{font-size:15px;color:var(--ink2);margin-top:3px}
 .tu{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px;display:grid;justify-items:center;text-align:center;gap:12px;box-shadow:var(--shadow)}
-.tu img{width:170px;filter:saturate(.85) brightness(.95)}
-.tu .zz{font-family:Caveat,cursive;font-size:30px;color:var(--yellow);margin-bottom:-18px;margin-left:120px}
+.tu img{width:220px;filter:saturate(.85) brightness(.95)}
+.tu .zz{font-family:Caveat,cursive;font-size:30px;color:var(--yellow);margin-bottom:-18px;margin-left:160px}
 .tu b{font-size:22px;font-weight:900;line-height:1.2}
 .tu .for{display:inline-flex;gap:6px;align-items:center;padding:10px 16px;border-radius:14px;background:var(--pblue);color:var(--blue);font-weight:800;font-size:14px}
 .tu hr{width:100%;border:0;border-top:1px dashed var(--line);margin:4px 0}
