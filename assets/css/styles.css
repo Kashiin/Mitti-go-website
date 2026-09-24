@@ -208,16 +208,19 @@ section{padding-block:clamp(64px,9vw,112px)}
 
 /* kid */
 .kid{position:relative;overflow:hidden}
-.kid-grid{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center;position:relative;z-index:1}
-.mascot-box{position:relative;display:grid;justify-items:center}
-.mascot-box img{width:100%;max-width:320px;animation:bob 3.2s ease-in-out infinite}
-.bubble{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-s);border-radius:22px;padding:12px 18px;font-weight:900;font-size:20px;position:relative;margin-bottom:6px}
-.bubble::after{content:"";position:absolute;left:50%;bottom:-9px;width:16px;height:16px;background:var(--card);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:translateX(-50%) rotate(45deg)}
+.kid-grid{display:grid;grid-template-columns:400px 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+.kid-photo{display:grid;justify-items:end}
+/* photo has a light background: soft rectangular fade on light pages, oval vignette on dark ones */
+.kid-photo{--kid-mask:linear-gradient(90deg,transparent 0,#000 14%,#000 88%,transparent 100%),linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+:root[data-theme="dark"] .kid-photo{--kid-mask:radial-gradient(closest-side,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .kid-photo{--kid-mask:radial-gradient(closest-side,#000 35%,rgba(0,0,0,.55) 70%,transparent 100%)}}
+.kid-photo img{width:500px;max-width:none;height:auto;margin-left:-100px;
+  -webkit-mask-image:var(--kid-mask);-webkit-mask-composite:source-in;mask-image:var(--kid-mask);mask-composite:intersect}
 .k-list{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .k{padding:22px;border-radius:var(--r-card);background:var(--bgc);display:grid;gap:8px;align-content:start}
 .k .ms{font-size:30px;color:var(--c)}
 .k p{font-size:15px;color:var(--ink2)}
-@media (max-width:900px){.kid-grid{grid-template-columns:1fr}.mascot-box img{max-width:240px}}
+@media (max-width:900px){.kid-grid{grid-template-columns:1fr}.kid-photo{justify-items:center}.kid-photo img{width:min(360px,100%);margin-left:0}}
 @media (max-width:560px){.k-list{grid-template-columns:1fr}}
 
 /* parents */
