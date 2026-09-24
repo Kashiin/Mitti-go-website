@@ -193,7 +193,7 @@ function renderTree(){
   document.querySelectorAll("[data-ch='stars']").forEach(e=>{if(e.tagName==="B")e.textContent=CH[0].n[lang]});
 }
 function renderPlayer(){
-  const v=CH[0].v[0], up=[CH[0].v[1],CH[1].v[0],CH[1].v[1]];
+  const v=CH[0].v[0], up=[CH[0].v[1],CH[1].v[0],CH[1].v[1],CH[3].v[0]];
   const th=$("#pmThumb"); const ov=th.querySelector(".endov");
   th.querySelectorAll("svg").forEach(e=>e.remove()); th.insertAdjacentHTML("afterbegin",thumb(v));
   $("#pmTitle").textContent=v.t[lang];
