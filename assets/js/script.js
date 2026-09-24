@@ -5,7 +5,7 @@ uz:{
 "nav.how":"Qanday ishlaydi","nav.model":"Ruxsatlar","nav.parents":"Ota-onalar uchun","nav.privacy":"Maxfiylik","nav.plans":"Tariflar","nav.faq":"Savollar",
 "hero.eyebrow":"Siz tanlagan bolalar videolari","hero.title":"Kanallarni siz tanlaysiz. <em>Bola faqat ularni ko‘radi.</em>",
 "hero.sub":"Mitti GO — YouTube asosidagi bolalar uchun yorqin va sodda ilova. Ota-ona kanal va pleylistlarga ruxsat beradi, bola esa faqat ularni ko‘radi — telefon, planshet va Android TV’da: tavsiyalar lentasi, izohlar va YouTube’ga chiqib ketish yo‘q.",
-"hero.cta":"Qanday ishlaydi","soon":"Tez orada","hero.try":"Kanalni yoqing",
+"hero.cta":"Qanday ishlaydi","soon":"Tez kunda","hero.try":"Kanalni yoqing",
 "demo.channels":"Kanallar","demo.shortsSub":"Odatda o‘chiq","demo.sample":"Bu yerdagi kanal va videolar — namuna",
 "s1.t":"Ko‘rishlar va layklar yo‘q","s1.p":"Rasm, nom va davomiylik — mashhurlik hisoblagichlarisiz.",
 "s2.t":"Pleyerdan chiqib bo‘lmaydi","s2.p":"Logotip, havolalar, video oxiridagi tavsiyalar — YouTube’ga barcha o‘tishlar jimgina bloklanadi.",
