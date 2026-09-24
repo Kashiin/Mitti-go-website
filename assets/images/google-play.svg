@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Google Play</title>
+  <desc id="desc">A colorful play button mark for the Google Play download badge.</desc>
+  <defs>
+    <linearGradient id="blue" x1="4" x2="39" y1="7" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00A0FF"/>
+      <stop offset="1" stop-color="#00D6FF"/>
+    </linearGradient>
+    <linearGradient id="green" x1="8" x2="48" y1="4" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6BFF7D"/>
+      <stop offset="1" stop-color="#00C853"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1="33" x2="59" y1="29" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE66D"/>
+      <stop offset="1" stop-color="#FFC107"/>
+    </linearGradient>
+    <linearGradient id="red" x1="8" x2="48" y1="60" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5F6D"/>
+      <stop offset="1" stop-color="#FF1744"/>
+    </linearGradient>
+    <filter id="shadow" x="-16" y="-16" width="96" height="96" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#06245F" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path fill="url(#blue)" d="M10.5 8.1C8.9 9 8 10.8 8 13v38c0 2.2.9 4 2.5 4.9L34.3 32 10.5 8.1Z"/>
+    <path fill="url(#green)" d="m13.1 6.9 29.3 16.8-8.1 8.3L10.5 8.1c.8-.5 1.7-.9 2.6-1.2Z"/>
+    <path fill="url(#yellow)" d="m42.4 23.7 9.6 5.5c3.3 1.9 3.3 3.7 0 5.6l-9.6 5.5-8.1-8.3 8.1-8.3Z"/>
+    <path fill="url(#red)" d="M42.4 40.3 13.1 57.1c-.9-.3-1.8-.7-2.6-1.2L34.3 32l8.1 8.3Z"/>
+  </g>
+</svg>
