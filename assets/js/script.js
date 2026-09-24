@@ -10,7 +10,7 @@ uz:{
 "s1.t":"Ko‘rishlar va layklar yo‘q","s1.p":"Rasm, nom va davomiylik — mashhurlik hisoblagichlarisiz.",
 "s2.t":"Pleyerdan chiqib bo‘lmaydi","s2.p":"Logotip, havolalar, video oxiridagi tavsiyalar — YouTube’ga barcha o‘tishlar jimgina bloklanadi.",
 "s3.t":"Qidiruv faqat o‘zinikida","s3.p":"Faqat ota-ona qo‘shgan narsalar ichidan, to‘g‘ridan-to‘g‘ri qurilmada qidiradi.",
-"s4.t":"Bizning reklamamiz yo‘q","s4.p":"Mitti GO reklama ko‘rsatmaydi. YouTube pleerining o‘zidagi reklamani yashirmaymiz — buni YouTube qoidalari talab qiladi.",
+
 "how.e":"Bir-ikki daqiqada sozlash","how.t":"Uch qadam — va tomosha qilish mumkin",
 "h1.t":"Tilni tanlang","h1.p":"Butun ilova va kanallar tanlovi uchun.",
 "h2.t":"PIN o‘ylab toping","h2.p":"To‘rt raqam ota-onalar bo‘limini yopadi. Bolalar qismi PIN’siz ochiladi.",
@@ -73,7 +73,7 @@ en:{
 "s1.t":"No views, no likes","s1.p":"A picture, a title and a duration — and no popularity counters.",
 "s2.t":"No way out of the player","s2.p":"Logo, links, end-screen suggestions — every jump to YouTube is quietly blocked.",
 "s3.t":"Search stays inside","s3.p":"It looks only through what a parent added, right on the device.",
-"s4.t":"No ads from us","s4.p":"Mitti GO shows no ads. Ads inside YouTube's own player stay as they are — YouTube's rules require it.",
+
 "how.e":"Set up in a couple of minutes","how.t":"Three steps, then press play",
 "h1.t":"Pick a language","h1.p":"For the whole app — and for channel suggestions.",
 "h2.t":"Create a PIN","h2.p":"Four digits lock the parent area. The child's side opens without one.",

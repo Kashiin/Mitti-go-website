@@ -150,13 +150,12 @@ section{padding-block:clamp(64px,9vw,112px)}
 
 /* strip */
 .strip{background:var(--soft);border-block:1px solid var(--line);padding-block:40px}
-.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .fact{display:grid;gap:6px;align-content:start}
 .fact .ms{font-size:28px;color:var(--c)}
 .fact h3{font-size:17px}
 .fact p{font-size:15px;color:var(--ink2);line-height:1.45}
-@media (max-width:900px){.strip .wrap{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.strip .wrap{grid-template-columns:1fr}}
+@media (max-width:720px){.strip .wrap{grid-template-columns:1fr}}
 
 /* how */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
