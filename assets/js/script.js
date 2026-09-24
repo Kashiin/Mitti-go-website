@@ -207,7 +207,7 @@ function setLang(l){
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
   if(l==="ru"&&ruCache["d.lgv"])document.querySelector("[data-i='d.lgv']").innerHTML="Русский";
   renderPanel();renderPhone(false);renderTree();renderPlayer();buildMnav();
-  if(window.MGBlog)MGBlog.renderList($("#homePosts"),l,3);
+  if(window.MGBlog){MGBlog.renderList($("#homePosts"),l,3);MGBlog.renderFooter(l);}
   try{localStorage.setItem("mg-lang",l)}catch(e){}
 }
 document.addEventListener("click",e=>{

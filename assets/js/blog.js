@@ -41,7 +41,35 @@ function renderList(el,l,limit,skip){
   const list=POSTS.filter(p=>p.slug!==skip).slice(0,limit||POSTS.length);
   el.innerHTML=list.map(p=>card(p,l)).join("");
 }
-window.MGBlog={posts:POSTS,renderList,L};
+/* ---- site footer (same on every page) ---- */
+const FT={
+ ru:{tag:"Детское видео, которое выбираете вы. Безопасный контент — счастливые дети.",soon:"Скоро",product:"Продукт",parents:"Родителям",blog:"Блог",all:"Все статьи",top:"Наверх",
+   links:{how:"Как это работает",model:"Разрешения",player:"Плеер",screentime:"Экранное время",plans:"Тарифы",parents:"Для родителей",privacy:"Приватность",devices:"Устройства и языки",faq:"Вопросы"},
+   note:"Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC."},
+ uz:{tag:"Siz tanlagan bolalar videolari. Xavfsiz kontent — baxtli bolalar.",soon:"Tez kunda",product:"Mahsulot",parents:"Ota-onalar uchun",blog:"Blog",all:"Barcha maqolalar",top:"Yuqoriga",
+   links:{how:"Qanday ishlaydi",model:"Ruxsatlar",player:"Pleyer",screentime:"Ekran vaqti",plans:"Tariflar",parents:"Ota-onalar uchun",privacy:"Maxfiylik",devices:"Qurilmalar va tillar",faq:"Savollar"},
+   note:"O‘zbekistondagi oilalar uchun yaratilgan. YouTube — Google LLC’ning savdo belgisi."},
+ en:{tag:"Kids' video you choose. Safe content, happy kids.",soon:"Coming soon",product:"Product",parents:"For parents",blog:"Blog",all:"All posts",top:"Back to top",
+   links:{how:"How it works",model:"Permissions",player:"Player",screentime:"Screen Time",plans:"Plans",parents:"For parents",privacy:"Privacy",devices:"Devices & languages",faq:"FAQ"},
+   note:"Made for families in Uzbekistan. YouTube is a trademark of Google LLC."}
+};
+function renderFooter(l){
+  const el=document.getElementById("siteFoot");if(!el)return;
+  const t=FT[l]||FT.ru, home=document.body.dataset.page?"index.html":"";
+  const link=k=>`<li><a href="${home}#${k}">${t.links[k]}</a></li>`;
+  const store=(logo,name)=>`<span class="soon store-badge"><img class="store-logo" src="assets/images/${logo}" alt="" decoding="async"><span class="store-copy"><span>${t.soon}</span><b>${name}</b></span></span>`;
+  el.innerHTML=`<div class="wrap">
+<div class="ft-top">
+ <div class="ft-brand"><a href="${home||"#top"}" aria-label="Mitti GO"><img class="logo l" src="assets/images/logo-main.png" alt="Mitti GO"><img class="logo d" src="assets/images/logo-white.png" alt="Mitti GO"></a>
+  <p>${t.tag}</p><div class="stores">${store("google-play.svg","Google Play")}${store("app-store.svg","App Store")}</div></div>
+ <nav class="ft-col" aria-label="${t.product}"><h4>${t.product}</h4><ul>${["how","model","player","screentime","plans"].map(link).join("")}</ul></nav>
+ <nav class="ft-col" aria-label="${t.parents}"><h4>${t.parents}</h4><ul>${["parents","privacy","devices","faq"].map(link).join("")}</ul></nav>
+ <nav class="ft-col ft-blog" aria-label="${t.blog}"><h4>${t.blog}</h4><ul>${POSTS.slice(0,3).map(p=>`<li><a href="post.html?p=${encodeURIComponent(p.slug)}">${esc(pick(p.title,l))}</a></li>`).join("")}<li><a class="ft-all" href="blog.html">${t.all} →</a></li></ul></nav>
+</div>
+<div class="ft-bottom"><span>© ${new Date().getFullYear()} Mitti GO</span><span>${t.note}</span><a href="#top" class="ft-up" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">${t.top}<span class="ms">arrow_upward</span></a></div>
+</div>`;
+}
+window.MGBlog={posts:POSTS,renderList,renderFooter,L};
 
 /* ---- standalone blog pages ---- */
 const page=document.body.dataset.page;
@@ -53,7 +81,7 @@ let lang="ru";
 function renderPage(){
   const t=L[lang];
   document.querySelectorAll("[data-nav]").forEach(a=>a.textContent=t.nav[a.dataset.nav]);
-  $("#ft").textContent=t.ft;
+  renderFooter(lang);
   $("#mnav").innerHTML=[...document.querySelectorAll(".nav a")].map(a=>`<a href="${a.getAttribute("href")}">${a.textContent}</a>`).join("");
   if(page==="blog"){
     $("#bTitle").textContent=t.title;$("#bLede").textContent=t.lede;

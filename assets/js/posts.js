@@ -24,6 +24,9 @@
    mgPlaylists(title, [[name, count, shown], …], hiddenLabel)             — mini list of a channel's playlists
    mgAges([[age, rule, subtitle, isAllowed], …])                          — age recommendation cards
    mgVs({title, img, items}, {title, img, items})                         — good vs bad, photo + list each
+   mgCards([[icon, color, title, text], …])                                — grid of cards with an icon
+   mgAlert(title, [[iconImg, label], …], kidImg?)                         — pink "what it can lead to" panel
+   mgTodo(title, [[iconImg, title, text], …])                             — green "what you can do" panel
    mgCallout({title, text, pill, link, href, img?})                      — Mitti GO promo box (img replaces the mascot) */
 function mgChannels(l, items){
   return `<div class="channels">${items.map((c,i)=>`<div class="channel" style="--c:${c.c};--bgc:${c.bg}"><div class="ch-h"><span class="ch-n">${i+1}</span><div><b>${c.n}</b><small>${c.s}</small></div></div><p>${c.d}</p><div class="ch-meta"><span><span class="ms">cake</span>${l.age}: <b>${c.a}</b></span><span><span class="ms">translate</span>${l.lang}: <b>${c.l}</b></span></div></div>`).join("")}</div>`;
@@ -51,6 +54,15 @@ function mgVs(good, bad){
   const col=(o,cls,ic)=>`<div class="vs-col ${cls}"><div class="vs-h"><span class="ms">${ic}</span>${o.title}</div><img src="${o.img}" alt="" loading="lazy"><ul>${o.items.map(t=>`<li>${t}</li>`).join("")}</ul></div>`;
   return `<div class="vs">${col(good,"good","check_circle")}${col(bad,"bad","cancel")}</div>`;
 }
+function mgCards(items){
+  return `<div class="icards">${items.map(([ic,c,t,s])=>`<div class="icard" style="--c:${c}"><span class="ms">${ic}</span><div><b>${t}</b><p>${s}</p></div></div>`).join("")}</div>`;
+}
+function mgAlert(title, items, kid){
+  return `<div class="panel-box alert"><div class="pb-h"><span class="pb-ic">!</span><h2>${title}</h2></div><div class="pb-row">${items.map(([img,t])=>`<div class="pb-card"><img src="${img}" alt=""><b>${t}</b></div>`).join("")}</div>${kid?`<img class="pb-kid" src="${kid}" alt="">`:""}</div>`;
+}
+function mgTodo(title, items){
+  return `<div class="panel-box todo"><div class="pb-h"><span class="pb-ic ms">check</span><h2>${title}</h2></div><div class="pb-row">${items.map(([img,t,s])=>`<div class="pb-card"><img src="${img}" alt=""><div><b>${t}</b><p>${s}</p></div></div>`).join("")}</div></div>`;
+}
 function mgCallout(o){
   return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"assets/images/mascot.png"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
 }
@@ -63,6 +75,89 @@ const MG_CH = [
 const mgCh = (texts) => MG_CH.map((c,i)=>({...c, ...texts[i]}));
 
 window.MG_POSTS = [
+{
+  slug: "too-much-screen",
+  date: "2026-09-24",
+  icon: "smartphone",
+  color: "pink",
+  cover: "assets/images/blog/too-much-cover.webp",
+  tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
+  title: {
+    ru: "Как понять, что ребёнок слишком много смотрит телефон?",
+    uz: "Bola telefonni juda ko‘p ko‘rayotganini qanday bilish mumkin?",
+    en: "How to tell if your child spends too much time on the phone"
+  },
+  excerpt: {
+    ru: "Экранное время само по себе не всегда вредно. Важно замечать изменения в поведении и привычках ребёнка — вот на что смотреть.",
+    uz: "Ekran vaqti o‘z-o‘zidan har doim ham zararli emas. Bolaning xulqi va odatlaridagi o‘zgarishlarni payqash muhim — nimaga e’tibor berish kerak.",
+    en: "Screen time isn't always harmful in itself. What matters is noticing changes in your child's behaviour and habits — here's what to look for."
+  },
+  body: {
+    ru: `<p>Экранное время само по себе не всегда вредно. Важнее другое — как меняются поведение ребёнка и его привычки.</p>
+<h2>8 признаков, что экрана стало слишком много</h2>
+${mgCards([
+ ["bedtime","var(--purple)","Проблемы со сном","Тяжело засыпает, просит «ещё немного посмотреть», устаёт утром."],
+ ["bolt","#E0457B","Раздражительность","Капризничает, когда нужно выключить мультфильм или забрать телефон."],
+ ["toys","#0A8C4B","Нет интереса к другим занятиям","Раньше с удовольствием играл, рисовал, гулял — а сейчас всё меньше."],
+ ["center_focus_strong","var(--blue)","Сложно сосредоточиться","Быстрее отвлекается и хуже слушает, особенно на длинных задачах."],
+ ["sentiment_dissatisfied","#E8A800","Перепады настроения","Плачет, злится или замыкается, когда нет доступа к телефону."],
+ ["visibility","var(--sky)","Жалобы на здоровье","Чаще жалуется на глаза или головную боль, близко наклоняется к экрану."],
+ ["forum","#E0457B","Меньше общения","Избегает семьи и сверстников, предпочитает экран живым играм."],
+ ["restaurant","#0A8C4B","Проблемы с едой","Просит телефон за столом или ест только под мультфильмы."]
+])}
+<div class="note"><span class="ms">lightbulb</span><p>Один признак — ещё не повод для тревоги. Обратите внимание, если замечаете несколько сразу и они держатся неделями. Если беспокоят зрение, сон или головные боли — посоветуйтесь с педиатром.</p></div>
+${mgAlert("К чему это может привести?", [["assets/images/blog/risk-attention.png","Снижение внимания"],["assets/images/blog/risk-sleep.png","Проблемы со сном"],["assets/images/blog/risk-movement.png","Меньше движения"],["assets/images/blog/risk-emotions.png","Сложнее контролировать эмоции"]], "assets/images/blog/risk-kid.webp")}
+${mgTodo("Что можно сделать?", [
+ ["assets/images/blog/todo-rules.png","Договоритесь о правилах заранее","Объясните, сколько времени в день можно смотреть мультфильмы."],
+ ["assets/images/blog/todo-limits.png","Установите чёткие рамки","Выберите конкретное время для просмотра и придерживайтесь его."],
+ ["assets/images/blog/todo-alternatives.png","Предложите альтернативы","Совместные игры, прогулки, книги, творчество."],
+ ["assets/images/blog/todo-example.png","Будьте примером","Дети легче соблюдают правила, когда видят то же самое у взрослых."]
+])}
+${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"Главное — баланс", text:"Телефон может быть полезным и интересным, если использовать его осознанно. Mitti GO помогает родителям создать спокойную и безопасную среду для просмотра.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}`,
+    uz: `<p>Ekran vaqti o‘z-o‘zidan har doim ham zararli emas. Muhimi boshqa — bolaning xulqi va odatlari qanday o‘zgarmoqda.</p>
+<h2>Ekran haddan oshganining 8 belgisi</h2>
+${mgCards([
+ ["bedtime","var(--purple)","Uyqu muammolari","Qiyin uxlaydi, «yana ozgina ko‘ray» deb so‘raydi, ertalab charchagan bo‘ladi."],
+ ["bolt","#E0457B","Asabiylik","Multfilmni o‘chirish yoki telefonni olish kerak bo‘lganda injiqlik qiladi."],
+ ["toys","#0A8C4B","Boshqa mashg‘ulotlarga qiziqish yo‘q","Avval zavq bilan o‘ynardi, rasm chizardi, sayr qilardi — endi kamroq."],
+ ["center_focus_strong","var(--blue)","Diqqatni jamlash qiyin","Tezroq chalg‘iydi va yomonroq tinglaydi, ayniqsa uzoq vazifalarda."],
+ ["sentiment_dissatisfied","#E8A800","Kayfiyat keskin o‘zgaradi","Telefon bo‘lmaganda yig‘laydi, jahli chiqadi yoki o‘ziga yopiladi."],
+ ["visibility","var(--sky)","Sog‘liqdan shikoyat","Ko‘z yoki bosh og‘rig‘idan tez-tez shikoyat qiladi, ekranga yaqin engashadi."],
+ ["forum","#E0457B","Kamroq muloqot","Oila va tengdoshlaridan qochadi, jonli o‘yinlardan ko‘ra ekranni afzal ko‘radi."],
+ ["restaurant","#0A8C4B","Ovqatlanishdagi muammolar","Dasturxonda telefon so‘raydi yoki faqat multfilm bilan ovqatlanadi."]
+])}
+<div class="note"><span class="ms">lightbulb</span><p>Bitta belgi hali xavotirga sabab emas. Bir nechtasini birdaniga payqasangiz va ular haftalab davom etsa, e’tibor bering. Ko‘rish, uyqu yoki bosh og‘rig‘i bezovta qilsa — pediatr bilan maslahatlashing.</p></div>
+${mgAlert("Bu nimaga olib kelishi mumkin?", [["assets/images/blog/risk-attention.png","Diqqat pasayishi"],["assets/images/blog/risk-sleep.png","Uyqu muammolari"],["assets/images/blog/risk-movement.png","Kamroq harakat"],["assets/images/blog/risk-emotions.png","His-tuyg‘ularni boshqarish qiyinlashadi"]], "assets/images/blog/risk-kid.webp")}
+${mgTodo("Nima qilish mumkin?", [
+ ["assets/images/blog/todo-rules.png","Qoidalarni oldindan kelishib oling","Kuniga qancha vaqt multfilm ko‘rish mumkinligini tushuntiring."],
+ ["assets/images/blog/todo-limits.png","Aniq chegaralar qo‘ying","Tomosha uchun aniq vaqtni tanlang va unga amal qiling."],
+ ["assets/images/blog/todo-alternatives.png","Muqobil mashg‘ulot taklif qiling","Birgalikdagi o‘yinlar, sayr, kitoblar, ijod."],
+ ["assets/images/blog/todo-example.png","O‘rnak bo‘ling","Kattalar ham shunday qilishini ko‘rsa, bolalar qoidalarga osonroq amal qiladi."]
+])}
+${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"Eng muhimi — muvozanat", text:"Telefondan ongli foydalanilsa, u foydali va qiziqarli bo‘lishi mumkin. Mitti GO ota-onalarga tomosha uchun sokin va xavfsiz muhit yaratishda yordam beradi.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}`,
+    en: `<p>Screen time isn't always harmful in itself. What matters more is how your child's behaviour and habits change.</p>
+<h2>8 signs of too much screen time</h2>
+${mgCards([
+ ["bedtime","var(--purple)","Sleep problems","Struggles to fall asleep, asks to \"watch a bit more\", tired in the morning."],
+ ["bolt","#E0457B","Irritability","Gets upset when it's time to turn off a cartoon or hand back the phone."],
+ ["toys","#0A8C4B","Losing interest in other things","Used to love playing, drawing and going out — now less and less."],
+ ["center_focus_strong","var(--blue)","Trouble focusing","Gets distracted faster and listens less, especially on longer tasks."],
+ ["sentiment_dissatisfied","#E8A800","Mood swings","Cries, gets angry or withdraws when the phone isn't available."],
+ ["visibility","var(--sky)","Health complaints","Complains about eyes or headaches more often, leans in close to the screen."],
+ ["forum","#E0457B","Less social","Avoids family and friends, prefers the screen to real play."],
+ ["restaurant","#0A8C4B","Mealtime trouble","Asks for the phone at the table or only eats with cartoons on."]
+])}
+<div class="note"><span class="ms">lightbulb</span><p>One sign alone is no reason to worry. Pay attention if you see several at once and they last for weeks. If eyesight, sleep or headaches concern you, talk to your paediatrician.</p></div>
+${mgAlert("What can it lead to?", [["assets/images/blog/risk-attention.png","Lower attention"],["assets/images/blog/risk-sleep.png","Sleep problems"],["assets/images/blog/risk-movement.png","Less movement"],["assets/images/blog/risk-emotions.png","Harder to manage emotions"]], "assets/images/blog/risk-kid.webp")}
+${mgTodo("What can you do?", [
+ ["assets/images/blog/todo-rules.png","Agree on rules in advance","Explain how much cartoon time there is each day."],
+ ["assets/images/blog/todo-limits.png","Set clear limits","Pick a specific time for watching and stick to it."],
+ ["assets/images/blog/todo-alternatives.png","Offer alternatives","Playing together, walks, books, crafts."],
+ ["assets/images/blog/todo-example.png","Lead by example","Kids follow rules more easily when they see adults do the same."]
+])}
+${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"It's all about balance", text:"A phone can be useful and fun when used mindfully. Mitti GO helps parents create a calm, safe space for watching.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}`
+  }
+},
 {
   slug: "youtube-channels-3-years",
   date: "2026-09-22",
