@@ -341,7 +341,9 @@ footer img{height:30px;width:auto}
 
 /* player */
 .pv-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
-.pv-list{display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;margin-top:6px}
+.pv-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+.pv-list .pi{padding:22px;border-radius:var(--r-card);background:var(--bgc);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pv-list .pi .ic{background:color-mix(in srgb,var(--c) 12%,var(--card))}
 .pmock{background:#0B1020;border-radius:28px;padding:16px;box-shadow:var(--shadow);color:#EEF3FF;display:grid;gap:14px;max-width:560px;justify-self:end;width:100%}
 .pmock .th{border-radius:18px}
 .endov{position:absolute;inset:0;background:rgba(8,14,34,.72);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
