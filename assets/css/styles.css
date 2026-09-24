@@ -181,6 +181,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 .mc .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--bgc);color:var(--c)}
 .mc .ic .ms{font-size:28px}
 .mc p{color:var(--ink2);font-size:15px;margin-top:4px}
+.mc p b{color:var(--ink);font-weight:900}
 .tree{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow-s);display:grid;gap:14px}
 .tree-h{display:flex;gap:12px;align-items:center}
 .tree-h .av{width:48px;height:48px}
