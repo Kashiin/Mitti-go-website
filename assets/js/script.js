@@ -28,7 +28,7 @@ uz:{
 "k2.t":"Shorts — faqat siz qaror qilsangiz","k2.p":"Odatda o‘chiq. Yoqsangiz — umumiy lentasiz, faqat ruxsat berilgan kanallarning Shorts’lari chiqadi.",
 "k3.t":"Avtoijro o‘chiq","k3.p":"Keyingi videoni bola o‘zi tanlaydi. Boshqacha xohlasangiz — sozlamalarda yoqing.",
 "k4.t":"Qo‘rqinchli narsa yo‘q","k4.p":"Biror narsaga ruxsat bekor qilinsa, u shunchaki jimgina yo‘qoladi. «Ota-ona tomonidan bloklangan» yozuvlari yo‘q.",
-"p.e":"Ota-onalar uchun","p.t":"PIN-kod ortidagi xotirjam boshqaruv","p.s":"Ota-onalar bo‘limi «Profil» yorlig‘idan ochiladi. Ichida hammasi qo‘l ostida: kontent, Shorts, til, mavzu, xavfsizlik.",
+"p.e":"Ota-onalar uchun","p.t":"<em class=\"go-text\">PIN-kod</em> ortidagi xotirjam boshqaruv","p.s":"Ota-onalar bo‘limi «Profil» yorlig‘idan ochiladi. Ichida hammasi qo‘l ostida: kontent, Shorts, til, mavzu, xavfsizlik.",
 "p1.t":"PIN yoki biometriya","p1.p":"Barmoq izi yoki Face ID — ixtiyoriy. PIN har doim zaxira kalit bo‘lib qoladi.",
 "p2.t":"«Tayyor» hammasini yopadi","p2.p":"«Tayyor»ni bosdingiz, bolalar qismiga o‘tdingiz yoki ilovani yig‘dingiz — bo‘lim darhol yopiladi.",
 "p3.t":"PIN’ni terib topib bo‘lmaydi","p3.p":"Besh marta noto‘g‘ri urinishdan so‘ng klaviatura pauza qiladi. Qayta ishga tushirish yoki vaqtni o‘zgartirish uni bekor qilmaydi.",
@@ -39,7 +39,7 @@ uz:{
 "q2.t":"Hammasi telefonda qoladi","q2.p":"Ko‘rish tarixi, jarayon va bolaning qidiruvlari hech qayerga yuborilmaydi.",
 "q3.t":"PIN ishonchli shifrlangan","q3.p":"Qurilmaning himoyalangan xotirasida saqlanadi va hech qayerda qayd etilmaydi.",
 "q4.t":"Faqat anonim statistika","q4.p":"Masalan, «kanal qo‘shildi». Reklama identifikatorlarisiz va bola nima ko‘rgani haqida ma’lumotsiz.",
-"pl.e":"Tariflar","pl.t":"Eng asosiysi — bepul","pl.s":"Himoya va xavfsizlik hech qachon pullik bo‘lmaydi. Pro ekran vaqtini qo‘shadi.",
+"pl.e":"Tariflar","pl.t":"Eng asosiysi — <em class=\"go-text\">bepul</em>","pl.s":"Himoya va xavfsizlik hech qachon pullik bo‘lmaydi. Pro ekran vaqtini qo‘shadi.",
 "pl.free":"Bepul","pl.ch":"Kanallar","pl.pl":"Pleylistlar","f1":"5 ta butun kanal","f2":"10 ta alohida pleylist","f3":"Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz","f4":"PIN, biometriya va barcha himoya",
 "pl.price":"Narxlar — ishga tushirishda","r1":"Ekran vaqti: kunlik limit","r2":"Joriy videoni tugatish — ustiga 15 daqiqagacha","r3":"Uyqu rejimi: ish va dam olish kunlari uchun alohida","r4":"Uxlayotgan maskot bilan yumshoq «Vaqt tugadi» ekrani",
 "pl.note":"Bola hech qachon «Pro» va «limit» so‘zlarini ko‘rmaydi. Pro limitlari va narxlarini alohida e’lon qilamiz.",
@@ -51,7 +51,7 @@ uz:{
 "fq5.q":"Internet kerakmi?","fq5.a":"Tomosha qilish va kanal qo‘shish uchun — ha. Kanalni olib tashlash, pleylistni yashirish yoki yulduzcha qo‘yish internetsiz ham ishlaydi. Internetsiz bola saqlangan ro‘yxatni ko‘radi.",
 "fq6.q":"Qaysi qurilmalarda ishlaydi?","fq6.a":"Android va iOS, telefon va planshetlar, shuningdek Android TV. Planshetda — ikki ustun video va yon tomonda «Keyingi» ro‘yxati bilan pleyer. Yorug‘ va qorong‘i mavzu bor.",
 "n1":"ta kanal bepul","n2":"ta pleylist bepul","n3":"ta interfeys tili",
-"cmp.e":"Nega oddiy YouTube emas","cmp.t":"YouTube kattalar uchun yaratilgan. Mitti GO — farzandingiz uchun.","cmp.s":"Oddiy YouTube ilovasi tomoshabinni uzoqroq ushlab turishga intiladi. Mitti GO buning aksini qiladi: faqat siz tanlaganni ko‘rsatadi va ko‘proq ko‘rishga undamaydi.",
+"cmp.e":"Nega oddiy YouTube emas","cmp.t":"YouTube kattalar uchun yaratilgan. <em class=\"go-text\">Mitti GO</em> — farzandingiz uchun.","cmp.s":"Oddiy YouTube ilovasi tomoshabinni uzoqroq ushlab turishga intiladi. Mitti GO buning aksini qiladi: faqat siz tanlaganni ko‘rsatadi va ko‘proq ko‘rishga undamaydi.",
 "cmp.yt":"Oddiy YouTube","c1":"Bola nimani ko‘radi","c1y":"Algoritm tanlagan hamma narsani","c1m":"Faqat siz ruxsat bergan kanal va pleylistlarni","c2":"Qidiruv","c2y":"Butun YouTube bo‘yicha","c2m":"Faqat kutubxonangiz bo‘yicha, qurilmaning o‘zida","c3":"Keyingi video","c3y":"Tavsiyalar istalgan joyga olib ketishi mumkin","c3m":"Faqat ruxsat etilgani, avtoijro o‘chiq","c4":"Izohlar, layklar, ko‘rishlar","c4y":"Hamma joyda","c4m":"Hech qayerda","c5y":"Cheksiz umumiy lenta","c5m":"O‘chiq; yoqilsa — faqat sizning kanallaringizdan","c6":"Tashqariga o‘tish","c6y":"Havolalar, boshqa kanallar, boshqa ilovalar","c6m":"Hammasi bloklangan",
 "pv.e":"Pleyer","pv.t":"Mitti GO’ni tomosha qilish — ha.<br>YouTube’ga ketish — yo‘q.","pv.s":"Video rasmiy YouTube pleerida ijro etiladi, Mitti GO esa undan barcha chiqish yo‘llarini yopadi.",
 "pv1.t":"Video oxirida o‘z ekrani","pv1.p":"«Yana» va keyingi videolar — faqat ruxsat etilganlardan. YouTube tavsiyalari bosilmaydi.","pv2.t":"«Keyingi» — mazmunga ko‘ra","pv2.p":"Pleylist ko‘ryapti — keyin shu pleylist davom etadi. Kanalni ochdi — shu kanal videolari.","pv3.t":"Qayerda to‘xtaganini eslaydi","pv3.p":"Oxirigacha ko‘rilmagan video bosh sahifada «Davom etish» belgisi bilan birinchi turadi.","pv4.t":"Yig‘ilganda pauza","pv4.p":"Ilovani yig‘dingiz — video pauzada. Telefonni burdingiz — to‘liq ekran.",
@@ -60,7 +60,7 @@ uz:{
 "st1.t":"Kunlik limit","st1.p":"Kuniga qancha ko‘rish mumkin. Yarim tunda nolga tushadi.","m.off":"O‘chiq","m.own":"O‘zingiz…","st2.t":"5 daqiqa oldin ogohlantirish","st2.p":"Maskot «Tez orada tanaffus!» deydi — orqaga sanashsiz va videoni yopmasdan.","st3.t":"Oxirigacha ko‘rish mumkin","st3.p":"Vaqt video o‘rtasida tugasa, uni oxirigacha ko‘rish mumkin — ustiga 15 daqiqadan oshmasdan.","st4.t":"Uyqu rejimi","st4.p":"Ruxsat etilgan soatlar, masalan 08:00–20:00 — ish va dam olish kunlari uchun alohida.","st5.t":"Vaqt halol hisoblanadi","st5.p":"Faqat bolalar ekranlaridagi vaqt hisoblanadi. Telefondagi soatni o‘zgartirish limitni tiklamaydi.",
 "tu.t":"Vaqt tugadi! Ertaga ko‘rishamiz.","tu.for":"Ota-onalar uchun","tu.ext":"Ota-ona bugun uchun vaqt qo‘shishi mumkin:","tu.e1":"+15 daq","tu.e2":"+30 daq","tu.e3":"+1 soat","tu.e4":"Bugun cheklovsiz",
 "lim2.t":"Limitga yetdingiz","lim2.p":"Yangi qo‘shib bo‘lmaydi, lekin hammasini boshqarish mumkin: yashirish, yulduzcha qo‘yish, o‘chirish. Yoki butun kanal o‘rniga alohida pleylistlarni tanlang.","lim.t":"Pro tugasa","lim.p":"Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 7 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi.",
-"dv.e":"Qurilmalar va tillar","dv0.p":"O‘sha ruxsat etilgan kanallar — katta ekranda. Hammasi pult bilan boshqariladi: yo‘nalish tugmalari va OK, tanlangan kartochka aniq ramka bilan ajraladi. Ortiqcha menyular va YouTube’ga chiqishlar yo‘q.","dv.t":"Telefon, planshet, televizor — va uch til","dv1.t":"Android va iOS","dv1.p":"Telefon va planshetlar. Planshetda — ikki ustun video va yon tomonda «Keyingi» ro‘yxatli pleyer.","dv2.p":"Ilova tili va kanallar tanlovi tili alohida sozlanadi — ikki tilli oilalar uchun qulay.","dv3.t":"Yorug‘ va qorong‘i mavzu","dv3.p":"Tizimdagidek, yorug‘ yoki qorong‘i — butun ilova uchun darhol, bola uchun ham, ota-ona uchun ham.","dv4.t":"Tarmoqsiz ham bo‘sh emas","dv4.p":"Qo‘shilganlar ro‘yxati internetsiz ham ko‘rinadi, kanalni olib tashlash yoki pleylistni yashirish oflayn ishlaydi.",
+"dv.e":"Qurilmalar va tillar","dv0.p":"O‘sha ruxsat etilgan kanallar — katta ekranda. Hammasi pult bilan boshqariladi: yo‘nalish tugmalari va OK, tanlangan kartochka aniq ramka bilan ajraladi. Ortiqcha menyular va YouTube’ga chiqishlar yo‘q.","dv.t":"Telefon, planshet, televizor — <em class=\"go-text\">va uch xil til</em>","dv1.t":"Android va iOS","dv1.p":"Telefon va planshetlar. Planshetda — ikki ustun video va yon tomonda «Keyingi» ro‘yxatli pleyer.","dv2.p":"Ilova tili va kanallar tanlovi tili alohida sozlanadi — ikki tilli oilalar uchun qulay.","dv3.t":"Yorug‘ va qorong‘i mavzu","dv3.p":"Tizimdagidek, yorug‘ yoki qorong‘i — butun ilova uchun darhol, bola uchun ham, ota-ona uchun ham.","dv4.t":"Tarmoqsiz ham bo‘sh emas","dv4.p":"Qo‘shilganlar ro‘yxati internetsiz ham ko‘rinadi, kanalni olib tashlash yoki pleylistni yashirish oflayn ishlaydi.",
 "fq7.q":"Bola reklama ko‘radimi?","fq7.a":"Mitti GO o‘zi reklama ko‘rsatmaydi. YouTube o‘z pleerida ba’zan ko‘rsatadigan reklama qoladi: uni yashirishni YouTube qoidalari taqiqlaydi.","fq8.q":"Shorts’ni qanday o‘chirish mumkin?","fq8.a":"Ular boshidanoq o‘chiq. «Profil» → Shorts bo‘limida yoqish yoki o‘chirish mumkin, shuningdek har bir kanal uchun alohida.","fq9.q":"Kanalni o‘chirib, bir nechta pleylistni qoldirsa bo‘ladimi?","fq9.a":"Ha: «O‘chirish» → «Ba’zi pleylistlarni qoldirish». Belgilangan pleylistlar alohida qoladi va yulduzchasini saqlaydi.","fq10.q":"Video ishga tushmayapti — nima qilish kerak?","fq10.a":"Ba’zi mualliflar videolarini boshqa ilovalarda ko‘rsatishni taqiqlaydi, jonli efirlar esa qo‘llab-quvvatlanmaydi — Mitti GO bunday videolarni shunchaki ko‘rsatmaydi. Video yuklanmasa, internetni tekshiring va «Qayta urinish»ni bosing.",
 "e.t":"Mitti GO tez orada do‘konlarda","e.s":"Ilova Google Play va App Store’da ishga tushirishga tayyorlanmoqda. Xavfsiz kontent — baxtli bolalar.",
 "ft":"O‘zbekistondagi oilalar uchun yaratilgan. YouTube — Google LLC’ning savdo belgisi."
@@ -92,7 +92,7 @@ en:{
 "k2.t":"Shorts only if you say so","k2.p":"Off by default. Turn them on and only Shorts from allowed channels appear — never a global feed.",
 "k3.t":"Autoplay is off","k3.p":"Your child picks what plays next. Prefer otherwise? Switch it on in settings.",
 "k4.t":"Nothing scary","k4.p":"When something is no longer allowed, it simply disappears. No “Blocked by your parent”.",
-"p.e":"For parents","p.t":"A calm control centre behind a PIN","p.s":"The parent area opens from the Profile tab. Everything is at hand: content, Shorts, language, theme, security.",
+"p.e":"For parents","p.t":"A calm control centre behind <em class=\"go-text\">a PIN</em>","p.s":"The parent area opens from the Profile tab. Everything is at hand: content, Shorts, language, theme, security.",
 "p1.t":"PIN or biometrics","p1.p":"Fingerprint or Face ID if you like. The PIN is always the fallback.",
 "p2.t":"Done locks everything","p2.p":"Press Done, step into the child area or leave the app — the parent area locks at once.",
 "p3.t":"Guessing doesn't work","p3.p":"After five wrong tries the keypad pauses. A restart or a clock change won't reset it.",
@@ -103,7 +103,7 @@ en:{
 "q2.t":"It stays on the phone","q2.p":"Watch history, progress and your child's searches never leave the device.",
 "q3.t":"The PIN is protected","q3.p":"Kept hashed in the device's secure storage and never logged.",
 "q4.t":"Anonymous stats only","q4.p":"Things like “channel added”. No ad IDs, and nothing about what your child watched.",
-"pl.e":"Plans","pl.t":"The essentials are free","pl.s":"Protection and security are never behind a paywall. Pro adds Screen Time.",
+"pl.e":"Plans","pl.t":"The essentials are <em class=\"go-text\">free</em>","pl.s":"Protection and security are never behind a paywall. Pro adds Screen Time.",
 "pl.free":"Free","pl.ch":"Channels","pl.pl":"Playlists","f1":"5 whole channels","f2":"10 separate playlists","f3":"Playlists of added channels, hiding and Favorites — unlimited","f4":"PIN, biometrics and every security feature",
 "pl.price":"Pricing at launch","r1":"Screen Time: a daily limit","r2":"Finish the current video — up to 15 extra minutes","r3":"Bedtime, with separate weekday and weekend hours","r4":"A gentle Time's Up screen with the sleeping mascot",
 "pl.note":"Your child never sees the words “Pro” or “limit”. Pro limits and pricing will be announced separately.",
@@ -115,7 +115,7 @@ en:{
 "fq5.q":"Does it need the internet?","fq5.a":"To watch and to add channels — yes. Removing a channel, hiding a playlist or starring work offline. Offline, your child sees the list that's already saved.",
 "fq6.q":"Which devices does it run on?","fq6.a":"Android and iOS, phones and tablets, plus Android TV. On a tablet you get two columns of videos and the player with Up Next beside it. Light and dark themes included.",
 "n1":"channels on Free","n2":"playlists on Free","n3":"app languages",
-"cmp.e":"Why not just YouTube","cmp.t":"YouTube is built for grown-ups. Mitti GO is built for your child.","cmp.s":"The regular YouTube app is designed to keep people watching. Mitti GO does the opposite: it shows only what you chose and never nudges for more.",
+"cmp.e":"Why not just YouTube","cmp.t":"YouTube is built for grown-ups. <em class=\"go-text\">Mitti GO</em> is built for your child.","cmp.s":"The regular YouTube app is designed to keep people watching. Mitti GO does the opposite: it shows only what you chose and never nudges for more.",
 "cmp.yt":"Regular YouTube","c1":"What your child sees","c1y":"Whatever the algorithm picks","c1m":"Only the channels and playlists you allowed","c2":"Search","c2y":"All of YouTube","c2m":"Only your library, right on the device","c3":"What plays next","c3y":"Suggestions can lead anywhere","c3m":"Only allowed videos, autoplay off","c4":"Comments, likes, views","c4y":"Everywhere","c4m":"Nowhere","c5y":"An endless global feed","c5m":"Off; if on, only from your channels","c6":"Links out","c6y":"Links, other channels, other apps","c6m":"All blocked",
 "pv.e":"The player","pv.t":"Watch Mitti GO, yes.<br>Wander off to YouTube, no.","pv.s":"Videos play in YouTube's official player, and Mitti GO closes every way out of it.",
 "pv1.t":"Our own end screen","pv1.p":"\u201cWatch again\u201d and what's next — only from allowed videos. YouTube's suggestions can't be tapped.","pv2.t":"Up Next that makes sense","pv2.p":"Watching a playlist? The playlist continues. Opened a channel? That channel's videos.","pv3.t":"Remembers where they stopped","pv3.p":"The unfinished video waits first on Home with a Keep watching tag.","pv4.t":"Pauses in the background","pv4.p":"Leave the app and the video pauses. Turn the phone for full screen.",
@@ -124,15 +124,15 @@ en:{
 "st1.t":"Daily limit","st1.p":"How long your child can watch each day. Resets at midnight.","m.off":"Off","m.own":"Custom…","st2.t":"A 5-minute heads-up","st2.p":"The mascot says \u201cAlmost time for a break!\u201d — no countdown, never over the video.","st3.t":"They can finish","st3.p":"If time runs out mid-video, it may finish — up to 15 extra minutes.","st4.t":"Bedtime","st4.p":"Allowed hours like 08:00–20:00, separate for weekdays and weekends.","st5.t":"Honest counting","st5.p":"Only time on the child's screens counts. Changing the phone's clock won't reset it.",
 "tu.t":"Time's up for today! See you tomorrow.","tu.for":"For parents","tu.ext":"A parent can add time for today:","tu.e1":"+15 min","tu.e2":"+30 min","tu.e3":"+1 hour","tu.e4":"No limit today",
 "lim2.t":"Hit the limit","lim2.p":"You can't add more, but you can still manage everything: hide, star, remove. Or pick separate playlists instead of a whole channel.","lim.t":"If Pro ends","lim.p":"Nothing is deleted. You get 7 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew.",
-"dv.e":"Devices & languages","dv0.p":"The same allowed channels, on the big screen. Everything works with the remote: the D-pad and OK, with a clear frame around the selected card. No extra menus, no way out to YouTube.","dv.t":"Phone, tablet, TV — and three languages","dv1.t":"Android and iOS","dv1.p":"Phones and tablets. On a tablet: two columns of videos and the player with Up Next beside it.","dv2.p":"The app language and the suggestions language are set separately — handy for bilingual families.","dv3.t":"Light and dark themes","dv3.p":"Follow the system, or pick light or dark — for the whole app at once, child and parent sides alike.","dv4.t":"Offline isn't empty","dv4.p":"Your saved list shows without internet, and removing a channel or hiding a playlist works offline.",
+"dv.e":"Devices & languages","dv0.p":"The same allowed channels, on the big screen. Everything works with the remote: the D-pad and OK, with a clear frame around the selected card. No extra menus, no way out to YouTube.","dv.t":"Phone, tablet, TV — <em class=\"go-text\">and three languages</em>","dv1.t":"Android and iOS","dv1.p":"Phones and tablets. On a tablet: two columns of videos and the player with Up Next beside it.","dv2.p":"The app language and the suggestions language are set separately — handy for bilingual families.","dv3.t":"Light and dark themes","dv3.p":"Follow the system, or pick light or dark — for the whole app at once, child and parent sides alike.","dv4.t":"Offline isn't empty","dv4.p":"Your saved list shows without internet, and removing a channel or hiding a playlist works offline.",
 "fq7.q":"Will my child see ads?","fq7.a":"Mitti GO shows no ads of its own. Ads YouTube sometimes plays inside its player stay — YouTube's rules forbid hiding them.","fq8.q":"How do I turn Shorts off?","fq8.a":"They're off from the start. Switch them in Profile → Shorts, and separately for each channel.","fq9.q":"Can I remove a channel but keep a few playlists?","fq9.a":"Yes: Remove → Keep some playlists. The ones you tick stay as separate items and keep their star.","fq10.q":"A video won't play — what now?","fq10.a":"Some creators don't allow their videos in other apps, and live streams aren't supported — Mitti GO simply doesn't show those. If a video won't load, check the connection and tap Try again.",
 "e.t":"Mitti GO is coming soon","e.s":"The app is getting ready for Google Play and the App Store. Safe content, happy kids.",
 "ft":"Made for families in Uzbekistan. YouTube is a trademark of Google LLC."
 }};
 const UI={
- ru:{all:"Все",keep:"Продолжить",empty:"Пока нечего смотреть",emptySub:"Попросите родителя добавить каналы",tabs:["Главная","Shorts","Библиотека","Профиль"],inc:"Включён",hid:"Скрыт",vids:"видео"},
- uz:{all:"Hammasi",keep:"Davom etish",empty:"Hozircha ko‘radigan narsa yo‘q",emptySub:"Ota-onangizdan kanal qo‘shishni so‘rang",tabs:["Bosh sahifa","Shorts","Kutubxona","Profil"],inc:"Ko‘rinadi",hid:"Yashirin",vids:"video"},
- en:{all:"All",keep:"Keep watching",empty:"Nothing to watch yet",emptySub:"Ask a parent to add channels",tabs:["Home","Shorts","Library","Profile"],inc:"Included",hid:"Hidden",vids:"videos"}
+ ru:{onlyYours:"Только с ваших каналов",noShorts:"Включите канал, чтобы появились Shorts",all:"Все",keep:"Продолжить",empty:"Пока нечего смотреть",emptySub:"Попросите родителя добавить каналы",tabs:["Главная","Shorts","Библиотека","Профиль"],inc:"Включён",hid:"Скрыт",vids:"видео"},
+ uz:{onlyYours:"Faqat sizning kanallaringizdan",noShorts:"Shorts chiqishi uchun kanalni yoqing",all:"Hammasi",keep:"Davom etish",empty:"Hozircha ko‘radigan narsa yo‘q",emptySub:"Ota-onangizdan kanal qo‘shishni so‘rang",tabs:["Bosh sahifa","Shorts","Kutubxona","Profil"],inc:"Ko‘rinadi",hid:"Yashirin",vids:"video"},
+ en:{onlyYours:"Only from your channels",noShorts:"Turn on a channel to see Shorts",all:"All",keep:"Keep watching",empty:"Nothing to watch yet",emptySub:"Ask a parent to add channels",tabs:["Home","Shorts","Library","Profile"],inc:"Included",hid:"Hidden",vids:"videos"}
 };
 const CH=[
  {id:"stars",c:"#0078FF",ring:"#9CCBFF",ic:"rocket_launch",on:true,fav:true,n:{ru:"Звёздная лаборатория",uz:"Yulduzli laboratoriya",en:"Star Lab"},
@@ -153,7 +153,15 @@ const PL=[
  {n:{ru:"Опыты на кухне",uz:"Oshxonadagi tajribalar",en:"Kitchen experiments"},on:true},
  {n:{ru:"Вулканы и землетрясения",uz:"Vulqonlar va zilzilalar",en:"Volcanoes and earthquakes"},on:false}
 ];
-let lang="ru", shorts=false, filter="all";
+/* demo Shorts: two per channel, only channels that are switched on get shown */
+const SH={
+ stars:[{t:{ru:"Как взлетает ракета?",uz:"Raketa qanday uchadi?",en:"How does a rocket take off?"},art:"rocket"},{t:{ru:"Луна за 30 секунд",uz:"30 soniyada Oy",en:"The Moon in 30 seconds"},art:"moon"}],
+ draw:[{t:{ru:"Кит одной линией",uz:"Bir chiziqda kit",en:"A whale in one line"},art:"whale"},{t:{ru:"Радуга за минуту",uz:"Bir daqiqada kamalak",en:"A rainbow in a minute"},art:"rainbow"}],
+ abc:[{t:{ru:"Песенка про букву А",uz:"A harfi haqida qo‘shiq",en:"The letter A song"},art:"letter"},{t:{ru:"Считаем кружочки",uz:"Doirachalarni sanaymiz",en:"Let’s count the dots"},art:"dots"}],
+ forest:[{t:{ru:"Ёжик и яблоко",uz:"Tipratikan va olma",en:"The hedgehog and the apple"},art:"hill"},{t:{ru:"Кто живёт в дупле?",uz:"Kovakda kim yashaydi?",en:"Who lives in the hollow?"},art:"tree"}]
+};
+const calmMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let lang="ru", shorts=false, filter="all", view="home", svTimer=null;
 const ruCache={};
 document.querySelectorAll("[data-i]").forEach(el=>{ruCache[el.dataset.i]=el.innerHTML});
 
@@ -187,8 +195,36 @@ function renderPhone(anim){
   $("#feed").innerHTML=vids.length?vids.map((v,i)=>`<div class="vc" style="animation-delay:${anim?i*50:0}ms"><div class="th">${thumb(v)}${v.resume?`<span class="tag"><span class="ms">replay</span>${UI[lang].keep}</span><span class="prog"><i></i></span>`:""}<span class="dur">${v.d}</span></div><div class="vt">${v.t[lang]}</div><div class="vch">${av(v.ch)}${v.ch.n[lang]}</div></div>`).join("")
     :`<div class="empty"><img src="${MASCOT}" alt=""><b>${UI[lang].empty}</b><span>${UI[lang].emptySub}</span></div>`;
   if(!anim)$("#feed").querySelectorAll(".vc").forEach(e=>e.style.animation="none");
-  const icons=["home","play_circle","video_library","shield_person"];
-  $("#tabbar").innerHTML=UI[lang].tabs.map((t,i)=>(i===1&&!shorts)?"":`<span class="tab ${i===0?"on":""} ${i===1?"sh":""}"><span class="ms">${icons[i]}</span>${t}</span>`).join("");
+  if(!shorts)view="home";
+  setView(view);
+}
+function renderTabbar(){
+  const icons=["home","play_circle","video_library","shield_person"], keys=["home","shorts","lib","prof"];
+  $("#tabbar").innerHTML=UI[lang].tabs.map((t,i)=>(i===1&&!shorts)?"":`<button type="button" class="tab ${keys[i]===view?"on":""} ${i===1?"sh":""}" data-tab="${keys[i]}"><span class="ms">${icons[i]}</span>${t}</button>`).join("");
+}
+function setView(v){
+  view=v;
+  $(".screen").classList.toggle("sv-on",v==="shorts");
+  $("#shortsView").hidden=v!=="shorts";
+  renderTabbar();
+  clearTimeout(svTimer);
+  if(v==="shorts")renderShorts();
+}
+function renderShorts(){
+  const lists=CH.filter(c=>c.on).map(c=>SH[c.id].map(s=>({...s,ch:c})));
+  const items=[];for(let i=0;i<2;i++)lists.forEach(l=>l[i]&&items.push(l[i]));
+  $("#shortsView").innerHTML=`<div class="sv-top"><b>Shorts</b><span class="sv-badge"><span class="ms">verified_user</span>${UI[lang].onlyYours}</span></div>`+
+    (items.length?`<div class="sv-feed" id="svFeed">${items.map(s=>`<div class="sv-item"><svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${ART[s.art]()}</svg><div class="sv-info"><div class="vch">${av(s.ch)}${s.ch.n[lang]}</div><b>${s.t[lang]}</b></div><div class="sv-prog"><i></i></div></div>`).join("")}</div><span class="sv-hint ms">keyboard_arrow_up</span>`
+    :`<div class="empty sv-empty"><img src="${MASCOT}" alt=""><b>${UI[lang].noShorts}</b></div>`);
+  const f=$("#svFeed");
+  if(f)f.addEventListener("scroll",()=>{clearTimeout(f._t);f._t=setTimeout(svActivate,140)});
+  svActivate();
+}
+function svActivate(){
+  const f=$("#svFeed");clearTimeout(svTimer);if(!f||view!=="shorts")return;
+  const idx=Math.round(f.scrollTop/f.clientHeight);
+  f.querySelectorAll(".sv-item").forEach((el,i)=>el.classList.toggle("on",i===idx));
+  if(!calmMotion)svTimer=setTimeout(()=>f.scrollTo({top:((idx+1)%f.children.length)*f.clientHeight,behavior:"smooth"}),4000);
 }
 function renderTree(){
   $("#plRows").innerHTML=PL.map((p,i)=>`<div class="pl ${p.on?"":"hid"}"><span class="t">${p.n[lang]}</span><button type="button" class="pill ${p.on?"inc":"hdn"}" data-p="${i}" aria-pressed="${!p.on}"><span class="ms">${p.on?"visibility":"visibility_off"}</span>${p.on?UI[lang].inc:UI[lang].hid}</button></div>`).join("");
@@ -213,7 +249,9 @@ function setLang(l){
 document.addEventListener("click",e=>{
   const r=e.target.closest("#chRows .row");
   if(r){const ch=CH.find(c=>c.id===r.dataset.ch);ch.on=!ch.on;renderPanel();renderPhone(true);return}
-  if(e.target.closest("#shortsSw")){shorts=!shorts;renderPanel();renderPhone(false);return}
+  if(e.target.closest("#shortsSw")){shorts=!shorts;view=shorts?"shorts":"home";renderPanel();renderPhone(false);return}
+  const tb=e.target.closest("#tabbar .tab");
+  if(tb){if(tb.dataset.tab==="home"||tb.dataset.tab==="shorts")setView(tb.dataset.tab);return}
   const c=e.target.closest(".chip");
   if(c){filter=c.dataset.f;renderPhone(true);return}
   const p=e.target.closest(".pill");
@@ -234,6 +272,30 @@ try{const st=localStorage.getItem("mg-theme");if(st==="light"||st==="dark")root.
 syncThemeIcon();
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",syncThemeIcon)}catch(e){}
 try{new MutationObserver(syncThemeIcon).observe(root,{attributes:true,attributeFilter:["data-theme"]})}catch(e){}
+/* FAQ: smooth open/close and a staggered fade-in when the list scrolls into view */
+const faqList=$(".faq-list");
+if(faqList){
+  const calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  faqList.querySelectorAll("details").forEach((d,i)=>{
+    d.style.setProperty("--i",i);
+    const s=d.querySelector("summary"), p=d.querySelector("p");
+    s.addEventListener("click",e=>{
+      if(calm||!p.animate)return;
+      e.preventDefault();
+      if(d.open){
+        const a=p.animate([{height:p.offsetHeight+"px",opacity:1},{height:"0px",opacity:0,paddingBottom:"0px"}],{duration:260,easing:"ease"});
+        a.onfinish=()=>{d.open=false};
+      }else{
+        d.open=true;
+        p.animate([{height:"0px",opacity:0,paddingBottom:"0px"},{height:p.offsetHeight+"px",opacity:1}],{duration:320,easing:"cubic-bezier(.2,.8,.2,1)"});
+      }
+    });
+  });
+  if("IntersectionObserver" in window&&!calm){
+    const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){faqList.classList.add("in");io.disconnect()}},{threshold:.15});
+    io.observe(faqList);
+  }else faqList.classList.add("in");
+}
 let init="ru";
 try{const s=localStorage.getItem("mg-lang");if(s&&UI[s])init=s;else{const n=(navigator.language||"").slice(0,2);if(n==="uz")init=n;}}catch(e){}
 setLang(init);
