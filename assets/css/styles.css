@@ -841,3 +841,29 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 .nf-sub{color:var(--ink2);font-weight:800;margin:-6px 0 0}
 .nf-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
 @media (prefers-reduced-motion:reduce){.chooser-mascot{animation:none}}
+
+/* smooth cross-page switch (e.g. changing language) in browsers that support it */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.22s}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* branded 404 */
+.nf-hero{position:relative;overflow:hidden;padding-block:clamp(40px,7vw,96px)}
+.nf-hero .b1{width:480px;height:480px;right:-140px;top:-120px;background:radial-gradient(circle at 40% 40%,var(--pcyan),transparent 68%)}
+.nf-hero .b2{width:400px;height:400px;left:-160px;bottom:-180px;background:radial-gradient(circle,var(--pgreen),transparent 70%)}
+.nf-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+.nf-copy{display:grid;gap:18px;justify-items:start}
+.nf-copy h1{font-size:clamp(34px,5vw,58px)}
+.nf-copy .nf-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-start;margin-top:6px}
+.nf-art{position:relative;display:flex;align-items:center;justify-content:center;gap:2px;padding:20px 0}
+.nf-digit{font-size:clamp(120px,17vw,220px);font-weight:900;line-height:1;letter-spacing:-.04em;background:var(--go);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nf-art img{width:clamp(130px,17vw,230px);height:auto;animation:bob 3.2s ease-in-out infinite;filter:drop-shadow(0 18px 22px rgba(0,40,90,.22))}
+.nf-star{position:absolute;color:var(--yellow);animation:nfTwinkle 2.4s ease-in-out infinite}
+.nf-star.s1{top:4%;left:10%;font-size:32px}
+.nf-star.s2{top:0;right:12%;font-size:26px;color:var(--purple);animation-delay:.8s}
+.nf-star.s3{bottom:4%;right:26%;font-size:22px;color:var(--green);animation-delay:1.4s}
+@keyframes nfTwinkle{50%{transform:scale(.7) rotate(20deg);opacity:.5}}
+.nf-more{padding-top:0}
+.nf-more h2{margin-bottom:24px;font-size:clamp(24px,3vw,32px)}
+@media (max-width:860px){.nf-grid{grid-template-columns:1fr;gap:10px}.nf-art{order:-1}}
+@media (prefers-reduced-motion:reduce){.nf-art img,.nf-star{animation:none}}

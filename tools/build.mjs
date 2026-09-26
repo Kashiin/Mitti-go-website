@@ -313,28 +313,72 @@ ${LANGS.map(l => `    <a href="/${l}/" hreflang="${l}" lang="${l}"><b>${CHOOSER[
 `);
 
 /* ---------- 404 ---------- */
-write("404.html", `<!doctype html>
+/* GitHub Pages serves this file (with HTTP 404) for any unknown URL, so it can't know the language in advance:
+   all three language versions are in the HTML and a tiny script keeps the one that matches the URL
+   (/uz/… → uz, /en/… → en, otherwise the saved language or Russian). */
+const NF = {
+  ru: { title: "Страница не найдена — Mitti GO", eyebrow: "Ошибка 404", h1: "Страница потерялась", sub: "Кажется, такой страницы нет или её переместили. Зато у нас много полезного для родителей — загляните на главную или в блог.", home: "На главную", blog: "Открыть блог", more: "Может пригодиться" },
+  uz: { title: "Sahifa topilmadi — Mitti GO", eyebrow: "404 xatosi", h1: "Sahifa adashib qoldi", sub: "Bunday sahifa yo‘q yoki u ko‘chirilgan. Lekin bizda ota-onalar uchun foydali narsalar ko‘p — bosh sahifaga yoki blogga o‘ting.", home: "Bosh sahifaga", blog: "Blogni ochish", more: "Foydali bo‘lishi mumkin" },
+  en: { title: "Page not found — Mitti GO", eyebrow: "Error 404", h1: "This page got lost", sub: "The page doesn't exist or has moved. But there's plenty for parents here — head to the home page or the blog.", home: "Go home", blog: "Open the blog", more: "You might find useful" }
+};
+const nfVariant = l => {
+  const t = NF[l];
+  return `<div class="nf-lang" data-nf="${l}" lang="${l}">
+${siteHeader(l, HOME_ALT, false)}
+<main id="top" class="nf-page">
+<section class="nf-hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap nf-grid">
+    <div class="nf-copy">
+      <span class="eyebrow"><span class="ms">explore_off</span>${t.eyebrow}</span>
+      <h1>${t.h1}</h1>
+      <p class="lede">${t.sub}</p>
+      <div class="nf-actions">
+        <a class="btn primary" href="${homePath(l)}"><span class="ms">home</span>${t.home}</a>
+        <a class="btn ghost" href="${blogPath(l)}"><span class="ms">auto_stories</span>${t.blog}</a>
+      </div>
+    </div>
+    <div class="nf-art" aria-hidden="true">
+      <span class="nf-digit">4</span><img src="/assets/images/mascot-sad.png" alt="" width="640" height="373"><span class="nf-digit">4</span>
+      <span class="nf-star s1 ms">star</span><span class="nf-star s2 ms">auto_awesome</span><span class="nf-star s3 ms">star</span>
+    </div>
+  </div>
+</section>
+<section class="blog-sec nf-more">
+  <div class="wrap">
+    <h2>${t.more}</h2>
+    <div class="post-grid">${POSTS.slice(0, 3).map(p => card(p, l, "h3")).join("")}</div>
+  </div>
+</section>
+</main>
+<footer class="site-foot">${footerHTML(l, POSTS, HOME_ALT)}</footer>
+</div>`;
+};
+write("404.html", sizeImages(`<!doctype html>
 <html lang="ru">
 <head>
-${head({ title: "Страница не найдена — Mitti GO", desc: "Такой страницы нет. Вернитесь на главную Mitti GO или откройте блог для родителей.", noindex: true })}
+${head({ title: NF.ru.title, desc: "Такой страницы нет. Вернитесь на главную Mitti GO или откройте блог для родителей.", noindex: true })}
 </head>
-<body class="chooser nf">
-<main class="chooser-main">
-  <a href="/"><img class="chooser-logo" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150"></a>
-  <img class="chooser-mascot" src="/assets/images/mascot.png" alt="" width="640" height="378">
-  <p class="nf-code">404</p>
-  <h1>Страница не найдена</h1>
-  <p class="nf-sub" lang="uz">Sahifa topilmadi</p>
-  <p class="nf-sub" lang="en">Page not found</p>
-  <div class="nf-actions">
-    <a class="btn primary" href="/ru/">Вернуться на главную<span class="ms">home</span></a>
-    <a class="btn ghost" href="/ru/blog/">Перейти в блог<span class="ms">auto_stories</span></a>
-  </div>
-  <p class="chooser-blog"><a href="/uz/" lang="uz">Bosh sahifa</a> · <a href="/uz/blog/" lang="uz">Blog</a> · <a href="/en/" lang="en">Home</a> · <a href="/en/blog/" lang="en">Blog</a></p>
-</main>
+<body class="nf-body">
+${LANGS.map(nfVariant).join("\n")}
+<script>
+(function(){var ls=["uz","ru","en"],m=location.pathname.match(/^\\/(uz|ru|en)(\\/|$)/),l=m?m[1]:null;
+try{if(!l){var s=localStorage.getItem("mg-lang");if(ls.indexOf(s)>=0)l=s}}catch(e){}
+if(ls.indexOf(l)<0)l="ru";
+var T=${JSON.stringify(Object.fromEntries(LANGS.map(x => [x, NF[x].title])))};
+/* keep the three versions aside and show one; the language switch swaps them in place (the URL stays the same) */
+var stash={},anchor=document.createComment("nf");
+[].slice.call(document.querySelectorAll(".nf-lang")).forEach(function(n){stash[n.getAttribute("data-nf")]=n;n.parentNode.insertBefore(anchor,n);n.parentNode.removeChild(n)});
+function show(x){var cur=document.querySelector(".nf-lang");if(cur)cur.parentNode.removeChild(cur);anchor.parentNode.insertBefore(stash[x],anchor.nextSibling);
+document.documentElement.lang=x;document.title=T[x];if(window.MGSite)MGSite.syncThemeIcon()}
+show(l);document.body.classList.add("nf-ready");
+document.addEventListener("click",function(e){var a=e.target.closest(".lang a[hreflang], .ft-langs a[hreflang]");if(!a)return;
+var x=a.getAttribute("hreflang");if(!stash[x])return;e.preventDefault();try{localStorage.setItem("mg-lang",x)}catch(err){}show(x);scrollTo({top:0,behavior:"instant"})})})();
+</script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
-`);
+`));
 
 /* ---------- legacy URLs (old blog.html / post.html?p=…) ---------- */
 const legacy = (title, target, script) => `<!doctype html>
