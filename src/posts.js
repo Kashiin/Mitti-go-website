@@ -316,7 +316,12 @@ window.MG_POSTS = [
   date: "2026-09-24",
   icon: "devices",
   color: "pink",
-  cover: "/assets/images/blog/devices-cover.webp",
+  cover: "/assets/images/blog/phone-tablet-or-tv-whats-best-for-kids-to-watch-videos-on.webp",
+  imageAlt: {
+    ru: "Трое детей смотрят видео на телефоне, планшете и телевизоре — на чём ребёнку лучше смотреть видео",
+    uz: "Uch bola telefon, planshet va televizorda video ko‘rmoqda — bola videoni nimada ko‘rgani yaxshi",
+    en: "Three kids watching videos on a phone, a tablet and a TV — which screen is best for children"
+  },
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Телефон, планшет или телевизор: на чём ребёнку лучше смотреть видео?",
@@ -336,7 +341,12 @@ window.MG_POSTS = [
   date: "2026-09-24",
   icon: "translate",
   color: "blue",
-  cover: "/assets/images/blog/english-cover.webp",
+  cover: "/assets/images/blog/which-youtube-channels-help-kids-learn-english.webp",
+  imageAlt: {
+    ru: "Мальчик с котёнком учит английский язык по детским YouTube-каналам на планшете",
+    uz: "Bola mushukcha bilan planshetda bolalar YouTube kanallari orqali ingliz tilini o‘rganmoqda",
+    en: "Boy and kitten learning English with kids' YouTube channels on a tablet"
+  },
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Какие YouTube-каналы помогают учить английский детям?",
@@ -474,7 +484,12 @@ ${mgCallout({img:"/assets/images/blog/en-girl.webp", title:"An English set in Mi
   date: "2026-09-24",
   icon: "smartphone",
   color: "pink",
-  cover: "/assets/images/blog/too-much-cover.webp",
+  cover: "/assets/images/blog/how-to-tell-if-your-child-spends-too-much-time-on-the-phone.webp",
+  imageAlt: {
+    ru: "Родители переживают, что ребёнок слишком много смотрит телефон: признаки — усталость, плохой сон и капризы",
+    uz: "Ota-onalar bola telefonni juda ko‘p ko‘rayotganidan xavotirda: belgilar — charchoq, yomon uyqu va injiqlik",
+    en: "Worried parents and a child glued to a screen — signs of too much phone time: tiredness, poor sleep, tantrums"
+  },
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Как понять, что ребёнок слишком много смотрит телефон?",
@@ -558,7 +573,12 @@ ${mgCallout({img:"/assets/images/blog/too-much-balance.webp", title:"It's all ab
   date: "2026-09-22",
   icon: "smart_display",
   color: "green",
-  cover: "/assets/images/blog/channels-3-years.webp",
+  cover: "/assets/images/blog/which-youtube-channels-are-right-for-a-3-year-old.webp",
+  imageAlt: {
+    ru: "Мама и папа выбирают безопасные YouTube-каналы для ребёнка 3 лет",
+    uz: "Ota-ona 3 yoshli bola uchun xavfsiz YouTube kanallarini tanlamoqda",
+    en: "Mom and dad choosing safe YouTube channels for a 3-year-old child"
+  },
   tag: { ru: "Полезная статья", uz: "Foydali maqola", en: "Guide" },
   title: {
     ru: "Какие YouTube-каналы можно ребёнку 3 лет?",
@@ -669,7 +689,12 @@ ${mgCallout({title:"That's why we're building Mitti GO", text:"Parents choose th
   date: "2026-09-20",
   icon: "subscriptions",
   color: "blue",
-  cover: "/assets/images/blog/five-questions-cover.webp",
+  cover: "/assets/images/blog/5-simple-questions-should-you-allow-this-channel.webp",
+  imageAlt: {
+    ru: "Мама с малышом на планшете решают, стоит ли разрешать детский YouTube-канал",
+    uz: "Ona bolasi bilan planshetda bolalar YouTube kanaliga ruxsat berish kerakmi, shuni hal qilmoqda",
+    en: "Mom and toddler with a tablet deciding whether to allow a kids' YouTube channel"
+  },
   tag: { ru: "Полезная статья", uz: "Foydali maqola", en: "Guide" },
   title: {
     ru: "5 простых вопросов: стоит ли разрешать канал",
@@ -726,7 +751,12 @@ ${mgCallout({title:"Build a safe space in Mitti GO", text:"Add only the channels
   date: "2026-09-12",
   icon: "schedule",
   color: "yellow",
-  cover: "/assets/images/blog/screen-time-cover.webp",
+  cover: "/assets/images/blog/how-much-screen-time-does-a-preschooler-need.webp",
+  imageAlt: {
+    ru: "Дошкольник с котёнком и таймер экранного времени — сколько экранного времени нужно ребёнку 2–5 лет",
+    uz: "Maktabgacha yoshdagi bola, mushukcha va ekran vaqti taymeri — 2–5 yoshli bolaga qancha ekran vaqti kerak",
+    en: "Preschooler with a kitten and a screen time timer — how much screen time kids aged 2–5 need"
+  },
   tag: { ru: "Экранное время", uz: "Ekran vaqti", en: "Screen time" },
   title: {
     ru: "Сколько экранного времени нужно дошкольнику",
@@ -813,7 +843,12 @@ ${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"It's all abou
   date: "2026-09-05",
   icon: "play_circle",
   color: "purple",
-  cover: "/assets/images/blog/shorts-cover.webp",
+  cover: "/assets/images/blog/why-shorts-are-off-by-default-in-mitti-go.webp",
+  imageAlt: {
+    ru: "Мама с ребёнком и планшет с приложением Mitti GO, где YouTube Shorts выключены по умолчанию",
+    uz: "Ona va bola, YouTube Shorts odatda o‘chiq bo‘lgan Mitti GO ilovasi ochilgan planshet",
+    en: "Mom and child next to a tablet with the Mitti GO app, where YouTube Shorts are off by default"
+  },
   tag: { ru: "Родительский контроль", uz: "Ota-ona nazorati", en: "Parental control" },
   title: {
     ru: "Почему в Mitti GO Shorts выключены по умолчанию",

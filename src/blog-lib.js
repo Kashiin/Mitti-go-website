@@ -68,7 +68,7 @@ const abs = path => SITE + path;
 function cover(p, l, big) {
   const [c, bg] = COLORS[p.color] || COLORS.blue;
   const img = p.cover
-    ? `<img src="${esc(p.cover)}" alt="${big ? esc(pick(p.imageAlt, l) || pick(p.title, l)) : ""}" width="1400" height="600"${big ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`
+    ? `<img src="${esc(p.cover)}" alt="${esc(pick(p.imageAlt, l) || pick(p.title, l))}" width="1400" height="600"${big ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`
     : `<span class="ms">${esc(p.icon || "article")}</span>`;
   return `<div class="post-cover${big ? " big" : ""}" style="--c:${c};--bgc:${bg}">${img}</div>`;
 }
