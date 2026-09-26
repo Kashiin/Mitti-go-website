@@ -3,11 +3,16 @@
   To add a post, copy one object below, give it a new unique `slug` and fill in the fields.
   Newest posts are shown first (sorted by `date`, format YYYY-MM-DD).
 
-  slug    — address of the post: post.html?p=<slug> (latin letters, digits, dashes)
+  slug    — internal id of the post (also used by the old post.html?p=<slug> links)
+  slugs   — public URL per language: /ru/blog/<slugs.ru>/ … (latin letters, digits, dashes)
+  seo     — optional { title:{ru,uz,en}, description:{ru,uz,en} }; defaults: "<title> | Mitti GO" and the excerpt
+  updated — optional YYYY-MM-DD, used as dateModified (defaults to date)
+  imageAlt— optional {ru,uz,en} alt text for the cover (defaults to the title)
+  After editing run:  node tools/build.mjs   — it writes the pages, sitemap.xml and the redirects.
   date    — publication date
   icon    — Material Symbols icon name for the cover (https://fonts.google.com/icons)
   color   — cover colour: blue | green | yellow | purple | pink | cyan
-  cover   — optional image instead of the icon cover, e.g. "assets/images/blog/my-post.webp"
+  cover   — optional image instead of the icon cover, e.g. "/assets/images/blog/my-post.webp"
   tag, title, excerpt — short texts, one per language (ru / uz / en)
   body    — post text in HTML: <p>, <h2>, <ul><li>, <b>… one per language
   If a language is missing, the Russian version is shown.
@@ -88,7 +93,7 @@ function mgRow(cls, title, items){
   return `<div class="row-box ${cls}"><h2>${title}</h2><div class="rb-row">${items.map(([img,t,s])=>`<div class="rb-card"><div class="rb-h"><img src="${img}" alt=""><b>${t}</b></div><p>${s}</p></div>`).join("")}</div></div>`;
 }
 function mgCallout(o){
-  return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"assets/images/mascot.png"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
+  return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"/assets/images/mascot.png"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
 }
 const MG_CH = [
   {n:"Super Simple Songs", c:"#E0457B", bg:"var(--ppink)"},
@@ -260,7 +265,7 @@ en: {
  src: "WHO guidelines for children under 5 (2019)"
 }};
 function mgDevBody(l){
-  const t = DEV_TXT[l], B = "assets/images/blog/";
+  const t = DEV_TXT[l], B = "/assets/images/blog/";
   const meta = [["d-phone","smartphone","dev-phone.webp","timer"],["d-tablet","tablet_mac","dev-tablet.webp","hourglass_top"],["d-tv","tv","dev-tv.webp","weekend"]];
   const cards = t.cards.map((c,i)=>({cls:meta[i][0], icon:meta[i][1], img:B+meta[i][2], title:c.title, sticker:c.sticker, items:c.items, tip:[meta[i][3], c.tip]}));
   const distImg = ["dist-phone.png","dist-tablet.png","dist-tv.png"], distIc = ["smartphone","tablet_mac","tv"];
@@ -307,10 +312,11 @@ ${mgCallout({img:B+"dev-balance.webp", title:t.call.title, text:t.call.text, pil
 window.MG_POSTS = [
 {
   slug: "phone-tablet-or-tv",
+  slugs: { ru: "telefon-planshet-ili-televizor", uz: "telefon-planshet-yoki-televizor", en: "phone-tablet-or-tv-for-kids" },
   date: "2026-09-24",
   icon: "devices",
   color: "pink",
-  cover: "assets/images/blog/devices-cover.webp",
+  cover: "/assets/images/blog/devices-cover.webp",
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Телефон, планшет или телевизор: на чём ребёнку лучше смотреть видео?",
@@ -326,10 +332,11 @@ window.MG_POSTS = [
 },
 {
   slug: "english-channels",
+  slugs: { ru: "youtube-kanaly-dlya-izucheniya-anglijskogo", uz: "ingliz-tilini-organish-uchun-youtube-kanallar", en: "youtube-channels-to-learn-english" },
   date: "2026-09-24",
   icon: "translate",
   color: "blue",
-  cover: "assets/images/blog/english-cover.webp",
+  cover: "/assets/images/blog/english-cover.webp",
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Какие YouTube-каналы помогают учить английский детям?",
@@ -367,17 +374,17 @@ ${mgQ(7, "var(--sky)", "Steve and Maggie", "Английский через ми
 </tbody></table></div>
 <div class="note"><span class="ms">lightbulb</span><p>Не нужно подписываться сразу на десять каналов. Выберите 2–3 подходящих и какое-то время смотрите именно их.</p></div>
 ${mgTips("Как сделать просмотр действительно полезным", [
- ["assets/images/blog/en-tip-together.png","Смотрите вместе","Иногда смотрите видео с ребёнком и обсуждайте, что он увидел."],
- ["assets/images/blog/en-tip-repeat.png","Повторяйте слова","Просите повторить простые слова и фразы из видео."],
- ["assets/images/blog/en-tip-use.png","Используйте в жизни","Применяйте новые слова в обычных ситуациях."],
- ["assets/images/blog/en-tip-level.png","Выбирайте уровень","Начинайте с простых песен и постепенно переходите к диалогам и историям."]
+ ["/assets/images/blog/en-tip-together.png","Смотрите вместе","Иногда смотрите видео с ребёнком и обсуждайте, что он увидел."],
+ ["/assets/images/blog/en-tip-repeat.png","Повторяйте слова","Просите повторить простые слова и фразы из видео."],
+ ["/assets/images/blog/en-tip-use.png","Используйте в жизни","Применяйте новые слова в обычных ситуациях."],
+ ["/assets/images/blog/en-tip-level.png","Выбирайте уровень","Начинайте с простых песен и постепенно переходите к диалогам и историям."]
 ])}
 <p>Сам по себе просмотр мультфильмов ещё не гарантирует, что ребёнок заговорит по-английски. Но не превращайте мультфильм в экзамен — достаточно иногда повторять слова и использовать знакомые фразы в жизни. После видео про цвета, животных или еду:</p>
 ${mgSay(["Give me the red car.","Where is the dog?","Do you like bananas?"])}
 <p>Так английский постепенно перестаёт быть просто звуком из телефона.</p>
 <h2>А что с обычным YouTube?</h2>
 <p>Даже если вы нашли хороший образовательный канал, после видео YouTube может предложить ребёнку совершенно другой контент. Поэтому важно выбирать не только что смотреть, но и куда ребёнок сможет перейти дальше.</p>
-${mgCallout({img:"assets/images/blog/en-girl.webp", title:"Английская подборка в Mitti GO", text:"Добавьте разрешённые каналы заранее — например, Super Simple Songs + British Council + Dream English + English Singsing — и ребёнок будет смотреть только их, а не путешествовать по ленте рекомендаций. Новые каналы можно добавлять по мере взросления.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}
+${mgCallout({img:"/assets/images/blog/en-girl.webp", title:"Английская подборка в Mitti GO", text:"Добавьте разрешённые каналы заранее — например, Super Simple Songs + British Council + Dream English + English Singsing — и ребёнок будет смотреть только их, а не путешествовать по ленте рекомендаций. Новые каналы можно добавлять по мере взросления.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}
 <h2>Главное — не количество видео</h2>
 <p>Не нужно превращать каждый свободный час в урок языка. Гораздо полезнее регулярно смотреть понятные видео подходящего уровня, повторять несколько слов и использовать их потом в жизни.</p>
 <div class="note"><span class="ms">favorite</span><p>Пять хорошо запомнившихся слов лучше, чем час английского видео, после которого ребёнок ничего не может повторить.</p></div>`,
@@ -406,17 +413,17 @@ ${mgQ(7, "var(--sky)", "Steve and Maggie", "Mini-hikoyalar, o‘yin va jonli bos
 </tbody></table></div>
 <div class="note"><span class="ms">lightbulb</span><p>Birdaniga o‘nta kanalga obuna bo‘lish shart emas. 2–3 ta mosini tanlang va bir muddat aynan ularni ko‘ring.</p></div>
 ${mgTips("Tomoshani qanday qilib haqiqatan foydali qilish mumkin", [
- ["assets/images/blog/en-tip-together.png","Birga ko‘ring","Ba’zan videoni bola bilan ko‘ring va u ko‘rganini muhokama qiling."],
- ["assets/images/blog/en-tip-repeat.png","So‘zlarni takrorlang","Videodagi oddiy so‘z va iboralarni takrorlashni so‘rang."],
- ["assets/images/blog/en-tip-use.png","Hayotda qo‘llang","Yangi so‘zlarni kundalik vaziyatlarda ishlating."],
- ["assets/images/blog/en-tip-level.png","Darajani tanlang","Oddiy qo‘shiqlardan boshlang va asta-sekin dialog va hikoyalarga o‘ting."]
+ ["/assets/images/blog/en-tip-together.png","Birga ko‘ring","Ba’zan videoni bola bilan ko‘ring va u ko‘rganini muhokama qiling."],
+ ["/assets/images/blog/en-tip-repeat.png","So‘zlarni takrorlang","Videodagi oddiy so‘z va iboralarni takrorlashni so‘rang."],
+ ["/assets/images/blog/en-tip-use.png","Hayotda qo‘llang","Yangi so‘zlarni kundalik vaziyatlarda ishlating."],
+ ["/assets/images/blog/en-tip-level.png","Darajani tanlang","Oddiy qo‘shiqlardan boshlang va asta-sekin dialog va hikoyalarga o‘ting."]
 ])}
 <p>Multfilm ko‘rishning o‘zi bola ingliz tilida gapirishini kafolatlamaydi. Lekin multfilmni imtihonga aylantirmang — ba’zan so‘zlarni takrorlash va tanish iboralarni hayotda ishlatish kifoya. Ranglar, hayvonlar yoki ovqat haqidagi videodan keyin:</p>
 ${mgSay(["Give me the red car.","Where is the dog?","Do you like bananas?"])}
 <p>Shunday qilib ingliz tili asta-sekin telefondagi oddiy tovush bo‘lmay qoladi.</p>
 <h2>Oddiy YouTube-chi?</h2>
 <p>Yaxshi ta’limiy kanal topgan bo‘lsangiz ham, videodan keyin YouTube bolaga butunlay boshqa kontentni taklif qilishi mumkin. Shuning uchun nimani ko‘rishni emas, bola keyin qayerga o‘tishi mumkinligini ham tanlash muhim.</p>
-${mgCallout({img:"assets/images/blog/en-girl.webp", title:"Mitti GO’da inglizcha to‘plam", text:"Ruxsat berilgan kanallarni oldindan qo‘shing — masalan, Super Simple Songs + British Council + Dream English + English Singsing — va bola tavsiyalar lentasida sayr qilmay, faqat ularni ko‘radi. Bola ulg‘aygan sari yangi kanallar qo‘shish mumkin.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}
+${mgCallout({img:"/assets/images/blog/en-girl.webp", title:"Mitti GO’da inglizcha to‘plam", text:"Ruxsat berilgan kanallarni oldindan qo‘shing — masalan, Super Simple Songs + British Council + Dream English + English Singsing — va bola tavsiyalar lentasida sayr qilmay, faqat ularni ko‘radi. Bola ulg‘aygan sari yangi kanallar qo‘shish mumkin.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}
 <h2>Eng muhimi — videolar soni emas</h2>
 <p>Har bir bo‘sh soatni til darsiga aylantirish shart emas. Mos darajadagi tushunarli videolarni muntazam ko‘rish, bir nechta so‘zni takrorlash va keyin ularni hayotda ishlatish ancha foydaliroq.</p>
 <div class="note"><span class="ms">favorite</span><p>Yaxshi eslab qolingan beshta so‘z bola hech narsani takrorlay olmaydigan bir soatlik inglizcha videodan yaxshiroq.</p></div>`,
@@ -445,17 +452,17 @@ ${mgQ(7, "var(--sky)", "Steve and Maggie", "English through mini stories, play a
 </tbody></table></div>
 <div class="note"><span class="ms">lightbulb</span><p>No need to subscribe to ten channels at once. Pick 2–3 that fit and stick with them for a while.</p></div>
 ${mgTips("How to make watching actually useful", [
- ["assets/images/blog/en-tip-together.png","Watch together","Sometimes watch with your child and talk about what they saw."],
- ["assets/images/blog/en-tip-repeat.png","Repeat words","Ask your child to repeat simple words and phrases from the video."],
- ["assets/images/blog/en-tip-use.png","Use it in real life","Bring new words into everyday situations."],
- ["assets/images/blog/en-tip-level.png","Pick the right level","Start with simple songs and move on to dialogues and stories."]
+ ["/assets/images/blog/en-tip-together.png","Watch together","Sometimes watch with your child and talk about what they saw."],
+ ["/assets/images/blog/en-tip-repeat.png","Repeat words","Ask your child to repeat simple words and phrases from the video."],
+ ["/assets/images/blog/en-tip-use.png","Use it in real life","Bring new words into everyday situations."],
+ ["/assets/images/blog/en-tip-level.png","Pick the right level","Start with simple songs and move on to dialogues and stories."]
 ])}
 <p>Watching cartoons alone doesn't guarantee your child will start speaking English. But don't turn a cartoon into an exam — just repeat words now and then and use familiar phrases in everyday life. After a video about colours, animals or food:</p>
 ${mgSay(["Give me the red car.","Where is the dog?","Do you like bananas?"])}
 <p>Bit by bit, English stops being just a sound coming out of the phone.</p>
 <h2>What about regular YouTube?</h2>
 <p>Even if you've found a great learning channel, after a video YouTube may suggest something completely different. So it matters not only what your child watches, but where they can go next.</p>
-${mgCallout({img:"assets/images/blog/en-girl.webp", title:"An English set in Mitti GO", text:"Add the allowed channels in advance — for example Super Simple Songs + British Council + Dream English + English Singsing — and your child watches only those instead of wandering through the recommendation feed. Add new channels as they grow.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}
+${mgCallout({img:"/assets/images/blog/en-girl.webp", title:"An English set in Mitti GO", text:"Add the allowed channels in advance — for example Super Simple Songs + British Council + Dream English + English Singsing — and your child watches only those instead of wandering through the recommendation feed. Add new channels as they grow.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}
 <h2>It's not about the number of videos</h2>
 <p>There's no need to turn every free hour into a language lesson. It's far more useful to regularly watch clear videos at the right level, repeat a few words and then use them in real life.</p>
 <div class="note"><span class="ms">favorite</span><p>Five words remembered well beat an hour of English video your child can't repeat a word from.</p></div>`
@@ -463,10 +470,11 @@ ${mgCallout({img:"assets/images/blog/en-girl.webp", title:"An English set in Mit
 },
 {
   slug: "too-much-screen",
+  slugs: { ru: "rebenok-mnogo-smotrit-telefon", uz: "bola-telefonni-kop-koradi", en: "too-much-phone-time-signs" },
   date: "2026-09-24",
   icon: "smartphone",
   color: "pink",
-  cover: "assets/images/blog/too-much-cover.webp",
+  cover: "/assets/images/blog/too-much-cover.webp",
   tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
   title: {
     ru: "Как понять, что ребёнок слишком много смотрит телефон?",
@@ -492,14 +500,14 @@ ${mgCards([
  ["restaurant","#0A8C4B","Проблемы с едой","Просит телефон за столом или ест только под мультфильмы."]
 ])}
 <div class="note"><span class="ms">lightbulb</span><p>Один признак — ещё не повод для тревоги. Обратите внимание, если замечаете несколько сразу и они держатся неделями. Если беспокоят зрение, сон или головные боли — посоветуйтесь с педиатром.</p></div>
-${mgAlert("К чему это может привести?", [["assets/images/blog/risk-attention.png","Снижение внимания"],["assets/images/blog/risk-sleep.png","Проблемы со сном"],["assets/images/blog/risk-movement.png","Меньше движения"],["assets/images/blog/risk-emotions.png","Сложнее контролировать эмоции"]], "assets/images/blog/risk-kid.webp")}
+${mgAlert("К чему это может привести?", [["/assets/images/blog/risk-attention.png","Снижение внимания"],["/assets/images/blog/risk-sleep.png","Проблемы со сном"],["/assets/images/blog/risk-movement.png","Меньше движения"],["/assets/images/blog/risk-emotions.png","Сложнее контролировать эмоции"]], "/assets/images/blog/risk-kid.webp")}
 ${mgTodo("Что можно сделать?", [
- ["assets/images/blog/todo-rules.png","Договоритесь о правилах заранее","Объясните, сколько времени в день можно смотреть мультфильмы."],
- ["assets/images/blog/todo-limits.png","Установите чёткие рамки","Выберите конкретное время для просмотра и придерживайтесь его."],
- ["assets/images/blog/todo-alternatives.png","Предложите альтернативы","Совместные игры, прогулки, книги, творчество."],
- ["assets/images/blog/todo-example.png","Будьте примером","Дети легче соблюдают правила, когда видят то же самое у взрослых."]
+ ["/assets/images/blog/todo-rules.png","Договоритесь о правилах заранее","Объясните, сколько времени в день можно смотреть мультфильмы."],
+ ["/assets/images/blog/todo-limits.png","Установите чёткие рамки","Выберите конкретное время для просмотра и придерживайтесь его."],
+ ["/assets/images/blog/todo-alternatives.png","Предложите альтернативы","Совместные игры, прогулки, книги, творчество."],
+ ["/assets/images/blog/todo-example.png","Будьте примером","Дети легче соблюдают правила, когда видят то же самое у взрослых."]
 ])}
-${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"Главное — баланс", text:"Телефон может быть полезным и интересным, если использовать его осознанно. Mitti GO помогает родителям создать спокойную и безопасную среду для просмотра.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}`,
+${mgCallout({img:"/assets/images/blog/too-much-balance.webp", title:"Главное — баланс", text:"Телефон может быть полезным и интересным, если использовать его осознанно. Mitti GO помогает родителям создать спокойную и безопасную среду для просмотра.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}`,
     uz: `<p>Ekran vaqti o‘z-o‘zidan har doim ham zararli emas. Muhimi boshqa — bolaning xulqi va odatlari qanday o‘zgarmoqda.</p>
 <h2>Ekran haddan oshganining 8 belgisi</h2>
 ${mgCards([
@@ -513,14 +521,14 @@ ${mgCards([
  ["restaurant","#0A8C4B","Ovqatlanishdagi muammolar","Dasturxonda telefon so‘raydi yoki faqat multfilm bilan ovqatlanadi."]
 ])}
 <div class="note"><span class="ms">lightbulb</span><p>Bitta belgi hali xavotirga sabab emas. Bir nechtasini birdaniga payqasangiz va ular haftalab davom etsa, e’tibor bering. Ko‘rish, uyqu yoki bosh og‘rig‘i bezovta qilsa — pediatr bilan maslahatlashing.</p></div>
-${mgAlert("Bu nimaga olib kelishi mumkin?", [["assets/images/blog/risk-attention.png","Diqqat pasayishi"],["assets/images/blog/risk-sleep.png","Uyqu muammolari"],["assets/images/blog/risk-movement.png","Kamroq harakat"],["assets/images/blog/risk-emotions.png","His-tuyg‘ularni boshqarish qiyinlashadi"]], "assets/images/blog/risk-kid.webp")}
+${mgAlert("Bu nimaga olib kelishi mumkin?", [["/assets/images/blog/risk-attention.png","Diqqat pasayishi"],["/assets/images/blog/risk-sleep.png","Uyqu muammolari"],["/assets/images/blog/risk-movement.png","Kamroq harakat"],["/assets/images/blog/risk-emotions.png","His-tuyg‘ularni boshqarish qiyinlashadi"]], "/assets/images/blog/risk-kid.webp")}
 ${mgTodo("Nima qilish mumkin?", [
- ["assets/images/blog/todo-rules.png","Qoidalarni oldindan kelishib oling","Kuniga qancha vaqt multfilm ko‘rish mumkinligini tushuntiring."],
- ["assets/images/blog/todo-limits.png","Aniq chegaralar qo‘ying","Tomosha uchun aniq vaqtni tanlang va unga amal qiling."],
- ["assets/images/blog/todo-alternatives.png","Muqobil mashg‘ulot taklif qiling","Birgalikdagi o‘yinlar, sayr, kitoblar, ijod."],
- ["assets/images/blog/todo-example.png","O‘rnak bo‘ling","Kattalar ham shunday qilishini ko‘rsa, bolalar qoidalarga osonroq amal qiladi."]
+ ["/assets/images/blog/todo-rules.png","Qoidalarni oldindan kelishib oling","Kuniga qancha vaqt multfilm ko‘rish mumkinligini tushuntiring."],
+ ["/assets/images/blog/todo-limits.png","Aniq chegaralar qo‘ying","Tomosha uchun aniq vaqtni tanlang va unga amal qiling."],
+ ["/assets/images/blog/todo-alternatives.png","Muqobil mashg‘ulot taklif qiling","Birgalikdagi o‘yinlar, sayr, kitoblar, ijod."],
+ ["/assets/images/blog/todo-example.png","O‘rnak bo‘ling","Kattalar ham shunday qilishini ko‘rsa, bolalar qoidalarga osonroq amal qiladi."]
 ])}
-${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"Eng muhimi — muvozanat", text:"Telefondan ongli foydalanilsa, u foydali va qiziqarli bo‘lishi mumkin. Mitti GO ota-onalarga tomosha uchun sokin va xavfsiz muhit yaratishda yordam beradi.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}`,
+${mgCallout({img:"/assets/images/blog/too-much-balance.webp", title:"Eng muhimi — muvozanat", text:"Telefondan ongli foydalanilsa, u foydali va qiziqarli bo‘lishi mumkin. Mitti GO ota-onalarga tomosha uchun sokin va xavfsiz muhit yaratishda yordam beradi.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}`,
     en: `<p>Screen time isn't always harmful in itself. What matters more is how your child's behaviour and habits change.</p>
 <h2>8 signs of too much screen time</h2>
 ${mgCards([
@@ -534,22 +542,23 @@ ${mgCards([
  ["restaurant","#0A8C4B","Mealtime trouble","Asks for the phone at the table or only eats with cartoons on."]
 ])}
 <div class="note"><span class="ms">lightbulb</span><p>One sign alone is no reason to worry. Pay attention if you see several at once and they last for weeks. If eyesight, sleep or headaches concern you, talk to your paediatrician.</p></div>
-${mgAlert("What can it lead to?", [["assets/images/blog/risk-attention.png","Lower attention"],["assets/images/blog/risk-sleep.png","Sleep problems"],["assets/images/blog/risk-movement.png","Less movement"],["assets/images/blog/risk-emotions.png","Harder to manage emotions"]], "assets/images/blog/risk-kid.webp")}
+${mgAlert("What can it lead to?", [["/assets/images/blog/risk-attention.png","Lower attention"],["/assets/images/blog/risk-sleep.png","Sleep problems"],["/assets/images/blog/risk-movement.png","Less movement"],["/assets/images/blog/risk-emotions.png","Harder to manage emotions"]], "/assets/images/blog/risk-kid.webp")}
 ${mgTodo("What can you do?", [
- ["assets/images/blog/todo-rules.png","Agree on rules in advance","Explain how much cartoon time there is each day."],
- ["assets/images/blog/todo-limits.png","Set clear limits","Pick a specific time for watching and stick to it."],
- ["assets/images/blog/todo-alternatives.png","Offer alternatives","Playing together, walks, books, crafts."],
- ["assets/images/blog/todo-example.png","Lead by example","Kids follow rules more easily when they see adults do the same."]
+ ["/assets/images/blog/todo-rules.png","Agree on rules in advance","Explain how much cartoon time there is each day."],
+ ["/assets/images/blog/todo-limits.png","Set clear limits","Pick a specific time for watching and stick to it."],
+ ["/assets/images/blog/todo-alternatives.png","Offer alternatives","Playing together, walks, books, crafts."],
+ ["/assets/images/blog/todo-example.png","Lead by example","Kids follow rules more easily when they see adults do the same."]
 ])}
-${mgCallout({img:"assets/images/blog/too-much-balance.webp", title:"It's all about balance", text:"A phone can be useful and fun when used mindfully. Mitti GO helps parents create a calm, safe space for watching.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}`
+${mgCallout({img:"/assets/images/blog/too-much-balance.webp", title:"It's all about balance", text:"A phone can be useful and fun when used mindfully. Mitti GO helps parents create a calm, safe space for watching.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}`
   }
 },
 {
   slug: "youtube-channels-3-years",
+  slugs: { ru: "youtube-kanaly-dlya-rebenka-3-let", uz: "3-yoshli-bola-uchun-youtube-kanallar", en: "youtube-channels-for-3-year-olds" },
   date: "2026-09-22",
   icon: "smart_display",
   color: "green",
-  cover: "assets/images/blog/channels-3-years.webp",
+  cover: "/assets/images/blog/channels-3-years.webp",
   tag: { ru: "Полезная статья", uz: "Foydali maqola", en: "Guide" },
   title: {
     ru: "Какие YouTube-каналы можно ребёнку 3 лет?",
@@ -656,10 +665,11 @@ ${mgCallout({title:"That's why we're building Mitti GO", text:"Parents choose th
 },
 {
   slug: "first-channels",
+  slugs: { ru: "kak-vybrat-kanal-dlya-rebenka", uz: "bola-uchun-kanal-tanlash", en: "how-to-choose-a-channel-for-kids" },
   date: "2026-09-20",
   icon: "subscriptions",
   color: "blue",
-  cover: "assets/images/blog/five-questions-cover.webp",
+  cover: "/assets/images/blog/five-questions-cover.webp",
   tag: { ru: "Полезная статья", uz: "Foydali maqola", en: "Guide" },
   title: {
     ru: "5 простых вопросов: стоит ли разрешать канал",
@@ -675,7 +685,7 @@ ${mgCallout({title:"That's why we're building Mitti GO", text:"Parents choose th
     ru: `<p>Перед тем как разрешить канал, посмотрите пару его видео сами и задайте себе пять вопросов.</p>
 ${mgQ(1, "#16C869", "Для какого возраста канал?", "Темп, лексика и темы должны подходить именно вашему ребёнку.", `<ul class="checklist"><li>Простой и понятный язык</li><li>Спокойный темп</li><li>Темы по возрасту: цвета, животные, песни, повседневные ситуации</li></ul>`)}
 ${mgQ(2, "var(--blue)", "Как часто выходят видео?", "Новые ролики с разрешённого канала появятся у ребёнка сами. Загляните во вкладку «Видео» на канале: как часто и что именно там выходит.")}
-${mgQ(3, "#E0457B", "Нет ли «кликбейта»?", "Кричащие обложки и заголовки — плохой знак.", mgCompare(["assets/images/blog/clickbait-bad.webp", "Слишком ярко и странные темы"], ["assets/images/blog/clickbait-good.webp", "Спокойная и понятная обложка"]))}
+${mgQ(3, "#E0457B", "Нет ли «кликбейта»?", "Кричащие обложки и заголовки — плохой знак.", mgCompare(["/assets/images/blog/clickbait-bad.webp", "Слишком ярко и странные темы"], ["/assets/images/blog/clickbait-good.webp", "Спокойная и понятная обложка"]))}
 ${mgQ(4, "#E8A800", "Все ли плейлисты подходят?", "Если на канале есть плейлисты с разным контентом — проверьте их. Лишние можно скрыть или разрешить только нужные плейлисты.", mgPlaylists("Плейлисты канала", [["Мультики", "25 видео", true], ["Песни для детей", "18 видео", true], ["Игры", "12 видео", false]], "Скрыт"))}
 ${mgQ(5, "var(--purple)", "Интересно ли это ребёнку?", "Самый полезный канал не сработает, если он скучный. Хорошие знаки:", `<ul class="checklist"><li>Смотрит с интересом</li><li>Просит включить ещё</li><li>Спокойно досматривает до конца</li></ul>`)}
 <div class="note"><span class="ms">lightbulb</span><p>Начните с 2–3 каналов и понаблюдайте неделю. Добавить новые можно в любой момент в разделе «Профиль».</p></div>
@@ -683,7 +693,7 @@ ${mgCallout({title:"Создайте безопасное пространств
     uz: `<p>Kanalga ruxsat berishdan oldin uning bir-ikkita videosini o‘zingiz ko‘ring va o‘zingizga beshta savol bering.</p>
 ${mgQ(1, "#16C869", "Kanal qaysi yosh uchun?", "Sur’at, so‘zlar va mavzular aynan farzandingizga mos bo‘lishi kerak.", `<ul class="checklist"><li>Oddiy va tushunarli til</li><li>Sokin sur’at</li><li>Yoshga mos mavzular: ranglar, hayvonlar, qo‘shiqlar, kundalik vaziyatlar</li></ul>`)}
 ${mgQ(2, "var(--blue)", "Videolar qanchalik tez-tez chiqadi?", "Ruxsat berilgan kanalning yangi videolari bolada o‘zi paydo bo‘ladi. Kanaldagi «Videolar» bo‘limiga qarang: qanchalik tez-tez va aynan nima chiqadi.")}
-${mgQ(3, "#E0457B", "«Klikbeyt» yo‘qmi?", "Baqiroq muqovalar va sarlavhalar — yomon belgi.", mgCompare(["assets/images/blog/clickbait-bad.webp", "Juda yorqin va g‘alati mavzular"], ["assets/images/blog/clickbait-good.webp", "Sokin va tushunarli muqova"]))}
+${mgQ(3, "#E0457B", "«Klikbeyt» yo‘qmi?", "Baqiroq muqovalar va sarlavhalar — yomon belgi.", mgCompare(["/assets/images/blog/clickbait-bad.webp", "Juda yorqin va g‘alati mavzular"], ["/assets/images/blog/clickbait-good.webp", "Sokin va tushunarli muqova"]))}
 ${mgQ(4, "#E8A800", "Barcha pleylistlar mosmi?", "Kanalda turli mazmundagi pleylistlar bo‘lsa — ularni tekshiring. Ortiqchalarini yashirish yoki faqat keraklilariga ruxsat berish mumkin.", mgPlaylists("Kanal pleylistlari", [["Multfilmlar", "25 ta video", true], ["Bolalar qo‘shiqlari", "18 ta video", true], ["O‘yinlar", "12 ta video", false]], "Yashirin"))}
 ${mgQ(5, "var(--purple)", "Bu bolaga qiziqmi?", "Eng foydali kanal ham zerikarli bo‘lsa, ish bermaydi. Yaxshi belgilar:", `<ul class="checklist"><li>Qiziqish bilan ko‘radi</li><li>Yana qo‘yib berishni so‘raydi</li><li>Oxirigacha xotirjam ko‘radi</li></ul>`)}
 <div class="note"><span class="ms">lightbulb</span><p>2–3 ta kanaldan boshlang va bir hafta kuzating. Yangilarini istalgan payt «Profil» bo‘limida qo‘shish mumkin.</p></div>
@@ -691,7 +701,7 @@ ${mgCallout({title:"Mitti GO’da xavfsiz makon yarating", text:"Faqat o‘zingi
     en: `<p>Before allowing a channel, watch a couple of its videos yourself and ask five questions.</p>
 ${mgQ(1, "#16C869", "Which age is it for?", "Pace, vocabulary and topics should suit your child.", `<ul class="checklist"><li>Simple, clear language</li><li>Calm pace</li><li>Age-appropriate topics: colours, animals, songs, everyday situations</li></ul>`)}
 ${mgQ(2, "var(--blue)", "How often are new videos posted?", "New videos from an allowed channel appear for your child on their own. Check the channel's Videos tab: how often, and what exactly gets posted.")}
-${mgQ(3, "#E0457B", "Any clickbait?", "Loud thumbnails and titles are a bad sign.", mgCompare(["assets/images/blog/clickbait-bad.webp", "Too loud, odd topics"], ["assets/images/blog/clickbait-good.webp", "Calm, clear thumbnail"]))}
+${mgQ(3, "#E0457B", "Any clickbait?", "Loud thumbnails and titles are a bad sign.", mgCompare(["/assets/images/blog/clickbait-bad.webp", "Too loud, odd topics"], ["/assets/images/blog/clickbait-good.webp", "Calm, clear thumbnail"]))}
 ${mgQ(4, "#E8A800", "Do all the playlists fit?", "If a channel mixes different kinds of playlists, check them. Hide the extra ones or allow only the playlists you need.", mgPlaylists("Channel playlists", [["Cartoons", "25 videos", true], ["Songs for kids", "18 videos", true], ["Games", "12 videos", false]], "Hidden"))}
 ${mgQ(5, "var(--purple)", "Does your child enjoy it?", "Even the most useful channel won't work if it's boring. Good signs:", `<ul class="checklist"><li>Watches with interest</li><li>Asks for more</li><li>Calmly watches to the end</li></ul>`)}
 <div class="note"><span class="ms">lightbulb</span><p>Start with 2–3 channels and watch for a week. You can add more any time in Profile.</p></div>
@@ -700,10 +710,23 @@ ${mgCallout({title:"Build a safe space in Mitti GO", text:"Add only the channels
 },
 {
   slug: "screen-time-preschool",
+  slugs: { ru: "ekrannoe-vremya-dlya-detej", uz: "bolalar-uchun-ekran-vaqti", en: "screen-time-for-kids" },
+  seo: {
+    title: {
+      ru: "Экранное время для детей 2–5 лет: нормы и советы | Mitti GO",
+      uz: "2–5 yoshli bolalar uchun ekran vaqti: me’yorlar va maslahatlar | Mitti GO",
+      en: "Screen Time for Kids Aged 2–5: Guidelines and Tips | Mitti GO"
+    },
+    description: {
+      ru: "Сколько экранного времени можно ребёнку? Разбираем рекомендации для детей 2–5 лет и рассказываем, как спокойно закончить просмотр.",
+      uz: "Bolaga qancha ekran vaqti mumkin? 2–5 yoshli bolalar uchun tavsiyalarni ko‘rib chiqamiz va tomoshani qanday xotirjam tugatishni aytamiz.",
+      en: "How much screen time is right for a child? We go through the guidelines for ages 2–5 and how to end watching calmly."
+    }
+  },
   date: "2026-09-12",
   icon: "schedule",
   color: "yellow",
-  cover: "assets/images/blog/screen-time-cover.webp",
+  cover: "/assets/images/blog/screen-time-cover.webp",
   tag: { ru: "Экранное время", uz: "Ekran vaqti", en: "Screen time" },
   title: {
     ru: "Сколько экранного времени нужно дошкольнику",
@@ -729,7 +752,7 @@ ${mgAges([["До 1 года","Экран не рекомендуется","",fal
 </ol>
 <h2>Не все 30 минут одинаковые</h2>
 <p>Важно не только сколько, но и что именно смотрит ребёнок.</p>
-${mgVs({title:"Спокойный просмотр", img:"assets/images/blog/screen-calm.webp", items:["Заранее выбранные каналы","Спокойный темп","Понятные сюжеты"]}, {title:"Бесконечная лента коротких роликов", img:"assets/images/blog/screen-scroll.webp", items:["Очень быстрая смена кадров","Сложно контролировать, что покажут","Труднее остановиться — больше слёз"]})}
+${mgVs({title:"Спокойный просмотр", img:"/assets/images/blog/screen-calm.webp", items:["Заранее выбранные каналы","Спокойный темп","Понятные сюжеты"]}, {title:"Бесконечная лента коротких роликов", img:"/assets/images/blog/screen-scroll.webp", items:["Очень быстрая смена кадров","Сложно контролировать, что покажут","Труднее остановиться — больше слёз"]})}
 <h2>Как это работает в Mitti GO</h2>
 <p>Экранное время — часть Pro. На бесплатном тарифе ничего не считается и ничего не блокируется.</p>
 <ol class="steps">
@@ -737,7 +760,7 @@ ${mgVs({title:"Спокойный просмотр", img:"assets/images/blog/scr
 <li><span><b>За 5 минут до конца</b> маскот говорит «Скоро перерыв!» — без обратного отсчёта и не закрывая видео.</span></li>
 <li><span><b>Текущее видео можно досмотреть</b> — не больше 15 минут сверху. Потом появляется мягкий экран «Время вышло».</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/screen-balance.webp", title:"Главное — найти баланс", text:"Экранное время — лишь часть дня. Для гармоничного развития ребёнку также важны игры, общение, прогулки и полноценный сон.", pill:"Здоровые привычки сегодня — счастливое детство завтра", link:"Экранное время в Mitti GO", href:"index.html#screentime"})}`,
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Главное — найти баланс", text:"Экранное время — лишь часть дня. Для гармоничного развития ребёнку также важны игры, общение, прогулки и полноценный сон.", pill:"Здоровые привычки сегодня — счастливое детство завтра", link:"Экранное время в Mitti GO", href:"index.html#screentime"})}`,
     uz: `<p>Kattaroq bolalar uchun aniq raqamdan tashqari ular <b>nimani</b> va <b>qanday</b> ko‘rishi ham muhim. Lekin avval tavsiyalardan boshlaylik.</p>
 <h2>JSST nima maslahat beradi</h2>
 ${mgAges([["1 yoshgacha","Ekran tavsiya etilmaydi","",false],["1 yosh","O‘tirib ekran ko‘rish tavsiya etilmaydi","",false],["2 yosh","Kuniga 1 soatdan ko‘p emas","Qancha kam bo‘lsa, shuncha yaxshi",true],["3–4 yosh","Kuniga 1 soatdan ko‘p emas","Qancha kam bo‘lsa, shuncha yaxshi",true]])}
@@ -751,7 +774,7 @@ ${mgAges([["1 yoshgacha","Ekran tavsiya etilmaydi","",false],["1 yosh","O‘tiri
 </ol>
 <h2>Hamma 30 daqiqa bir xil emas</h2>
 <p>Faqat qancha emas, bola aynan nimani ko‘rayotgani ham muhim.</p>
-${mgVs({title:"Sokin tomosha", img:"assets/images/blog/screen-calm.webp", items:["Oldindan tanlangan kanallar","Sokin sur’at","Tushunarli syujetlar"]}, {title:"Qisqa videolarning cheksiz lentasi", img:"assets/images/blog/screen-scroll.webp", items:["Kadrlar juda tez almashadi","Nima ko‘rsatilishini nazorat qilish qiyin","To‘xtash qiyinroq — ko‘z yoshlari ko‘proq"]})}
+${mgVs({title:"Sokin tomosha", img:"/assets/images/blog/screen-calm.webp", items:["Oldindan tanlangan kanallar","Sokin sur’at","Tushunarli syujetlar"]}, {title:"Qisqa videolarning cheksiz lentasi", img:"/assets/images/blog/screen-scroll.webp", items:["Kadrlar juda tez almashadi","Nima ko‘rsatilishini nazorat qilish qiyin","To‘xtash qiyinroq — ko‘z yoshlari ko‘proq"]})}
 <h2>Mitti GO’da bu qanday ishlaydi</h2>
 <p>Ekran vaqti — Pro’ning bir qismi. Bepul tarifda hech narsa hisoblanmaydi va hech narsa bloklanmaydi.</p>
 <ol class="steps">
@@ -759,7 +782,7 @@ ${mgVs({title:"Sokin tomosha", img:"assets/images/blog/screen-calm.webp", items:
 <li><span><b>Tugashiga 5 daqiqa qolganda</b> maskot «Tez orada tanaffus!» deydi — orqaga sanashsiz va videoni yopmasdan.</span></li>
 <li><span><b>Joriy videoni oxirigacha ko‘rish mumkin</b> — ustiga 15 daqiqadan ko‘p emas. Keyin yumshoq «Vaqt tugadi» ekrani chiqadi.</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/screen-balance.webp", title:"Eng muhimi — muvozanat", text:"Ekran vaqti — kunning faqat bir qismi. Bolaning uyg‘un rivojlanishi uchun o‘yinlar, muloqot, sayr va to‘liq uyqu ham muhim.", pill:"Bugungi sog‘lom odatlar — ertangi baxtli bolalik", link:"Mitti GO’da ekran vaqti", href:"index.html#screentime"})}`,
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Eng muhimi — muvozanat", text:"Ekran vaqti — kunning faqat bir qismi. Bolaning uyg‘un rivojlanishi uchun o‘yinlar, muloqot, sayr va to‘liq uyqu ham muhim.", pill:"Bugungi sog‘lom odatlar — ertangi baxtli bolalik", link:"Mitti GO’da ekran vaqti", href:"index.html#screentime"})}`,
     en: `<p>For older kids, the exact number matters less than <b>what</b> and <b>how</b> they watch. But let's start with the guidelines.</p>
 <h2>What the WHO recommends</h2>
 ${mgAges([["Under 1","No screen time","",false],["1 year","No sedentary screen time","",false],["2 years","No more than 1 hour a day","Less is better",true],["3–4 years","No more than 1 hour a day","Less is better",true]])}
@@ -773,7 +796,7 @@ ${mgAges([["Under 1","No screen time","",false],["1 year","No sedentary screen t
 </ol>
 <h2>Not every 30 minutes is the same</h2>
 <p>It's not just how long — it's also what your child watches.</p>
-${mgVs({title:"Calm watching", img:"assets/images/blog/screen-calm.webp", items:["Channels chosen in advance","Calm pace","Clear stories"]}, {title:"An endless feed of short clips", img:"assets/images/blog/screen-scroll.webp", items:["Very rapid cuts","Hard to control what shows up","Harder to stop — more tears"]})}
+${mgVs({title:"Calm watching", img:"/assets/images/blog/screen-calm.webp", items:["Channels chosen in advance","Calm pace","Clear stories"]}, {title:"An endless feed of short clips", img:"/assets/images/blog/screen-scroll.webp", items:["Very rapid cuts","Hard to control what shows up","Harder to stop — more tears"]})}
 <h2>How it works in Mitti GO</h2>
 <p>Screen Time is part of Pro. On the free plan nothing is counted and nothing is blocked.</p>
 <ol class="steps">
@@ -781,15 +804,16 @@ ${mgVs({title:"Calm watching", img:"assets/images/blog/screen-calm.webp", items:
 <li><span><b>5 minutes before the end</b> the mascot says "Break soon!" — no countdown, and the video keeps playing.</span></li>
 <li><span><b>The current video can finish</b> — up to 15 extra minutes. Then a gentle Time's Up screen appears.</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/screen-balance.webp", title:"It's all about balance", text:"Screen time is just one part of the day. Play, talking, walks and good sleep matter just as much for healthy development.", pill:"Healthy habits today, a happy childhood tomorrow", link:"Screen Time in Mitti GO", href:"index.html#screentime"})}`
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"It's all about balance", text:"Screen time is just one part of the day. Play, talking, walks and good sleep matter just as much for healthy development.", pill:"Healthy habits today, a happy childhood tomorrow", link:"Screen Time in Mitti GO", href:"index.html#screentime"})}`
   }
 },
 {
   slug: "why-shorts-off",
+  slugs: { ru: "vredny-li-shorts-detyam", uz: "shorts-bolalarga-zararlimi", en: "are-shorts-bad-for-kids" },
   date: "2026-09-05",
   icon: "play_circle",
   color: "purple",
-  cover: "assets/images/blog/shorts-cover.webp",
+  cover: "/assets/images/blog/shorts-cover.webp",
   tag: { ru: "Родительский контроль", uz: "Ota-ona nazorati", en: "Parental control" },
   title: {
     ru: "Почему в Mitti GO Shorts выключены по умолчанию",
@@ -807,40 +831,40 @@ ${mgCallout({img:"assets/images/blog/screen-balance.webp", title:"It's all about
 <p>Короткие вертикальные ролики, которые сами сменяют друг друга в бесконечной ленте.</p>
 ${mgFacts([["timer","До 3 минут","очень короткие ролики"],["all_inclusive","Бесконечная лента","новые видео идут без остановки"],["psychology","Сильное вовлечение","держат внимание дольше, чем нужно"]])}
 <h2>Чем Shorts могут навредить ребёнку</h2>
-${mgIconList([["psychology","#E0457B","Снижают концентрацию","Ребёнку сложнее долго заниматься одним делом."],["bedtime","#B07A00","Сбивают режим","Легко смотреть дольше, чем планировали."],["bolt","#E8A800","Приучают к быстрым стимулам","Обычные длинные видео начинают казаться скучными."],["sms_failed","var(--purple)","Могут показать лишнее","Даже в Shorts бывают сцены, которые вы не хотели бы видеть."]], "assets/images/blog/shorts-girl.webp")}
+${mgIconList([["psychology","#E0457B","Снижают концентрацию","Ребёнку сложнее долго заниматься одним делом."],["bedtime","#B07A00","Сбивают режим","Легко смотреть дольше, чем планировали."],["bolt","#E8A800","Приучают к быстрым стимулам","Обычные длинные видео начинают казаться скучными."],["sms_failed","var(--purple)","Могут показать лишнее","Даже в Shorts бывают сцены, которые вы не хотели бы видеть."]], "/assets/images/blog/shorts-girl.webp")}
 <h2>Как это устроено в Mitti GO</h2>
 <ol class="steps">
 <li><span><b>Shorts выключены с самого начала.</b> У ребёнка нет даже вкладки Shorts.</span></li>
 <li><span><b>Если вы их включите</b> — появятся Shorts только с разрешённых каналов, без общей ленты и случайных видео.</span></li>
 <li><span><b>Включить и выключить</b> можно в «Профиль» → Shorts, а ещё отдельно для каждого канала.</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/shorts-family.webp", title:"Такие решения должны принимать родители", text:"В Mitti GO вы решаете, что смотрит ваш ребёнок. Никаких навязанных алгоритмов и бесконечной ленты — только осознанный выбор.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}`,
+${mgCallout({img:"/assets/images/blog/shorts-family.webp", title:"Такие решения должны принимать родители", text:"В Mitti GO вы решаете, что смотрит ваш ребёнок. Никаких навязанных алгоритмов и бесконечной ленты — только осознанный выбор.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает", href:"index.html#how"})}`,
     uz: `<p>Qisqa vertikal videolar «yana bittasini» ko‘rish uchun yaratilgan. Kattalar uchun bu shunchaki yo‘qotilgan yarim soat, bolaga esa to‘xtash yanada qiyin.</p>
 <h2>Shorts nima</h2>
 <p>Cheksiz lentada bir-birini o‘zi almashtiradigan qisqa vertikal videolar.</p>
 ${mgFacts([["timer","3 daqiqagacha","juda qisqa videolar"],["all_inclusive","Cheksiz lenta","yangi videolar to‘xtovsiz keladi"],["psychology","Kuchli jalb qilish","diqqatni keragidan uzoqroq ushlaydi"]])}
 <h2>Shorts bolaga qanday zarar qilishi mumkin</h2>
-${mgIconList([["psychology","#E0457B","Diqqatni pasaytiradi","Bolaga bitta ish bilan uzoq shug‘ullanish qiyinlashadi."],["bedtime","#B07A00","Kun tartibini buzadi","Rejalashtirilganidan uzoqroq ko‘rib qo‘yish oson."],["bolt","#E8A800","Tez taassurotlarga o‘rgatadi","Oddiy uzun videolar zerikarli tuyula boshlaydi."],["sms_failed","var(--purple)","Keraksiz narsani ko‘rsatishi mumkin","Shorts’da ham siz ko‘rishni istamagan sahnalar uchraydi."]], "assets/images/blog/shorts-girl.webp")}
+${mgIconList([["psychology","#E0457B","Diqqatni pasaytiradi","Bolaga bitta ish bilan uzoq shug‘ullanish qiyinlashadi."],["bedtime","#B07A00","Kun tartibini buzadi","Rejalashtirilganidan uzoqroq ko‘rib qo‘yish oson."],["bolt","#E8A800","Tez taassurotlarga o‘rgatadi","Oddiy uzun videolar zerikarli tuyula boshlaydi."],["sms_failed","var(--purple)","Keraksiz narsani ko‘rsatishi mumkin","Shorts’da ham siz ko‘rishni istamagan sahnalar uchraydi."]], "/assets/images/blog/shorts-girl.webp")}
 <h2>Mitti GO’da bu qanday ishlaydi</h2>
 <ol class="steps">
 <li><span><b>Shorts boshidanoq o‘chiq.</b> Bolada hatto Shorts yorlig‘i ham yo‘q.</span></li>
 <li><span><b>Agar ularni yoqsangiz</b> — umumiy lenta va tasodifiy videolarsiz, faqat ruxsat berilgan kanallarning Shorts’lari chiqadi.</span></li>
 <li><span><b>Yoqish va o‘chirish</b> «Profil» → Shorts bo‘limida, shuningdek har bir kanal uchun alohida mumkin.</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/shorts-family.webp", title:"Bunday qarorlarni ota-onalar qabul qilishi kerak", text:"Mitti GO’da farzandingiz nimani ko‘rishini siz hal qilasiz. Majburiy algoritmlar va cheksiz lenta yo‘q — faqat ongli tanlov.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}`,
+${mgCallout({img:"/assets/images/blog/shorts-family.webp", title:"Bunday qarorlarni ota-onalar qabul qilishi kerak", text:"Mitti GO’da farzandingiz nimani ko‘rishini siz hal qilasiz. Majburiy algoritmlar va cheksiz lenta yo‘q — faqat ongli tanlov.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi", href:"index.html#how"})}`,
     en: `<p>Short vertical videos are built to make you watch "just one more". For an adult that's a lost half hour; for a child, stopping is even harder.</p>
 <h2>What Shorts are</h2>
 <p>Short vertical videos that replace each other automatically in an endless feed.</p>
 ${mgFacts([["timer","Up to 3 minutes","very short clips"],["all_inclusive","Endless feed","new videos keep coming"],["psychology","Highly engaging","hold attention longer than needed"]])}
 <h2>How Shorts can harm kids</h2>
-${mgIconList([["psychology","#E0457B","Weaker focus","It gets harder to stay with one activity for long."],["bedtime","#B07A00","Broken routines","It's easy to watch longer than planned."],["bolt","#E8A800","Hooked on quick thrills","Regular, longer videos start to feel boring."],["sms_failed","var(--purple)","Unwanted content","Even Shorts can include scenes you'd rather your child didn't see."]], "assets/images/blog/shorts-girl.webp")}
+${mgIconList([["psychology","#E0457B","Weaker focus","It gets harder to stay with one activity for long."],["bedtime","#B07A00","Broken routines","It's easy to watch longer than planned."],["bolt","#E8A800","Hooked on quick thrills","Regular, longer videos start to feel boring."],["sms_failed","var(--purple)","Unwanted content","Even Shorts can include scenes you'd rather your child didn't see."]], "/assets/images/blog/shorts-girl.webp")}
 <h2>How it works in Mitti GO</h2>
 <ol class="steps">
 <li><span><b>Shorts are off from the start.</b> Your child doesn't even see a Shorts tab.</span></li>
 <li><span><b>If you turn them on</b>, only Shorts from allowed channels appear — no shared feed, no random videos.</span></li>
 <li><span><b>Switch them on or off</b> in Profile → Shorts, and for each channel separately.</span></li>
 </ol>
-${mgCallout({img:"assets/images/blog/shorts-family.webp", title:"Parents should make these decisions", text:"In Mitti GO you decide what your child watches. No pushy algorithms, no endless feed — just a conscious choice.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}`
+${mgCallout({img:"/assets/images/blog/shorts-family.webp", title:"Parents should make these decisions", text:"In Mitti GO you decide what your child watches. No pushy algorithms, no endless feed — just a conscious choice.", pill:"Parents choose. Kids watch.", link:"How it works", href:"index.html#how"})}`
   }
 }
 ];

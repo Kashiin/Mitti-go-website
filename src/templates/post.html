@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+{{HEAD}}
+</head>
+<body data-page="post">
+{{HEADER}}
+
+<main id="top">
+<section class="post-page">
+  <div class="wrap">
+    {{CRUMBS}}
+    <div class="post-layout">
+      <article class="article">
+        {{COVER}}
+        <div class="post-meta" style="{{META_STYLE}}"><span class="post-tag">{{TAG}}</span><time datetime="{{DATE}}">{{DATE_TEXT}}</time>{{UPDATED}}<span class="post-read"><span class="ms">schedule</span>{{READ}}</span></div>
+        <h1>{{H1}}</h1>
+        <p class="lede">{{LEDE}}</p>
+        <div class="article-body">
+{{BODY}}
+        </div>
+      </article>
+      <aside class="post-aside">
+        <div class="aside-card">
+          <h2>{{OTHER_T}}</h2>
+          <div class="aside-list">{{OTHER}}</div>
+        </div>
+        <div class="aside-promo">
+          <img src="/assets/images/mascot.png" alt="" width="640" height="378" loading="lazy" decoding="async">
+          <b>{{PROMO_T}}</b>
+          <p>{{PROMO_S}}</p>
+          <a class="btn" href="{{HOME}}"><span>{{PROMO_B}}</span><span class="ms">arrow_forward</span></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+<section class="post-more-sec">
+  <div class="wrap">
+    <h2>{{MORE_T}}</h2>
+    <div class="post-grid">{{MORE}}</div>
+    <p class="post-cta"><a class="btn primary" href="{{HOME}}">{{PROMO_T}}<span class="ms">arrow_forward</span></a> <a class="btn ghost" href="{{BLOG}}">{{ALL}}<span class="ms">auto_stories</span></a></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot" id="siteFoot">{{FOOTER}}</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
