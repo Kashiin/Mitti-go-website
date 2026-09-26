@@ -317,9 +317,9 @@ ${LANGS.map(l => `    <a href="/${l}/" hreflang="${l}" lang="${l}"><b>${CHOOSER[
    all three language versions are in the HTML and a tiny script keeps the one that matches the URL
    (/uz/… → uz, /en/… → en, otherwise the saved language or Russian). */
 const NF = {
-  ru: { title: "Страница не найдена — Mitti GO", eyebrow: "Ошибка 404", h1: "Страница потерялась", sub: "Кажется, такой страницы нет или её переместили. Зато у нас много полезного для родителей — загляните на главную или в блог.", home: "На главную", blog: "Открыть блог", more: "Может пригодиться" },
-  uz: { title: "Sahifa topilmadi — Mitti GO", eyebrow: "404 xatosi", h1: "Sahifa adashib qoldi", sub: "Bunday sahifa yo‘q yoki u ko‘chirilgan. Lekin bizda ota-onalar uchun foydali narsalar ko‘p — bosh sahifaga yoki blogga o‘ting.", home: "Bosh sahifaga", blog: "Blogni ochish", more: "Foydali bo‘lishi mumkin" },
-  en: { title: "Page not found — Mitti GO", eyebrow: "Error 404", h1: "This page got lost", sub: "The page doesn't exist or has moved. But there's plenty for parents here — head to the home page or the blog.", home: "Go home", blog: "Open the blog", more: "You might find useful" }
+  ru: { title: "Страница не найдена — Mitti GO", eyebrow: "Ошибка 404", h1: "Страница не найдена", sub: "Кажется, такой страницы нет или её переместили. Зато у нас много полезного для родителей — загляните на главную или в блог.", home: "На главную", blog: "Открыть блог", more: "Может пригодиться" },
+  uz: { title: "Sahifa topilmadi — Mitti GO", eyebrow: "404 xatosi", h1: "Sahifa topilmadi", sub: "Bunday sahifa yo‘q yoki u ko‘chirilgan. Lekin bizda ota-onalar uchun foydali narsalar ko‘p — bosh sahifaga yoki blogga o‘ting.", home: "Bosh sahifaga", blog: "Blogni ochish", more: "Foydali bo‘lishi mumkin" },
+  en: { title: "Page not found — Mitti GO", eyebrow: "Error 404", h1: "Page not found", sub: "The page doesn't exist or has moved. But there's plenty for parents here — head to the home page or the blog.", home: "Go home", blog: "Open the blog", more: "You might find useful" }
 };
 const nfVariant = l => {
   const t = NF[l];
