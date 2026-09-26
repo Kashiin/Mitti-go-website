@@ -771,4 +771,41 @@ section{padding-block:clamp(64px,9vw,112px)}
 @keyframes svh{50%{transform:translateY(-5px)}}
 .sv-empty{padding:90px 16px 0}
 .sv-empty b{color:#fff}
-@media (prefers-reduced-motion:reduce){.sv-item.on svg,.sv-item.on .sv-info,.sv-hint{animation:none}.sv-item.on .sv-prog i{animation:none;width:100%}}
+@media (prefers-reduced-motion:reduce){.sv-item.on svg,.sv-item.on .sv-info,.sv-hint{animation:none}.sv-item.on .sv-prog i{animation:none;width:100%}}/* demo Library screen inside the phone */
+.lib{flex:1;overflow-y:auto;padding:0 14px 12px;scrollbar-width:none;position:relative}
+.lib::-webkit-scrollbar{display:none}
+.lib[hidden]{display:none}
+.screen.lib-on .chips,.screen.lib-on .feed{display:none}
+.lib-t{display:block;font-size:20px;font-weight:900;margin:2px 0 8px}
+.lib-h{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:12px 2px 6px}
+.lib-h span{font:800 11px Nunito,sans-serif;padding:2px 8px;border-radius:999px;background:var(--pblue);color:var(--blue);letter-spacing:0}
+.lib-row{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;margin-bottom:6px;border-radius:16px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer;animation:pop .4s cubic-bezier(.2,.9,.3,1.3) both;transition:transform .15s,background .2s}
+.lib-row:hover{background:var(--soft)}
+.lib-row:active{transform:scale(.97)}
+.lib-row .nm{flex:1;min-width:0;font-weight:800;font-size:13.5px;line-height:1.2}
+.lib-row .nm small{display:block;font-weight:600;font-size:11.5px;color:var(--muted);margin-top:2px}
+.lib-fav{color:var(--yellow);font-size:20px}
+.lib-go{color:var(--muted);font-size:20px}
+.lib-pl{cursor:default}
+.lib-plic{width:34px;height:34px;border-radius:10px;background:var(--ppurple);color:var(--purple);display:grid;place-items:center;flex:none}
+.lib-plic .ms{font-size:22px}
+@media (prefers-reduced-motion:reduce){.lib-row{animation:none}}/* demo Profile screen: the live parent panel */
+.screen.prof-on .ph-top,.screen.prof-on .chips,.screen.prof-on .feed{display:none}
+.prof{padding:0 10px 10px}
+.pdash .dash-top{padding:4px 4px 10px}
+.pdash .dash-top b{font-size:17px}
+.pdash .done-btn{font-size:12.5px;padding:6px 12px;border-radius:10px;cursor:pointer;transition:transform .15s}
+.pdash .done-btn:active{transform:scale(.94)}
+.pdash .dash-sum{margin:10px 0 6px;padding:10px;gap:10px;border-radius:16px}
+.pdash .dash-sum .ic,.pdash .drow .ic{width:34px;height:34px;border-radius:11px}
+.pdash .dash-sum .ic .ms,.pdash .drow .ic .ms{font-size:20px}
+.pdash .dash-sum b,.pdash .drow b{font-size:13px}
+.pdash .dash-sum small,.pdash .drow small{font-size:11px}
+.pdash .dcap{font-size:10px;padding:8px 4px 2px}
+.pdash .drow{padding:7px 4px;gap:10px;border-radius:12px}
+.pdash .dash-sum,.pdash .drow{animation:pop .4s cubic-bezier(.2,.9,.3,1.3) both}
+.pdash [data-act]{cursor:pointer}
+.pdash .drow[data-act]:hover,.pdash .dash-sum:hover{background:var(--soft)}
+.pdash .dash-foot{font-size:10.5px;line-height:1.4;padding:8px 4px 2px;margin-top:4px}
+.pdash .dash-foot .ms{font-size:15px}
+@media (prefers-reduced-motion:reduce){.pdash .dash-sum,.pdash .drow{animation:none}}

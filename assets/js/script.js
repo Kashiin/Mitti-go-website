@@ -53,7 +53,7 @@ uz:{
 "n1":"ta kanal bepul","n2":"ta pleylist bepul","n3":"ta interfeys tili",
 "cmp.e":"Nega oddiy YouTube emas","cmp.t":"YouTube kattalar uchun yaratilgan. <em class=\"go-text\">Mitti GO</em> — farzandingiz uchun.","cmp.s":"Oddiy YouTube ilovasi tomoshabinni uzoqroq ushlab turishga intiladi. Mitti GO buning aksini qiladi: faqat siz tanlaganni ko‘rsatadi va ko‘proq ko‘rishga undamaydi.",
 "cmp.yt":"Oddiy YouTube","c1":"Bola nimani ko‘radi","c1y":"Algoritm tanlagan hamma narsani","c1m":"Faqat siz ruxsat bergan kanal va pleylistlarni","c2":"Qidiruv","c2y":"Butun YouTube bo‘yicha","c2m":"Faqat kutubxonangiz bo‘yicha, qurilmaning o‘zida","c3":"Keyingi video","c3y":"Tavsiyalar istalgan joyga olib ketishi mumkin","c3m":"Faqat ruxsat etilgani, avtoijro o‘chiq","c4":"Izohlar, layklar, ko‘rishlar","c4y":"Hamma joyda","c4m":"Hech qayerda","c5y":"Cheksiz umumiy lenta","c5m":"O‘chiq; yoqilsa — faqat sizning kanallaringizdan","c6":"Tashqariga o‘tish","c6y":"Havolalar, boshqa kanallar, boshqa ilovalar","c6m":"Hammasi bloklangan",
-"pv.e":"Pleyer","pv.t":"Mitti GO’ni tomosha qilish — ha.<br>YouTube’ga ketish — yo‘q.","pv.s":"Video rasmiy YouTube pleerida ijro etiladi, Mitti GO esa undan barcha chiqish yo‘llarini yopadi.",
+"pv.e":"Pleyer","pv.t":"<em class=\"go-text\">Mitti GO</em>’ni tomosha qilish — ha.<br>YouTube’ga ketish — yo‘q.","pv.s":"Video rasmiy YouTube pleerida ijro etiladi, Mitti GO esa undan barcha chiqish yo‘llarini yopadi.",
 "pv1.t":"Video oxirida o‘z ekrani","pv1.p":"«Yana» va keyingi videolar — faqat ruxsat etilganlardan. YouTube tavsiyalari bosilmaydi.","pv2.t":"«Keyingi» — mazmunga ko‘ra","pv2.p":"Pleylist ko‘ryapti — keyin shu pleylist davom etadi. Kanalni ochdi — shu kanal videolari.","pv3.t":"Qayerda to‘xtaganini eslaydi","pv3.p":"Oxirigacha ko‘rilmagan video bosh sahifada «Davom etish» belgisi bilan birinchi turadi.","pv4.t":"Yig‘ilganda pauza","pv4.p":"Ilovani yig‘dingiz — video pauzada. Telefonni burdingiz — to‘liq ekran.",
 "pm.again":"Yana","pm.next":"Keyingisi","pm.up":"Keyingi",
 "st.e":"Ekran vaqti · Pro","st.t":"Multfilm o‘rtasida emas, yumshoq yakunlaymiz","st.s":"Ekran vaqti — Pro’ning bir qismi. Bepul tarifda hech narsa hisoblanmaydi va hech narsa bloklanmaydi.",
@@ -117,7 +117,7 @@ en:{
 "n1":"channels on Free","n2":"playlists on Free","n3":"app languages",
 "cmp.e":"Why not just YouTube","cmp.t":"YouTube is built for grown-ups. <em class=\"go-text\">Mitti GO</em> is built for your child.","cmp.s":"The regular YouTube app is designed to keep people watching. Mitti GO does the opposite: it shows only what you chose and never nudges for more.",
 "cmp.yt":"Regular YouTube","c1":"What your child sees","c1y":"Whatever the algorithm picks","c1m":"Only the channels and playlists you allowed","c2":"Search","c2y":"All of YouTube","c2m":"Only your library, right on the device","c3":"What plays next","c3y":"Suggestions can lead anywhere","c3m":"Only allowed videos, autoplay off","c4":"Comments, likes, views","c4y":"Everywhere","c4m":"Nowhere","c5y":"An endless global feed","c5m":"Off; if on, only from your channels","c6":"Links out","c6y":"Links, other channels, other apps","c6m":"All blocked",
-"pv.e":"The player","pv.t":"Watch Mitti GO, yes.<br>Wander off to YouTube, no.","pv.s":"Videos play in YouTube's official player, and Mitti GO closes every way out of it.",
+"pv.e":"The player","pv.t":"Watch <em class=\"go-text\">Mitti GO</em>, yes.<br>Wander off to YouTube, no.","pv.s":"Videos play in YouTube's official player, and Mitti GO closes every way out of it.",
 "pv1.t":"Our own end screen","pv1.p":"\u201cWatch again\u201d and what's next — only from allowed videos. YouTube's suggestions can't be tapped.","pv2.t":"Up Next that makes sense","pv2.p":"Watching a playlist? The playlist continues. Opened a channel? That channel's videos.","pv3.t":"Remembers where they stopped","pv3.p":"The unfinished video waits first on Home with a Keep watching tag.","pv4.t":"Pauses in the background","pv4.p":"Leave the app and the video pauses. Turn the phone for full screen.",
 "pm.again":"Watch again","pm.next":"Play next","pm.up":"Up next",
 "st.e":"Screen Time · Pro","st.t":"A gentle goodbye, not a cut-off mid-cartoon","st.s":"Screen Time is part of Pro. On Free nothing is counted and nothing is locked.",
@@ -130,9 +130,9 @@ en:{
 "ft":"Made for families in Uzbekistan. YouTube is a trademark of Google LLC."
 }};
 const UI={
- ru:{onlyYours:"Только с ваших каналов",noShorts:"Включите канал, чтобы появились Shorts",all:"Все",keep:"Продолжить",empty:"Пока нечего смотреть",emptySub:"Попросите родителя добавить каналы",tabs:["Главная","Shorts","Библиотека","Профиль"],inc:"Включён",hid:"Скрыт",vids:"видео"},
- uz:{onlyYours:"Faqat sizning kanallaringizdan",noShorts:"Shorts chiqishi uchun kanalni yoqing",all:"Hammasi",keep:"Davom etish",empty:"Hozircha ko‘radigan narsa yo‘q",emptySub:"Ota-onangizdan kanal qo‘shishni so‘rang",tabs:["Bosh sahifa","Shorts","Kutubxona","Profil"],inc:"Ko‘rinadi",hid:"Yashirin",vids:"video"},
- en:{onlyYours:"Only from your channels",noShorts:"Turn on a channel to see Shorts",all:"All",keep:"Keep watching",empty:"Nothing to watch yet",emptySub:"Ask a parent to add channels",tabs:["Home","Shorts","Library","Profile"],inc:"Included",hid:"Hidden",vids:"videos"}
+ ru:{libT:"Библиотека",libCh:"Каналы",libPl:"Плейлисты",libEmpty:"Родитель ещё не добавил каналы",onlyYours:"Только с ваших каналов",noShorts:"Включите канал, чтобы появились Shorts",all:"Все",keep:"Продолжить",empty:"Пока нечего смотреть",emptySub:"Попросите родителя добавить каналы",tabs:["Главная","Shorts","Библиотека","Профиль"],inc:"Включён",hid:"Скрыт",vids:"видео"},
+ uz:{libT:"Kutubxona",libCh:"Kanallar",libPl:"Pleylistlar",libEmpty:"Ota-ona hali kanal qo‘shmagan",onlyYours:"Faqat sizning kanallaringizdan",noShorts:"Shorts chiqishi uchun kanalni yoqing",all:"Hammasi",keep:"Davom etish",empty:"Hozircha ko‘radigan narsa yo‘q",emptySub:"Ota-onangizdan kanal qo‘shishni so‘rang",tabs:["Bosh sahifa","Shorts","Kutubxona","Profil"],inc:"Ko‘rinadi",hid:"Yashirin",vids:"video"},
+ en:{libT:"Library",libCh:"Channels",libPl:"Playlists",libEmpty:"No channels added yet",onlyYours:"Only from your channels",noShorts:"Turn on a channel to see Shorts",all:"All",keep:"Keep watching",empty:"Nothing to watch yet",emptySub:"Ask a parent to add channels",tabs:["Home","Shorts","Library","Profile"],inc:"Included",hid:"Hidden",vids:"videos"}
 };
 const CH=[
  {id:"stars",c:"#0078FF",ring:"#9CCBFF",ic:"rocket_launch",on:true,fav:true,n:{ru:"Звёздная лаборатория",uz:"Yulduzli laboratoriya",en:"Star Lab"},
@@ -195,7 +195,7 @@ function renderPhone(anim){
   $("#feed").innerHTML=vids.length?vids.map((v,i)=>`<div class="vc" style="animation-delay:${anim?i*50:0}ms"><div class="th">${thumb(v)}${v.resume?`<span class="tag"><span class="ms">replay</span>${UI[lang].keep}</span><span class="prog"><i></i></span>`:""}<span class="dur">${v.d}</span></div><div class="vt">${v.t[lang]}</div><div class="vch">${av(v.ch)}${v.ch.n[lang]}</div></div>`).join("")
     :`<div class="empty"><img src="${MASCOT}" alt=""><b>${UI[lang].empty}</b><span>${UI[lang].emptySub}</span></div>`;
   if(!anim)$("#feed").querySelectorAll(".vc").forEach(e=>e.style.animation="none");
-  if(!shorts)view="home";
+  if(!shorts&&view==="shorts")view="home";
   setView(view);
 }
 function renderTabbar(){
@@ -205,10 +205,48 @@ function renderTabbar(){
 function setView(v){
   view=v;
   $(".screen").classList.toggle("sv-on",v==="shorts");
+  $(".screen").classList.toggle("lib-on",v==="lib");
   $("#shortsView").hidden=v!=="shorts";
+  $(".screen").classList.toggle("prof-on",v==="prof");
+  $("#libView").hidden=v!=="lib";
+  $("#profView").hidden=v!=="prof";
   renderTabbar();
   clearTimeout(svTimer);
   if(v==="shorts")renderShorts();
+  if(v==="lib")renderLibrary();
+  if(v==="prof")renderProfile();
+}
+/* Profile: the parent panel ("Родитель") — same card as in the "Для родителей" section, but live */
+const DASH_TXT={
+ ru:{shOn:"Включены",shOff:"Выключены",sum:(c,p)=>`${c} ${plRu(c,"канал","канала","каналов")} • ${p} ${plRu(p,"плейлист","плейлиста","плейлистов")}`},
+ uz:{shOn:"Yoqilgan",shOff:"O‘chiq",sum:(c,p)=>`${c} kanal • ${p} pleylist`},
+ en:{shOn:"On",shOff:"Off",sum:(c,p)=>`${c} ${c===1?"channel":"channels"} • ${p} ${p===1?"playlist":"playlists"}`}
+};
+function plRu(n,one,few,many){const m=n%10,h=n%100;return m===1&&h!==11?one:m>=2&&m<=4&&(h<12||h>14)?few:many}
+function renderProfile(){
+  const src=document.querySelector(".dash");if(!src)return;
+  const box=$("#profView");
+  box.innerHTML=`<div class="pdash">${src.innerHTML.replace(/ data-i="[^"]*"/g,"")}</div>`;
+  const t=DASH_TXT[lang], stars=CH.find(c=>c.id==="stars");
+  const nCh=CH.filter(c=>c.on).length, nPl=stars.on?PL.filter(p=>p.on).length:0;
+  box.querySelector(".dash-sum small").textContent=t.sum(nCh,nPl);
+  const rows=box.querySelectorAll(".drow");
+  rows[0].querySelector("small").textContent=shorts?t.shOn:t.shOff;
+  rows[0].dataset.act="shorts";rows[3].dataset.act="lang";
+  box.querySelector(".done-btn").dataset.act="done";
+  box.querySelectorAll(".dash-sum,.drow").forEach((r,i)=>r.style.animationDelay=i*40+"ms");
+}
+/* Library: the channels the parent switched on (favourite first) and the visible playlists */
+const PL_COUNT=[8,6,5];
+function renderLibrary(){
+  const on=CH.filter(c=>c.on).sort((a,b)=>(b.fav?1:0)-(a.fav?1:0));
+  const stars=CH.find(c=>c.id==="stars");
+  const pls=stars.on?PL.map((p,i)=>({...p,i})).filter(p=>p.on):[];
+  const u=UI[lang];
+  $("#libView").innerHTML=`<b class="lib-t">${u.libT}</b>`+(on.length?
+    `<div class="lib-h">${u.libCh}<span>${on.length}</span></div>`+on.map((c,i)=>`<button type="button" class="lib-row" data-lib="${c.id}" style="animation-delay:${i*50}ms">${av(c)}<span class="nm">${c.n[lang]}<small>${c.v.length} ${u.vids}</small></span>${c.fav?'<span class="ms lib-fav">star</span>':'<span class="ms lib-go">chevron_right</span>'}</button>`).join("")+
+    (pls.length?`<div class="lib-h">${u.libPl}<span>${pls.length}</span></div>`+pls.map((p,i)=>`<div class="lib-row lib-pl" style="animation-delay:${(on.length+i)*50}ms"><span class="lib-plic"><span class="ms">playlist_play</span></span><span class="nm">${p.n[lang]}<small>${stars.n[lang]} · ${PL_COUNT[p.i]} ${u.vids}</small></span></div>`).join(""):"")
+    :`<div class="empty"><img src="${MASCOT}" alt=""><b>${u.libEmpty}</b></div>`);
 }
 function renderShorts(){
   const lists=CH.filter(c=>c.on).map(c=>SH[c.id].map(s=>({...s,ch:c})));
@@ -251,11 +289,21 @@ document.addEventListener("click",e=>{
   if(r){const ch=CH.find(c=>c.id===r.dataset.ch);ch.on=!ch.on;renderPanel();renderPhone(true);return}
   if(e.target.closest("#shortsSw")){shorts=!shorts;view=shorts?"shorts":"home";renderPanel();renderPhone(false);return}
   const tb=e.target.closest("#tabbar .tab");
-  if(tb){if(tb.dataset.tab==="home"||tb.dataset.tab==="shorts")setView(tb.dataset.tab);return}
+  if(tb){setView(tb.dataset.tab);return}
+  const pa=e.target.closest(".pdash [data-act]");
+  if(pa){
+    const a=pa.dataset.act;
+    if(a==="done")setView("home");
+    if(a==="shorts"){shorts=!shorts;renderPanel();renderPhone(false)}
+    if(a==="lang"){const ls=["uz","ru","en"];setLang(ls[(ls.indexOf(lang)+1)%3])}
+    return;
+  }
+  const lr=e.target.closest(".lib-row[data-lib]");
+  if(lr){filter=lr.dataset.lib;view="home";renderPhone(true);return}
   const c=e.target.closest(".chip");
   if(c){filter=c.dataset.f;renderPhone(true);return}
   const p=e.target.closest(".pill");
-  if(p){PL[+p.dataset.p].on=!PL[+p.dataset.p].on;renderTree();return}
+  if(p){PL[+p.dataset.p].on=!PL[+p.dataset.p].on;renderTree();if(view==="lib")renderLibrary();return}
   const lb=e.target.closest(".lang button");
   if(lb)setLang(lb.dataset.l);
 });
