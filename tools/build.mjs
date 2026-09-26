@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 
@@ -18,7 +19,9 @@ const T = require(path.join(ROOT, "src/i18n.js"));
 const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, postPath, abs, card, asidePost, cover, footerHTML } = lib;
 
 const read = p => fs.readFileSync(path.join(ROOT, p), "utf8");
-const write = (p, s) => { const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
+// headings always use the logo spelling "Mitti-GO"
+const logoHeadings = s => s.replace(/<h([1-6])\b[\s\S]*?<\/h\1>/g, h => h.replace(/Mitti GO/g, "Mitti-GO"));
+const write = (p, s) => { if (p.endsWith(".html")) s = logoHeadings(s); const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
 const written = [];
 const TODAY = new Date().toISOString().slice(0, 10);
 const OG_LOCALE = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" };
@@ -65,11 +68,19 @@ function imgSize(src) {
   } catch (e) { r = null; }
   return (sizeCache[src] = r);
 }
+const hashCache = {};
+function fileHash(src) {
+  if (hashCache[src] !== undefined) return hashCache[src];
+  try { return (hashCache[src] = createHash("md5").update(fs.readFileSync(path.join(ROOT, src.replace(/^\//, "")))).digest("hex").slice(0, 8)); }
+  catch (e) { return (hashCache[src] = null); }
+}
 function sizeImages(html) {
   return html.replace(/<img\b([^>]*)>/g, (m, attrs) => {
     let a = attrs;
     const src = (a.match(/\ssrc="([^"]+)"/) || [])[1];
     if (src && src.startsWith("/") && !/\swidth=/.test(a)) { const s = imgSize(src); if (s) a += ` width="${s[0]}" height="${s[1]}"`; }
+    // content-hash version, so a replaced picture is never served from the browser cache
+    if (src && src.startsWith("/") && !src.includes("?")) { const v = fileHash(src); if (v) a = a.replace(` src="${src}"`, ` src="${src}?v=${v}"`); }
     if (!/\sloading=/.test(a) && !/fetchpriority/.test(a)) a += ' loading="lazy"';
     if (!/\sdecoding=/.test(a)) a += ' decoding="async"';
     if (!/\salt=/.test(a)) a += ' alt=""';
