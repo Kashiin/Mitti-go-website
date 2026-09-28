@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/uz/blog/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/ru/blog/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
@@ -56,12 +56,39 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/en/blog/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/"/>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/uz/blog/mitti-go-va-youtube-kids-farqi/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/mitti-go-va-youtube-kids-farqi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/mitti-go-vs-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/mitti-go-va-youtube-kids-farqi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/mitti-go-vs-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/en/blog/mitti-go-vs-youtube-kids/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/mitti-go-va-youtube-kids-farqi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/mitti-go-vs-youtube-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/"/>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mitti-go.uz/uz/blog/telefon-planshet-yoki-televizor/</loc>

@@ -38,7 +38,9 @@
    mgDevices([{cls, icon, title, img, sticker, items:[[isPro, text]], tip:[icon, text]}, …]) — phone / tablet / TV cards
    mgDistance(title, [[icon, label, value, img], …])                      — "recommended distance" row
    mgRow(cls, title, [[iconImg, title, text], …])                         — titled row of small cards (cls: effects | rules)
-   mgCallout({title, text, pill, link, href, img?})                      — Mitti GO promo box (img replaces the mascot) */
+   mgCallout({title, text, pill, link, href, img?})                      — Mitti GO promo box (img replaces the mascot)
+   mgFlow([{title, icon, c, bg, steps:[[icon, text], …]}, …])             — side-by-side "step → step" schemes
+   mgToggle({icon, c, title, sub, on, img?})                              — settings switch mock, optional picture */
 function mgChannels(l, items){
   return `<div class="channels">${items.map((c,i)=>`<div class="channel" style="--c:${c.c};--bgc:${c.bg}"><div class="ch-h"><span class="ch-n">${i+1}</span><div><b>${c.n}</b><small>${c.s}</small></div></div><p>${c.d}</p><div class="ch-meta"><span><span class="ms">cake</span>${l.age}: <b>${c.a}</b></span><span><span class="ms">translate</span>${l.lang}: <b>${c.l}</b></span></div></div>`).join("")}</div>`;
 }
@@ -94,6 +96,12 @@ function mgRow(cls, title, items){
 }
 function mgCallout(o){
   return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"/assets/images/mascot.png"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
+}
+function mgFlow(cols){
+  return `<div class="mgflow">${cols.map(c=>`<div class="mgflow-col" style="--c:${c.c};--bgc:${c.bg}"><div class="mgflow-h"><span class="ms">${c.icon}</span>${c.title}</div><ol>${c.steps.map(([ic,t])=>`<li><span class="ms">${ic}</span>${t}</li>`).join("")}</ol></div>`).join("")}</div>`;
+}
+function mgToggle(o){
+  return `<div class="mgt${o.img?" with-img":""}"><div class="mgt-row"><span class="mgt-ic ms" style="--c:${o.c}">${o.icon}</span><div><b>${o.title}</b><small>${o.sub}</small></div><span class="mgt-sw${o.on?" on":""}" aria-hidden="true"></span></div>${o.img?`<img src="${o.img}" alt="" loading="lazy">`:""}</div>`;
 }
 const MG_CH = [
   {n:"Super Simple Songs", c:"#E0457B", bg:"var(--ppink)"},
@@ -309,7 +317,185 @@ ${t.main}
 ${mgCallout({img:B+"dev-balance.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
 }
 
+/* "Mitti-GO vs YouTube Kids" post: one layout, texts per language */
+const YTK_TXT = {
+ru: {
+ intro: `<p>YouTube Kids уже создан специально для детей. Тогда зачем нужен Mitti-GO?</p>
+<p>Это хороший вопрос. Разница не в том, что одно приложение «безопасное», а другое — нет. Разница прежде всего <b>в подходе к выбору контента</b>.</p>`,
+ ytH: "Как работает YouTube Kids?",
+ ytP: "YouTube Kids — это отдельная детская версия YouTube с гораздо меньшим количеством доступных видео и каналов.",
+ ytList: [["Возрастная категория","Родитель выбирает возрастную категорию ребёнка."],["Подбор видео","Система YouTube определяет, какие видео подходят под неё."],["Рекомендации","На рекомендации также могут влиять история просмотров и поиска ребёнка."],["Фильтрация","Google использует автоматические системы фильтрации и ручную проверку части контента."]],
+ schemeLead: "То есть в обычном режиме схема примерно такая:",
+ scheme: "YouTube Kids выбирает подходящий контент → ребёнок смотрит его → родитель при необходимости блокирует отдельные видео или каналы.",
+ mgH: "А как работает Mitti-GO?",
+ mgP: "В Mitti-GO мы решили пойти в другую сторону.",
+ mgList: [["Сначала родитель выбирает каналы","И только потом ребёнок получает доступ к видео."],["Лента из разрешённых каналов","Если родитель разрешил 5 каналов, приложение формирует детскую ленту из контента этих каналов."],["Никаких «рекомендованных» каналов","Новый канал не должен просто появиться в ленте потому, что алгоритм решил его порекомендовать."]],
+ principle: "<b>Принцип простой:</b> родитель выбирает → Mitti-GO показывает → ребёнок смотрит.",
+ manH: "Но в YouTube Kids тоже можно выбирать контент вручную",
+ man: `<p>Да. И это важно отметить.</p>
+<p>В YouTube Kids есть режим «Только одобренный контент». В нём родители могут вручную разрешить определённые видео, каналы и коллекции. Поиск для ребёнка в таком режиме отключается.</p>`,
+ tglYt: ["Только одобренный контент","Поиск отключён"],
+ man2: `<p>Поэтому идея родительского whitelist сама по себе не уникальна.</p>
+<p>Разница в том, что для Mitti-GO такой подход является <b>основой приложения</b>, а не дополнительным режимом.</p>`,
+ flowH: "Как это выглядит на практике?",
+ flowYt: ["Возрастная категория","Доступный каталог YouTube Kids","Рекомендации","Дополнительные ограничения родителя"],
+ flowMg: ["Родитель","Разрешённые каналы","Только их контент"],
+ shH: "А что с Shorts?",
+ sh1: `<p>Мы считаем, что решение о коротких видео тоже должен принимать родитель. Поэтому в Mitti-GO <b>Shorts отключены по умолчанию</b>.</p>`,
+ tglSh: ["Shorts","Отключены по умолчанию"],
+ sh2: `<p>Если семья хочет использовать короткие видео — родитель сможет разрешить их. При этом контент всё равно должен оставаться внутри разрешённых каналов.</p>`,
+ shNote: "Наша задача не в том, чтобы решить за родителей, что ребёнку можно или нельзя смотреть. Наша задача — дать родителям инструменты, чтобы они могли решить это сами.",
+ shMore: `Подробнее — в статье <a href="/ru/blog/vredny-li-shorts-detyam/">«Почему в Mitti-GO Shorts выключены по умолчанию»</a>.`,
+ randH: "Никаких случайных каналов",
+ rand1: "Именно это мы хотим сделать главным принципом Mitti-GO.",
+ randLead: "Ребёнок открывает приложение и видит знакомую среду:",
+ randList: ["его мультфильмы","его образовательные каналы","его любимые авторы — из списка, который сформировали родители"],
+ rand2: "Без необходимости постоянно проверять, что алгоритм порекомендует следующим.",
+ vsH: "YouTube Kids или Mitti-GO?",
+ vsYt: "Большая детская видеоплатформа с возрастными фильтрами, рекомендациями и мощными инструментами родительского контроля.",
+ vsMg: "Строится вокруг более простой идеи: «Вы выбираете каналы. Ребёнок смотрит только их».",
+ call: {title:"Мы не хотим заменить YouTube", text:"Мы хотим дать родителям более простой способ контролировать, из какого контента состоит видеосреда их ребёнка.", pill:"Контент выбирает не алгоритм. Контент выбираете вы.", link:"Как это работает"}
+},
+uz: {
+ intro: `<p>YouTube Kids allaqachon aynan bolalar uchun yaratilgan. Unda Mitti-GO nima uchun kerak?</p>
+<p>Bu yaxshi savol. Farq bitta ilova «xavfsiz», boshqasi esa yo‘qligida emas. Farq, avvalo, <b>kontent tanlashga yondashuvda</b>.</p>`,
+ ytH: "YouTube Kids qanday ishlaydi?",
+ ytP: "YouTube Kids — YouTube’ning alohida bolalar versiyasi bo‘lib, unda video va kanallar ancha kam.",
+ ytList: [["Yosh toifasi","Ota-ona bolaning yosh toifasini tanlaydi."],["Videolarni tanlash","YouTube tizimi qaysi videolar unga mos kelishini aniqlaydi."],["Tavsiyalar","Tavsiyalarga bolaning ko‘rish va qidiruv tarixi ham ta’sir qilishi mumkin."],["Filtrlash","Google avtomatik filtrlash tizimlaridan va kontentning bir qismini qo‘lda tekshirishdan foydalanadi."]],
+ schemeLead: "Ya’ni oddiy rejimda sxema taxminan shunday:",
+ scheme: "YouTube Kids mos kontentni tanlaydi → bola uni ko‘radi → ota-ona kerak bo‘lsa alohida videolar yoki kanallarni bloklaydi.",
+ mgH: "Mitti-GO qanday ishlaydi?",
+ mgP: "Mitti-GO’da biz boshqa yo‘ldan borishga qaror qildik.",
+ mgList: [["Avval ota-ona kanallarni tanlaydi","Shundan keyingina bola videolarni ko‘ra oladi."],["Ruxsat berilgan kanallardan lenta","Agar ota-ona 5 ta kanalga ruxsat bergan bo‘lsa, ilova bolalar lentasini shu kanallar kontentidan tuzadi."],["«Tavsiya qilingan» kanallar yo‘q","Yangi kanal lentada shunchaki algoritm uni tavsiya qilgani uchun paydo bo‘lmasligi kerak."]],
+ principle: "<b>Tamoyil oddiy:</b> ota-ona tanlaydi → Mitti-GO ko‘rsatadi → bola tomosha qiladi.",
+ manH: "Lekin YouTube Kids’da ham kontentni qo‘lda tanlash mumkin",
+ man: `<p>Ha. Va buni ta’kidlash muhim.</p>
+<p>YouTube Kids’da «Faqat tasdiqlangan kontent» rejimi bor. Unda ota-onalar ma’lum videolar, kanallar va to‘plamlarga qo‘lda ruxsat berishi mumkin. Bu rejimda bola uchun qidiruv o‘chiriladi.</p>`,
+ tglYt: ["Faqat tasdiqlangan kontent","Qidiruv o‘chirilgan"],
+ man2: `<p>Shuning uchun ota-ona tuzadigan ruxsat ro‘yxati (whitelist) g‘oyasining o‘zi noyob emas.</p>
+<p>Farq shundaki, Mitti-GO uchun bu yondashuv qo‘shimcha rejim emas, balki <b>ilovaning asosi</b>.</p>`,
+ flowH: "Amalda bu qanday ko‘rinadi?",
+ flowYt: ["Yosh toifasi","YouTube Kids’dagi mavjud katalog","Tavsiyalar","Ota-onaning qo‘shimcha cheklovlari"],
+ flowMg: ["Ota-ona","Ruxsat berilgan kanallar","Faqat ularning kontenti"],
+ shH: "Shorts-chi?",
+ sh1: `<p>Biz qisqa videolar haqidagi qarorni ham ota-ona qabul qilishi kerak deb hisoblaymiz. Shuning uchun Mitti-GO’da <b>Shorts odatda o‘chiq</b>.</p>`,
+ tglSh: ["Shorts","Odatda o‘chiq"],
+ sh2: `<p>Agar oila qisqa videolardan foydalanishni istasa, ota-ona ularga ruxsat bera oladi. Bunda kontent baribir ruxsat berilgan kanallar doirasida qolishi kerak.</p>`,
+ shNote: "Bizning vazifamiz ota-onalar o‘rniga bola nimani ko‘rishi mumkin yoki mumkin emasligini hal qilish emas. Bizning vazifamiz — ota-onalarga buni o‘zlari hal qilishlari uchun vositalar berish.",
+ shMore: `Batafsil — <a href="/uz/blog/shorts-bolalarga-zararlimi/">«Nega Mitti-GO’da Shorts odatda o‘chiq»</a> maqolasida.`,
+ randH: "Tasodifiy kanallar yo‘q",
+ rand1: "Aynan shuni biz Mitti-GO’ning asosiy tamoyiliga aylantirmoqchimiz.",
+ randLead: "Bola ilovani ochadi va tanish muhitni ko‘radi:",
+ randList: ["o‘zining multfilmlari","o‘zining ta’limiy kanallari","o‘zining sevimli mualliflari — ota-onalar tuzgan ro‘yxatdan"],
+ rand2: "Algoritm keyin nimani tavsiya qilishini doim tekshirib turishga hojat yo‘q.",
+ vsH: "YouTube Kids yoki Mitti-GO?",
+ vsYt: "Yosh filtrlari, tavsiyalar va kuchli ota-ona nazorati vositalariga ega katta bolalar video platformasi.",
+ vsMg: "Oddiyroq g‘oya atrofida quriladi: «Siz kanallarni tanlaysiz. Bola faqat ularni ko‘radi».",
+ call: {title:"Biz YouTube’ni almashtirmoqchi emasmiz", text:"Biz ota-onalarga farzandining video muhiti qanday kontentdan iborat bo‘lishini nazorat qilishning oddiyroq usulini bermoqchimiz.", pill:"Kontentni algoritm emas, siz tanlaysiz.", link:"Qanday ishlaydi"}
+},
+en: {
+ intro: `<p>YouTube Kids is already made specifically for children. So why would you need Mitti-GO?</p>
+<p>It's a fair question. The difference isn't that one app is "safe" and the other isn't. The difference is, above all, <b>in how content gets chosen</b>.</p>`,
+ ytH: "How does YouTube Kids work?",
+ ytP: "YouTube Kids is a separate kids' version of YouTube with far fewer videos and channels available.",
+ ytList: [["Age category","The parent picks the child's age category."],["Video selection","YouTube's systems decide which videos fit that category."],["Recommendations","Recommendations can also be shaped by the child's watch and search history."],["Filtering","Google uses automated filtering systems and manually reviews part of the content."]],
+ schemeLead: "So in the default mode the flow looks roughly like this:",
+ scheme: "YouTube Kids picks suitable content → the child watches it → the parent blocks individual videos or channels if needed.",
+ mgH: "And how does Mitti-GO work?",
+ mgP: "With Mitti-GO we decided to go the other way.",
+ mgList: [["The parent picks channels first","Only then does the child get access to videos."],["A feed from allowed channels","If a parent allows 5 channels, the app builds the child's feed from those channels' content."],["No \"recommended\" channels","A new channel shouldn't just show up in the feed because an algorithm decided to recommend it."]],
+ principle: "<b>The principle is simple:</b> the parent chooses → Mitti-GO shows → the child watches.",
+ manH: "But YouTube Kids also lets you pick content by hand",
+ man: `<p>Yes — and that's worth pointing out.</p>
+<p>YouTube Kids has an "Approved content only" mode. In it, parents can manually allow specific videos, channels and collections. Search is turned off for the child in this mode.</p>`,
+ tglYt: ["Approved content only","Search turned off"],
+ man2: `<p>So the idea of a parent-made whitelist isn't unique in itself.</p>
+<p>The difference is that for Mitti-GO this approach is <b>the foundation of the app</b>, not an extra mode.</p>`,
+ flowH: "What does it look like in practice?",
+ flowYt: ["Age category","Available YouTube Kids catalog","Recommendations","Extra limits set by the parent"],
+ flowMg: ["Parent","Allowed channels","Only their content"],
+ shH: "What about Shorts?",
+ sh1: `<p>We believe the decision about short videos should also be the parent's. That's why <b>Shorts are off by default</b> in Mitti-GO.</p>`,
+ tglSh: ["Shorts","Off by default"],
+ sh2: `<p>If a family wants short videos, the parent can allow them. Even then, the content still has to come from allowed channels.</p>`,
+ shNote: "Our job isn't to decide for parents what their child can or can't watch. Our job is to give parents the tools to decide it themselves.",
+ shMore: `More on this in <a href="/en/blog/are-shorts-bad-for-kids/">"Why Shorts are off by default in Mitti-GO"</a>.`,
+ randH: "No random channels",
+ rand1: "This is exactly what we want to make the core principle of Mitti-GO.",
+ randLead: "A child opens the app and sees a familiar space:",
+ randList: ["their cartoons","their educational channels","their favorite creators — from a list the parents put together"],
+ rand2: "No need to keep checking what the algorithm will recommend next.",
+ vsH: "YouTube Kids or Mitti-GO?",
+ vsYt: "A large kids' video platform with age filters, recommendations and powerful parental control tools.",
+ vsMg: "Built around a simpler idea: \"You choose the channels. Your child watches only them.\"",
+ call: {title:"We don't want to replace YouTube", text:"We want to give parents a simpler way to control what content makes up their child's video world.", pill:"Not an algorithm — you choose the content.", link:"How it works"}
+}
+};
+function mgYtkBody(l){
+  const t = YTK_TXT[l], B = "/assets/images/blog/", YT = "#E62117";
+  const ytIc = [["groups","var(--purple)"],["tune","#0A8C4B"],["bar_chart","#E0457B"],["shield","var(--blue)"]];
+  const mgIc = [["person","var(--purple)"],["check_circle","#16C869"],["block","#E0457B"]];
+  return `${t.intro}
+<h2>${t.ytH}</h2>
+<p>${t.ytP}</p>
+${mgIconList(t.ytList.map((x,i)=>[ytIc[i][0], ytIc[i][1], x[0], x[1]]), B+"youtube-kids-age-categories.webp")}
+<p>${t.schemeLead}</p>
+<div class="note"><span class="ms">route</span><p>${t.scheme}</p></div>
+<h2>${t.mgH}</h2>
+<p>${t.mgP}</p>
+${mgIconList(t.mgList.map((x,i)=>[mgIc[i][0], mgIc[i][1], x[0], x[1]]), B+"parent-chooses-channels-girl.webp")}
+<div class="note"><span class="ms">thumb_up</span><p>${t.principle}</p></div>
+<h2>${t.manH}</h2>
+${t.man}
+${mgToggle({icon:"smart_display", c:YT, title:t.tglYt[0], sub:t.tglYt[1], on:true})}
+${t.man2}
+<h2>${t.flowH}</h2>
+${mgFlow([
+  {title:"YouTube Kids", icon:"smart_display", c:YT, bg:"var(--ppink)", steps:[["groups",t.flowYt[0]],["video_library",t.flowYt[1]],["bar_chart",t.flowYt[2]],["tune",t.flowYt[3]]]},
+  {title:"Mitti-GO", icon:"verified_user", c:"var(--purple)", bg:"var(--ppurple)", steps:[["person",t.flowMg[0]],["check_circle",t.flowMg[1]],["play_circle",t.flowMg[2]]]}
+])}
+<h2>${t.shH}</h2>
+${t.sh1}
+${mgToggle({icon:"slow_motion_video", c:"#E0457B", title:t.tglSh[0], sub:t.tglSh[1], on:false, img:B+"shorts-off-by-default-cards.webp"})}
+${t.sh2}
+<div class="note"><span class="ms">family_restroom</span><p>${t.shNote}</p></div>
+<p>${t.shMore}</p>
+<h2>${t.randH}</h2>
+<p>${t.rand1}</p>
+<div class="split"><div><p>${t.randLead}</p><ul class="checklist">${t.randList.map(x=>`<li>${x}</li>`).join("")}</ul></div><img src="${B}only-your-channels-avatars.webp" alt="" loading="lazy"></div>
+<p>${t.rand2}</p>
+<h2>${t.vsH}</h2>
+${mgCards([["smart_display", YT, "YouTube Kids", t.vsYt],["verified_user","var(--purple)","Mitti-GO", t.vsMg]])}
+${mgCallout({title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
+}
+
 window.MG_POSTS = [
+{
+  slug: "vs-youtube-kids",
+  slugs: { ru: "chem-mitti-go-otlichaetsya-ot-youtube-kids", uz: "mitti-go-va-youtube-kids-farqi", en: "mitti-go-vs-youtube-kids" },
+  date: "2026-09-28",
+  icon: "compare",
+  color: "purple",
+  cover: "/assets/images/blog/how-is-mitti-go-different-from-youtube-kids.webp",
+  imageAlt: {
+    ru: "Родители сравнивают Mitti GO и YouTube Kids: одобренный контент, Shorts, рекомендации и реклама",
+    uz: "Ota-onalar Mitti GO va YouTube Kids’ni solishtirmoqda: tasdiqlangan kontent, Shorts, tavsiyalar va reklama",
+    en: "Parents comparing Mitti GO and YouTube Kids: approved content, Shorts, recommendations and ads"
+  },
+  related: ["why-shorts-off", "first-channels"],
+  tag: { ru: "Родительский контроль", uz: "Ota-ona nazorati", en: "Parental control" },
+  title: {
+    ru: "Чем Mitti-GO отличается от YouTube Kids?",
+    uz: "Mitti-GO YouTube Kids’dan nimasi bilan farq qiladi?",
+    en: "How is Mitti-GO different from YouTube Kids?"
+  },
+  excerpt: {
+    ru: "YouTube Kids подбирает видео по возрасту и рекомендациям, а в Mitti-GO родитель сначала выбирает каналы — и ребёнок смотрит только их. Разбираем, в чём разница.",
+    uz: "YouTube Kids videolarni yosh va tavsiyalar bo‘yicha tanlaydi, Mitti-GO’da esa avval ota-ona kanallarni tanlaydi — bola faqat ularni ko‘radi. Farq nimada, ko‘rib chiqamiz.",
+    en: "YouTube Kids picks videos by age and recommendations; in Mitti-GO the parent chooses channels first, and the child watches only them. Here's the difference."
+  },
+  body: { ru: mgYtkBody("ru"), uz: mgYtkBody("uz"), en: mgYtkBody("en") }
+},
 {
   slug: "phone-tablet-or-tv",
   slugs: { ru: "telefon-planshet-ili-televizor", uz: "telefon-planshet-yoki-televizor", en: "phone-tablet-or-tv-for-kids" },
