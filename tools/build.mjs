@@ -303,15 +303,16 @@ write("index.html", `<!doctype html>
 <head>
 ${head({ title: "Mitti GO — безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
 <script>
-/* send visitors to their language: saved choice → browser language → Russian; keeps #anchors from old links */
-(function(){var ls=["uz","ru","en"],l=null;try{l=localStorage.getItem("mg-lang")}catch(e){}
-if(ls.indexOf(l)<0){var n=(navigator.languages||[navigator.language||""]);for(var i=0;i<n.length&&!l;i++){var c=String(n[i]).slice(0,2).toLowerCase();if(ls.indexOf(c)>=0)l=c}}
-if(ls.indexOf(l)<0)l="ru";location.replace("/"+l+"/"+location.hash)})();
+/* returning visitors go straight to the language they chose before (keeps #anchors from old links).
+   No redirect by browser language: first-time visitors and search bots see this chooser,
+   so Google does not merge the root with one of the language versions. */
+(function(){var l=null;try{l=localStorage.getItem("mg-lang")}catch(e){}
+if(["uz","ru","en"].indexOf(l)>=0)location.replace("/"+l+"/"+location.hash)})();
 </script>
 </head>
 <body class="chooser">
 <main class="chooser-main">
-  <img class="chooser-logo" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150">
+  <img class="chooser-logo logo l" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150"><img class="chooser-logo logo d" src="/assets/images/logo-white.png" alt="Mitti GO" width="439" height="150">
   <img class="chooser-mascot" src="/assets/images/mascot.png" alt="" width="640" height="378">
   <h1>Mitti GO</h1>
   <nav class="chooser-langs" aria-label="Language">
@@ -319,6 +320,7 @@ ${LANGS.map(l => `    <a href="/${l}/" hreflang="${l}" lang="${l}"><b>${CHOOSER[
   </nav>
   <p class="chooser-blog">${LANGS.map(l => `<a href="${blogPath(l)}" hreflang="${l}" lang="${l}">${L[l].blog} · ${LANG_NAMES[l]}</a>`).join(" ")}</p>
 </main>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("a[hreflang]");if(a){try{localStorage.setItem("mg-lang",a.getAttribute("hreflang"))}catch(x){}}});</script>
 </body>
 </html>
 `);
