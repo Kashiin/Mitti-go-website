@@ -8,15 +8,7 @@
 <header class="top">
   <div class="wrap">
     <a href="{{HOME}}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="eager" fetchpriority="high"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="eager"></a>
-    <nav class="nav" aria-label="Main">
-      <a href="#how" data-i="nav.how">Как это работает</a>
-      <a href="#model" data-i="nav.model">Разрешения</a>
-      <a href="#parents" data-i="nav.parents">Для родителей</a>
-      <a href="#privacy" data-i="nav.privacy">Приватность</a>
-      <a href="#plans" data-i="nav.plans">Тарифы</a>
-      <a href="{{BLOG}}" data-i="nav.blog">Блог</a>
-      <a href="#faq" data-i="nav.faq">Вопросы</a>
-    </nav>
+    <nav class="nav" aria-label="Main">{{NAV}}</nav>
     <button class="tbtn" id="themeBtn" type="button" aria-label="Светлая / тёмная тема"><span class="ms" id="themeIc">dark_mode</span></button>
     {{LANGNAV}}
     <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span class="ms" id="burgerIc">menu</span></button>
@@ -196,7 +188,7 @@
   </div>
 </section>
 
-<section id="parents" class="parents ph ph-parents" style="--g:var(--soft)">
+<section id="parents" class="parents night ph ph-parents">
   <div class="wrap p-grid">
     <div>
       <div class="sec-head">
@@ -226,86 +218,6 @@
   </div>
 </section>
 
-<section id="screentime" class="night ph ph-bedtime">
-  <div class="wrap st-grid">
-    <div>
-      <div class="sec-head">
-        <span class="eyebrow" style="color:var(--yellow)"><span class="ms">workspace_premium</span><span data-i="st.e">Экранное время · Pro</span></span>
-        <h2 data-i="st.t">Заканчиваем мягко, а не посреди мультика</h2>
-        <p class="lede" data-i="st.s">Экранное время — часть Pro. На бесплатном тарифе ничего не считается и ничего не блокируется.</p>
-      </div>
-      <div class="st-list">
-        <div class="st-i" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">timer</span></span><div><h3 data-i="st1.t">Дневной лимит</h3><p data-i="st1.p">Сколько можно смотреть в день. Обнуляется в полночь.</p><div class="minutes"><span data-i="m.off">Выкл.</span><span>15</span><span>30</span><span>45</span><span>60</span><span class="on">90</span><span>120</span><span data-i="m.own">Своё…</span></div></div></div>
-        <div class="st-i" style="--c:var(--yellow);--bgc:var(--pyellow)"><span class="ic"><span class="ms">notifications_active</span></span><div><h3 data-i="st2.t">Предупреждение за 5 минут</h3><p data-i="st2.p">Маскот говорит «Скоро перерыв!» — без обратного отсчёта и не закрывая видео.</p></div></div>
-        <div class="st-i" style="--c:var(--green);--bgc:var(--pgreen)"><span class="ic"><span class="ms">hourglass_bottom</span></span><div><h3 data-i="st3.t">Можно досмотреть</h3><p data-i="st3.p">Если время вышло во время видео, его можно досмотреть — не больше 15 минут сверху.</p></div></div>
-        <div class="st-i" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">bedtime</span></span><div><h3 data-i="st4.t">Режим сна</h3><p data-i="st4.p">Разрешённые часы, например 08:00–20:00, — отдельно для будней и выходных.</p></div></div>
-        <div class="st-i" style="--c:var(--sky);--bgc:var(--pcyan)"><span class="ic"><span class="ms">verified</span></span><div><h3 data-i="st5.t">Время считается честно</h3><p data-i="st5.p">Считается только время на детских экранах. Перевод часов на телефоне лимит не сбрасывает.</p></div></div>
-      </div>
-    </div>
-    <div class="tu" aria-label="Time's Up preview">
-      <span class="zz">z z z</span>
-      <img src="/assets/images/mascot.webp" alt="" width="640" height="378" loading="lazy" decoding="async">
-      <b data-i="tu.t">Время вышло! Увидимся завтра.</b>
-      <span class="for"><span class="ms">shield_person</span><span data-i="tu.for">Для родителей</span></span>
-      <hr>
-      <small data-i="tu.ext">Родитель может добавить время на сегодня:</small>
-      <div class="ext"><span data-i="tu.e1">+15 мин</span><span data-i="tu.e2">+30 мин</span><span data-i="tu.e3">+1 час</span><span data-i="tu.e4">Без лимита сегодня</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="privacy" class="ph ph-privacy">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow" data-i="q.e">Приватность</span>
-      <h2 data-i="q.t">Мы ничего не собираем о ребёнке</h2>
-    </div>
-    <div class="priv-grid">
-      <div class="pv" style="--c:var(--blue)"><span class="ms">person_off</span><h3 data-i="q1.t">Нет профиля ребёнка</h3><p data-i="q1.p">Ни имени, ни фото, ни даты рождения.</p></div>
-      <div class="pv" style="--c:var(--green)"><span class="ms">smartphone</span><h3 data-i="q2.t">Всё остаётся на телефоне</h3><p data-i="q2.p">История просмотров, прогресс и поиск ребёнка никуда не отправляются.</p></div>
-      <div class="pv" style="--c:var(--purple)"><span class="ms">key</span><h3 data-i="q3.t">PIN надёжно зашифрован</h3><p data-i="q3.p">Хранится в защищённом хранилище устройства и нигде не записывается в логи.</p></div>
-      <div class="pv" style="--c:var(--sky)"><span class="ms">query_stats</span><h3 data-i="q4.t">Только анонимная статистика</h3><p data-i="q4.p">Вроде «добавлен канал». Без рекламных идентификаторов и без данных о том, что смотрел ребёнок.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="plans" class="plans">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow" data-i="pl.e">Тарифы</span>
-      <h2 data-i="pl.t">Всё главное — <em class="go-text">бесплатно</em></h2>
-      <p class="lede" data-i="pl.s">Защита и безопасность никогда не бывают платными. Pro добавляет экранное время.</p>
-    </div>
-    <div class="plan-grid">
-      <div class="plan">
-        <div class="plan-h"><b>Free</b><span data-i="pl.free">Бесплатно</span></div>
-        <div class="meter"><div><span data-i="pl.ch">Каналы</span><span>3 / 5</span></div><div class="bar"><i style="width:60%"></i></div></div>
-        <div class="meter"><div><span data-i="pl.pl">Плейлисты</span><span>4 / 10</span></div><div class="bar"><i style="width:40%"></i></div></div>
-        <ul>
-          <li><span class="ms">check_circle</span><span data-i="f1">5 каналов целиком</span></li>
-          <li><span class="ms">check_circle</span><span data-i="f2">10 отдельных плейлистов</span></li>
-          <li><span class="ms">check_circle</span><span data-i="f3">Плейлисты добавленных каналов, скрытие и Избранное — без лимита</span></li>
-          <li><span class="ms">check_circle</span><span data-i="f4">PIN, биометрия и вся защита</span></li>
-        </ul>
-      </div>
-      <div class="plan pro">
-        <div class="plan-h"><span class="pro-pill"><span class="ms">workspace_premium</span>Pro</span><span data-i="pl.price">Цены — к запуску</span></div>
-        <ul>
-          <li><span class="ms">schedule</span><span data-i="r1">Экранное время: дневной лимит</span></li>
-          <li><span class="ms">hourglass_bottom</span><span data-i="r2">Досмотреть текущее видео — до 15 минут сверху</span></li>
-          <li><span class="ms">bedtime</span><span data-i="r3">Режим сна: отдельно для будней и выходных</span></li>
-          <li><span class="ms">nights_stay</span><span data-i="r4">Мягкий экран «Время вышло» со спящим маскотом</span></li>
-        </ul>
-        <small class="note" data-i="pl.note">Ребёнок никогда не видит слов «Pro» и «лимит». Лимиты и цены Pro объявим отдельно.</small>
-      </div>
-    </div>
-    <div class="lim-grid">
-      <div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">block</span></span><div><h3 data-i="lim2.t">Упёрлись в лимит</h3><p data-i="lim2.p">Добавлять новое нельзя, но управлять можно всем: скрывать, отмечать звёздочкой, удалять. Или выберите отдельные плейлисты вместо целого канала.</p></div></div>
-      <div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">pause_circle</span></span><div><h3 data-i="lim.t">Если Pro закончится</h3><p data-i="lim.p">Ничего не удаляется. У вас будет 7 дней, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении.</p></div></div>
-    </div>
-  </div>
-</section>
-
 <section id="devices" class="ph full ph-devices">
   <div class="wrap">
     <div class="sec-head">
@@ -325,35 +237,18 @@
   </div>
 </section>
 
-<section id="blog" class="blog-sec">
-  <div class="wrap">
-    <div class="blog-head">
-      <div class="sec-head" style="margin:0">
-        <span class="eyebrow" data-i="b.e">Блог</span>
-        <h2 data-i="b.t">Советы и новости для родителей</h2>
-      </div>
-      <a class="btn ghost" href="{{BLOG}}"><span data-i="b.all">Все статьи</span><span class="ms">arrow_forward</span></a>
-    </div>
-    <div class="post-grid" id="homePosts">{{HOME_POSTS}}</div>
-  </div>
-</section>
-
 <section id="faq" class="faq ph flip ph-faq">
   <div class="wrap faq-grid">
     <div class="sec-head" style="margin:0">
       <span class="eyebrow" data-i="fq.e">Вопросы</span>
       <h2 data-i="fq.t">Что обычно спрашивают родители</h2>
+      <a class="btn ghost faq-all" href="{{FAQ}}"><span data-i="fq.all">Все вопросы и ответы</span><span class="ms">arrow_forward</span></a>
     </div>
     <div class="faq-list">
       <details open><summary><span data-i="fq1.q">Можно добавить плейлисты без всего канала?</span><span class="ms">add</span></summary><p data-i="fq1.a">Да. Выберите «Только плейлисты» — остальной канал останется закрытым, а ребёнок не сможет открыть его страницу.</p></details>
-      <details><summary><span data-i="fq2.q">Можно разрешить или запретить одно видео?</span><span class="ms">add</span></summary><p data-i="fq2.a">Нет, только каналы и плейлисты. Так проще следить, а новые видео появляются сами. Если в канале есть лишний плейлист — скройте его.</p></details>
-      <details><summary><span data-i="fq3.q">Что делает звёздочка?</span><span class="ms">add</span></summary><p data-i="fq3.a">Это Избранное: канал встаёт первым на главной и в библиотеке ребёнка. Звёздочка не открывает доступ и не входит в лимит.</p></details>
-      <details><summary><span data-i="fq4.q">Что, если я забуду PIN?</span><span class="ms">add</span></summary><p data-i="fq4.a">Обходного пути внутри приложения нет — именно это защищает от детей. Переустановите приложение: оно начнётся с чистого листа, каналы нужно будет добавить заново.</p></details>
-      <details><summary><span data-i="fq5.q">Нужен ли интернет?</span><span class="ms">add</span></summary><p data-i="fq5.a">Для просмотра и добавления каналов — да. Убрать канал, скрыть плейлист или поставить звёздочку можно и без сети. Без интернета ребёнок видит уже сохранённый список.</p></details>
-      <details><summary><span data-i="fq7.q">Ребёнок увидит рекламу?</span><span class="ms">add</span></summary><p data-i="fq7.a">Mitti GO сам рекламу не показывает. Реклама, которую YouTube иногда включает в своём плеере, остаётся: скрывать её запрещают правила YouTube.</p></details>
       <details><summary><span data-i="fq8.q">Как отключить Shorts?</span><span class="ms">add</span></summary><p data-i="fq8.a">Они выключены с самого начала. Включить или выключить их можно в «Профиль» → Shorts, а ещё отдельно для каждого канала.</p></details>
-      <details><summary><span data-i="fq9.q">Можно удалить канал, но оставить пару плейлистов?</span><span class="ms">add</span></summary><p data-i="fq9.a">Да: «Удалить» → «Оставить некоторые плейлисты». Отмеченные плейлисты останутся отдельными и сохранят звёздочку.</p></details>
-      <details><summary><span data-i="fq10.q">Видео не запускается — что делать?</span><span class="ms">add</span></summary><p data-i="fq10.a">Некоторые авторы запрещают показывать свои видео в других приложениях, а прямые эфиры не поддерживаются — такие видео Mitti GO просто не показывает. Если видео не грузится, проверьте интернет и нажмите «Повторить».</p></details>
+      <details><summary><span data-i="fq7.q">Ребёнок увидит рекламу?</span><span class="ms">add</span></summary><p data-i="fq7.a">Mitti GO сам рекламу не показывает. Реклама, которую YouTube иногда включает в своём плеере, остаётся: скрывать её запрещают правила YouTube.</p></details>
+      <details><summary><span data-i="fq4.q">Что, если я забуду PIN?</span><span class="ms">add</span></summary><p data-i="fq4.a">Обходного пути внутри приложения нет — именно это защищает от детей. Переустановите приложение: оно начнётся с чистого листа, каналы нужно будет добавить заново.</p></details>
       <details><summary><span data-i="fq6.q">На каких устройствах работает?</span><span class="ms">add</span></summary><p data-i="fq6.a">Android и iOS, телефоны и планшеты, а также Android TV. На планшете — две колонки видео и плеер со списком «Дальше» сбоку. Есть светлая и тёмная тема.</p></details>
     </div>
   </div>

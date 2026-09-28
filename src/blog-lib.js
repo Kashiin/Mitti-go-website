@@ -62,6 +62,27 @@ function readMin(html) { const w = html.replace(/<[^>]+>/g, " ").trim().split(/\
 
 const homePath = l => `/${l}/`;
 const blogPath = l => `/${l}/blog/`;
+const pricingPath = l => `/${l}/pricing/`;
+const faqPath = l => `/${l}/faq/`;
+
+/* main menu: same items on every page; `current` = "home" | "pricing" | "faq" | "blog" marks the open page.
+   mobile: the burger menu version (icon + label + arrow, bigger tap targets) */
+const NAV_ITEMS = [
+  ["how", "play_circle", l => `${homePath(l)}#how`, "home-how"],
+  ["model", "playlist_add_check", l => `${homePath(l)}#model`, "home-model"],
+  ["parents", "shield_person", l => `${homePath(l)}#parents`, "home-parents"],
+  ["plans", "workspace_premium", pricingPath, "pricing"],
+  ["faq", "help", faqPath, "faq"],
+  ["blog", "auto_stories", blogPath, "blog"]
+];
+function navHTML(l, current, mobile) {
+  return NAV_ITEMS.map(([k, icon, href, page]) => {
+    const cur = page === current ? ' aria-current="page"' : "";
+    return mobile
+      ? `<a href="${href(l)}"${cur}><span class="ms mnav-ic">${icon}</span><span>${L[l].nav[k]}</span><span class="ms mnav-go">chevron_right</span></a>`
+      : `<a href="${href(l)}"${cur}>${L[l].nav[k]}</a>`;
+  }).join("");
+}
 const postPath = (p, l) => `/${l}/blog/${p.slugs[l]}/`;
 const abs = path => SITE + path;
 
@@ -87,7 +108,8 @@ function asidePost(o, l) {
 /* alternates: { uz: "/uz/…", ru: "/ru/…", en: "/en/…" } — the same page in each language */
 function footerHTML(l, posts, alternates) {
   const t = FT[l], home = homePath(l);
-  const link = k => `<li><a href="${home}#${k}">${t.links[k]}</a></li>`;
+  const hrefs = { plans: pricingPath(l), screentime: pricingPath(l), faq: faqPath(l), privacy: faqPath(l) + "#privacy" };
+  const link = k => `<li><a href="${hrefs[k] || `${home}#${k}`}">${t.links[k]}</a></li>`;
   const store = (logo, name) => `<span class="soon store-badge"><img class="store-logo" src="/assets/images/${logo}" alt="" width="32" height="32" decoding="async"><span class="store-copy"><span>${t.soon}</span><b>${name}</b></span></span>`;
   const langs = LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""}>${LANG_NAMES[x]}</a>`).join("");
   return `<div class="wrap">
@@ -102,4 +124,4 @@ function footerHTML(l, posts, alternates) {
 </div>`;
 }
 
-module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, postPath, abs, cover, card, asidePost, footerHTML };
+module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };

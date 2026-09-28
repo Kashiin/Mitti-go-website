@@ -37,6 +37,60 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://mitti-go.uz/uz/pricing/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/pricing/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/ru/pricing/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/pricing/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/en/pricing/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/pricing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/pricing/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/uz/faq/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/ru/faq/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/en/faq/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mitti-go.uz/uz/blog/</loc>
     <lastmod>2026-09-28</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>

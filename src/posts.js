@@ -976,7 +976,7 @@ ${mgVs({title:"Спокойный просмотр", img:"/assets/images/blog/sc
 <li><span><b>За 5 минут до конца</b> маскот говорит «Скоро перерыв!» — без обратного отсчёта и не закрывая видео.</span></li>
 <li><span><b>Текущее видео можно досмотреть</b> — не больше 15 минут сверху. Потом появляется мягкий экран «Время вышло».</span></li>
 </ol>
-${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Главное — найти баланс", text:"Экранное время — лишь часть дня. Для гармоничного развития ребёнку также важны игры, общение, прогулки и полноценный сон.", pill:"Здоровые привычки сегодня — счастливое детство завтра", link:"Экранное время в Mitti GO", href:"index.html#screentime"})}`,
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Главное — найти баланс", text:"Экранное время — лишь часть дня. Для гармоничного развития ребёнку также важны игры, общение, прогулки и полноценный сон.", pill:"Здоровые привычки сегодня — счастливое детство завтра", link:"Экранное время в Mitti GO", href:"pricing.html"})}`,
     uz: `<p>Kattaroq bolalar uchun aniq raqamdan tashqari ular <b>nimani</b> va <b>qanday</b> ko‘rishi ham muhim. Lekin avval tavsiyalardan boshlaylik.</p>
 <h2>JSST nima maslahat beradi</h2>
 ${mgAges([["1 yoshgacha","Ekran tavsiya etilmaydi","",false],["1 yosh","O‘tirib ekran ko‘rish tavsiya etilmaydi","",false],["2 yosh","Kuniga 1 soatdan ko‘p emas","Qancha kam bo‘lsa, shuncha yaxshi",true],["3–4 yosh","Kuniga 1 soatdan ko‘p emas","Qancha kam bo‘lsa, shuncha yaxshi",true]])}
@@ -998,7 +998,7 @@ ${mgVs({title:"Sokin tomosha", img:"/assets/images/blog/screen-calm.webp", items
 <li><span><b>Tugashiga 5 daqiqa qolganda</b> maskot «Tez orada tanaffus!» deydi — orqaga sanashsiz va videoni yopmasdan.</span></li>
 <li><span><b>Joriy videoni oxirigacha ko‘rish mumkin</b> — ustiga 15 daqiqadan ko‘p emas. Keyin yumshoq «Vaqt tugadi» ekrani chiqadi.</span></li>
 </ol>
-${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Eng muhimi — muvozanat", text:"Ekran vaqti — kunning faqat bir qismi. Bolaning uyg‘un rivojlanishi uchun o‘yinlar, muloqot, sayr va to‘liq uyqu ham muhim.", pill:"Bugungi sog‘lom odatlar — ertangi baxtli bolalik", link:"Mitti GO’da ekran vaqti", href:"index.html#screentime"})}`,
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"Eng muhimi — muvozanat", text:"Ekran vaqti — kunning faqat bir qismi. Bolaning uyg‘un rivojlanishi uchun o‘yinlar, muloqot, sayr va to‘liq uyqu ham muhim.", pill:"Bugungi sog‘lom odatlar — ertangi baxtli bolalik", link:"Mitti GO’da ekran vaqti", href:"pricing.html"})}`,
     en: `<p>For older kids, the exact number matters less than <b>what</b> and <b>how</b> they watch. But let's start with the guidelines.</p>
 <h2>What the WHO recommends</h2>
 ${mgAges([["Under 1","No screen time","",false],["1 year","No sedentary screen time","",false],["2 years","No more than 1 hour a day","Less is better",true],["3–4 years","No more than 1 hour a day","Less is better",true]])}
@@ -1020,7 +1020,7 @@ ${mgVs({title:"Calm watching", img:"/assets/images/blog/screen-calm.webp", items
 <li><span><b>5 minutes before the end</b> the mascot says "Break soon!" — no countdown, and the video keeps playing.</span></li>
 <li><span><b>The current video can finish</b> — up to 15 extra minutes. Then a gentle Time's Up screen appears.</span></li>
 </ol>
-${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"It's all about balance", text:"Screen time is just one part of the day. Play, talking, walks and good sleep matter just as much for healthy development.", pill:"Healthy habits today, a happy childhood tomorrow", link:"Screen Time in Mitti GO", href:"index.html#screentime"})}`
+${mgCallout({img:"/assets/images/blog/screen-balance.webp", title:"It's all about balance", text:"Screen time is just one part of the day. Play, talking, walks and good sleep matter just as much for healthy development.", pill:"Healthy habits today, a happy childhood tomorrow", link:"Screen Time in Mitti GO", href:"pricing.html"})}`
   }
 },
 {

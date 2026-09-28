@@ -1,7 +1,8 @@
 /* Mitti GO static site build.
    Run from the project root:   node tools/build.mjs
-   Sources:  src/templates/*.html, src/i18n.js (landing UZ/EN), src/posts.js (blog), src/blog-lib.js (shared pieces)
-   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/blog/index.html,
+   Sources:  src/templates/*.html, src/i18n.js (landing UZ/EN), src/posts.js (blog), src/pages.js (pricing + FAQ pages),
+             src/blog-lib.js (shared pieces), src/fonts.css (tools/fonts.py)
+   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/pricing/, /{lang}/faq/, /{lang}/blog/index.html,
              /{lang}/blog/<slug>/index.html, /404.html, legacy /blog.html + /post.html redirects,
              /sitemap.xml, /robots.txt, /site.webmanifest
    Every generated page has its own title, description, canonical, hreflang, Open Graph, Twitter card and JSON-LD. */
@@ -16,12 +17,26 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const lib = require(path.join(ROOT, "src/blog-lib.js"));
 const T = require(path.join(ROOT, "src/i18n.js"));
-const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, postPath, abs, card, asidePost, cover, footerHTML } = lib;
+const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
+const PAGES = require(path.join(ROOT, "src/pages.js"));
 
 const read = p => fs.readFileSync(path.join(ROOT, p), "utf8");
 // headings always use the logo spelling "Mitti-GO"
 const logoHeadings = s => s.replace(/<h([1-6])\b[\s\S]*?<\/h\1>/g, h => h.replace(/Mitti GO/g, "Mitti-GO"));
-const write = (p, s) => { if (p.endsWith(".html")) s = logoHeadings(s); const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
+// the brand name is always painted with the Mitti GO gradient in visible page text
+// (only text between tags inside <body>; attributes, <title>, meta, scripts and styles are left alone)
+function brandText(html) {
+  const at = html.indexOf("<body");
+  if (at < 0) return html;
+  let prevTag = "";
+  const body = html.slice(at).split(/(<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<[^>]+>)/).map(part => {
+    if (part.startsWith("<")) { prevTag = part; return part; }
+    if (/class="go-text"/.test(prevTag)) return part;
+    return part.replace(/Mitti[ -]GO/g, m => `<em class="go-text">${m}</em>`);
+  }).join("");
+  return html.slice(0, at) + body;
+}
+const write = (p, s) => { if (p.endsWith(".html")) s = brandText(logoHeadings(s)); const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
 const written = [];
 const TODAY = new Date().toISOString().slice(0, 10);
 const OG_LOCALE = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" };
@@ -127,7 +142,7 @@ function head(o) {
     // apply the saved theme before first paint (no light/dark flash)
     `<script>try{var t=localStorage.getItem("mg-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>`,
     // self-hosted fonts (tools/fonts.py): no third-party requests before the first paint
-    ...fontPreloads(o.lang).map(f => `<link rel="preload" href="/assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`),
+    ...fontPreloads(o.lang).map(f => `<link rel="preload" href="${fontURL(f)}" as="font" type="font/woff2" crossorigin>`),
     `<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">`,
     `<style>${FONTS_CSS}</style>`,
     ...(o.jsonld || []).map(j => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, "\\u003c")}</script>`)
@@ -136,7 +151,10 @@ function head(o) {
 }
 const BUILD_ID = Date.now().toString(36);
 // @font-face rules from tools/fonts.py, inlined into every page (compact: one line per rule)
-const FONTS_CSS = read("src/fonts.css").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "").replace(/:\s+/g, ":").replace(/;\}/g, "}").trim();
+// font URLs carry a content hash (?v=…), so an updated icon set is never taken from the browser cache
+const fontURL = f => `/assets/fonts/${f}?v=${fileHash("/assets/fonts/" + f)}`;
+const FONTS_CSS = read("src/fonts.css").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "").replace(/:\s+/g, ":").replace(/;\}/g, "}").trim()
+  .replace(/\/assets\/fonts\/([\w.-]+\.woff2)/g, (m, f) => fontURL(f));
 // fonts needed for the first screen: icons + Nunito (latin for every language, cyrillic for Russian)
 const fontPreloads = l => ["material-symbols-icons.woff2", "nunito-latin.woff2"].concat(l === "ru" ? ["nunito-cyrillic.woff2"] : []);
 
@@ -144,24 +162,17 @@ const fontPreloads = l => ["material-symbols-icons.woff2", "nunito-latin.woff2"]
 function langNav(l, alternates) {
   return `<nav class="lang" aria-label="${L[l].langLabel}">` + LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""} title="${LANG_NAMES[x]}">${x.toUpperCase()}</a>`).join("") + `</nav>`;
 }
-function navLinks(l, onBlog) {
-  const n = L[l].nav, h = homePath(l);
-  return [["how", `${h}#how`], ["model", `${h}#model`], ["parents", `${h}#parents`], ["privacy", `${h}#privacy`], ["plans", `${h}#plans`], ["blog", blogPath(l)], ["faq", `${h}#faq`]]
-    .map(([k, href]) => `<a href="${href}"${k === "blog" && onBlog ? ' aria-current="page"' : ""}>${n[k]}</a>`).join("\n      ");
-}
-function siteHeader(l, alternates, onBlog) {
-  const links = navLinks(l, onBlog);
+/* current: "home" | "pricing" | "faq" | "blog" (highlighted in the menu) */
+function siteHeader(l, alternates, current) {
   return `<header class="top">
   <div class="wrap">
     <a href="${homePath(l)}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="eager" fetchpriority="high"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="eager"></a>
-    <nav class="nav" aria-label="Main">
-      ${links}
-    </nav>
+    <nav class="nav" aria-label="Main">${navHTML(l, current)}</nav>
     <button class="tbtn" id="themeBtn" type="button" aria-label="${L[l].theme}"><span class="ms" id="themeIc">dark_mode</span></button>
     ${langNav(l, alternates)}
     <button class="burger" id="burger" type="button" aria-label="${L[l].menu}" aria-expanded="false"><span class="ms" id="burgerIc">menu</span></button>
   </div>
-  <nav class="mnav" id="mnav" aria-label="Mobile">${links.replace(/\n\s+/g, "")}</nav>
+  <nav class="mnav" id="mnav" aria-label="Mobile">${navHTML(l, current, true)}</nav>
 </header>`;
 }
 function crumbs(l, items) {
@@ -190,31 +201,27 @@ function translateLanding(l) {
   h = h.replace('aria-label="Светлая / тёмная тема"', `aria-label="${L[l].theme}"`).replace('aria-label="Меню"', `aria-label="${L[l].menu}"`);
   return h;
 }
-function faqLD(html, l) {
-  const qa = [...html.matchAll(/<summary><span data-i="[^"]+">([\s\S]*?)<\/span>[\s\S]*?<\/summary><p data-i="[^"]+">([\s\S]*?)<\/p>/g)];
-  return { "@context": "https://schema.org", "@type": "FAQPage", inLanguage: l, mainEntity: qa.map(m => ({ "@type": "Question", name: m[1].replace(/<[^>]+>/g, ""), acceptedAnswer: { "@type": "Answer", text: m[2].replace(/<[^>]+>/g, "") } })) };
-}
 for (const l of LANGS) {
   const seo = HOME_SEO[l];
   let h = translateLanding(l);
-  const navInner = (h.match(/<nav class="nav" aria-label="Main">([\s\S]*?)<\/nav>/) || [])[1] || "";
   const jsonld = [
     { "@context": "https://schema.org", "@graph": [
       ORG,
       { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } },
       { "@type": "WebPage", "@id": abs(homePath(l)) + "#webpage", url: abs(homePath(l)), name: seo.title, description: seo.desc, inLanguage: l, isPartOf: { "@id": SITE + "/#website" }, about: { "@id": SITE + "/#app" } },
       { "@type": "SoftwareApplication", "@id": SITE + "/#app", name: "Mitti GO", applicationCategory: "EducationalApplication", operatingSystem: "Android, iOS, Android TV", description: seo.appDesc, inLanguage: LANGS, url: abs(homePath(l)), image: SITE + "/assets/og/mitti-go.jpg", publisher: { "@id": ORG["@id"] }, offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: l === "ru" ? "Бесплатный тариф" : l === "uz" ? "Bepul tarif" : "Free plan" } }
-    ] },
-    faqLD(h, l)
+    ] }
+    // the FAQPage markup lives on /{lang}/faq/ (the full list); the home page shows only the top 5
   ];
   h = fill(h, {
     LANG: l,
     HEAD: head({ lang: l, title: seo.title, desc: seo.desc, canonical: homePath(l), alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", imageAlt: "Mitti GO", jsonld }),
     HOME: homePath(l) + "#top",
-    BLOG: blogPath(l),
+    PRICING: pricingPath(l),
+    FAQ: faqPath(l),
     LANGNAV: langNav(l, HOME_ALT),
-    MNAV: navInner.replace(/\n\s*/g, "").replace("{{BLOG}}", blogPath(l)).replace(/ data-i="[^"]+"/g, ""),
-    HOME_POSTS: POSTS.slice(0, 3).map(p => card(p, l, "h3")).join(""),
+    NAV: navHTML(l, "home"),
+    MNAV: navHTML(l, "home", true),
     FOOTER: footerHTML(l, POSTS, HOME_ALT)
   });
   write(`${l}/index.html`, sizeImages(h));
@@ -234,7 +241,7 @@ for (const l of LANGS) {
   const h = fill(blogTpl, {
     LANG: l,
     HEAD: head({ lang: l, title: t.blogTitle, desc: t.blogDesc, canonical: blogPath(l), alternates: BLOG_ALT, xdefault: "/ru/blog/", image: "/assets/og/blog.jpg", imageAlt: t.blogH1, jsonld }),
-    HEADER: siteHeader(l, BLOG_ALT, true),
+    HEADER: siteHeader(l, BLOG_ALT, "blog"),
     CRUMBS: crumbs(l, items),
     EYEBROW: t.blog, H1: esc(t.blogH1), LEDE: esc(t.blogLede),
     POSTS: POSTS.map(p => card(p, l, "h2")).join(""),
@@ -264,7 +271,8 @@ for (const p of POSTS) {
     const items = [{ name: t.home, href: homePath(l) }, { name: t.blog, href: blogPath(l) }, { name: title, href: postPath(p, l) }];
     let body = pick(p.body, l)
       .replace(/href="index\.html#/g, `href="${homePath(l)}#`)
-      .replace(/href="index\.html"/g, `href="${homePath(l)}"`);
+      .replace(/href="index\.html"/g, `href="${homePath(l)}"`)
+      .replace(/href="pricing\.html"/g, `href="${pricingPath(l)}"`);
     const [c, bg] = COLORS[p.color] || COLORS.blue;
     const rel = related(p);
     const jsonld = [
@@ -278,7 +286,7 @@ for (const p of POSTS) {
     const h = fill(postTpl, {
       LANG: l,
       HEAD: head({ lang: l, title: seoTitle, ogTitle: title, desc, canonical: postPath(p, l), alternates: alts, xdefault: alts.ru, ogType: "article", image: og, imageAlt, published: p.date, modified, jsonld }),
-      HEADER: siteHeader(l, alts, true),
+      HEADER: siteHeader(l, alts, "blog"),
       CRUMBS: crumbs(l, items),
       COVER: cover(p, l, true),
       META_STYLE: `--c:${c};--bgc:${bg}`,
@@ -292,6 +300,78 @@ for (const p of POSTS) {
       FOOTER: footerHTML(l, POSTS, alts)
     });
     write(`${l}/blog/${p.slugs[l]}/index.html`, sizeImages(h));
+  }
+}
+
+/* ---------- stand-alone pages: /{lang}/pricing/ and /{lang}/faq/ (content in src/pages.js) ---------- */
+const pageTpl = read("src/templates/page.html");
+const PRICING_ALT = Object.fromEntries(LANGS.map(l => [l, pricingPath(l)]));
+const FAQ_ALT = Object.fromEntries(LANGS.map(l => [l, faqPath(l)]));
+// {{PRICING}} {{FAQ}} {{BLOG}} {{HOME}} inside page texts → the page in the same language
+const pageLinks = (s, l) => s.replace(/\{\{(PRICING|FAQ|BLOG|HOME)\}\}/g, (m, k) => ({ PRICING: pricingPath(l), FAQ: faqPath(l), BLOG: blogPath(l), HOME: homePath(l) }[k]));
+const plain = s => s.replace(/<[^>]+>/g, "");
+const qaHTML = (items, l) => `<div class="faq faq-list in">${items.map(([q, a]) => `<details><summary><span>${q}</span><span class="ms">add</span></summary><p>${pageLinks(a, l)}</p></details>`).join("")}</div>`;
+const qaLD = (items, l) => ({ "@context": "https://schema.org", "@type": "FAQPage", inLanguage: l, mainEntity: items.map(([q, a]) => ({ "@type": "Question", name: plain(q), acceptedAnswer: { "@type": "Answer", text: plain(pageLinks(a, l)) } })) });
+const cell = (v, t) => v === 1 ? `<span class="ms yes">check_circle</span>` : v === 0 ? `<span class="ms no">remove</span>` : v === "more" ? `<b class="more">${t.more}</b>` : `<b>${v}</b>`;
+
+function pricingHTML(t, l) {
+  const li = (icon, s) => `<li><span class="ms">${icon}</span><span>${s}</span></li>`;
+  return `<div class="plan-grid">
+  <div class="plan">
+    <div class="plan-h"><b>Free</b><span>${t.free}</span></div>
+    <div class="meter"><div><span>${t.ch}</span><span>3 / 5</span></div><div class="bar"><i style="width:60%"></i></div></div>
+    <div class="meter"><div><span>${t.pl}</span><span>4 / 10</span></div><div class="bar"><i style="width:40%"></i></div></div>
+    <ul>${t.freeList.map(s => li("check_circle", s)).join("")}</ul>
+  </div>
+  <div class="plan pro">
+    <div class="plan-h"><span class="pro-pill"><span class="ms">workspace_premium</span>Pro</span><span>${t.price}</span></div>
+    <ul>${t.proList.map((s, i) => li(["schedule", "hourglass_bottom", "bedtime", "nights_stay"][i], s)).join("")}</ul>
+    <small class="note">${t.proNote}</small>
+  </div>
+</div>
+<h2 class="info-h2">${t.cmpH}</h2>
+<div class="price-cmp-wrap"><table class="price-cmp">
+  <thead><tr><th>${t.cmpFeature}</th><th>Free</th><th class="pro">Pro</th></tr></thead>
+  <tbody>${t.cmp.map(([f, a, b]) => `<tr><td>${f}</td><td>${cell(a, t)}</td><td class="pro">${cell(b, t)}</td></tr>`).join("")}</tbody>
+</table></div>
+<h2 class="info-h2">${t.limH}</h2>
+<div class="lim-grid four">${t.lims.map(([ic, c, bg, h, p]) => `<div class="lim" style="--c:${c};--bgc:${bg}"><span class="ic"><span class="ms">${ic}</span></span><div><h3>${h}</h3><p>${p}</p></div></div>`).join("")}</div>
+<h2 class="info-h2">${t.faqH}</h2>
+${qaHTML(t.faq, l)}
+<div class="page-end"><div><b>${t.endT}</b><p>${t.endS}</p></div><a class="btn primary" href="${faqPath(l)}"><span>${t.endB}</span><span class="ms">arrow_forward</span></a></div>`;
+}
+
+function faqHTML(t, l) {
+  return `<nav class="faq-jump" aria-label="${t.jump}">${t.groups.map(g => `<a href="#${g.id}" style="--c:${g.c};--bgc:${g.bg}"><span class="ms">${g.icon}</span>${g.t}</a>`).join("")}</nav>
+${t.groups.map(g => `<section class="faq-group" id="${g.id}" style="--c:${g.c};--bgc:${g.bg}">
+<h2 class="fg-h"><span class="ms">${g.icon}</span>${g.t}</h2>
+${qaHTML(g.items, l)}
+</section>`).join("\n")}
+<div class="page-end"><div><b>${t.endT}</b><p>${t.endS}</p></div><div class="page-end-btns"><a class="btn primary" href="${homePath(l)}#how"><span>${t.endB}</span><span class="ms">arrow_forward</span></a><a class="btn ghost" href="${blogPath(l)}"><span class="ms">auto_stories</span><span>${t.endB2}</span></a></div></div>`;
+}
+
+for (const [page, alts, icon, render, faqItems] of [
+  ["pricing", PRICING_ALT, "workspace_premium", pricingHTML, t => t.faq],
+  ["faq", FAQ_ALT, "help", faqHTML, t => t.groups.flatMap(g => g.items)]
+]) {
+  for (const l of LANGS) {
+    const t = PAGES[page][l];
+    const items = [{ name: L[l].home, href: homePath(l) }, { name: t.crumb, href: alts[l] }];
+    const jsonld = [
+      { "@context": "https://schema.org", "@type": "WebPage", "@id": abs(alts[l]) + "#webpage", url: abs(alts[l]), name: t.title, description: t.desc, inLanguage: l, isPartOf: { "@id": SITE + "/#website" }, about: { "@id": SITE + "/#app" }, publisher: ORG },
+      breadcrumbLD(items),
+      qaLD(faqItems(t), l)
+    ];
+    const h = fill(pageTpl, {
+      LANG: l, PAGE: page, ICON: icon,
+      HEAD: head({ lang: l, title: `${t.title} | Mitti GO`, desc: t.desc, canonical: alts[l], alternates: alts, xdefault: alts.ru, image: "/assets/og/mitti-go.jpg", imageAlt: t.h1, jsonld }),
+      HEADER: siteHeader(l, alts, page),
+      CRUMBS: crumbs(l, items),
+      EYEBROW: esc(t.eyebrow), H1: esc(t.h1), LEDE: esc(t.lede),
+      CONTENT: render(t, l),
+      FOOTER: footerHTML(l, POSTS, alts)
+    });
+    write(`${l}/${page}/index.html`, sizeImages(h));
   }
 }
 
@@ -342,7 +422,7 @@ const NF = {
 const nfVariant = l => {
   const t = NF[l];
   return `<div class="nf-lang" data-nf="${l}" lang="${l}">
-${siteHeader(l, HOME_ALT, false)}
+${siteHeader(l, HOME_ALT, "")}
 <main id="top" class="nf-page">
 <section class="nf-hero">
   <div class="blob b1"></div><div class="blob b2"></div>
@@ -425,6 +505,8 @@ ${alternates ? LANGS.map(l => `    <xhtml:link rel="alternate" hreflang="${l}" h
 const newest = POSTS.reduce((m, p) => ((p.updated || p.date) > m ? (p.updated || p.date) : m), "0000");
 const entries = [urlEntry("/", HOME_ALT, "/", TODAY, "1.0")];
 for (const l of LANGS) entries.push(urlEntry(homePath(l), HOME_ALT, "/", TODAY, "1.0"));
+for (const l of LANGS) entries.push(urlEntry(pricingPath(l), PRICING_ALT, PRICING_ALT.ru, TODAY, "0.8"));
+for (const l of LANGS) entries.push(urlEntry(faqPath(l), FAQ_ALT, FAQ_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(blogPath(l), BLOG_ALT, "/ru/blog/", newest, "0.8"));
 for (const p of POSTS) {
   const alts = Object.fromEntries(LANGS.map(l => [l, postPath(p, l)]));
