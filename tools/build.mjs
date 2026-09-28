@@ -36,7 +36,13 @@ function brandText(html) {
   }).join("");
   return html.slice(0, at) + body;
 }
-const write = (p, s) => { if (p.endsWith(".html")) s = brandText(logoHeadings(s)); const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
+const write = (p, s) => {
+  if (p.endsWith(".html")) {
+    s = brandText(logoHeadings(s));
+    // Metrika <noscript> pixel: first thing inside <body> on pages that load the counter
+    if (s.includes("mc.yandex.ru/metrika/tag.js")) s = s.replace(/<body\b[^>]*>/, m => `${m}\n${METRIKA_NOSCRIPT}`);
+  }
+  const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
 const written = [];
 const TODAY = new Date().toISOString().slice(0, 10);
 // page <title>: add the brand at the end only when the title doesn't name it already (no "… Mitti GO … | Mitti GO")
@@ -147,12 +153,29 @@ function head(o) {
     // self-hosted fonts (tools/fonts.py): no third-party requests before the first paint
     ...fontPreloads(o.lang).map(f => `<link rel="preload" href="${fontURL(f)}" as="font" type="font/woff2" crossorigin>`),
     `<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">`,
+    o.noMetrika ? "" : METRIKA,
     `<style>${FONTS_CSS}</style>`,
     ...(o.jsonld || []).map(j => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, "\\u003c")}</script>`)
   ];
   return tags.filter(Boolean).join("\n");
 }
 const BUILD_ID = Date.now().toString(36);
+/* Yandex.Metrika (counter 113131100): the script goes into <head>, the <noscript> pixel right after <body> (see write()).
+   Not on the root language chooser — it redirects at once, so a visit would be counted twice. */
+const METRIKA_ID = 113131100;
+const METRIKA = `<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${METRIKA_ID}', 'ym');
+
+    ym(${METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->`;
+const METRIKA_NOSCRIPT = `<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
 // @font-face rules from tools/fonts.py, inlined into every page (compact: one line per rule)
 // font URLs carry a content hash (?v=…), so an updated icon set is never taken from the browser cache
 const fontURL = f => `/assets/fonts/${f}?v=${fileHash("/assets/fonts/" + f)}`;
@@ -387,7 +410,7 @@ const CHOOSER = {
 write("index.html", `<!doctype html>
 <html lang="ru">
 <head>
-${head({ title: "Безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids | Mitti GO", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
+${head({ title: "Безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids | Mitti GO", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", noMetrika: true, jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
 <script>
 /* send visitors to their language: saved choice → browser language → Russian; keeps #anchors from old links.
    Search bots are not redirected: they index this page as the x-default chooser,
