@@ -303,11 +303,13 @@ write("index.html", `<!doctype html>
 <head>
 ${head({ title: "Mitti GO — безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
 <script>
-/* returning visitors go straight to the language they chose before (keeps #anchors from old links).
-   No redirect by browser language: first-time visitors and search bots see this chooser,
+/* send visitors to their language: saved choice → browser language → Russian; keeps #anchors from old links.
+   Search bots are not redirected: they index this page as the x-default chooser,
    so Google does not merge the root with one of the language versions. */
-(function(){var l=null;try{l=localStorage.getItem("mg-lang")}catch(e){}
-if(["uz","ru","en"].indexOf(l)>=0)location.replace("/"+l+"/"+location.hash)})();
+(function(){if(/bot|crawl|spider|slurp|lighthouse|inspect/i.test(navigator.userAgent))return;
+var ls=["uz","ru","en"],l=null;try{l=localStorage.getItem("mg-lang")}catch(e){}
+if(ls.indexOf(l)<0){var n=(navigator.languages||[navigator.language||""]);for(var i=0;i<n.length&&ls.indexOf(l)<0;i++)l=String(n[i]).slice(0,2).toLowerCase()}
+if(ls.indexOf(l)<0)l="ru";document.documentElement.style.visibility="hidden";location.replace("/"+l+"/"+location.hash)})();
 </script>
 </head>
 <body class="chooser">
