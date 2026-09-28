@@ -95,7 +95,7 @@ function mgRow(cls, title, items){
   return `<div class="row-box ${cls}"><h2>${title}</h2><div class="rb-row">${items.map(([img,t,s])=>`<div class="rb-card"><div class="rb-h"><img src="${img}" alt=""><b>${t}</b></div><p>${s}</p></div>`).join("")}</div></div>`;
 }
 function mgCallout(o){
-  return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"/assets/images/mascot.png"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
+  return `<div class="mg-callout${o.img?" photo":""}"><img src="${o.img||"/assets/images/mascot.webp"}" alt=""><div><b>${o.title}</b><p>${o.text}</p><span class="pill"><span class="ms">verified_user</span>${o.pill}</span>${o.link?`<a href="${o.href||"index.html"}">${o.link} →</a>`:""}</div></div>`;
 }
 function mgFlow(cols){
   return `<div class="mgflow">${cols.map(c=>`<div class="mgflow-col" style="--c:${c.c};--bgc:${c.bg}"><div class="mgflow-h"><span class="ms">${c.icon}</span>${c.title}</div><ol>${c.steps.map(([ic,t])=>`<li><span class="ms">${ic}</span>${t}</li>`).join("")}</ol></div>`).join("")}</div>`;

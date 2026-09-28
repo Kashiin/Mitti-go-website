@@ -92,7 +92,7 @@ function footerHTML(l, posts, alternates) {
   const langs = LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""}>${LANG_NAMES[x]}</a>`).join("");
   return `<div class="wrap">
 <div class="ft-top">
- <div class="ft-brand"><a href="${home}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150" loading="lazy"><img class="logo d" src="/assets/images/logo-white.png" alt="Mitti GO" width="439" height="150" loading="lazy"></a>
+ <div class="ft-brand"><a href="${home}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="lazy"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="lazy"></a>
   <p>${t.tag}</p><div class="stores">${store("google-play.svg", "Google Play")}${store("app-store.svg", "App Store")}</div></div>
  <nav class="ft-col" aria-label="${t.product}"><h2>${t.product}</h2><ul><li><a href="${home}">${t.links.home}</a></li>${["how", "model", "player", "screentime", "plans"].map(link).join("")}</ul></nav>
  <nav class="ft-col" aria-label="${t.parents}"><h2>${t.parents}</h2><ul>${["parents", "privacy", "devices", "faq"].map(link).join("")}</ul></nav>

@@ -32,6 +32,24 @@ print("logo-main", fit_height(IMG / "logo-main.png", 150))
 print("logo-white", fit_height(IMG / "logo-white.png", 150))
 print("mascot", fit_width(IMG / "mascot.png", 640))
 
+
+def to_webp(src, dst, height=None, width=None, quality=90):
+    """light webp copy for the pages (the PNGs stay as sources for icons, OG images and schema.org)"""
+    im = Image.open(IMG / src).convert("RGBA")
+    if height and im.height > height:
+        im = im.resize((round(im.width * height / im.height), height), Image.LANCZOS)
+    if width and im.width > width:
+        im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
+    im.save(IMG / dst, quality=quality, alpha_quality=90, method=6)
+    return im.size
+
+
+# page images: logos are shown at most 52 px high → 104 px is enough for retina
+print("logo-main.webp", to_webp("logo-main.png", "logo-main.webp", height=104, quality=82))
+print("logo-white.webp", to_webp("logo-white.png", "logo-white.webp", height=104, quality=82))
+print("mascot.webp", to_webp("mascot.png", "mascot.webp", width=640, quality=82))
+print("mascot-sad.webp", to_webp("mascot-sad.png", "mascot-sad.webp", width=640, quality=82))
+
 # 2) icons from the mascot (trimmed, centred on a square)
 src = Image.open(IMG / "mascot.png").convert("RGBA")
 src = src.crop(src.getchannel("A").point(lambda a: 255 if a > 16 else 0).getbbox())

@@ -1,5 +1,5 @@
 (function(){
-const MASCOT="/assets/images/mascot.png";
+const MASCOT="/assets/images/mascot.webp";
 const UI={
  ru:{libT:"Библиотека",libCh:"Каналы",libPl:"Плейлисты",libEmpty:"Родитель ещё не добавил каналы",onlyYours:"Только с ваших каналов",noShorts:"Включите канал, чтобы появились Shorts",all:"Все",keep:"Продолжить",empty:"Пока нечего смотреть",emptySub:"Попросите родителя добавить каналы",tabs:["Главная","Shorts","Библиотека","Профиль"],inc:"Включён",hid:"Скрыт",vids:"видео"},
  uz:{libT:"Kutubxona",libCh:"Kanallar",libPl:"Pleylistlar",libEmpty:"Ota-ona hali kanal qo‘shmagan",onlyYours:"Faqat sizning kanallaringizdan",noShorts:"Shorts chiqishi uchun kanalni yoqing",all:"Hammasi",keep:"Davom etish",empty:"Hozircha ko‘radigan narsa yo‘q",emptySub:"Ota-onangizdan kanal qo‘shishni so‘rang",tabs:["Bosh sahifa","Shorts","Kutubxona","Profil"],inc:"Ko‘rinadi",hid:"Yashirin",vids:"video"},

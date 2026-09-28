@@ -126,16 +126,19 @@ function head(o) {
     `<meta name="twitter:image:alt" content="${esc(o.imageAlt || "Mitti GO")}">`,
     // apply the saved theme before first paint (no light/dark flash)
     `<script>try{var t=localStorage.getItem("mg-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>`,
-    `<link rel="preconnect" href="https://fonts.googleapis.com">`,
-    `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`,
-    `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Caveat:wght@600;700&display=swap">`,
-    `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0&display=block">`,
+    // self-hosted fonts (tools/fonts.py): no third-party requests before the first paint
+    ...fontPreloads(o.lang).map(f => `<link rel="preload" href="/assets/fonts/${f}" as="font" type="font/woff2" crossorigin>`),
     `<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">`,
+    `<style>${FONTS_CSS}</style>`,
     ...(o.jsonld || []).map(j => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, "\\u003c")}</script>`)
   ];
   return tags.filter(Boolean).join("\n");
 }
 const BUILD_ID = Date.now().toString(36);
+// @font-face rules from tools/fonts.py, inlined into every page (compact: one line per rule)
+const FONTS_CSS = read("src/fonts.css").replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s*\n\s*/g, "").replace(/:\s+/g, ":").replace(/;\}/g, "}").trim();
+// fonts needed for the first screen: icons + Nunito (latin for every language, cyrillic for Russian)
+const fontPreloads = l => ["material-symbols-icons.woff2", "nunito-latin.woff2"].concat(l === "ru" ? ["nunito-cyrillic.woff2"] : []);
 
 /* ---------- shared header for blog / article pages ---------- */
 function langNav(l, alternates) {
@@ -150,7 +153,7 @@ function siteHeader(l, alternates, onBlog) {
   const links = navLinks(l, onBlog);
   return `<header class="top">
   <div class="wrap">
-    <a href="${homePath(l)}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150"><img class="logo d" src="/assets/images/logo-white.png" alt="Mitti GO" width="439" height="150"></a>
+    <a href="${homePath(l)}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="eager" fetchpriority="high"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="eager"></a>
     <nav class="nav" aria-label="Main">
       ${links}
     </nav>
@@ -314,8 +317,8 @@ if(ls.indexOf(l)<0)l="ru";document.documentElement.style.visibility="hidden";loc
 </head>
 <body class="chooser">
 <main class="chooser-main">
-  <img class="chooser-logo logo l" src="/assets/images/logo-main.png" alt="Mitti GO" width="449" height="150"><img class="chooser-logo logo d" src="/assets/images/logo-white.png" alt="Mitti GO" width="439" height="150">
-  <img class="chooser-mascot" src="/assets/images/mascot.png" alt="" width="640" height="378">
+  <img class="chooser-logo logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="eager"><img class="chooser-logo logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="eager">
+  <img class="chooser-mascot" src="/assets/images/mascot.webp" alt="" width="640" height="378">
   <h1>Mitti GO</h1>
   <nav class="chooser-langs" aria-label="Language">
 ${LANGS.map(l => `    <a href="/${l}/" hreflang="${l}" lang="${l}"><b>${CHOOSER[l].name}</b><span>${CHOOSER[l].line}</span></a>`).join("\n")}
@@ -354,7 +357,7 @@ ${siteHeader(l, HOME_ALT, false)}
       </div>
     </div>
     <div class="nf-art" aria-hidden="true">
-      <span class="nf-digit">4</span><img src="/assets/images/mascot-sad.png" alt="" width="640" height="373"><span class="nf-digit">4</span>
+      <span class="nf-digit">4</span><img src="/assets/images/mascot-sad.webp" alt="" width="640" height="373"><span class="nf-digit">4</span>
       <span class="nf-star s1 ms">star</span><span class="nf-star s2 ms">auto_awesome</span><span class="nf-star s3 ms">star</span>
     </div>
   </div>
