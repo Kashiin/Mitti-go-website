@@ -39,6 +39,8 @@ function brandText(html) {
 const write = (p, s) => { if (p.endsWith(".html")) s = brandText(logoHeadings(s)); const f = path.join(ROOT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); written.push(p); };
 const written = [];
 const TODAY = new Date().toISOString().slice(0, 10);
+// page <title>: add the brand at the end only when the title doesn't name it already (no "… Mitti GO … | Mitti GO")
+const brandTitle = s => /Mitti[ -]GO/.test(s) ? s : `${s} | Mitti GO`;
 const OG_LOCALE = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" };
 const fill = (tpl, map) => {
   const out = tpl.replace(/\{\{([A-Z0-9_]+)\}\}/g, (m, k) => { if (!(k in map)) throw new Error("no value for " + k); return map[k]; });
@@ -118,6 +120,7 @@ function head(o) {
     alt,
     `<meta name="theme-color" content="#0078FF">`,
     `<meta name="google-site-verification" content="rJNAsnwTCOdMKbBCNrRhRH9m7SymnOPFsV2at637qJI">`,
+    `<meta name="yandex-verification" content="eb716e5b70ac3ca6">`,
     `<link rel="icon" href="/favicon.ico" sizes="any">`,
     `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">`,
     `<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">`,
@@ -182,9 +185,9 @@ const breadcrumbLD = items => ({ "@context": "https://schema.org", "@type": "Bre
 
 /* ---------- landing pages ---------- */
 const HOME_SEO = {
-  ru: { title: "Mitti GO — безопасное видео для детей | Родительский контроль", desc: "Mitti GO — приложение для безопасного просмотра детских видео. Родители выбирают разрешённый контент, управляют просмотром и экранным временем ребёнка.", appDesc: "Приложение для безопасного просмотра детских видео: ребёнок видит только каналы и плейлисты, которые разрешили родители." },
-  uz: { title: "Mitti GO — bolalar uchun xavfsiz video | Ota-ona nazorati", desc: "Mitti GO — bolalar uchun xavfsiz video ilovasi. Ota-onalar ruxsat etilgan kontentni tanlaydi, ko‘rishni va ekran vaqtini boshqaradi.", appDesc: "Bolalar uchun xavfsiz video ilovasi: bola faqat ota-onasi ruxsat bergan kanal va pleylistlarni ko‘radi." },
-  en: { title: "Mitti GO — Safe Videos for Kids | Parental Controls", desc: "Mitti GO is a safe video app for kids. Parents choose approved content, manage viewing and control screen time on phones, tablets and TV.", appDesc: "A safe video app for kids: children see only the channels and playlists their parents approved." }
+  ru: { title: "Безопасное видео для детей и родительский контроль | Mitti GO", desc: "Mitti GO — приложение для безопасного просмотра детских видео. Родители выбирают разрешённый контент, управляют просмотром и экранным временем ребёнка.", appDesc: "Приложение для безопасного просмотра детских видео: ребёнок видит только каналы и плейлисты, которые разрешили родители." },
+  uz: { title: "Bolalar uchun xavfsiz video va ota-ona nazorati | Mitti GO", desc: "Mitti GO — bolalar uchun xavfsiz video ilovasi. Ota-onalar ruxsat etilgan kontentni tanlaydi, ko‘rishni va ekran vaqtini boshqaradi.", appDesc: "Bolalar uchun xavfsiz video ilovasi: bola faqat ota-onasi ruxsat bergan kanal va pleylistlarni ko‘radi." },
+  en: { title: "Safe Videos for Kids with Parental Controls | Mitti GO", desc: "Mitti GO is a safe video app for kids. Parents choose approved content, manage viewing and control screen time on phones, tablets and TV.", appDesc: "A safe video app for kids: children see only the channels and playlists their parents approved." }
 };
 const HOME_ALT = { uz: "/uz/", ru: "/ru/", en: "/en/" };
 const landingTpl = read("src/templates/landing.html");
@@ -263,7 +266,7 @@ for (const p of POSTS) {
   for (const l of LANGS) {
     const t = L[l];
     const title = pick(p.title, l);
-    const seoTitle = (p.seo && pick(p.seo.title, l)) || `${title} | Mitti GO`;
+    const seoTitle = (p.seo && pick(p.seo.title, l)) || brandTitle(title);
     const desc = (p.seo && pick(p.seo.description, l)) || pick(p.excerpt, l);
     const modified = p.updated || p.date;
     const og = `/assets/og/post-${p.slug}.jpg`;
@@ -364,7 +367,7 @@ for (const [page, alts, icon, render, faqItems] of [
     ];
     const h = fill(pageTpl, {
       LANG: l, PAGE: page, ICON: icon,
-      HEAD: head({ lang: l, title: `${t.title} | Mitti GO`, desc: t.desc, canonical: alts[l], alternates: alts, xdefault: alts.ru, image: "/assets/og/mitti-go.jpg", imageAlt: t.h1, jsonld }),
+      HEAD: head({ lang: l, title: brandTitle(t.title), desc: t.desc, canonical: alts[l], alternates: alts, xdefault: alts.ru, image: "/assets/og/mitti-go.jpg", imageAlt: t.h1, jsonld }),
       HEADER: siteHeader(l, alts, page),
       CRUMBS: crumbs(l, items),
       EYEBROW: esc(t.eyebrow), H1: esc(t.h1), LEDE: esc(t.lede),
@@ -384,7 +387,7 @@ const CHOOSER = {
 write("index.html", `<!doctype html>
 <html lang="ru">
 <head>
-${head({ title: "Mitti GO — безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
+${head({ title: "Безопасное видео для детей · Bolalar uchun xavfsiz video · Safe videos for kids | Mitti GO", desc: "Mitti GO — безопасное видео для детей с родительским контролем. Bolalar uchun xavfsiz video ilovasi. A safe video app for kids with parental controls. Выберите язык · Tilni tanlang · Choose a language.", canonical: "/", alternates: HOME_ALT, xdefault: "/", image: "/assets/og/mitti-go.jpg", jsonld: [{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebSite", "@id": SITE + "/#website", name: "Mitti GO", url: SITE + "/", inLanguage: LANGS, publisher: { "@id": ORG["@id"] } }] }] })}
 <script>
 /* send visitors to their language: saved choice → browser language → Russian; keeps #anchors from old links.
    Search bots are not redirected: they index this page as the x-default chooser,

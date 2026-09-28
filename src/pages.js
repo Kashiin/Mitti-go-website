@@ -48,7 +48,7 @@ ru: {
   endT: "Остались вопросы?", endS: "Мы собрали ответы на всё, что обычно спрашивают родители: каналы, Shorts, PIN, приватность и устройства.", endB: "Все вопросы и ответы"
 },
 uz: {
-  title: "Mitti GO tariflari: nima bepul va Pro nima beradi",
+  title: "Tariflar: Mitti GO’da nima bepul va Pro nima beradi",
   desc: "Mitti GO tariflari: bepul — 5 tagacha kanal, 10 ta pleylist va bolani to‘liq himoya qilish. Pro ekran vaqtini qo‘shadi: kunlik limit, uyqu rejimi va yumshoq «Vaqt tugadi» ekrani.",
   crumb: "Tariflar", eyebrow: "Tariflar", h1: "Mitti GO tariflari",
   lede: "Himoya va xavfsizlik hech qachon pullik bo‘lmaydi. Xotirjam tomosha uchun bepul tarif yetarli, Pro esa ekran vaqtini qo‘shadi.",
@@ -90,7 +90,7 @@ uz: {
   endT: "Savollaringiz qoldimi?", endS: "Ota-onalar odatda so‘raydigan hamma narsaga javob to‘pladik: kanallar, Shorts, PIN, maxfiylik va qurilmalar.", endB: "Barcha savol-javoblar"
 },
 en: {
-  title: "Mitti GO Plans: What's Free and What Pro Adds",
+  title: "Plans and Pricing: What's Free in Mitti GO and What Pro Adds",
   desc: "Mitti GO plans: free includes up to 5 channels, 10 playlists and every child-safety feature. Pro adds Screen Time — a daily limit, bedtime hours and a gentle Time's Up screen.",
   crumb: "Plans", eyebrow: "Plans", h1: "Mitti GO plans",
   lede: "Protection and security are never behind a paywall. The free plan is enough for calm, safe watching; Pro adds Screen Time.",
@@ -183,7 +183,7 @@ ru: {
   endT: "Не нашли ответ?", endS: "Посмотрите, как устроен Mitti GO, или загляните в блог — там советы для родителей о детском контенте и экранном времени.", endB: "Как это работает", endB2: "Открыть блог"
 },
 uz: {
-  title: "Mitti GO haqida savol-javoblar — kanallar, Shorts, PIN va maxfiylik",
+  title: "Savol-javoblar: Mitti GO kanallari, Shorts, PIN va maxfiylik",
   desc: "Ota-onalarning Mitti GO haqidagi ko‘p beriladigan savollariga javoblar: kanal qanday qo‘shiladi, Shorts qanday o‘chiriladi, PIN unutilsa nima qilish kerak, qanday ma’lumotlarni to‘plamaymiz va ilova qaysi qurilmalarda ishlaydi.",
   crumb: "Savollar", eyebrow: "Savol-javoblar", h1: "Mitti GO haqida savol-javoblar",
   lede: "Ota-onalar odatda so‘raydigan hamma narsa: kanal va pleylistlar, tomosha, ota-ona nazorati, maxfiylik va qurilmalar.",
@@ -230,7 +230,7 @@ uz: {
   endT: "Javob topmadingizmi?", endS: "Mitti GO qanday ishlashini ko‘ring yoki blogga kiring — u yerda bolalar kontenti va ekran vaqti haqida ota-onalar uchun maslahatlar bor.", endB: "Qanday ishlaydi", endB2: "Blogni ochish"
 },
 en: {
-  title: "Mitti GO FAQ — Channels, Shorts, PIN and Privacy",
+  title: "FAQ About Mitti GO: Channels, Shorts, PIN and Privacy",
   desc: "Answers to parents' common questions about Mitti GO: how to add a channel, turn off Shorts, what to do if you forget the PIN, what data we don't collect and which devices the app runs on.",
   crumb: "FAQ", eyebrow: "Questions & answers", h1: "Mitti GO questions and answers",
   lede: "Everything parents usually ask: channels and playlists, watching, parental controls, privacy and devices.",
