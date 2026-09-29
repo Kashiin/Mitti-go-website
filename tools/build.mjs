@@ -153,6 +153,7 @@ function head(o) {
     // self-hosted fonts (tools/fonts.py): no third-party requests before the first paint
     ...fontPreloads(o.lang).map(f => `<link rel="preload" href="${fontURL(f)}" as="font" type="font/woff2" crossorigin>`),
     `<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">`,
+    o.noMetrika ? "" : GTAG,
     o.noMetrika ? "" : METRIKA,
     `<style>${FONTS_CSS}</style>`,
     ...(o.jsonld || []).map(j => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, "\\u003c")}</script>`)
@@ -175,7 +176,18 @@ const METRIKA = `<!-- Yandex.Metrika counter -->
     ym(${METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
 <!-- /Yandex.Metrika counter -->`;
-const METRIKA_NOSCRIPT = `<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
+/* Google Analytics 4 (G-R2BKTV7M09): same pages as Metrika (not on the root chooser) */
+const GA_ID = "G-R2BKTV7M09";
+const GTAG = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${GA_ID}');
+</script>`;
+const METRIKA_NOSCRIPT =`<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
 // @font-face rules from tools/fonts.py, inlined into every page (compact: one line per rule)
 // font URLs carry a content hash (?v=…), so an updated icon set is never taken from the browser cache
 const fontURL = f => `/assets/fonts/${f}?v=${fileHash("/assets/fonts/" + f)}`;
