@@ -321,6 +321,129 @@ ${t.main}
 ${mgCallout({img:B+"dev-balance.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
 }
 
+/* "Should parents watch YouTube with their child?" post: one layout, texts per language */
+const TW_TXT = {
+ru: {
+ intro: `<p>Да, особенно в дошкольном возрасте. Совместный просмотр помогает ребёнку не просто смотреть, а учиться: лучше понимать увиденное, развивать речь и мышление. А ещё он делает просмотр безопаснее.</p>
+<p>Это не значит, что нужно сидеть рядом каждую минуту. Но первые серии нового канала, новые темы и вечерний мультфильм перед сном лучше смотреть вместе. Рассказываем почему и как сделать такое время полезным.</p>`,
+ whyH: "Почему важно смотреть вместе",
+ why: [["psychology","#16C869","Ребёнок лучше понимает контент","Можно объяснить, задать вопросы, обсудить, что он увидел. Рядом со взрослым легче разобраться в сюжете."],["forum","var(--blue)","Развивается речь","Вы объясняете новые слова, а ребёнок пересказывает и отвечает на вопросы."],["shield","var(--purple)","Меньше рисков","Вы сразу замечаете, если видео не подходит или вызывает тревогу."],["favorite","#E0457B","Крепнет связь","Совместный просмотр — это время для общения, доверия и приятных моментов."],["star","#E8A800","Появляются полезные привычки","Вместе выбираете каналы, договариваетесь о правилах и лимитах."]],
+ givesH: "Что даёт совместный просмотр ребёнку",
+ gives: ["Развивает речь и словарный запас", "Учит задавать вопросы и думать", "Помогает различать реальность и вымысел", "Формирует правильное отношение к экранному времени", "Делает просмотр более спокойным и осознанным"],
+ risksH: "Риски, если ребёнок смотрит один",
+ risksLead: "В обычном YouTube ребёнок может случайно наткнуться на неподходящий контент:",
+ risksList: ["слишком быстрые и перегружающие ролики", "пугающие или агрессивные сцены", "рекламу и нежелательные рекомендации", "контент, не соответствующий возрасту"],
+ risks: [["help","var(--purple)","Неподходящий контент","Даже в обычном YouTube это всё ещё возможно: алгоритм не знает возраст ребёнка."],["schedule","var(--blue)","Сложнее контролировать время","Ребёнок может смотреть дольше, чем нужно, — одно видео сменяет другое."],["track_changes","#E0457B","Меньше обсуждения и обучения","Просмотр превращается в пассивное время: никто не объяснит и не спросит."],["bolt","#E8A800","Может появиться привычка «ещё и ещё»","Без контроля ребёнок чаще просит добавки и тяжелее отрывается от экрана."]],
+ doH: "Что делать во время просмотра",
+ do: [["forum","var(--blue)","Обсуждайте","Спрашивайте: «Как ты думаешь, что сейчас произошло?»"],["help","#E8A800","Отвечайте на вопросы","Даже простые вопросы важны для развития."],["mood","#0A8C4B","Следите за эмоциями ребёнка","Если что-то пугает или непонятно — объясните или переключите."],["pause_circle","var(--purple)","Делайте паузы","Можно остановить видео и обсудить интересный момент."],["favorite","#E0457B","Показывайте личный пример","Спокойное и внимательное отношение к экрану помогает ребёнку сформировать здоровые привычки."]],
+ talkH: "О чём говорить во время просмотра",
+ talkLead: "Простые вопросы превращают мультфильм в разговор:",
+ talk: ["Кто герой? Что он делает?", "Какие эмоции он чувствует?", "Почему герой поступил так?", "Чему мы можем научиться?", "Что тебе больше всего понравилось?"],
+ timeH: "Сколько времени смотреть вместе",
+ timeP: "Строгих правил нет, но важно соблюдать баланс. Для дошкольников ВОЗ рекомендует не больше часа экранного времени в день.",
+ ages: [["2–4 года","до 1 часа в день","по рекомендации ВОЗ",true],["5–6 лет","около 1–1,5 часа в день","ориентир, лучше меньше",true]],
+ timeNote: "Важно не только время, но и то, <b>что</b> и <b>как</b> смотрит ребёнок. Подробнее — в статье <a href=\"/ru/blog/ekrannoe-vremya-dlya-detej/\">«Сколько экранного времени нужно дошкольнику»</a>.",
+ chooseH: "Как выбирать видео и каналы",
+ choose: ["Подходят по возрасту", "Развивают и обучают", "Не содержат пугающих или агрессивных сцен"],
+ chooseMore: "Готовая подборка — в статье <a href=\"/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/\">«10 безопасных YouTube-каналов для дошкольников»</a>, а быстрый способ проверить любой канал — в <a href=\"/ru/blog/kak-vybrat-kanal-dlya-rebenka/\">«5 простых вопросах»</a>.",
+ dailyH: "Советы на каждый день",
+ daily: ["<b>Выбирайте качественные каналы</b> — и только их.", "<b>Смотрите короткие и понятные видео</b>, особенно с малышами.", "<b>Делайте паузы и обсуждайте</b> — «Что происходит?», «Как ты думаешь?».", "<b>Связывайте увиденное с реальной жизнью</b>: нашли в мультфильме — найдите и дома.", "<b>Предлагайте занятие после просмотра</b>: игру, прогулку или творчество.", "<b>Следите за временем</b> и договоритесь о нём заранее."],
+ mgH: "Как помогает Mitti-GO",
+ mgP: "Mitti-GO создан специально для детей, чтобы просмотр был безопасным, простым и полезным — даже когда вы не рядом.",
+ mg: [["verified_user","var(--blue)","Только проверенные каналы","Ребёнок видит только то, что разрешили вы."],["shield_person","#0A8C4B","Родительский контроль","Настройки закрыты PIN-кодом или Face ID."],["playlist_add_check","var(--purple)","Удобный выбор контента","Целые каналы или только нужные плейлисты."],["block","#E0457B","Shorts выключены по умолчанию","Без бесконечной ленты коротких роликов."],["sentiment_satisfied","#E8A800","Спокойная и понятная среда","Без комментариев, лайков и выхода на YouTube."]],
+ call: {title:"Главный вывод", text:"Совместный просмотр YouTube — это не контроль ради запретов, а возможность быть рядом, поддерживать и развиваться вместе с ребёнком.", pill:"Смотрите вместе. Выбирайте лучшее.", link:"Как это работает"}
+},
+uz: {
+ intro: `<p>Ha, ayniqsa maktabgacha yoshda. Birgalikda tomosha qilish bolaga shunchaki ko‘rish emas, balki o‘rganishga yordam beradi: ko‘rganini yaxshiroq tushunish, nutq va fikrlashni rivojlantirish. Bundan tashqari, u tomoshani xavfsizroq qiladi.</p>
+<p>Bu har daqiqa yonida o‘tirish kerak degani emas. Lekin yangi kanalning birinchi qismlari, yangi mavzular va uyqudan oldingi multfilmni birga ko‘rgan ma’qul. Nega va bu vaqtni qanday foydali qilish haqida gaplashamiz.</p>`,
+ whyH: "Nega birga ko‘rish muhim",
+ why: [["psychology","#16C869","Bola kontentni yaxshiroq tushunadi","Tushuntirish, savol berish, ko‘rganini muhokama qilish mumkin. Kattalar yonida syujetni tushunish osonroq."],["forum","var(--blue)","Nutq rivojlanadi","Siz yangi so‘zlarni tushuntirasiz, bola esa qayta hikoya qiladi va savollarga javob beradi."],["shield","var(--purple)","Xavf kamroq","Video mos kelmasa yoki xavotir uyg‘otsa, darhol sezasiz."],["favorite","#E0457B","Rishta mustahkamlanadi","Birgalikda tomosha — muloqot, ishonch va yoqimli lahzalar vaqti."],["star","#E8A800","Foydali odatlar paydo bo‘ladi","Kanallarni birga tanlaysiz, qoidalar va limitlar haqida kelishasiz."]],
+ givesH: "Birgalikda tomosha bolaga nima beradi",
+ gives: ["Nutq va so‘z boyligini rivojlantiradi", "Savol berishga va o‘ylashga o‘rgatadi", "Haqiqat va xayolni farqlashga yordam beradi", "Ekran vaqtiga to‘g‘ri munosabatni shakllantiradi", "Tomoshani yanada sokin va ongli qiladi"],
+ risksH: "Bola yolg‘iz ko‘rsa qanday xavflar bor",
+ risksLead: "Oddiy YouTube’da bola tasodifan mos kelmaydigan kontentga duch kelishi mumkin:",
+ risksList: ["juda tez va charchatadigan videolar", "qo‘rqinchli yoki tajovuzkor sahnalar", "reklama va keraksiz tavsiyalar", "yoshiga mos kelmaydigan kontent"],
+ risks: [["help","var(--purple)","Mos kelmaydigan kontent","Oddiy YouTube’da bu hali ham mumkin: algoritm bolaning yoshini bilmaydi."],["schedule","var(--blue)","Vaqtni nazorat qilish qiyinroq","Bola keragidan uzoqroq ko‘rishi mumkin — bir video ortidan boshqasi keladi."],["track_changes","#E0457B","Muhokama va o‘rganish kamroq","Tomosha passiv vaqtga aylanadi: hech kim tushuntirmaydi va so‘ramaydi."],["bolt","#E8A800","«Yana va yana» odati paydo bo‘lishi mumkin","Nazoratsiz bola tez-tez qo‘shimcha so‘raydi va ekrandan qiyinroq ajraladi."]],
+ doH: "Tomosha vaqtida nima qilish kerak",
+ do: [["forum","var(--blue)","Muhokama qiling","So‘rang: «Sening fikringcha, hozir nima bo‘ldi?»"],["help","#E8A800","Savollarga javob bering","Oddiy savollar ham rivojlanish uchun muhim."],["mood","#0A8C4B","Bolaning his-tuyg‘ulariga e’tibor bering","Biror narsa qo‘rqitsa yoki tushunarsiz bo‘lsa — tushuntiring yoki almashtiring."],["pause_circle","var(--purple)","To‘xtab turing","Videoni to‘xtatib, qiziq lahzani muhokama qilish mumkin."],["favorite","#E0457B","Shaxsiy namuna ko‘rsating","Ekranga sokin va e’tiborli munosabat bolada sog‘lom odatlarni shakllantiradi."]],
+ talkH: "Tomosha vaqtida nima haqida gaplashish mumkin",
+ talkLead: "Oddiy savollar multfilmni suhbatga aylantiradi:",
+ talk: ["Qahramon kim? U nima qilyapti?", "U qanday his-tuyg‘ularni his qilyapti?", "Qahramon nega shunday qildi?", "Biz bundan nimani o‘rganishimiz mumkin?", "Senga eng ko‘p nima yoqdi?"],
+ timeH: "Birga qancha vaqt ko‘rish kerak",
+ timeP: "Qat’iy qoidalar yo‘q, lekin muvozanatni saqlash muhim. Maktabgacha yoshdagi bolalar uchun JSST kuniga bir soatdan ko‘p bo‘lmagan ekran vaqtini tavsiya qiladi.",
+ ages: [["2–4 yosh","kuniga 1 soatgacha","JSST tavsiyasi bo‘yicha",true],["5–6 yosh","kuniga taxminan 1–1,5 soat","mo‘ljal, kamroq bo‘lsa yaxshi",true]],
+ timeNote: "Faqat vaqt emas, bola <b>nimani</b> va <b>qanday</b> ko‘rishi ham muhim. Batafsil — <a href=\"/uz/blog/bolalar-uchun-ekran-vaqti/\">«Maktabgacha yoshdagi bolaga qancha ekran vaqti kerak»</a> maqolasida.",
+ chooseH: "Video va kanallarni qanday tanlash kerak",
+ choose: ["Yoshiga mos keladi", "Rivojlantiradi va o‘rgatadi", "Qo‘rqinchli yoki tajovuzkor sahnalar yo‘q"],
+ chooseMore: "Tayyor tanlov — <a href=\"/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/\">«Maktabgacha yoshdagi bolalar uchun 10 ta xavfsiz YouTube kanali»</a> maqolasida, istalgan kanalni tez tekshirish usuli esa <a href=\"/uz/blog/bola-uchun-kanal-tanlash/\">«5 ta oddiy savol»</a>da.",
+ dailyH: "Har kunlik maslahatlar",
+ daily: ["<b>Sifatli kanallarni tanlang</b> — va faqat ularni.", "<b>Qisqa va tushunarli videolarni ko‘ring</b>, ayniqsa kichkintoylar bilan.", "<b>To‘xtab, muhokama qiling</b> — «Nima bo‘lyapti?», «Sen qanday o‘ylaysan?».", "<b>Ko‘rganlarni haqiqiy hayot bilan bog‘lang</b>: multfilmda topdingizmi — uyda ham toping.", "<b>Tomoshadan keyin mashg‘ulot taklif qiling</b>: o‘yin, sayr yoki ijod.", "<b>Vaqtni kuzating</b> va bu haqda oldindan kelishib oling."],
+ mgH: "Mitti-GO qanday yordam beradi",
+ mgP: "Mitti-GO aynan bolalar uchun yaratilgan — tomosha siz yonida bo‘lmaganingizda ham xavfsiz, oddiy va foydali bo‘lishi uchun.",
+ mg: [["verified_user","var(--blue)","Faqat tekshirilgan kanallar","Bola faqat siz ruxsat bergan narsani ko‘radi."],["shield_person","#0A8C4B","Ota-ona nazorati","Sozlamalar PIN yoki Face ID bilan yopilgan."],["playlist_add_check","var(--purple)","Kontentni qulay tanlash","Butun kanallar yoki faqat kerakli pleylistlar."],["block","#E0457B","Shorts odatda o‘chiq","Qisqa videolarning cheksiz lentasisiz."],["sentiment_satisfied","#E8A800","Sokin va tushunarli muhit","Izohlar, layklar va YouTube’ga chiqishlarsiz."]],
+ call: {title:"Asosiy xulosa", text:"YouTube’ni birga ko‘rish — taqiqlar uchun nazorat emas, balki bola yonida bo‘lish, uni qo‘llab-quvvatlash va birga rivojlanish imkoniyati.", pill:"Birga ko‘ring. Eng yaxshisini tanlang.", link:"Qanday ishlaydi"}
+},
+en: {
+ intro: `<p>Yes — especially in the preschool years. Watching together helps a child not just watch but learn: understand what they see, build language and thinking skills. It also makes watching safer.</p>
+<p>That doesn't mean sitting next to them every minute. But the first episodes of a new channel, new topics and the bedtime cartoon are best watched together. Here's why — and how to make that time worthwhile.</p>`,
+ whyH: "Why watching together matters",
+ why: [["psychology","#16C869","Your child understands more","You can explain, ask questions and talk about what they saw. With an adult nearby, a story is easier to follow."],["forum","var(--blue)","Language grows","You explain new words; your child retells and answers questions."],["shield","var(--purple)","Fewer risks","You notice right away if a video isn't suitable or makes them anxious."],["favorite","#E0457B","A stronger bond","Watching together is time for talking, trust and nice moments."],["star","#E8A800","Healthy habits take root","You choose channels together and agree on rules and limits."]],
+ givesH: "What watching together gives your child",
+ gives: ["Builds language and vocabulary", "Teaches them to ask questions and think", "Helps tell reality from fiction", "Shapes a healthy attitude to screen time", "Makes watching calmer and more mindful"],
+ risksH: "The risks when a child watches alone",
+ risksLead: "On regular YouTube a child can easily stumble on unsuitable content:",
+ risksList: ["fast-paced, overstimulating videos", "scary or aggressive scenes", "ads and unwanted recommendations", "content that isn't right for their age"],
+ risks: [["help","var(--purple)","Unsuitable content","On regular YouTube it's still possible: the algorithm doesn't know your child's age."],["schedule","var(--blue)","Time is harder to manage","A child can watch longer than they should — one video follows another."],["track_changes","#E0457B","Less talking and learning","Watching turns into passive time: nobody explains or asks."],["bolt","#E8A800","A “one more” habit can form","Without guidance, kids ask for more and find it harder to stop."]],
+ doH: "What to do while you watch",
+ do: [["forum","var(--blue)","Talk about it","Ask: “What do you think just happened?”"],["help","#E8A800","Answer questions","Even simple questions matter for development."],["mood","#0A8C4B","Watch your child's feelings","If something is scary or confusing, explain it or switch to something else."],["pause_circle","var(--purple)","Take pauses","Stop the video and talk about an interesting moment."],["favorite","#E0457B","Set an example","A calm, mindful attitude to screens helps your child build healthy habits."]],
+ talkH: "What to talk about while watching",
+ talkLead: "Simple questions turn a cartoon into a conversation:",
+ talk: ["Who is the hero? What are they doing?", "How are they feeling?", "Why did they do that?", "What can we learn from this?", "What did you like most?"],
+ timeH: "How much to watch together",
+ timeP: "There are no strict rules, but balance matters. For preschoolers, the WHO recommends no more than one hour of screen time a day.",
+ ages: [["Ages 2–4","up to 1 hour a day","as the WHO recommends",true],["Ages 5–6","about 1–1.5 hours a day","a guideline — less is better",true]],
+ timeNote: "It's not only about time but also <b>what</b> and <b>how</b> your child watches. More in <a href=\"/en/blog/screen-time-for-kids/\">“How much screen time does a preschooler need”</a>.",
+ chooseH: "How to choose videos and channels",
+ choose: ["Right for their age", "Teach and develop", "No scary or aggressive scenes"],
+ chooseMore: "For a ready-made list, see <a href=\"/en/blog/safe-youtube-channels-for-preschoolers/\">“10 safe YouTube channels for preschoolers”</a>, and for a quick way to check any channel — <a href=\"/en/blog/how-to-choose-a-channel-for-kids/\">“5 simple questions”</a>.",
+ dailyH: "Everyday tips",
+ daily: ["<b>Choose quality channels</b> — and only those.", "<b>Watch short, clear videos</b>, especially with little ones.", "<b>Pause and talk</b> — “What's happening?”, “What do you think?”.", "<b>Link what you see to real life</b>: spotted it in a cartoon? Find it at home too.", "<b>Offer an activity afterwards</b>: a game, a walk or something creative.", "<b>Keep an eye on time</b> and agree on it in advance."],
+ mgH: "How Mitti-GO helps",
+ mgP: "Mitti-GO is made especially for kids, so watching stays safe, simple and useful — even when you're not right there.",
+ mg: [["verified_user","var(--blue)","Only approved channels","Your child sees only what you allowed."],["shield_person","#0A8C4B","Parental controls","Settings are locked with a PIN or Face ID."],["playlist_add_check","var(--purple)","Easy content choice","Whole channels or just the playlists you want."],["block","#E0457B","Shorts off by default","No endless feed of short videos."],["sentiment_satisfied","#E8A800","A calm, clear space","No comments, no likes and no way out to YouTube."]],
+ call: {title:"The bottom line", text:"Watching YouTube together isn't control for the sake of rules — it's a chance to be there, support your child and grow together.", pill:"Watch together. Choose the best.", link:"How it works"}
+}
+};
+function mgTwBody(l){
+  const t = TW_TXT[l], B = "/assets/images/blog/";
+  const split = (inner, img) => `<div class="split"><div>${inner}</div><img src="${B}${img}.webp" alt="" loading="lazy"></div>`;
+  return `${t.intro}
+<h2>${t.whyH}</h2>
+${mgIconList(t.why, B + "watch-together-mom-explains.webp")}
+<h2>${t.givesH}</h2>
+${split(`<ul class="checklist">${t.gives.map(x => `<li>${x}</li>`).join("")}</ul>`, "watch-together-idea")}
+<h2>${t.risksH}</h2>
+${split(`<p>${t.risksLead}</p><ul>${t.risksList.map(x => `<li>${x}</li>`).join("")}</ul>`, "watch-together-alone-risks")}
+${mgCards(t.risks)}
+<h2>${t.doH}</h2>
+${mgIconList(t.do)}
+<h2>${t.talkH}</h2>
+${split(`<p>${t.talkLead}</p><div class="say ask">${t.talk.map(x => `<span>${x}</span>`).join("")}</div>`, "watch-together-talk")}
+<h2>${t.timeH}</h2>
+<p>${t.timeP}</p>
+${mgAges(t.ages)}
+<div class="note"><span class="ms">lightbulb</span><p>${t.timeNote}</p></div>
+<h2>${t.chooseH}</h2>
+${split(`<ul class="checklist">${t.choose.map(x => `<li>${x}</li>`).join("")}</ul>`, "watch-together-choose-channels")}
+<p>${t.chooseMore}</p>
+<h2>${t.dailyH}</h2>
+<ol class="steps">${t.daily.map(x => `<li><span>${x}</span></li>`).join("")}</ol>
+<h2>${t.mgH}</h2>
+<p>${t.mgP}</p>
+${mgIconList(t.mg)}
+${mgCallout({img:B + "watch-together-family.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
+}
+
 /* "10 safe YouTube channels for preschoolers" post: one layout, texts per language */
 const PRE_CH = [
   ["CoComelon – Nursery Rhymes", "cocomelon", "1–5"],
@@ -615,9 +738,35 @@ ${mgCallout({title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call
 
 window.MG_POSTS = [
 {
+  slug: "watch-together",
+  slugs: { ru: "nuzhno-li-smotret-youtube-vmeste-s-rebenkom", uz: "youtubeni-bola-bilan-birga-korish-kerakmi", en: "should-parents-watch-youtube-with-kids" },
+  date: "2026-10-06",
+  icon: "family_restroom",
+  color: "pink",
+  cover: "/assets/images/blog/should-parents-watch-youtube-with-their-child.webp",
+  imageAlt: {
+    ru: "Папа, мама и ребёнок вместе смотрят детские видео на планшете — совместный просмотр YouTube",
+    uz: "Ota, ona va bola planshetda bolalar videolarini birga ko‘rmoqda — YouTube’ni birgalikda tomosha qilish",
+    en: "Dad, mom and child watching kids' videos together on a tablet — co-viewing YouTube"
+  },
+  related: ["screen-time-preschool", "preschool-channels", "first-channels"],
+  tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
+  title: {
+    ru: "Нужно ли родителям смотреть YouTube вместе с ребёнком?",
+    uz: "Ota-onalar YouTube’ni bola bilan birga ko‘rishi kerakmi?",
+    en: "Should parents watch YouTube with their child?"
+  },
+  excerpt: {
+    ru: "Да, особенно в дошкольном возрасте. Чем полезен совместный просмотр, чем рискует ребёнок, который смотрит один, о чём говорить и сколько времени смотреть вместе.",
+    uz: "Ha, ayniqsa maktabgacha yoshda. Birgalikda tomosha nima foyda beradi, yolg‘iz ko‘radigan bola nimadan xavf ostida, nima haqida gaplashish va birga qancha ko‘rish kerak.",
+    en: "Yes — especially in the preschool years. Why watching together helps, what kids risk watching alone, what to talk about and how much to watch together."
+  },
+  body: { ru: mgTwBody("ru"), uz: mgTwBody("uz"), en: mgTwBody("en") }
+},
+{
   slug: "preschool-channels",
   slugs: { ru: "bezopasnye-youtube-kanaly-dlya-doshkolnikov", uz: "maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar", en: "safe-youtube-channels-for-preschoolers" },
-  date: "2026-10-07",
+  date: "2026-10-01",
   icon: "smart_display",
   color: "green",
   cover: "/assets/images/blog/10-safe-youtube-channels-for-preschoolers.webp",

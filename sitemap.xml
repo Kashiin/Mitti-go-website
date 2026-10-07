@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/uz/blog/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
@@ -101,7 +101,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/ru/blog/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
@@ -110,7 +110,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/en/blog/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/"/>
@@ -118,8 +118,35 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://mitti-go.uz/uz/blog/youtubeni-bola-bilan-birga-korish-kerakmi/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/youtubeni-bola-bilan-birga-korish-kerakmi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/should-parents-watch-youtube-with-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/youtubeni-bola-bilan-birga-korish-kerakmi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/should-parents-watch-youtube-with-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mitti-go.uz/en/blog/should-parents-watch-youtube-with-kids/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/youtubeni-bola-bilan-birga-korish-kerakmi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/should-parents-watch-youtube-with-kids/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mitti-go.uz/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/safe-youtube-channels-for-preschoolers/"/>
@@ -128,7 +155,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/safe-youtube-channels-for-preschoolers/"/>
@@ -137,7 +164,7 @@
   </url>
   <url>
     <loc>https://mitti-go.uz/en/blog/safe-youtube-channels-for-preschoolers/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <xhtml:link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/safe-youtube-channels-for-preschoolers/"/>
