@@ -919,6 +919,18 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 .page-end .btn.primary{background:#fff;color:#0F1A45;box-shadow:none}
 .page-end .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
 .page-end-btns{display:flex;gap:12px;flex-wrap:wrap}
+/* article: channel cards (picture, name, age, text, ticks) */
+.topch{display:grid;gap:14px;margin:6px 0 22px}
+.tc{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow-s)}
+.tc > img{width:100%;height:auto;border-radius:14px}
+.tc-h{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
+.tc-h b{font-size:18px;line-height:1.25;color:var(--ink)}
+.tc-age{background:var(--pyellow);color:#8A5A00;font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.article-body .tc p{margin:6px 0 10px;font-size:15px;line-height:1.5}
+.article-body .tc ul{list-style:none;padding:0;margin:0;display:grid;gap:5px}
+.article-body .tc li{position:relative;padding-left:28px;margin:0;font-size:14.5px;line-height:1.45;color:var(--ink)}
+.article-body .tc li::before{content:"check";font-family:"Material Symbols Rounded";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:#16C869;color:#fff;font-size:15px;display:grid;place-items:center;font-weight:700;-webkit-font-feature-settings:"liga";font-feature-settings:"liga"}
+@media (max-width:560px){.tc{grid-template-columns:1fr}.tc > img{max-width:240px}}
 /* article: side-by-side "step → step" schemes */
 .mgflow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 22px}
 .mgflow-col{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:20px;padding:18px;box-shadow:var(--shadow-s)}

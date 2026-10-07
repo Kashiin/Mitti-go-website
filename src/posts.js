@@ -40,7 +40,8 @@
    mgRow(cls, title, [[iconImg, title, text], …])                         — titled row of small cards (cls: effects | rules)
    mgCallout({title, text, pill, link, href, img?})                      — Mitti GO promo box (img replaces the mascot)
    mgFlow([{title, icon, c, bg, steps:[[icon, text], …]}, …])             — side-by-side "step → step" schemes
-   mgToggle({icon, c, title, sub, on, img?})                              — settings switch mock, optional picture */
+   mgToggle({icon, c, title, sub, on, img?})                              — settings switch mock, optional picture
+   mgTopChannels([{n, img, age, d, pros:[…]}, …])                         — channel cards: picture, name, age, text, ticks */
 function mgChannels(l, items){
   return `<div class="channels">${items.map((c,i)=>`<div class="channel" style="--c:${c.c};--bgc:${c.bg}"><div class="ch-h"><span class="ch-n">${i+1}</span><div><b>${c.n}</b><small>${c.s}</small></div></div><p>${c.d}</p><div class="ch-meta"><span><span class="ms">cake</span>${l.age}: <b>${c.a}</b></span><span><span class="ms">translate</span>${l.lang}: <b>${c.l}</b></span></div></div>`).join("")}</div>`;
 }
@@ -102,6 +103,9 @@ function mgFlow(cols){
 }
 function mgToggle(o){
   return `<div class="mgt${o.img?" with-img":""}"><div class="mgt-row"><span class="mgt-ic ms" style="--c:${o.c}">${o.icon}</span><div><b>${o.title}</b><small>${o.sub}</small></div><span class="mgt-sw${o.on?" on":""}" aria-hidden="true"></span></div>${o.img?`<img src="${o.img}" alt="" loading="lazy">`:""}</div>`;
+}
+function mgTopChannels(items){
+  return `<div class="topch">${items.map(c=>`<div class="tc"><img src="${c.img}" alt="${c.n}" loading="lazy"><div class="tc-b"><div class="tc-h"><b>${c.n}</b><span class="tc-age">${c.age}</span></div><p>${c.d}</p><ul>${c.pros.map(p=>`<li>${p}</li>`).join("")}</ul></div></div>`).join("")}</div>`;
 }
 const MG_CH = [
   {n:"Super Simple Songs", c:"#E0457B", bg:"var(--ppink)"},
@@ -317,6 +321,146 @@ ${t.main}
 ${mgCallout({img:B+"dev-balance.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
 }
 
+/* "10 safe YouTube channels for preschoolers" post: one layout, texts per language */
+const PRE_CH = [
+  ["CoComelon – Nursery Rhymes", "cocomelon", "1–5"],
+  ["Sesame Street", "sesame-street", "2–6"],
+  ["Super Simple Songs", "super-simple-songs", "1–5"],
+  ["Numberblocks", "numberblocks", "3–6"],
+  ["Peppa Pig – Official Channel", "peppa-pig", "2–6"],
+  ["Blippi – Educational Videos", "blippi", "2–6"],
+  ["PBS KIDS", "pbs-kids", "2–6"],
+  ["Masha and the Bear", "masha-and-the-bear", "2–6"],
+  ["Hey Duggee", "hey-duggee", "2–6"],
+  ["Khan Academy Kids", "khan-academy-kids", "2–6"]
+];
+const PRE_TXT = {
+ru: {
+ years: "лет",
+ names: { 7: "Маша и Медведь" },
+ intro: `<p>YouTube — огромная библиотека детского видео. Но рядом с хорошими мультфильмами там легко наткнуться на бессмысленные, слишком шумные или просто неподходящие для малыша ролики. А алгоритм рекомендаций не знает, что вашему ребёнку четыре года.</p>
+<p>Мы собрали <b>10 каналов, проверенных временем и миллионами родителей</b>. Они развивают речь, учат счёту и пониманию эмоций — и при этом остаются спокойными и понятными для дошкольников.</p>`,
+ facts: [["verified_user","Безопасный контент","официальные каналы студий"],["psychology","Развитие и обучение","речь, счёт, эмоции, логика"],["favorite","Подходит малышам","от 1 года до 6 лет"]],
+ howH: "Как мы выбирали каналы",
+ how: ["Только официальные каналы студий и образовательных организаций", "Понятный возраст — от 1 года до 6 лет", "Спокойный темп, простая речь и понятные сюжеты", "Польза: речь, счёт, эмоции, общение, кругозор", "Без пугающих сцен, грубости и «взрослых» шуток"],
+ listH: "10 каналов для дошкольников",
+ ch: [
+  ["Популярные песенки, детские стишки и простые обучающие истории про малыша Джей-Джея и его семью. Анимация яркая — лучше смотреть короткими сериями.", ["развивает речь и слух", "учит базовым навыкам: цвета, счёт, распорядок дня", "простая и понятная анимация"]],
+  ["Легендарный образовательный проект с Элмо, Коржиком и Большой Птицей. Его делает некоммерческая организация Sesame Workshop.", ["развитие социальных навыков", "эмоции и дружба", "азбука, цифры, логика"]],
+  ["Простые и запоминающиеся песни на английском. Проект придумали учителя английского языка специально для самых маленьких.", ["развитие речи", "новые слова и фразы", "спокойный темп и простая анимация"]],
+  ["Весёлые истории от BBC, в которых цифры — это персонажи. Помогают понять счёт и основы математики.", ["изучение чисел", "логика и счёт", "наглядные примеры"]],
+  ["Простые и добрые истории о семье, друзьях и повседневной жизни. Серии короткие — около пяти минут.", ["понятные ситуации из жизни", "развитие речи", "короткие серии"]],
+  ["Познаём мир вместе с Блиппи: машины, профессии, животные и многое другое — в настоящих местах, а не только в мультфильме.", ["реальные предметы и ситуации", "расширяет кругозор", "подходит любознательным детям"]],
+  ["Официальный канал американского общественного телевидения: познавательные мультфильмы и шоу для малышей, например «Даниэль Тигр».", ["развивает самостоятельность", "учит понимать эмоции", "безопасная и проверенная среда"]],
+  ["Добрые и весёлые истории о дружбе и приключениях непоседливой Маши. Мультфильм выходит на многих языках, в том числе на русском.", ["учит доброте и взаимопомощи", "развивает воображение", "понятные и короткие серии"]],
+  ["Приключения в «Клубе Дагги» от BBC: зверята получают значки за новые умения и важные жизненные навыки.", ["работа в команде", "уважение и доброта", "простые и понятные уроки"]],
+  ["Образовательный канал некоммерческой организации Khan Academy: чтение, счёт и первые шаги в учёбе.", ["чтение, математика, логика", "развитие мышления", "спокойный и качественный контент"]]
+ ],
+ ageNote: "Возраст указан ориентировочно. Посмотрите пару серий сами — вы лучше всех знаете своего ребёнка. А как быстро проверить новый канал, мы рассказали в статье <a href=\"/ru/blog/kak-vybrat-kanal-dlya-rebenka/\">«5 простых вопросов: стоит ли разрешать канал»</a>.",
+ whyH: "Почему именно эти каналы",
+ why: [["child_care","var(--blue)","Подходят для дошкольного возраста","Темп, речь и сюжеты рассчитаны на детей от 1 года до 6 лет."],["verified_user","#16C869","Безопасный и качественный контент","Это официальные каналы известных студий и образовательных организаций."],["psychology","var(--purple)","Развивают полезные навыки","Речь, счёт, эмоции, общение и интерес к окружающему миру."],["groups","#E8A800","Проверены миллионами родителей","Эти каналы много лет смотрят семьи по всему миру."]],
+ timeH: "Сколько можно смотреть",
+ timeP: "Даже самый полезный канал не заменяет игры, прогулки и общение. Всемирная организация здравоохранения советует:",
+ ages: [["До 2 лет","лучше без экрана","кроме видеозвонков с близкими",false],["2–5 лет","до 1 часа в день","и чем меньше, тем лучше",true]],
+ timeMore: "Подробнее — в статье <a href=\"/ru/blog/ekrannoe-vremya-dlya-detej/\">«Сколько экранного времени нужно дошкольнику»</a>.",
+ tipsH: "Как смотреть с пользой",
+ tips: [["groups","var(--blue)","Смотрите вместе","Хотя бы первые разы: так вы поймёте, подходит ли канал, и сможете обсудить увиденное."],["forum","var(--purple)","Обсуждайте и задавайте вопросы","Что понравилось? Что сделал герой? Так видео превращается в разговор, а не в фон."],["music_note","#E0457B","Повторяйте песни и слова","Пойте вместе, повторяйте движения — особенно с английскими каналами."],["tv_off","#B07A00","Не включайте фоном","Видео «для шума» мешает играть и концентрироваться. Включили — смотрите, закончили — выключили."]],
+ addH: "Как добавить эти каналы в Mitti-GO",
+ add: ["<b>Откройте родительский раздел</b> во вкладке «Профиль» — по PIN или Face ID.", "<b>«Управление контентом» → добавить канал.</b> Найдите его по названию, @имени или ссылке — или выберите из подборки Mitti GO.", "<b>Разрешите весь канал или только нужные плейлисты</b> — например, только песни на английском.", "<b>Готово.</b> Ребёнок увидит только добавленные каналы, а Shorts по умолчанию выключены."],
+ call: {title:"Хороший контент сегодня — большие возможности завтра", text:"В Mitti-GO ребёнок видит только каналы, которые выбрали вы: без случайных рекомендаций, комментариев и выхода на YouTube.", pill:"Родитель выбирает. Ребёнок смотрит.", link:"Как это работает"}
+},
+uz: {
+ years: "yosh",
+ names: { 7: "Masha va Ayiq" },
+ intro: `<p>YouTube — bolalar videolarining ulkan kutubxonasi. Lekin yaxshi multfilmlar yonida ma’nosiz, juda shovqinli yoki kichkintoyga mos kelmaydigan videolarga duch kelish oson. Tavsiyalar algoritmi esa farzandingiz to‘rt yoshda ekanini bilmaydi.</p>
+<p>Biz <b>vaqt va millionlab ota-onalar sinovidan o‘tgan 10 ta kanal</b>ni to‘pladik. Ular nutqni rivojlantiradi, sanashni va his-tuyg‘ularni tushunishni o‘rgatadi — va shu bilan birga maktabgacha yoshdagi bolalar uchun sokin va tushunarli bo‘lib qoladi.</p>`,
+ facts: [["verified_user","Xavfsiz kontent","studiyalarning rasmiy kanallari"],["psychology","Rivojlanish va o‘rganish","nutq, sanash, his-tuyg‘ular, mantiq"],["favorite","Kichkintoylar uchun","1 yoshdan 6 yoshgacha"]],
+ howH: "Kanallarni qanday tanladik",
+ how: ["Faqat studiyalar va ta’lim tashkilotlarining rasmiy kanallari", "Aniq yosh — 1 yoshdan 6 yoshgacha", "Sokin sur’at, oddiy nutq va tushunarli syujetlar", "Foyda: nutq, sanash, his-tuyg‘ular, muloqot, dunyoqarash", "Qo‘rqinchli sahnalar, qo‘pollik va «kattalar» hazillarisiz"],
+ listH: "Maktabgacha yoshdagi bolalar uchun 10 ta kanal",
+ ch: [
+  ["Mashhur qo‘shiqlar, bolalar she’rlari va kichkintoy JJ hamda uning oilasi haqidagi oddiy ta’limiy hikoyalar. Animatsiya yorqin — qisqa qismlar bilan ko‘rgan ma’qul.", ["nutq va eshitishni rivojlantiradi", "asosiy ko‘nikmalarni o‘rgatadi: ranglar, sanash, kun tartibi", "oddiy va tushunarli animatsiya"]],
+  ["Elmo, Cookie Monster va Big Bird bilan afsonaviy ta’limiy loyiha. Uni notijorat tashkilot Sesame Workshop yaratadi.", ["ijtimoiy ko‘nikmalarni rivojlantirish", "his-tuyg‘ular va do‘stlik", "alifbo, raqamlar, mantiq"]],
+  ["Ingliz tilidagi oddiy va esda qoladigan qo‘shiqlar. Loyihani ingliz tili o‘qituvchilari aynan eng kichiklar uchun o‘ylab topgan.", ["nutqni rivojlantirish", "yangi so‘z va iboralar", "sokin sur’at va oddiy animatsiya"]],
+  ["BBC’ning raqamlar qahramonga aylangan quvnoq hikoyalari. Sanash va matematika asoslarini tushunishga yordam beradi.", ["raqamlarni o‘rganish", "mantiq va sanash", "ko‘rgazmali misollar"]],
+  ["Oila, do‘stlar va kundalik hayot haqida oddiy va mehribon hikoyalar. Qismlar qisqa — taxminan besh daqiqa.", ["hayotdan tushunarli vaziyatlar", "nutqni rivojlantirish", "qisqa qismlar"]],
+  ["Blippi bilan dunyoni o‘rganamiz: mashinalar, kasblar, hayvonlar va boshqalar — faqat multfilmda emas, haqiqiy joylarda.", ["haqiqiy narsalar va vaziyatlar", "dunyoqarashni kengaytiradi", "qiziquvchan bolalar uchun"]],
+  ["Amerika jamoat televideniyesining rasmiy kanali: kichkintoylar uchun ma’rifiy multfilmlar va shoular, masalan «Daniel Tiger».", ["mustaqillikni rivojlantiradi", "his-tuyg‘ularni tushunishga o‘rgatadi", "xavfsiz va tekshirilgan muhit"]],
+  ["Sho‘x Masha haqida do‘stlik va sarguzashtlar to‘g‘risidagi mehribon va quvnoq hikoyalar. Multfilm ko‘plab tillarda chiqadi.", ["mehribonlik va o‘zaro yordamga o‘rgatadi", "tasavvurni rivojlantiradi", "tushunarli va qisqa qismlar"]],
+  ["BBC’ning «Duggee klubi»dagi sarguzashtlar: hayvonchalar yangi ko‘nikmalar va muhim hayotiy malakalar uchun nishonlar oladi.", ["jamoada ishlash", "hurmat va mehribonlik", "oddiy va tushunarli darslar"]],
+  ["Notijorat tashkilot Khan Academy’ning ta’limiy kanali: o‘qish, sanash va o‘qishdagi ilk qadamlar.", ["o‘qish, matematika, mantiq", "fikrlashni rivojlantirish", "sokin va sifatli kontent"]]
+ ],
+ ageNote: "Yosh taxminiy ko‘rsatilgan. Bir-ikki qismni o‘zingiz ko‘ring — farzandingizni siz hammadan yaxshi bilasiz. Yangi kanalni qanday tez tekshirish haqida <a href=\"/uz/blog/bola-uchun-kanal-tanlash/\">«5 ta oddiy savol: kanalga ruxsat berish kerakmi»</a> maqolasida yozganmiz.",
+ whyH: "Nega aynan shu kanallar",
+ why: [["child_care","var(--blue)","Maktabgacha yoshga mos","Sur’at, nutq va syujetlar 1 yoshdan 6 yoshgacha bo‘lgan bolalar uchun mo‘ljallangan."],["verified_user","#16C869","Xavfsiz va sifatli kontent","Bular taniqli studiyalar va ta’lim tashkilotlarining rasmiy kanallari."],["psychology","var(--purple)","Foydali ko‘nikmalarni rivojlantiradi","Nutq, sanash, his-tuyg‘ular, muloqot va atrof-olamga qiziqish."],["groups","#E8A800","Millionlab ota-onalar sinovidan o‘tgan","Bu kanallarni ko‘p yillardan beri butun dunyodagi oilalar tomosha qiladi."]],
+ timeH: "Qancha ko‘rish mumkin",
+ timeP: "Eng foydali kanal ham o‘yin, sayr va muloqotning o‘rnini bosa olmaydi. Jahon sog‘liqni saqlash tashkiloti quyidagilarni tavsiya qiladi:",
+ ages: [["2 yoshgacha","ekransiz yaxshiroq","yaqinlar bilan videoqo‘ng‘iroqlardan tashqari",false],["2–5 yosh","kuniga 1 soatgacha","qancha kam bo‘lsa, shuncha yaxshi",true]],
+ timeMore: "Batafsil — <a href=\"/uz/blog/bolalar-uchun-ekran-vaqti/\">«Maktabgacha yoshdagi bolaga qancha ekran vaqti kerak»</a> maqolasida.",
+ tipsH: "Qanday qilib foydali tomosha qilish mumkin",
+ tips: [["groups","var(--blue)","Birga ko‘ring","Hech bo‘lmaganda birinchi marta: shunda kanal mos keladimi, tushunasiz va ko‘rganlaringizni muhokama qila olasiz."],["forum","var(--purple)","Muhokama qiling va savol bering","Nima yoqdi? Qahramon nima qildi? Shunda video fon emas, suhbatga aylanadi."],["music_note","#E0457B","Qo‘shiq va so‘zlarni takrorlang","Birga kuylang, harakatlarni takrorlang — ayniqsa ingliz tilidagi kanallar bilan."],["tv_off","#B07A00","Fon sifatida qo‘ymang","«Shovqin uchun» qo‘yilgan video o‘ynashga va diqqatni jamlashga xalaqit beradi. Qo‘ydingiz — ko‘ring, tugadi — o‘chiring."]],
+ addH: "Bu kanallarni Mitti-GO’ga qanday qo‘shish mumkin",
+ add: ["<b>Ota-ona bo‘limini oching</b> — «Profil» yorlig‘ida, PIN yoki Face ID orqali.", "<b>«Kontentni boshqarish» → kanal qo‘shish.</b> Uni nomi, @nomi yoki havolasi bo‘yicha toping — yoki Mitti GO tanlovidan tanlang.", "<b>Butun kanalga yoki faqat kerakli pleylistlarga ruxsat bering</b> — masalan, faqat ingliz tilidagi qo‘shiqlarga.", "<b>Tayyor.</b> Bola faqat qo‘shilgan kanallarni ko‘radi, Shorts esa odatda o‘chiq."],
+ call: {title:"Bugungi yaxshi kontent — ertangi katta imkoniyatlar", text:"Mitti-GO’da bola faqat siz tanlagan kanallarni ko‘radi: tasodifiy tavsiyalar, izohlar va YouTube’ga chiqishlarsiz.", pill:"Ota-ona tanlaydi. Bola tomosha qiladi.", link:"Qanday ishlaydi"}
+},
+en: {
+ years: "years",
+ names: {},
+ intro: `<p>YouTube is a huge library of kids' videos. But next to good cartoons it's easy to stumble on pointless, overly loud or simply unsuitable clips — and the recommendation algorithm has no idea your child is four.</p>
+<p>We've picked <b>10 channels trusted by millions of parents over the years</b>. They build language, teach counting and understanding emotions — and stay calm and easy to follow for preschoolers.</p>`,
+ facts: [["verified_user","Safe content","official studio channels"],["psychology","Learning & growth","language, numbers, emotions, logic"],["favorite","Made for little ones","ages 1 to 6"]],
+ howH: "How we chose the channels",
+ how: ["Only official channels of studios and educational organisations", "A clear age range — from 1 to 6", "Calm pace, simple language and easy-to-follow stories", "Real value: language, numbers, emotions, social skills, curiosity", "No scary scenes, rudeness or grown-up jokes"],
+ listH: "10 channels for preschoolers",
+ ch: [
+  ["Popular songs, nursery rhymes and simple learning stories about baby JJ and his family. The animation is bright, so short sessions work best.", ["builds language and listening", "teaches basics: colours, counting, daily routines", "simple, clear animation"]],
+  ["The legendary educational show with Elmo, Cookie Monster and Big Bird, made by the non-profit Sesame Workshop.", ["social skills", "emotions and friendship", "letters, numbers, logic"]],
+  ["Simple, catchy songs in English, created by English teachers especially for the youngest learners.", ["language development", "new words and phrases", "calm pace and simple animation"]],
+  ["Cheerful BBC stories where numbers are the characters. They make counting and early maths easy to grasp.", ["learning numbers", "logic and counting", "visual examples"]],
+  ["Simple, kind stories about family, friends and everyday life. Episodes are short — about five minutes.", ["relatable everyday situations", "language development", "short episodes"]],
+  ["Explore the world with Blippi: vehicles, jobs, animals and more — in real places, not just in animation.", ["real objects and situations", "broadens horizons", "great for curious kids"]],
+  ["The official channel of America's public broadcaster: educational cartoons and shows for little ones, such as Daniel Tiger.", ["builds independence", "helps understand emotions", "a safe, trusted environment"]],
+  ["Kind, funny stories about friendship and the adventures of mischievous Masha. The cartoon comes in many languages.", ["teaches kindness and helping others", "sparks imagination", "clear, short episodes"]],
+  ["Adventures at the Squirrel Club from the BBC: the animals earn badges for new skills and important life lessons.", ["teamwork", "respect and kindness", "simple, clear lessons"]],
+  ["The educational channel of the non-profit Khan Academy: reading, counting and first steps in learning.", ["reading, maths, logic", "thinking skills", "calm, high-quality content"]]
+ ],
+ ageNote: "Ages are a rough guide. Watch a couple of episodes yourself — you know your child best. For a quick way to check any new channel, see <a href=\"/en/blog/how-to-choose-a-channel-for-kids/\">“5 simple questions: should you allow this channel?”</a>.",
+ whyH: "Why these channels",
+ why: [["child_care","var(--blue)","Right for preschoolers","Pace, language and stories are made for children aged 1 to 6."],["verified_user","#16C869","Safe, high-quality content","These are official channels of well-known studios and educational organisations."],["psychology","var(--purple)","They build useful skills","Language, counting, emotions, social skills and curiosity about the world."],["groups","#E8A800","Trusted by millions of parents","Families around the world have watched these channels for years."]],
+ timeH: "How much is enough",
+ timeP: "Even the best channel can't replace play, time outdoors and talking together. The World Health Organization recommends:",
+ ages: [["Under 2","better without screens","apart from video calls with family",false],["Ages 2–5","up to 1 hour a day","and less is better",true]],
+ timeMore: "More in <a href=\"/en/blog/screen-time-for-kids/\">“How much screen time does a preschooler need”</a>.",
+ tipsH: "How to make watching worthwhile",
+ tips: [["groups","var(--blue)","Watch together","At least the first few times: you'll see whether the channel fits and can talk about what you watched."],["forum","var(--purple)","Talk and ask questions","What did you like? What did the character do? That turns a video into a conversation, not background noise."],["music_note","#E0457B","Repeat songs and words","Sing along and copy the moves — especially with English-language channels."],["tv_off","#B07A00","Don't leave it on in the background","Background video gets in the way of play and focus. Put it on to watch, switch it off when you're done."]],
+ addH: "How to add these channels to Mitti-GO",
+ add: ["<b>Open the parent area</b> from the Profile tab — with your PIN or Face ID.", "<b>Manage Content → add a channel.</b> Find it by name, @handle or link — or pick it from Mitti GO's suggestions.", "<b>Allow the whole channel or only the playlists you want</b> — for example, just the English songs.", "<b>Done.</b> Your child sees only the channels you added, and Shorts are off by default."],
+ call: {title:"Good content today — bigger opportunities tomorrow", text:"In Mitti-GO your child sees only the channels you chose: no random recommendations, no comments and no way out to YouTube.", pill:"Parents choose. Kids watch.", link:"How it works"}
+}
+};
+function mgPreBody(l){
+  const t = PRE_TXT[l], B = "/assets/images/blog/";
+  const items = PRE_CH.map(([n, img, age], i) => ({ n: t.names[i] || n, img: B + "preschool-" + img + ".webp", age: `${age} ${t.years}`, d: t.ch[i][0], pros: t.ch[i][1] }));
+  return `${t.intro}
+${mgFacts(t.facts)}
+<h2>${t.howH}</h2>
+<ul class="checklist">${t.how.map(x => `<li>${x}</li>`).join("")}</ul>
+<h2>${t.listH}</h2>
+${mgTopChannels(items)}
+<div class="note"><span class="ms">info</span><p>${t.ageNote}</p></div>
+<h2>${t.whyH}</h2>
+${mgIconList(t.why)}
+<h2>${t.timeH}</h2>
+<p>${t.timeP}</p>
+${mgAges(t.ages)}
+<p>${t.timeMore}</p>
+<h2>${t.tipsH}</h2>
+${mgCards(t.tips)}
+<h2>${t.addH}</h2>
+<ol class="steps">${t.add.map(x => `<li><span>${x}</span></li>`).join("")}</ol>
+${mgCallout({title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
+}
+
 /* "Mitti-GO vs YouTube Kids" post: one layout, texts per language */
 const YTK_TXT = {
 ru: {
@@ -470,6 +614,32 @@ ${mgCallout({title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call
 }
 
 window.MG_POSTS = [
+{
+  slug: "preschool-channels",
+  slugs: { ru: "bezopasnye-youtube-kanaly-dlya-doshkolnikov", uz: "maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar", en: "safe-youtube-channels-for-preschoolers" },
+  date: "2026-10-07",
+  icon: "smart_display",
+  color: "green",
+  cover: "/assets/images/blog/10-safe-youtube-channels-for-preschoolers.webp",
+  imageAlt: {
+    ru: "Мальчик с котёнком и планшетом, вокруг — карточки детских YouTube-каналов: безопасные каналы для дошкольников",
+    uz: "Mushukcha va planshet bilan bola, atrofida bolalar YouTube kanallari kartochkalari: maktabgacha yoshdagi bolalar uchun xavfsiz kanallar",
+    en: "A boy with a kitten and a tablet surrounded by kids' YouTube channel cards — safe channels for preschoolers"
+  },
+  related: ["youtube-channels-3-years", "first-channels", "screen-time-preschool"],
+  tag: { ru: "Полезно родителям", uz: "Ota-onalar uchun foydali", en: "For parents" },
+  title: {
+    ru: "10 безопасных YouTube-каналов для дошкольников",
+    uz: "Maktabgacha yoshdagi bolalar uchun 10 ta xavfsiz YouTube kanali",
+    en: "10 safe YouTube channels for preschoolers"
+  },
+  excerpt: {
+    ru: "Проверенные каналы, которые развивают речь, учат счёту и эмоциям: от Super Simple Songs до Numberblocks. Плюс сколько можно смотреть и как добавить их в Mitti-GO.",
+    uz: "Nutqni rivojlantiradigan, sanash va his-tuyg‘ularni o‘rgatadigan sinalgan kanallar: Super Simple Songs’dan Numberblocks’gacha. Qancha ko‘rish mumkinligi va ularni Mitti-GO’ga qanday qo‘shish haqida ham.",
+    en: "Trusted channels that build language and teach counting and emotions — from Super Simple Songs to Numberblocks. Plus how much to watch and how to add them to Mitti-GO."
+  },
+  body: { ru: mgPreBody("ru"), uz: mgPreBody("uz"), en: mgPreBody("en") }
+},
 {
   slug: "vs-youtube-kids",
   slugs: { ru: "chem-mitti-go-otlichaetsya-ot-youtube-kids", uz: "mitti-go-va-youtube-kids-farqi", en: "mitti-go-vs-youtube-kids" },
