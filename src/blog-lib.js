@@ -12,7 +12,7 @@ const L = {
     blogTitle: "Блог для родителей — дети, экранное время и безопасность | Mitti GO",
     blogDesc: "Советы для родителей о детском контенте, экранном времени, безопасности в интернете и здоровых цифровых привычках ребёнка.",
     blogH1: "Блог Mitti GO для родителей", blogLede: "Советы для родителей о детском контенте, экранном времени и безопасном просмотре видео.",
-    nav: { how: "Как это работает", model: "Разрешения", parents: "Для родителей", privacy: "Приватность", plans: "Тарифы", blog: "Блог", faq: "Вопросы" },
+    nav: { mission: "Наша миссия", how: "Как это работает", model: "Разрешения", parents: "Для родителей", privacy: "Приватность", plans: "Тарифы", blog: "Блог", faq: "Вопросы" },
     theme: "Светлая / тёмная тема", menu: "Меню", langLabel: "Язык", crumbs: "Навигация по разделам"
   },
   uz: {
@@ -21,7 +21,7 @@ const L = {
     blogTitle: "Ota-onalar uchun blog — bolalar, ekran vaqti va xavfsizlik | Mitti GO",
     blogDesc: "Bolalar kontenti, ekran vaqti, internetdagi xavfsizlik va bolaning sog‘lom raqamli odatlari haqida ota-onalar uchun maslahatlar.",
     blogH1: "Ota-onalar uchun Mitti GO blogi", blogLede: "Bolalar kontenti, ekran vaqti va videolarni xavfsiz tomosha qilish haqida ota-onalar uchun maslahatlar.",
-    nav: { how: "Qanday ishlaydi", model: "Ruxsatlar", parents: "Ota-onalar uchun", privacy: "Maxfiylik", plans: "Tariflar", blog: "Blog", faq: "Savollar" },
+    nav: { mission: "Bizning missiyamiz", how: "Qanday ishlaydi", model: "Ruxsatlar", parents: "Ota-onalar uchun", privacy: "Maxfiylik", plans: "Tariflar", blog: "Blog", faq: "Savollar" },
     theme: "Yorug‘ / qorong‘i mavzu", menu: "Menyu", langLabel: "Til", crumbs: "Bo‘limlar bo‘yicha navigatsiya"
   },
   en: {
@@ -30,20 +30,20 @@ const L = {
     blogTitle: "Blog for Parents — Kids, Screen Time and Online Safety | Mitti GO",
     blogDesc: "Tips for parents on kids' content, screen time, online safety and healthy digital habits for children.",
     blogH1: "The Mitti GO blog for parents", blogLede: "Tips for parents on kids' content, screen time and safer video watching.",
-    nav: { how: "How it works", model: "Permissions", parents: "For parents", privacy: "Privacy", plans: "Plans", blog: "Blog", faq: "FAQ" },
+    nav: { mission: "Our mission", how: "How it works", model: "Permissions", parents: "For parents", privacy: "Privacy", plans: "Plans", blog: "Blog", faq: "FAQ" },
     theme: "Light / dark theme", menu: "Menu", langLabel: "Language", crumbs: "Breadcrumbs"
   }
 };
 
 const FT = {
   ru: { tag: "Детское видео, которое выбираете вы. Безопасный контент — счастливые дети.", soon: "Скоро", product: "Продукт", parents: "Родителям", blog: "Блог", all: "Все статьи", top: "Наверх", langs: "Язык сайта",
-    links: { home: "Главная", how: "Как это работает", model: "Разрешения", player: "Плеер", screentime: "Экранное время", plans: "Тарифы", parents: "Для родителей", privacy: "Безопасность и приватность", devices: "Android TV и устройства", faq: "Вопросы и ответы" },
+    links: { mission: "Наша миссия", home: "Главная", how: "Как это работает", model: "Разрешения", player: "Плеер", screentime: "Экранное время", plans: "Тарифы", parents: "Для родителей", privacy: "Безопасность и приватность", devices: "Android TV и устройства", faq: "Вопросы и ответы" },
     note: "Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC." },
   uz: { tag: "Siz tanlagan bolalar videolari. Xavfsiz kontent — baxtli bolalar.", soon: "Tez kunda", product: "Mahsulot", parents: "Ota-onalar uchun", blog: "Blog", all: "Barcha maqolalar", top: "Yuqoriga", langs: "Sayt tili",
-    links: { home: "Bosh sahifa", how: "Qanday ishlaydi", model: "Ruxsatlar", player: "Pleyer", screentime: "Ekran vaqti", plans: "Tariflar", parents: "Ota-onalar uchun", privacy: "Xavfsizlik va maxfiylik", devices: "Android TV va qurilmalar", faq: "Savol-javoblar" },
+    links: { mission: "Bizning missiyamiz", home: "Bosh sahifa", how: "Qanday ishlaydi", model: "Ruxsatlar", player: "Pleyer", screentime: "Ekran vaqti", plans: "Tariflar", parents: "Ota-onalar uchun", privacy: "Xavfsizlik va maxfiylik", devices: "Android TV va qurilmalar", faq: "Savol-javoblar" },
     note: "O‘zbekistondagi oilalar uchun yaratilgan. YouTube — Google LLC’ning savdo belgisi." },
   en: { tag: "Kids' video you choose. Safe content, happy kids.", soon: "Coming soon", product: "Product", parents: "For parents", blog: "Blog", all: "All posts", top: "Back to top", langs: "Site language",
-    links: { home: "Home", how: "How it works", model: "Permissions", player: "Player", screentime: "Screen Time", plans: "Plans", parents: "For parents", privacy: "Safety & privacy", devices: "Android TV & devices", faq: "FAQ" },
+    links: { mission: "Our mission", home: "Home", how: "How it works", model: "Permissions", player: "Player", screentime: "Screen Time", plans: "Plans", parents: "For parents", privacy: "Safety & privacy", devices: "Android TV & devices", faq: "FAQ" },
     note: "Made for families in Uzbekistan. YouTube is a trademark of Google LLC." }
 };
 
@@ -65,13 +65,14 @@ const blogPath = l => `/${l}/blog/`;
 const pricingPath = l => `/${l}/pricing/`;
 const faqPath = l => `/${l}/faq/`;
 const howPath = l => `/${l}/how-it-works/`;
+const missionPath = l => `/${l}/mission/`;
 
-/* main menu: same items on every page; `current` = "home" | "how" | "pricing" | "faq" | "blog" marks the open page.
+/* main menu: same items on every page; `current` = "home" | "how" | "mission" | "pricing" | "faq" | "blog" marks the open page.
    mobile: the burger menu version (icon + label + arrow, bigger tap targets) */
 const NAV_ITEMS = [
   ["how", "play_circle", howPath, "how"],
   ["model", "playlist_add_check", l => `${homePath(l)}#model`, "home-model"],
-  ["parents", "shield_person", l => `${homePath(l)}#parents`, "home-parents"],
+  ["mission", "favorite", missionPath, "mission"],
   ["plans", "workspace_premium", pricingPath, "pricing"],
   ["faq", "help", faqPath, "faq"],
   ["blog", "auto_stories", blogPath, "blog"]
@@ -109,7 +110,7 @@ function asidePost(o, l) {
 /* alternates: { uz: "/uz/…", ru: "/ru/…", en: "/en/…" } — the same page in each language */
 function footerHTML(l, posts, alternates) {
   const t = FT[l], home = homePath(l);
-  const hrefs = { how: howPath(l), plans: pricingPath(l), screentime: pricingPath(l), faq: faqPath(l), privacy: faqPath(l) + "#privacy" };
+  const hrefs = { mission: missionPath(l), how: howPath(l), plans: pricingPath(l), screentime: pricingPath(l), faq: faqPath(l), privacy: faqPath(l) + "#privacy" };
   const link = k => `<li><a href="${hrefs[k] || `${home}#${k}`}">${t.links[k]}</a></li>`;
   const store = (logo, name) => `<span class="soon store-badge"><img class="store-logo" src="/assets/images/${logo}" alt="" width="32" height="32" decoding="async"><span class="store-copy"><span>${t.soon}</span><b>${name}</b></span></span>`;
   const langs = LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""}>${LANG_NAMES[x]}</a>`).join("");
@@ -118,11 +119,11 @@ function footerHTML(l, posts, alternates) {
  <div class="ft-brand"><a href="${home}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="lazy"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="lazy"></a>
   <p>${t.tag}</p><div class="stores">${store("google-play.svg", "Google Play")}${store("app-store.svg", "App Store")}</div></div>
  <nav class="ft-col" aria-label="${t.product}"><h2>${t.product}</h2><ul><li><a href="${home}">${t.links.home}</a></li>${["how", "model", "player", "screentime", "plans"].map(link).join("")}</ul></nav>
- <nav class="ft-col" aria-label="${t.parents}"><h2>${t.parents}</h2><ul>${["parents", "privacy", "devices", "faq"].map(link).join("")}</ul></nav>
+ <nav class="ft-col" aria-label="${t.parents}"><h2>${t.parents}</h2><ul>${["mission", "parents", "privacy", "devices", "faq"].map(link).join("")}</ul></nav>
  <nav class="ft-col ft-blog" aria-label="${t.blog}"><h2>${t.blog}</h2><ul>${posts.slice(0, 3).map(p => `<li><a href="${postPath(p, l)}">${esc(pick(p.title, l))}</a></li>`).join("")}<li><a class="ft-all" href="${blogPath(l)}">${t.all} →</a></li></ul></nav>
 </div>
 <div class="ft-bottom"><span>© ${new Date().getFullYear()} Mitti GO</span><span>${t.note}</span><nav class="ft-langs" aria-label="${t.langs}">${langs}</nav><a href="#top" class="ft-up">${t.top}<span class="ms">arrow_upward</span></a></div>
 </div>`;
 }
 
-module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };
+module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };

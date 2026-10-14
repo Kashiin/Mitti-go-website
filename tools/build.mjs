@@ -2,7 +2,7 @@
    Run from the project root:   node tools/build.mjs
    Sources:  src/templates/*.html, src/i18n.js (landing UZ/EN), src/posts.js (blog), src/pages.js (pricing, FAQ, how-it-works pages),
              src/blog-lib.js (shared pieces), src/fonts.css (tools/fonts.py)
-   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/pricing/, /{lang}/faq/, /{lang}/how-it-works/, /{lang}/blog/index.html,
+   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/pricing/, /{lang}/faq/, /{lang}/how-it-works/, /{lang}/mission/, /{lang}/blog/index.html,
              /{lang}/blog/<slug>/index.html, /404.html, legacy /blog.html + /post.html redirects,
              /sitemap.xml, /robots.txt, /site.webmanifest
    Every generated page has its own title, description, canonical, hreflang, Open Graph, Twitter card and JSON-LD. */
@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const lib = require(path.join(ROOT, "src/blog-lib.js"));
 const T = require(path.join(ROOT, "src/i18n.js"));
-const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
+const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
 const PAGES = require(path.join(ROOT, "src/pages.js"));
 
 const read = p => fs.readFileSync(path.join(ROOT, p), "utf8");
@@ -200,7 +200,7 @@ const fontPreloads = l => ["material-symbols-icons.woff2", "nunito-latin.woff2"]
 function langNav(l, alternates) {
   return `<nav class="lang" aria-label="${L[l].langLabel}">` + LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""} title="${LANG_NAMES[x]}">${x.toUpperCase()}</a>`).join("") + `</nav>`;
 }
-/* current: "home" | "how" | "pricing" | "faq" | "blog" (highlighted in the menu) */
+/* current: "home" | "how" | "mission" | "pricing" | "faq" | "blog" (highlighted in the menu) */
 function siteHeader(l, alternates, current) {
   return `<header class="top">
   <div class="wrap">
@@ -365,7 +365,8 @@ function pricingHTML(t, l) {
   </div>
   <div class="plan pro">
     <div class="plan-h"><span class="pro-pill"><span class="ms">workspace_premium</span>Pro</span><span>${t.price}</span></div>
-    <ul>${t.proList.map((s, i) => li(["schedule", "hourglass_bottom", "bedtime", "nights_stay"][i], s)).join("")}</ul>
+    <b class="plan-sub">${t.proAdds}</b>
+    <ul>${t.proList.map((s, i) => li(["playlist_add_check", "devices", "schedule", "hourglass_bottom", "bedtime", "timer"][i], s)).join("")}</ul>
     <small class="note">${t.proNote}</small>
   </div>
 </div>
@@ -444,6 +445,68 @@ for (const [page, alts, icon, render, faqItems] of [
     });
     write(alts[l].slice(1) + "index.html", sizeImages(h));
   }
+}
+
+/* ---------- our mission: /{lang}/mission/ (content in src/pages.js, pictures in assets/images/mission/) ---------- */
+const missionTpl = read("src/templates/mission.html");
+const MISSION_ALT = Object.fromEntries(LANGS.map(l => [l, missionPath(l)]));
+const storeBadge = (logo, name, soon) => `<span class="soon store-badge"><img class="store-logo" src="/assets/images/${logo}" alt="" width="32" height="32" decoding="async"><span class="store-copy"><span>${soon}</span><b>${name}</b></span></span>`;
+function missionHTML(t) {
+  return `<section class="ms-sec">
+  <div class="wrap">
+    <h2 class="ms-h">${t.stepsH}</h2>
+    <ol class="ms-steps">${t.steps.map(([img, h, p]) => `<li class="ms-step"><img src="/assets/images/mission/${img}.jpg" alt="${esc(t.alt[img])}"><h3>${h}</h3><p>${p}</p></li>`).join(`<li class="ms-arr" aria-hidden="true"><span class="ms">arrow_forward</span></li>`)}</ol>
+  </div>
+</section>
+<section class="ms-story">
+  <div class="wrap ms-story-grid">
+    <img class="ms-family" src="/assets/images/mission/family.jpg" alt="${esc(t.familyAlt)}">
+    <div>
+      <h2 class="ms-h">${t.storyH}</h2>
+      ${t.story.map(p => `<p>${p}</p>`).join("\n      ")}
+    </div>
+  </div>
+</section>
+<section class="ms-sec">
+  <div class="wrap">
+    <h2 class="ms-h">${t.valuesH}</h2>
+    <div class="ms-values">${t.values.map(([img, h, p]) => `<div class="ms-val"><img src="/assets/images/mission/${img}.png" alt=""><h3>${h}</h3><p>${p}</p></div>`).join("")}</div>
+  </div>
+</section>
+<section class="ms-end">
+  <div class="wrap">
+    <div class="ms-quote">
+      <span class="ms-dash" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img class="ms-quote-art" src="/assets/images/mascot.webp" alt="" width="640" height="378" loading="lazy" decoding="async">
+      <p class="ms-quote-t"><span class="q1">${t.quote[0]}</span> <span class="q2">${t.quote[1]}<svg class="ms-swoosh" viewBox="0 0 300 24" aria-hidden="true"><path d="M4 16 C 80 4, 200 2, 296 12"/></svg></span></p>
+      <svg class="ms-heart" viewBox="0 0 48 44" aria-hidden="true"><path d="M24 40 C 6 28, 2 18, 6 10 C 10 2, 20 2, 24 11 C 28 2, 38 2, 42 10 C 46 18, 42 28, 24 40 Z"/></svg>
+    </div>
+    <div class="ms-cta">
+      <h2>${t.ctaT}</h2>
+      <p>${t.ctaS}</p>
+      <div class="stores">${storeBadge("google-play.svg", "Google Play", t.soon)}${storeBadge("app-store.svg", "App Store", t.soon)}</div>
+    </div>
+  </div>
+</section>`;
+}
+for (const l of LANGS) {
+  const t = PAGES.mission[l];
+  const items = [{ name: L[l].home, href: homePath(l) }, { name: t.crumb, href: MISSION_ALT[l] }];
+  const jsonld = [
+    { "@context": "https://schema.org", "@type": "AboutPage", "@id": abs(MISSION_ALT[l]) + "#webpage", url: abs(MISSION_ALT[l]), name: t.title, description: t.desc, inLanguage: l, isPartOf: { "@id": SITE + "/#website" }, about: { "@id": ORG["@id"] }, publisher: ORG },
+    breadcrumbLD(items)
+  ];
+  const h = fill(missionTpl, {
+    LANG: l,
+    HEAD: head({ lang: l, title: brandTitle(t.title), desc: t.desc, canonical: MISSION_ALT[l], alternates: MISSION_ALT, xdefault: MISSION_ALT.ru, image: "/assets/og/mitti-go.jpg", imageAlt: t.h1, jsonld }),
+    HEADER: siteHeader(l, MISSION_ALT, "mission"),
+    CRUMBS: crumbs(l, items),
+    EYEBROW: esc(t.eyebrow), H1: esc(t.h1), LEDE: esc(t.lede),
+    HOW: howPath(l), PRICING: pricingPath(l), BTN1: t.btn1, BTN2: t.btn2,
+    CONTENT: missionHTML(t),
+    FOOTER: footerHTML(l, POSTS, MISSION_ALT)
+  });
+  write(`${l}/mission/index.html`, sizeImages(h));
 }
 
 /* ---------- root: x-default language chooser ---------- */
@@ -579,6 +642,7 @@ for (const l of LANGS) entries.push(urlEntry(homePath(l), HOME_ALT, "/", TODAY, 
 for (const l of LANGS) entries.push(urlEntry(pricingPath(l), PRICING_ALT, PRICING_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(faqPath(l), FAQ_ALT, FAQ_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(howPath(l), HOW_ALT, HOW_ALT.ru, TODAY, "0.8"));
+for (const l of LANGS) entries.push(urlEntry(missionPath(l), MISSION_ALT, MISSION_ALT.ru, TODAY, "0.6"));
 for (const l of LANGS) entries.push(urlEntry(blogPath(l), BLOG_ALT, "/ru/blog/", newest, "0.8"));
 for (const p of POSTS) {
   const alts = Object.fromEntries(LANGS.map(l => [l, postPath(p, l)]));

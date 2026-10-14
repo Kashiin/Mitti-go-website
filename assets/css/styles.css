@@ -268,8 +268,70 @@ section{padding-block:clamp(64px,9vw,112px)}
 .plan-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .plan-h b{font-size:30px;font-weight:900}
 .plan-h span{font-weight:800;color:var(--ink2);font-size:15px}
-.pro-pill{display:inline-flex;align-items:center;gap:4px;background:var(--yellow);color:var(--onyellow);font-weight:900;font-size:14px;padding:4px 12px;border-radius:999px}
-.pro-pill .ms{font-size:17px}
+.pro-pill{display:inline-flex;align-items:center;gap:4px;background:var(--yellow);color:#fff;font-weight:900;font-size:14px;padding:4px 12px;border-radius:999px}
+.pro-pill .ms{font-size:17px;color:#fff}
+.plan-h .pro-pill{color:#fff}
+.plan-sub{font-size:17px;font-weight:900;margin-bottom:-4px}
+/* our mission */
+.ms-hero{position:relative;overflow:hidden;padding-block:clamp(36px,6vw,72px) clamp(28px,4vw,48px)}
+.ms-hero .b1{width:520px;height:520px;right:-120px;top:-80px;background:radial-gradient(circle at 40% 40%,var(--pcyan),transparent 68%)}
+.ms-hero .b2{width:420px;height:420px;left:-160px;bottom:-160px;background:radial-gradient(circle,var(--pgreen),transparent 70%)}
+.ms-hero .crumbs{display:none}
+.ms-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.ms-hero-copy{display:grid;gap:20px;align-content:start}
+.ms-hero h1{font-size:clamp(36px,5vw,58px)}
+.ms-hero-art{width:100%;max-width:440px;height:auto;justify-self:center;animation:bob 3.2s ease-in-out infinite;filter:drop-shadow(0 18px 22px rgba(0,40,90,.2))}
+.ms-sec{padding-block:clamp(36px,5vw,64px)}
+.ms-h{font-size:clamp(28px,3.4vw,40px);margin:0 0 28px;text-align:center}
+.ms-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch}
+.ms-step{display:grid;gap:8px;align-content:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow-s);padding-bottom:22px}
+.ms-step img{display:block;width:100%;height:auto;aspect-ratio:276/146;object-fit:cover;margin-bottom:8px}
+.ms-step h3,.ms-step p{padding-inline:22px}
+.ms-step p{color:var(--ink2);font-size:15px}
+.ms-arr{display:grid;place-items:center;color:var(--blue)}
+.ms-story{padding-block:clamp(36px,5vw,64px);background:color-mix(in srgb,var(--soft) 72%,transparent);border-block:1px solid var(--line)}
+.ms-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
+.ms-family{display:block;width:100%;height:auto;border-radius:28px;box-shadow:var(--shadow)}
+.ms-story .ms-h{text-align:left;margin-bottom:18px}
+.ms-story p{color:var(--ink2);font-size:18px;margin-top:12px}
+.ms-story p b{color:var(--blue);font-weight:900}
+.ms-values{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ms-val{display:grid;gap:8px;align-content:start;padding:22px 24px 26px;border-radius:24px;background:var(--card);border:1px solid var(--line);box-shadow:0 10px 30px -18px rgba(15,60,140,.35)}
+.ms-val img{display:block;height:76px;width:auto;margin:0 0 8px 46px}
+.ms-val h3{font-size:19px;font-weight:900}
+.ms-val p{color:var(--ink2);font-size:15px;line-height:1.45}
+/* "Made by parents, for parents" banner: navy → blue, mascot on the left, quote on the right, clouds at the bottom */
+.ms-end{padding-block:8px clamp(36px,5vw,64px)}
+.ms-quote{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(200px,340px) 1fr;align-items:center;gap:12px;min-height:150px;padding:10px clamp(20px,4vw,56px) 10px clamp(20px,3vw,40px);border-radius:26px;background:linear-gradient(100deg,#0A3FC4 0%,#0B5BE0 42%,#1680F0 78%,#2A9BF7 100%);box-shadow:0 18px 40px -22px rgba(10,60,180,.7)}
+.ms-quote::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(160px 90px at 98% 112%,rgba(170,240,200,.95),transparent 70%),radial-gradient(200px 80px at 86% 118%,rgba(225,245,255,.9),transparent 72%),radial-gradient(140px 70px at 4% 120%,rgba(140,220,255,.55),transparent 72%),radial-gradient(260px 160px at 30% -20%,rgba(255,255,255,.12),transparent 70%)}
+.ms-quote-art{width:100%;max-width:300px;height:auto;justify-self:center;margin-block:-6px -18px;filter:drop-shadow(0 14px 18px rgba(0,20,80,.35))}
+.ms-dash{position:absolute;left:clamp(16px,3vw,44px);top:34%;display:grid;gap:6px;transform:rotate(-24deg)}
+.ms-dash i{display:block;width:16px;height:4px;border-radius:4px;background:#fff}
+.ms-dash i:nth-child(2){width:22px;margin-left:-6px}
+.ms-dash i:nth-child(3){width:12px}
+.ms-quote-t{margin:0;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.12;color:#fff;letter-spacing:-.01em}
+.ms-quote-t .q1,.ms-quote-t .q2{display:block}
+.ms-quote-t .q1::before{content:"“";color:#3FD3FF;font-size:1.5em;line-height:0;vertical-align:-.22em;margin-right:.12em}
+.ms-quote-t .q2{position:relative;width:max-content;max-width:100%;margin-left:.6em;color:#7FE6FF}
+.ms-quote-t .q2::after{content:"”";color:#3FD3FF;font-size:1.1em;line-height:0;vertical-align:-.1em;margin-left:.04em}
+.ms-swoosh{position:absolute;left:4%;right:-2%;bottom:-.42em;width:100%;height:.5em;overflow:visible}
+.ms-swoosh path{fill:none;stroke:#7FE6FF;stroke-width:4;stroke-linecap:round}
+.ms-heart{position:absolute;right:clamp(16px,3vw,48px);top:50%;width:clamp(28px,3vw,40px);height:auto;transform:translateY(-10%) rotate(12deg)}
+.ms-heart path{fill:none;stroke:#fff;stroke-width:3.2;stroke-linejoin:round}
+@media (max-width:760px){.ms-quote{grid-template-columns:1fr;justify-items:center;text-align:center;padding-bottom:30px}.ms-quote-art{max-width:220px;margin:0}.ms-quote-t .q2{margin-inline:auto}.ms-heart{top:14px;transform:none}.ms-dash{top:12%}}
+.ms-cta{text-align:center;display:grid;gap:12px;justify-items:center;margin-top:clamp(32px,5vw,56px)}
+.ms-cta h2{font-size:clamp(26px,3.2vw,38px)}
+.ms-cta p{color:var(--ink2);max-width:56ch}
+.ms-cta .stores{justify-content:center;margin-top:6px}
+@media (max-width:900px){
+  .ms-hero-grid,.ms-story-grid{grid-template-columns:1fr}
+  .ms-hero-art{max-width:300px;order:-1}
+  .ms-steps{grid-template-columns:1fr}
+  .ms-arr{transform:rotate(90deg)}
+  .ms-values{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){.ms-quote{grid-template-columns:1fr}}
+@media (max-width:520px){.ms-values{grid-template-columns:1fr}}
 .plan ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .plan li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:16px}
 .plan li .ms{color:var(--green);font-size:22px}

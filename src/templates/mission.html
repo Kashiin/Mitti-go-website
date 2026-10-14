@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+{{HEAD}}
+</head>
+<body data-page="mission">
+{{HEADER}}
+
+<main id="top">
+<section class="ms-hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap ms-hero-grid">
+    <div class="ms-hero-copy">
+      {{CRUMBS}}
+      <span class="eyebrow"><span class="ms">favorite</span><span>{{EYEBROW}}</span></span>
+      <h1>{{H1}}</h1>
+      <p class="lede">{{LEDE}}</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="{{HOW}}"><span>{{BTN1}}</span><span class="ms">arrow_forward</span></a>
+        <a class="btn ghost" href="{{PRICING}}"><span>{{BTN2}}</span><span class="ms">arrow_forward</span></a>
+      </div>
+    </div>
+    <img class="ms-hero-art" src="/assets/images/mascot.webp" alt="" width="640" height="378" fetchpriority="high">
+  </div>
+</section>
+{{CONTENT}}
+</main>
+
+<footer class="site-foot" id="siteFoot">{{FOOTER}}</footer>
+
+<script src="/assets/js/lang-keep.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

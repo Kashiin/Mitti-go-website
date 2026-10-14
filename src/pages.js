@@ -7,28 +7,30 @@ module.exports = {
 pricing: {
 ru: {
   title: "Тарифы Mitti GO: что бесплатно и что даёт Pro",
-  desc: "Тарифы Mitti GO: бесплатно — до 5 каналов, 10 плейлистов и вся защита ребёнка. Pro добавляет экранное время: дневной лимит, режим сна и мягкий экран «Время вышло».",
+  desc: "Тарифы Mitti GO: бесплатно — до 5 каналов, 10 плейлистов, 2 устройства и вся защита ребёнка. Pro добавляет больше каналов, до 6 устройств и контроль экранного времени: вы решаете, сколько и когда смотрит ребёнок.",
   crumb: "Тарифы", eyebrow: "Тарифы", h1: "Тарифы Mitti GO",
-  lede: "Защита и безопасность никогда не бывают платными. Бесплатного тарифа хватает для спокойного просмотра, а Pro добавляет экранное время.",
-  free: "Бесплатно", ch: "Каналы", pl: "Плейлисты", price: "Цены — к запуску",
-  freeList: ["5 каналов целиком", "10 отдельных плейлистов", "Плейлисты добавленных каналов, скрытие и Избранное — без лимита", "PIN, биометрия и вся защита"],
-  proList: ["Экранное время: дневной лимит", "Досмотреть текущее видео — до 15 минут сверху", "Режим сна: отдельно для будней и выходных", "Мягкий экран «Время вышло» со спящим маскотом"],
-  proNote: "Ребёнок никогда не видит слов «Pro» и «лимит». Лимиты и цены Pro объявим отдельно.",
+  lede: "Защита никогда не бывает платной. Бесплатного тарифа хватает для спокойного просмотра, а Pro добавляет больше каналов и устройств и контроль экранного времени.",
+  free: "Бесплатно", ch: "Каналы", pl: "Плейлисты", price: "Цены — к запуску", proAdds: "Что даёт Pro",
+  freeList: ["5 каналов целиком", "10 отдельных плейлистов", "Плейлисты добавленных каналов, скрытие и Избранное — без лимита", "PIN, биометрия и вся защита", "2 устройства"],
+  proList: ["Можно добавить больше каналов и плейлистов", "Дополнительные устройства — до 6", "Контроль времени: вы задаёте, сколько ребёнок может смотреть видео в день — от 15 минут до 2 часов", "Досмотр видео: если время закончилось посреди видео, ребёнок спокойно его досмотрит", "Время сна: вы выбираете, в какие часы ребёнок может смотреть видео; на выходные — отдельно", "Ребёнок получает мягкое напоминание за 5 минут до перерыва"],
+  proNote: "Всё из бесплатного тарифа остаётся. Защита никогда не бывает платной. Ребёнок не видит слов «Pro» и «лимит», а цены Pro мы объявим отдельно.",
   cmpH: "Сравнение тарифов", cmpFeature: "Возможность",
   more: "Больше",
   cmp: [
     ["Каналы целиком", "5", "more"],
     ["Отдельные плейлисты", "10", "more"],
+    ["Устройства", "2", "до 6"],
     ["Плейлисты добавленных каналов, скрытие, Избранное", "∞", "∞"],
     ["Только разрешённый контент, без ленты рекомендаций", 1, 1],
     ["Все выходы из плеера на YouTube закрыты", 1, 1],
     ["Shorts выключены, включает только родитель", 1, 1],
     ["PIN, биометрия и защита от подбора", 1, 1],
     ["Android TV, три языка, светлая и тёмная тема", 1, 1],
-    ["Дневной лимит экранного времени", 0, 1],
-    ["Досмотреть видео — до 15 минут сверху", 0, 1],
-    ["Режим сна: будни и выходные отдельно", 0, 1],
-    ["Экран «Время вышло» и +время от родителя", 0, 1]
+    ["Контроль времени: сколько смотреть в день — от 15 минут до 2 часов", 0, 1],
+    ["Досмотр видео, если время закончилось, — не больше 15 минут сверху", 0, 1],
+    ["Время сна: свои часы на будни и на выходные", 0, 1],
+    ["Мягкое напоминание за 5 минут до перерыва", 0, 1],
+    ["Спокойный экран «Время вышло» со спящим маскотом", 0, 1]
   ],
   limH: "Как работают лимиты",
   lims: [
@@ -39,9 +41,11 @@ ru: {
   ],
   faqH: "Вопросы о тарифах",
   faq: [
-    ["Нужно ли платить, чтобы пользоваться Mitti GO?", "Нет. На бесплатном тарифе доступны до 5 каналов, 10 плейлистов и вся защита ребёнка. Pro нужен только тем, кто хочет управлять экранным временем."],
-    ["Сколько будет стоить Pro?", "Цены и лимиты Pro мы объявим к запуску приложения в Google Play и App Store."],
-    ["Есть ли экранное время на бесплатном тарифе?", "Нет, экранное время — часть Pro. На бесплатном тарифе ничего не считается и ничего не блокируется."],
+    ["Нужно ли платить, чтобы пользоваться Mitti GO?", "Нет. На бесплатном тарифе доступны до 5 каналов, 10 плейлистов, 2 устройства и вся защита ребёнка. Pro нужен, если хочется больше каналов и устройств или контроля экранного времени."],
+    ["Сколько будет стоить Pro?", "Цены Pro мы объявим к запуску приложения в Google Play и App Store."],
+    ["На скольких устройствах можно пользоваться Mitti GO?", "На бесплатном тарифе — на 2 устройствах, с Pro — до 6."],
+    ["Нужен ли аккаунт для Pro?", "Да, Pro подключается к аккаунту Google. Поэтому он сохраняется после переустановки и переходит на новый телефон: достаточно войти тем же аккаунтом. Бесплатный тариф работает и без аккаунта."],
+    ["Есть ли контроль экранного времени на бесплатном тарифе?", "Нет, контроль экранного времени — часть Pro. На бесплатном тарифе время не считается и ничего не блокируется."],
     ["Что будет с каналами, если Pro закончится?", "Ничего не удалится. У вас будет 7 дней, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении."],
     ["Ребёнок узнает, что у нас бесплатный тариф или лимит?", "Нет. Ребёнок никогда не видит слов «Pro» и «лимит». Когда время вышло, он видит мягкий экран со спящим маскотом."]
   ],
@@ -49,28 +53,30 @@ ru: {
 },
 uz: {
   title: "Tariflar: Mitti GO’da nima bepul va Pro nima beradi",
-  desc: "Mitti GO tariflari: bepul — 5 tagacha kanal, 10 ta pleylist va bolani to‘liq himoya qilish. Pro ekran vaqtini qo‘shadi: kunlik limit, uyqu rejimi va yumshoq «Vaqt tugadi» ekrani.",
+  desc: "Mitti GO tariflari: bepul — 5 tagacha kanal, 10 ta pleylist, 2 ta qurilma va bolani to‘liq himoya qilish. Pro ko‘proq kanal, 6 tagacha qurilma va ekran vaqtini nazorat qilishni qo‘shadi: bola qancha va qachon ko‘rishini siz hal qilasiz.",
   crumb: "Tariflar", eyebrow: "Tariflar", h1: "Mitti GO tariflari",
-  lede: "Himoya va xavfsizlik hech qachon pullik bo‘lmaydi. Xotirjam tomosha uchun bepul tarif yetarli, Pro esa ekran vaqtini qo‘shadi.",
-  free: "Bepul", ch: "Kanallar", pl: "Pleylistlar", price: "Narxlar — ishga tushirishda",
-  freeList: ["5 ta butun kanal", "10 ta alohida pleylist", "Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz", "PIN, biometriya va barcha himoya"],
-  proList: ["Ekran vaqti: kunlik limit", "Joriy videoni tugatish — ustiga 15 daqiqagacha", "Uyqu rejimi: ish va dam olish kunlari uchun alohida", "Uxlayotgan maskot bilan yumshoq «Vaqt tugadi» ekrani"],
-  proNote: "Bola hech qachon «Pro» va «limit» so‘zlarini ko‘rmaydi. Pro limitlari va narxlarini alohida e’lon qilamiz.",
+  lede: "Himoya hech qachon pullik bo‘lmaydi. Xotirjam tomosha uchun bepul tarif yetarli, Pro esa ko‘proq kanal va qurilma hamda ekran vaqtini nazorat qilishni qo‘shadi.",
+  free: "Bepul", ch: "Kanallar", pl: "Pleylistlar", price: "Narxlar — ishga tushirishda", proAdds: "Pro nima beradi",
+  freeList: ["5 ta butun kanal", "10 ta alohida pleylist", "Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz", "PIN, biometriya va barcha himoya", "2 ta qurilma"],
+  proList: ["Ko‘proq kanal va pleylist qo‘shish mumkin", "Qo‘shimcha qurilmalar — 6 tagacha", "Vaqt nazorati: bola kuniga qancha video ko‘rishi mumkinligini siz belgilaysiz — 15 daqiqadan 2 soatgacha", "Videoni oxirigacha ko‘rish: vaqt video o‘rtasida tugasa, bola uni bemalol oxirigacha ko‘radi", "Uyqu vaqti: bola qaysi soatlarda video ko‘rishi mumkinligini siz tanlaysiz; dam olish kunlari — alohida", "Bola tanaffusdan 5 daqiqa oldin yumshoq eslatma oladi"],
+  proNote: "Bepul tarifdagi hamma narsa qoladi. Himoya hech qachon pullik bo‘lmaydi. Bola «Pro» va «limit» so‘zlarini ko‘rmaydi, Pro narxlarini esa alohida e’lon qilamiz.",
   cmpH: "Tariflarni solishtirish", cmpFeature: "Imkoniyat",
   more: "Ko‘proq",
   cmp: [
     ["Butun kanallar", "5", "more"],
     ["Alohida pleylistlar", "10", "more"],
+    ["Qurilmalar", "2", "6 tagacha"],
     ["Qo‘shilgan kanallar pleylistlari, yashirish, Sevimlilar", "∞", "∞"],
     ["Faqat ruxsat berilgan kontent, tavsiyalar lentasisiz", 1, 1],
     ["Pleyerdan YouTube’ga barcha chiqishlar yopiq", 1, 1],
     ["Shorts o‘chiq, faqat ota-ona yoqadi", 1, 1],
     ["PIN, biometriya va terib topishdan himoya", 1, 1],
     ["Android TV, uch til, yorug‘ va qorong‘i mavzu", 1, 1],
-    ["Kunlik ekran vaqti limiti", 0, 1],
-    ["Videoni tugatish — ustiga 15 daqiqagacha", 0, 1],
-    ["Uyqu rejimi: ish va dam olish kunlari alohida", 0, 1],
-    ["«Vaqt tugadi» ekrani va ota-onadan qo‘shimcha vaqt", 0, 1]
+    ["Vaqt nazorati: kuniga qancha ko‘rish — 15 daqiqadan 2 soatgacha", 0, 1],
+    ["Vaqt tugasa, videoni oxirigacha ko‘rish — ustiga 15 daqiqadan oshmasdan", 0, 1],
+    ["Uyqu vaqti: ish va dam olish kunlari uchun o‘z soatlari", 0, 1],
+    ["Tanaffusdan 5 daqiqa oldin yumshoq eslatma", 0, 1],
+    ["Uxlayotgan maskot bilan xotirjam «Vaqt tugadi» ekrani", 0, 1]
   ],
   limH: "Limitlar qanday ishlaydi",
   lims: [
@@ -81,9 +87,11 @@ uz: {
   ],
   faqH: "Tariflar haqida savollar",
   faq: [
-    ["Mitti GO’dan foydalanish uchun pul to‘lash kerakmi?", "Yo‘q. Bepul tarifda 5 tagacha kanal, 10 ta pleylist va bolaning barcha himoyasi mavjud. Pro faqat ekran vaqtini boshqarmoqchi bo‘lganlar uchun kerak."],
-    ["Pro qancha turadi?", "Pro narxlari va limitlarini ilova Google Play va App Store’da ishga tushirilganda e’lon qilamiz."],
-    ["Bepul tarifda ekran vaqti bormi?", "Yo‘q, ekran vaqti — Pro’ning bir qismi. Bepul tarifda hech narsa hisoblanmaydi va hech narsa bloklanmaydi."],
+    ["Mitti GO’dan foydalanish uchun pul to‘lash kerakmi?", "Yo‘q. Bepul tarifda 5 tagacha kanal, 10 ta pleylist, 2 ta qurilma va bolaning barcha himoyasi mavjud. Ko‘proq kanal va qurilma yoki ekran vaqtini nazorat qilish kerak bo‘lsa, Pro kerak."],
+    ["Pro qancha turadi?", "Pro narxlarini ilova Google Play va App Store’da ishga tushirilganda e’lon qilamiz."],
+    ["Mitti GO’dan nechta qurilmada foydalanish mumkin?", "Bepul tarifda — 2 ta qurilmada, Pro bilan — 6 tagacha."],
+    ["Pro uchun akkaunt kerakmi?", "Ha, Pro Google akkauntiga ulanadi. Shuning uchun u ilova qayta o‘rnatilgandan keyin ham saqlanadi va yangi telefonga o‘tadi: o‘sha akkaunt bilan kirish kifoya. Bepul tarif akkauntsiz ham ishlaydi."],
+    ["Bepul tarifda ekran vaqtini nazorat qilish bormi?", "Yo‘q, ekran vaqtini nazorat qilish — Pro’ning bir qismi. Bepul tarifda vaqt hisoblanmaydi va hech narsa bloklanmaydi."],
     ["Pro tugasa, kanallar bilan nima bo‘ladi?", "Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 7 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi."],
     ["Bola bepul tarif yoki limit borligini biladimi?", "Yo‘q. Bola hech qachon «Pro» va «limit» so‘zlarini ko‘rmaydi. Vaqt tugaganda u uxlayotgan maskot bilan yumshoq ekranni ko‘radi."]
   ],
@@ -91,28 +99,30 @@ uz: {
 },
 en: {
   title: "Plans and Pricing: What's Free in Mitti GO and What Pro Adds",
-  desc: "Mitti GO plans: free includes up to 5 channels, 10 playlists and every child-safety feature. Pro adds Screen Time — a daily limit, bedtime hours and a gentle Time's Up screen.",
+  desc: "Mitti GO plans: free includes up to 5 channels, 10 playlists, 2 devices and every child-safety feature. Pro adds more channels, up to 6 devices and Screen Time control: you decide how much and when your child watches.",
   crumb: "Plans", eyebrow: "Plans", h1: "Mitti GO plans",
-  lede: "Protection and security are never behind a paywall. The free plan is enough for calm, safe watching; Pro adds Screen Time.",
-  free: "Free", ch: "Channels", pl: "Playlists", price: "Pricing at launch",
-  freeList: ["5 whole channels", "10 separate playlists", "Playlists of added channels, hiding and Favorites — unlimited", "PIN, biometrics and every security feature"],
-  proList: ["Screen Time: a daily limit", "Finish the current video — up to 15 extra minutes", "Bedtime, with separate weekday and weekend hours", "A gentle Time's Up screen with the sleeping mascot"],
-  proNote: "Your child never sees the words “Pro” or “limit”. Pro limits and pricing will be announced separately.",
+  lede: "Safety is never behind a paywall. The free plan is enough for calm, safe watching; Pro adds more channels and devices, plus Screen Time control.",
+  free: "Free", ch: "Channels", pl: "Playlists", price: "Pricing at launch", proAdds: "What Pro adds",
+  freeList: ["5 whole channels", "10 separate playlists", "Playlists of added channels, hiding and Favorites — unlimited", "PIN, biometrics and every security feature", "2 devices"],
+  proList: ["Add more channels and playlists", "Additional devices — up to 6", "Time control: you set how long your child can watch videos each day — 15 minutes to 2 hours", "Finish the video: if time runs out mid-video, your child can calmly watch it to the end", "Bedtime: you choose the hours your child can watch videos; weekends separately", "Your child gets a gentle reminder 5 minutes before the break"],
+  proNote: "Everything on Free stays. Safety features are never paid. Your child never sees the words “Pro” or “limit”, and Pro pricing will be announced separately.",
   cmpH: "Compare plans", cmpFeature: "Feature",
   more: "More",
   cmp: [
     ["Whole channels", "5", "more"],
     ["Separate playlists", "10", "more"],
+    ["Devices", "2", "Up to 6"],
     ["Playlists of added channels, hiding, Favorites", "∞", "∞"],
     ["Only approved content, no recommendation feed", 1, 1],
     ["Every exit from the player to YouTube is closed", 1, 1],
     ["Shorts off; only a parent can turn them on", 1, 1],
     ["PIN, biometrics and protection from guessing", 1, 1],
     ["Android TV, three languages, light and dark themes", 1, 1],
-    ["Daily Screen Time limit", 0, 1],
-    ["Finish a video — up to 15 extra minutes", 0, 1],
-    ["Bedtime, weekdays and weekends separately", 0, 1],
-    ["Time's Up screen and extra time from a parent", 0, 1]
+    ["Time control: how long to watch each day — 15 minutes to 2 hours", 0, 1],
+    ["Finish the video when time runs out — up to 15 extra minutes", 0, 1],
+    ["Bedtime: your own hours for weekdays and weekends", 0, 1],
+    ["A gentle reminder 5 minutes before the break", 0, 1],
+    ["A calm Time's Up screen with the sleeping mascot", 0, 1]
   ],
   limH: "How limits work",
   lims: [
@@ -123,9 +133,11 @@ en: {
   ],
   faqH: "Questions about plans",
   faq: [
-    ["Do I have to pay to use Mitti GO?", "No. The free plan includes up to 5 channels, 10 playlists and every child-safety feature. Pro is only for families who want to manage Screen Time."],
-    ["How much will Pro cost?", "We'll announce Pro pricing and limits when the app launches on Google Play and the App Store."],
-    ["Is Screen Time part of the free plan?", "No, Screen Time is part of Pro. On the free plan nothing is counted and nothing is blocked."],
+    ["Do I have to pay to use Mitti GO?", "No. The free plan includes up to 5 channels, 10 playlists, 2 devices and every child-safety feature. Pro is for families who want more channels and devices, or Screen Time control."],
+    ["How much will Pro cost?", "We'll announce Pro pricing when the app launches on Google Play and the App Store."],
+    ["How many devices can use Mitti GO?", "2 devices on the free plan, up to 6 with Pro."],
+    ["Do I need an account for Pro?", "Yes, Pro is linked to your Google account. That's why it survives a reinstall and moves to a new phone: just sign in with the same account. The free plan works without an account."],
+    ["Is Screen Time control part of the free plan?", "No, Screen Time control is part of Pro. On the free plan time isn't counted and nothing is blocked."],
     ["What happens to my channels if Pro ends?", "Nothing is deleted. You get 7 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew."],
     ["Will my child know we're on a free plan or hit a limit?", "No. Your child never sees the words “Pro” or “limit”. When time is up, they see a gentle screen with the sleeping mascot."]
   ],
@@ -275,6 +287,90 @@ en: {
     ]}
   ],
   endT: "Didn't find your answer?", endS: "See how Mitti GO works, or visit the blog for tips on kids' content and screen time.", endB: "How it works", endB2: "Open the blog"
+}
+},
+
+/* ---------------------------------------------------------------- our mission (/{lang}/mission/)
+   steps: [image, title, text] (assets/images/mission/<image>.jpg — the step number is part of the picture)
+   values: [picture, title, text] (assets/images/mission/<picture>.png); quote: [first line, second line] */
+mission: {
+ru: {
+  title: "Наша миссия: как появился Mitti GO",
+  desc: "История Mitti GO: два отца хотели, чтобы их дети смотрели YouTube спокойно и безопасно. Так появилось приложение, где контент выбирают родители.",
+  crumb: "Наша миссия", eyebrow: "Наша миссия", h1: "Как появился Mitti GO",
+  lede: "Два отца чудесных дочек задумались, как современные технологии влияют на воспитание детей. Их дети любили смотреть YouTube, но родителям хотелось больше спокойствия, контроля и уверенности в том, какой контент видит ребёнок.",
+  btn1: "Как это работает", btn2: "Тарифы",
+  stepsH: "История в трёх шагах",
+  steps: [
+    ["problem", "Проблема", "Дети легко переходят от одного видео к другому, а алгоритмы показывают всё подряд."],
+    ["idea", "Идея", "Сделать детский видеоплеер, где контент выбирают родители, а не случайные рекомендации."],
+    ["solution", "Решение", "Mitti GO помогает создать безопасное видеопространство для ребёнка."]
+  ],
+  storyH: "Наша история",
+  story: ["Мы не хотели полностью запрещать детям технологии. Мы хотели создать удобный и понятный инструмент, который помогает семьям выбирать полезный контент, ограничивать случайные видео и давать детям более безопасный опыт просмотра.", "Так шаг за шагом и появился <b>Mitti GO — приложение, созданное родителями для родителей</b>."],
+  familyAlt: "Две семьи с детьми вместе смотрят Mitti GO на планшете",
+  valuesH: "Что важно для нас",
+  values: [
+    ["v-content", "Контроль контента", "Родители сами выбирают каналы и плейлисты."],
+    ["v-safe", "Безопасная среда", "Меньше случайного контента и отвлекающих элементов."],
+    ["v-family", "Удобство для семьи", "Телефон, планшет и ТВ в одной экосистеме."],
+    ["v-growth", "Развитие ребёнка", "Полезный и понятный видеоконтент для детей."]
+  ],
+  quote: ["Создано родителями", "для родителей"],
+  ctaT: "Хотите попробовать Mitti GO?", ctaS: "Mitti GO скоро появится в Google Play и App Store — безопасное видеопространство для вашего ребёнка.", soon: "Скоро",
+  alt: { problem: "Девочка скучает над планшетом", idea: "Лампочка — идея", solution: "Щит с кнопкой воспроизведения — защита" }
+},
+uz: {
+  title: "Bizning missiyamiz: Mitti GO qanday paydo bo‘ldi",
+  desc: "Mitti GO tarixi: ikki ota farzandlari YouTube’ni xotirjam va xavfsiz ko‘rishini istadi. Shunday qilib, kontentni ota-onalar tanlaydigan ilova paydo bo‘ldi.",
+  crumb: "Bizning missiyamiz", eyebrow: "Bizning missiyamiz", h1: "Mitti GO qanday paydo bo‘ldi",
+  lede: "Ajoyib qizlarning ikki otasi zamonaviy texnologiyalar bolalar tarbiyasiga qanday ta’sir qilishi haqida o‘ylab qoldi. Farzandlari YouTube ko‘rishni yaxshi ko‘rardi, ammo ota-onalar ko‘proq xotirjamlik, nazorat va bola qanday kontentni ko‘rayotganiga ishonch istardi.",
+  btn1: "Qanday ishlaydi", btn2: "Tariflar",
+  stepsH: "Uch qadamda tarix",
+  steps: [
+    ["problem", "Muammo", "Bolalar bir videodan boshqasiga osongina o‘tib ketadi, algoritmlar esa hamma narsani ketma-ket ko‘rsatadi."],
+    ["idea", "G‘oya", "Kontentni tasodifiy tavsiyalar emas, ota-onalar tanlaydigan bolalar videopleyerini yaratish."],
+    ["solution", "Yechim", "Mitti GO bola uchun xavfsiz video makon yaratishga yordam beradi."]
+  ],
+  storyH: "Bizning tariximiz",
+  story: ["Biz bolalarga texnologiyalarni butunlay taqiqlashni istamadik. Oilalarga foydali kontentni tanlash, tasodifiy videolarni cheklash va bolalarga xavfsizroq tomosha tajribasini berishga yordam beradigan qulay va tushunarli vosita yaratmoqchi edik.", "Shu tariqa, qadamma-qadam, <b>Mitti GO — ota-onalar tomonidan ota-onalar uchun yaratilgan ilova</b> paydo bo‘ldi."],
+  familyAlt: "Ikki oila farzandlari bilan birga planshetda Mitti GO’ni ko‘rmoqda",
+  valuesH: "Biz uchun nima muhim",
+  values: [
+    ["v-content", "Kontent nazorati", "Kanal va pleylistlarni ota-onalarning o‘zi tanlaydi."],
+    ["v-safe", "Xavfsiz muhit", "Tasodifiy kontent va chalg‘ituvchi elementlar kamroq."],
+    ["v-family", "Oila uchun qulaylik", "Telefon, planshet va televizor — bitta ekotizimda."],
+    ["v-growth", "Bola rivojlanishi", "Bolalar uchun foydali va tushunarli video kontent."]
+  ],
+  quote: ["Ota-onalar tomonidan", "ota-onalar uchun"],
+  ctaT: "Mitti GO’ni sinab ko‘rmoqchimisiz?", ctaS: "Mitti GO tez orada Google Play va App Store’da paydo bo‘ladi — farzandingiz uchun xavfsiz video makon.", soon: "Tez kunda",
+  alt: { problem: "Planshet oldida zerikkan qizcha", idea: "Lampochka — g‘oya", solution: "Ijro tugmasi bilan qalqon — himoya" }
+},
+en: {
+  title: "Our Mission: How Mitti GO Began",
+  desc: "The Mitti GO story: two fathers wanted their kids to watch YouTube calmly and safely. That's how an app where parents choose the content came to be.",
+  crumb: "Our mission", eyebrow: "Our mission", h1: "How Mitti GO began",
+  lede: "Two fathers of wonderful daughters started thinking about how modern technology shapes the way kids grow up. Their children loved watching YouTube, but the parents wanted more peace of mind, more control and more confidence in what their child was seeing.",
+  btn1: "How it works", btn2: "Plans",
+  stepsH: "Our story in three steps",
+  steps: [
+    ["problem", "The problem", "Kids drift easily from one video to the next, and algorithms show them anything."],
+    ["idea", "The idea", "Build a video player for kids where parents choose the content, not random recommendations."],
+    ["solution", "The solution", "Mitti GO helps create a safe video space for your child."]
+  ],
+  storyH: "Our story",
+  story: ["We didn't want to ban technology for kids altogether. We wanted a simple, clear tool that helps families choose good content, cut out random videos and give children a safer way to watch.", "Step by step, that's how <b>Mitti GO — an app made by parents, for parents</b> — came to be."],
+  familyAlt: "Two families and their kids watching Mitti GO together on a tablet",
+  valuesH: "What matters to us",
+  values: [
+    ["v-content", "Content control", "Parents choose the channels and playlists themselves."],
+    ["v-safe", "A safe space", "Less random content and fewer distractions."],
+    ["v-family", "Made for families", "Phone, tablet and TV in one ecosystem."],
+    ["v-growth", "Your child's growth", "Useful, easy-to-follow videos for kids."]
+  ],
+  quote: ["Made by parents,", "for parents"],
+  ctaT: "Want to try Mitti GO?", ctaS: "Mitti GO is coming soon to Google Play and the App Store — a safe video space for your child.", soon: "Coming soon",
+  alt: { problem: "A girl bored in front of a tablet", idea: "A light bulb — the idea", solution: "A shield with a play button — protection" }
 }
 },
 
