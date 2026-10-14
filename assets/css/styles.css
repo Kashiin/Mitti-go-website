@@ -302,8 +302,16 @@ section{padding-block:clamp(64px,9vw,112px)}
 .ms-val p{color:var(--ink2);font-size:15px;line-height:1.45}
 /* "Made by parents, for parents" banner: navy → blue, mascot on the left, quote on the right, clouds at the bottom */
 .ms-end{padding-block:8px clamp(36px,5vw,64px)}
-.ms-quote{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(200px,340px) 1fr;align-items:center;gap:12px;min-height:150px;padding:10px clamp(20px,4vw,56px) 10px clamp(20px,3vw,40px);border-radius:26px;background:linear-gradient(100deg,#0A3FC4 0%,#0B5BE0 42%,#1680F0 78%,#2A9BF7 100%);box-shadow:0 18px 40px -22px rgba(10,60,180,.7)}
-.ms-quote::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(160px 90px at 98% 112%,rgba(170,240,200,.95),transparent 70%),radial-gradient(200px 80px at 86% 118%,rgba(225,245,255,.9),transparent 72%),radial-gradient(140px 70px at 4% 120%,rgba(140,220,255,.55),transparent 72%),radial-gradient(260px 160px at 30% -20%,rgba(255,255,255,.12),transparent 70%)}
+.ms-quote{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(200px,340px) 1fr;align-items:center;gap:12px;min-height:160px;padding:10px clamp(20px,4vw,56px) 10px clamp(20px,3vw,40px);border-radius:26px;background:linear-gradient(100deg,#08309E 0%,#0A49CF 30%,#0B62E3 58%,#1A86F2 82%,#3FA6F8 100%);box-shadow:0 18px 40px -22px rgba(10,60,180,.7)}
+/* soft light: a glow behind the mascot, a brighter sky top-right, a faint shine across the middle */
+.ms-quote::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(220px 150px at 18% 55%,rgba(80,170,255,.45),transparent 70%),radial-gradient(320px 180px at 96% 0%,rgba(150,215,255,.55),transparent 70%),radial-gradient(420px 120px at 55% 108%,rgba(70,160,255,.35),transparent 70%),linear-gradient(180deg,rgba(255,255,255,.06),transparent 45%)}
+.ms-clouds{position:absolute;left:0;bottom:0;width:100%;height:min(100%,170px);z-index:-1;pointer-events:none}
+@media (max-width:760px){.ms-clouds{height:90px}}
+/* soft edges: the far clouds blur more than the near ones */
+.ms-clouds .c-back{opacity:.55;filter:blur(7px)}
+.ms-clouds .c-light{opacity:.85;filter:blur(5px)}
+.ms-clouds .c-green{filter:blur(2.5px)}
+.ms-clouds .c-green2{opacity:.8;filter:blur(4px)}
 .ms-quote-art{width:100%;max-width:300px;height:auto;justify-self:center;margin-block:-6px -18px;filter:drop-shadow(0 14px 18px rgba(0,20,80,.35))}
 .ms-dash{position:absolute;left:clamp(16px,3vw,44px);top:34%;display:grid;gap:6px;transform:rotate(-24deg)}
 .ms-dash i{display:block;width:16px;height:4px;border-radius:4px;background:#fff}
@@ -316,7 +324,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 .ms-quote-t .q2::after{content:"”";color:#3FD3FF;font-size:1.1em;line-height:0;vertical-align:-.1em;margin-left:.04em}
 .ms-swoosh{position:absolute;left:4%;right:-2%;bottom:-.42em;width:100%;height:.5em;overflow:visible}
 .ms-swoosh path{fill:none;stroke:#7FE6FF;stroke-width:4;stroke-linecap:round}
-.ms-heart{position:absolute;right:clamp(16px,3vw,48px);top:50%;width:clamp(28px,3vw,40px);height:auto;transform:translateY(-10%) rotate(12deg)}
+.ms-heart{position:absolute;right:clamp(16px,3vw,48px);top:50%;width:clamp(34px,3.6vw,48px);height:auto;transform:translateY(-45%) rotate(12deg) scaleX(1.25)}
 .ms-heart path{fill:none;stroke:#fff;stroke-width:3.2;stroke-linejoin:round}
 @media (max-width:760px){.ms-quote{grid-template-columns:1fr;justify-items:center;text-align:center;padding-bottom:30px}.ms-quote-art{max-width:220px;margin:0}.ms-quote-t .q2{margin-inline:auto}.ms-heart{top:14px;transform:none}.ms-dash{top:12%}}
 .ms-cta{text-align:center;display:grid;gap:12px;justify-items:center;margin-top:clamp(32px,5vw,56px)}
