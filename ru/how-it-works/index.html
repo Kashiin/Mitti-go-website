@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как работает Mitti GO: разрешённые каналы, плеер и родительский контроль</title>
+<meta name="description" content="Как устроен Mitti GO: родитель разрешает каналы и плейлисты, приложение убирает рекомендации, комментарии и выходы на YouTube, а ребёнок смотрит только выбранное. Настройка за пару минут.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mitti-go.uz/ru/how-it-works/">
+<link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/how-it-works/">
+<link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/how-it-works/">
+<link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/how-it-works/">
+<link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/how-it-works/">
+<meta name="theme-color" content="#0078FF">
+<meta name="google-site-verification" content="rJNAsnwTCOdMKbBCNrRhRH9m7SymnOPFsV2at637qJI">
+<meta name="yandex-verification" content="eb716e5b70ac3ca6">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:site_name" content="Mitti GO">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Как работает Mitti GO: разрешённые каналы, плеер и родительский контроль">
+<meta property="og:description" content="Как устроен Mitti GO: родитель разрешает каналы и плейлисты, приложение убирает рекомендации, комментарии и выходы на YouTube, а ребёнок смотрит только выбранное. Настройка за пару минут.">
+<meta property="og:url" content="https://mitti-go.uz/ru/how-it-works/">
+<meta property="og:image" content="https://mitti-go.uz/assets/og/mitti-go.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Как работает Mitti GO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="uz_UZ">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Как работает Mitti GO: разрешённые каналы, плеер и родительский контроль">
+<meta name="twitter:description" content="Как устроен Mitti GO: родитель разрешает каналы и плейлисты, приложение убирает рекомендации, комментарии и выходы на YouTube, а ребёнок смотрит только выбранное. Настройка за пару минут.">
+<meta name="twitter:image" content="https://mitti-go.uz/assets/og/mitti-go.jpg">
+<meta name="twitter:image:alt" content="Как работает Mitti GO">
+<script>try{var t=localStorage.getItem("mg-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/material-symbols-icons.woff2?v=e1ac6015" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2?v=166202cc" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito-cyrillic.woff2?v=fd4986b8" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css?v=mv7xgsxo">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R2BKTV7M09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R2BKTV7M09');
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113131100', 'ym');
+
+    ym(113131100, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->
+<style>@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-cyrillic.woff2?v=fd4986b8) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-latin-ext.woff2?v=ffdc8b0c) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-latin.woff2?v=166202cc) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-cyrillic.woff2?v=b30aa3db) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-latin-ext.woff2?v=2a8768f8) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-latin.woff2?v=2d9de14f) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face {font-family:'Material Symbols Rounded';font-style:normal;font-weight:500;font-display:block;src:url(/assets/fonts/material-symbols-icons.woff2?v=e1ac6015) format('woff2')}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://mitti-go.uz/ru/how-it-works/#webpage","url":"https://mitti-go.uz/ru/how-it-works/","name":"Как работает Mitti GO: разрешённые каналы, плеер и родительский контроль","description":"Как устроен Mitti GO: родитель разрешает каналы и плейлисты, приложение убирает рекомендации, комментарии и выходы на YouTube, а ребёнок смотрит только выбранное. Настройка за пару минут.","inLanguage":"ru","isPartOf":{"@id":"https://mitti-go.uz/#website"},"about":{"@id":"https://mitti-go.uz/#app"},"publisher":{"@type":"Organization","@id":"https://mitti-go.uz/#organization","name":"Mitti GO","url":"https://mitti-go.uz/","logo":{"@type":"ImageObject","url":"https://mitti-go.uz/assets/images/logo-main.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://mitti-go.uz/ru/"},{"@type":"ListItem","position":2,"name":"Как это работает","item":"https://mitti-go.uz/ru/how-it-works/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ru","mainEntity":[{"@type":"Question","name":"Можно разрешить или запретить одно видео?","acceptedAnswer":{"@type":"Answer","text":"Нет, только каналы и плейлисты. Так проще следить, а новые видео появляются сами. Если в канале есть лишний плейлист — скройте его."}},{"@type":"Question","name":"Нужен ли интернет?","acceptedAnswer":{"@type":"Answer","text":"Для просмотра и добавления каналов — да. Убрать канал, скрыть плейлист или поставить звёздочку можно и без сети. Без интернета ребёнок видит уже сохранённый список."}},{"@type":"Question","name":"Ребёнок увидит рекламу?","acceptedAnswer":{"@type":"Answer","text":"Mitti GO сам рекламу не показывает. Реклама, которую YouTube иногда включает в своём плеере, остаётся: скрывать её запрещают правила YouTube."}},{"@type":"Question","name":"Видео не запускается — что делать?","acceptedAnswer":{"@type":"Answer","text":"Некоторые авторы запрещают показывать свои видео в других приложениях, а прямые эфиры не поддерживаются — такие видео Mitti GO просто не показывает. Если видео не грузится, проверьте интернет и нажмите «Повторить»."}}]}</script>
+</head>
+<body data-page="how">
+<noscript><div><img src="https://mc.yandex.ru/watch/113131100" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<header class="top">
+  <div class="wrap">
+    <a href="/ru/" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp?v=b166c509" alt="Mitti GO" width="311" height="104" loading="eager" fetchpriority="high" decoding="async"><img class="logo d" src="/assets/images/logo-white.webp?v=170e7cb0" alt="Mitti GO" width="304" height="104" loading="eager" decoding="async"></a>
+    <nav class="nav" aria-label="Main"><a href="/ru/how-it-works/" aria-current="page">Как это работает</a><a href="/ru/#model">Разрешения</a><a href="/ru/#parents">Для родителей</a><a href="/ru/pricing/">Тарифы</a><a href="/ru/faq/">Вопросы</a><a href="/ru/blog/">Блог</a></nav>
+    <button class="tbtn" id="themeBtn" type="button" aria-label="Светлая / тёмная тема"><span class="ms" id="themeIc">dark_mode</span></button>
+    <nav class="lang" aria-label="Язык"><a href="/uz/how-it-works/" hreflang="uz" lang="uz" title="O‘zbekcha">UZ</a><a href="/ru/how-it-works/" hreflang="ru" lang="ru" aria-current="page" title="Русский">RU</a><a href="/en/how-it-works/" hreflang="en" lang="en" title="English">EN</a></nav>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span class="ms" id="burgerIc">menu</span></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="/ru/how-it-works/" aria-current="page"><span class="ms mnav-ic">play_circle</span><span>Как это работает</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/#model"><span class="ms mnav-ic">playlist_add_check</span><span>Разрешения</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/#parents"><span class="ms mnav-ic">shield_person</span><span>Для родителей</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/pricing/"><span class="ms mnav-ic">workspace_premium</span><span>Тарифы</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/faq/"><span class="ms mnav-ic">help</span><span>Вопросы</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/blog/"><span class="ms mnav-ic">auto_stories</span><span>Блог</span><span class="ms mnav-go">chevron_right</span></a></nav>
+</header>
+
+<main id="top">
+<section class="info-page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Навигация по разделам"><ol><li><a href="/ru/">Главная</a></li><li aria-current="page">Как это работает</li></ol></nav>
+    <div class="sec-head info-head">
+      <span class="eyebrow"><span class="ms">play_circle</span><span>Как это работает</span></span>
+      <h1>Как работает <em class="go-text">Mitti-GO</em></h1>
+      <p class="lede">Родитель выбирает каналы и плейлисты, <em class="go-text">Mitti GO</em> убирает всё лишнее, а ребёнок смотрит только разрешённое. Вот как это устроено — от первой настройки до экранного времени.</p>
+    </div>
+<ol class="how-flow"><li class="fl" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">playlist_add_check</span></span><h2>Родитель выбирает</h2><p>Добавляет каналы и плейлисты, которым доверяет, — из подборки <em class="go-text">Mitti GO</em> или свои.</p><span class="ms fl-arr" aria-hidden="true">arrow_forward</span></li><li class="fl" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">verified_user</span></span><h2><em class="go-text">Mitti-GO</em> фильтрует</h2><p>Оставляет только разрешённое: без ленты рекомендаций, комментариев, лайков и выходов на YouTube.</p><span class="ms fl-arr" aria-hidden="true">arrow_forward</span></li><li class="fl" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="ic"><span class="ms">smart_display</span></span><h2>Ребёнок смотрит</h2><p>Видит знакомые каналы крупными карточками, а новые видео от них появляются сами.</p></li></ol>
+<section class="how-sec" id="setup">
+<h2 class="info-h2">Настройка за пару минут</h2>
+<ol class="how-steps"><li class="hs" style="--c:var(--sky);--bgc:var(--pcyan)"><span class="shot"><img src="/assets/images/how/splash.jpg?v=7162512f" alt="Экран загрузки Mitti GO" width="540" height="1174" loading="lazy" decoding="async"></span><span class="n">1</span><h3>Откройте <em class="go-text">Mitti-GO</em></h3><p>Сначала — короткая настройка из трёх шагов.</p></li><li class="hs" style="--c:var(--blue);--bgc:var(--pblue)"><span class="shot"><img src="/assets/images/how/language.jpg?v=dcbdbf1d" alt="Выбор языка приложения" width="540" height="1174" loading="lazy" decoding="async"></span><span class="n">2</span><h3>Выберите язык</h3><p>Для всего приложения — и для подборки каналов.</p></li><li class="hs" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="shot"><img src="/assets/images/how/pin.jpg?v=6728f776" alt="Создание родительского PIN-кода" width="540" height="1174" loading="lazy" decoding="async"></span><span class="n">3</span><h3>Придумайте PIN</h3><p>Четыре цифры закрывают родительский раздел. Детская часть открывается без PIN.</p></li><li class="hs" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="shot"><img src="/assets/images/how/channels.jpg?v=478acaae" alt="Выбор каналов из подборки Mitti GO" width="540" height="1174" loading="lazy" decoding="async"></span><span class="n">4</span><h3>Добавьте каналы</h3><p>Из подборки <em class="go-text">Mitti GO</em> или свои — по названию, @имени или ссылке. Шаг можно пропустить.</p></li><li class="hs done"><span class="shot"><img src="/assets/images/how/ready.jpg?v=a29deb16" alt="Экран «Всё готово» после настройки" width="540" height="1174" loading="lazy" decoding="async"></span><span class="n"><span class="ms">check</span></span><h3>Отдайте телефон ребёнку</h3><p>Он увидит только то, что вы выбрали. Новые видео с этих каналов появятся сами.</p></li></ol>
+<p class="shots-note"><span class="ms">info</span>Экраны приложения; каналы и видео на них — образцы.</p>
+</section>
+<section class="how-sec" id="permissions">
+<h2 class="info-h2">Что решает родитель</h2>
+<p class="how-sub">Отдельные видео не добавляются — только каналы и плейлисты. Так проще следить, а новые видео от разрешённых авторов появляются сами.</p>
+<div class="how-split"><div class="how-split-cards"><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">subscriptions</span></span><div><h3>Весь канал</h3><p>Разрешены все видео и все плейлисты канала. Для авторов, которым вы доверяете. <b>Бесплатно — до 5 каналов.</b></p></div></div><div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">playlist_play</span></span><div><h3>Только плейлисты</h3><p>Разрешаете конкретный плейлист, а остальной канал остаётся закрытым. <b>Бесплатно — до 10 плейлистов.</b></p></div></div><div class="lim" style="--c:var(--sky);--bgc:var(--pcyan)"><span class="ic"><span class="ms">visibility_off</span></span><div><h3>Скрыть плейлист</h3><p>Не нравится плейлист в добавленном канале? Скройте его — эти видео исчезнут у ребёнка отовсюду.</p></div></div><div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">star</span></span><div><h3>Звёздочка — это Избранное</h3><p>Канал встаёт первым у ребёнка. Доступ она не открывает и в лимит не входит.</p></div></div></div><span class="shot"><img src="/assets/images/how/add-channel.jpg?v=8be2332f" alt="Поиск и добавление канала для ребёнка" width="540" height="1174" loading="lazy" decoding="async"></span></div>
+</section>
+<section class="how-sec" id="kids">
+<h2 class="info-h2">Что видит ребёнок</h2>
+<p class="how-sub">Большие картинки, крупные кнопки и значки вместо слов — понятно даже тем, кто ещё не читает.</p>
+<div class="how-shots"><span class="shot"><img src="/assets/images/how/home.jpg?v=6eb42f17" alt="Главный экран ребёнка с видео" width="540" height="1174" loading="lazy" decoding="async"></span><span class="shot"><img src="/assets/images/how/search.jpg?v=fa44b386" alt="Поиск только по добавленным видео" width="540" height="1174" loading="lazy" decoding="async"></span><span class="shot"><img src="/assets/images/how/library.jpg?v=fde36b93" alt="Библиотека каналов ребёнка" width="540" height="1174" loading="lazy" decoding="async"></span></div>
+<div class="lim-grid four"><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">view_agenda</span></span><div><h3>Одно большое видео в строке</h3><p>Без каруселей и бесконечных полок. Сверху — то, что ребёнок не досмотрел.</p></div></div><div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">visibility_off</span></span><div><h3>Без просмотров и лайков</h3><p>Картинка, название и длительность — и никаких счётчиков популярности.</p></div></div><div class="lim" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="ic"><span class="ms">search</span></span><div><h3>Поиск только по своему</h3><p>Ищет только среди того, что добавил родитель, прямо на устройстве.</p></div></div><div class="lim" style="--c:var(--sky);--bgc:var(--pcyan)"><span class="ic"><span class="ms">play_circle</span></span><div><h3>Shorts — только если вы решите</h3><p>По умолчанию выключены. Включите — и появятся Shorts только разрешённых каналов, без общей ленты.</p></div></div><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">touch_app</span></span><div><h3>Автовоспроизведение выключено</h3><p>Следующее видео ребёнок выбирает сам. Хотите иначе — включите в настройках.</p></div></div><div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">sentiment_satisfied</span></span><div><h3>Ничего пугающего</h3><p>Если что-то перестало быть разрешено, оно просто тихо исчезает. Никаких «Заблокировано родителем».</p></div></div></div>
+</section>
+<section class="how-sec" id="player">
+<h2 class="info-h2">Из плеера не уйти</h2>
+<p class="how-sub">Видео играет в официальном плеере YouTube, а <em class="go-text">Mitti GO</em> закрывает из него все выходы.</p>
+<div class="how-split"><div class="how-split-cards"><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">replay</span></span><div><h3>Свой экран в конце видео</h3><p>«Ещё раз» и следующие видео — только из разрешённых. Подсказки YouTube не нажимаются.</p></div></div><div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">queue_play_next</span></span><div><h3>«Дальше» — по смыслу</h3><p>Смотрит плейлист — дальше идёт этот плейлист. Открыл канал — видео этого канала.</p></div></div><div class="lim" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="ic"><span class="ms">bookmark_added</span></span><div><h3>Помнит, где остановились</h3><p>Недосмотренное видео ждёт первым на главной с меткой «Продолжить».</p></div></div><div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">screen_rotation</span></span><div><h3>Пауза, когда свернули</h3><p>Свернули приложение — видео на паузе. Повернули телефон — полный экран.</p></div></div></div><span class="shot"><img src="/assets/images/how/player.jpg?v=2ed6d1d1" alt="Плеер со списком «Дальше»" width="540" height="1174" loading="lazy" decoding="async"></span></div>
+</section>
+<section class="how-sec" id="parents">
+<h2 class="info-h2">Родительский раздел под PIN</h2>
+<p class="how-sub">Он открывается из вкладки «Профиль». Внутри всё под рукой: контент, Shorts, язык, тема, безопасность.</p>
+<div class="how-split"><div class="how-split-cards"><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">fingerprint</span></span><div><h3>PIN или биометрия</h3><p>Отпечаток или Face ID — по желанию. PIN всегда остаётся запасным ключом.</p></div></div><div class="lim" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="ic"><span class="ms">lock_clock</span></span><div><h3>«Готово» закрывает всё</h3><p>Нажали «Готово», перешли в детскую часть или свернули приложение — раздел сразу закрыт.</p></div></div><div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">password</span></span><div><h3>Подобрать PIN не выйдет</h3><p>После пяти неверных попыток клавиатура берёт паузу. Перезапуск или смена времени её не сбрасывают.</p></div></div><div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">donut_large</span></span><div><h3>Всё видно сразу</h3><p>Счётчики вроде «3 / 5» и понятные метки: Включён, Скрыт, На паузе.</p></div></div></div><span class="shot"><img src="/assets/images/how/parent.jpg?v=d7645c70" alt="Родительский раздел: контент, Shorts, экранное время" width="540" height="1174" loading="lazy" decoding="async"></span></div>
+</section>
+<section class="how-sec" id="screen-time">
+<h2 class="info-h2">Экранное время · Pro</h2>
+<p class="how-sub">Экранное время — часть Pro. На бесплатном тарифе ничего не считается и ничего не блокируется. Подробнее — на странице <a href="/ru/pricing/">Тарифы</a>.</p>
+<div class="lim-grid four"><div class="lim" style="--c:var(--blue);--bgc:var(--pblue)"><span class="ic"><span class="ms">schedule</span></span><div><h3>Дневной лимит</h3><p>Сколько можно смотреть в день. Обнуляется в полночь.</p></div></div><div class="lim" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="ic"><span class="ms">timer</span></span><div><h3>Предупреждение за 5 минут</h3><p>Маскот говорит «Скоро перерыв!» — без обратного отсчёта и поверх видео не выскакивает.</p></div></div><div class="lim" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="ic"><span class="ms">hourglass_bottom</span></span><div><h3>Можно досмотреть</h3><p>Если время кончилось посреди видео, его можно досмотреть — но не больше 15 минут сверху.</p></div></div><div class="lim" style="--c:#B07A00;--bgc:var(--pyellow)"><span class="ic"><span class="ms">bedtime</span></span><div><h3>Режим сна</h3><p>Разрешённые часы, например 08:00–20:00, — отдельно для будней и выходных.</p></div></div></div>
+</section>
+<h2 class="info-h2">Вопросы о том, как всё устроено</h2>
+<div class="faq faq-list in"><details><summary><span>Можно разрешить или запретить одно видео?</span><span class="ms">add</span></summary><p>Нет, только каналы и плейлисты. Так проще следить, а новые видео появляются сами. Если в канале есть лишний плейлист — скройте его.</p></details><details><summary><span>Нужен ли интернет?</span><span class="ms">add</span></summary><p>Для просмотра и добавления каналов — да. Убрать канал, скрыть плейлист или поставить звёздочку можно и без сети. Без интернета ребёнок видит уже сохранённый список.</p></details><details><summary><span>Ребёнок увидит рекламу?</span><span class="ms">add</span></summary><p><em class="go-text">Mitti GO</em> сам рекламу не показывает. Реклама, которую YouTube иногда включает в своём плеере, остаётся: скрывать её запрещают правила YouTube.</p></details><details><summary><span>Видео не запускается — что делать?</span><span class="ms">add</span></summary><p>Некоторые авторы запрещают показывать свои видео в других приложениях, а прямые эфиры не поддерживаются — такие видео <em class="go-text">Mitti GO</em> просто не показывает. Если видео не грузится, проверьте интернет и нажмите «Повторить».</p></details></div>
+<div class="page-end"><div><b>Остались вопросы?</b><p>Посмотрите, что входит в бесплатный тариф, или загляните в ответы на частые вопросы родителей.</p></div><div class="page-end-btns"><a class="btn primary" href="/ru/pricing/"><span>Тарифы</span><span class="ms">arrow_forward</span></a><a class="btn ghost" href="/ru/faq/"><span class="ms">help</span><span>Все вопросы и ответы</span></a></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot" id="siteFoot"><div class="wrap">
+<div class="ft-top">
+ <div class="ft-brand"><a href="/ru/" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp?v=b166c509" alt="Mitti GO" width="311" height="104" loading="lazy" decoding="async"><img class="logo d" src="/assets/images/logo-white.webp?v=170e7cb0" alt="Mitti GO" width="304" height="104" loading="lazy" decoding="async"></a>
+  <p>Детское видео, которое выбираете вы. Безопасный контент — счастливые дети.</p><div class="stores"><span class="soon store-badge"><img class="store-logo" src="/assets/images/google-play.svg?v=b1d5b3a3" alt="" width="32" height="32" decoding="async" loading="lazy"><span class="store-copy"><span>Скоро</span><b>Google Play</b></span></span><span class="soon store-badge"><img class="store-logo" src="/assets/images/app-store.svg?v=a6a486b3" alt="" width="32" height="32" decoding="async" loading="lazy"><span class="store-copy"><span>Скоро</span><b>App Store</b></span></span></div></div>
+ <nav class="ft-col" aria-label="Продукт"><h2>Продукт</h2><ul><li><a href="/ru/">Главная</a></li><li><a href="/ru/how-it-works/">Как это работает</a></li><li><a href="/ru/#model">Разрешения</a></li><li><a href="/ru/#player">Плеер</a></li><li><a href="/ru/pricing/">Экранное время</a></li><li><a href="/ru/pricing/">Тарифы</a></li></ul></nav>
+ <nav class="ft-col" aria-label="Родителям"><h2>Родителям</h2><ul><li><a href="/ru/#parents">Для родителей</a></li><li><a href="/ru/faq/#privacy">Безопасность и приватность</a></li><li><a href="/ru/#devices">Android TV и устройства</a></li><li><a href="/ru/faq/">Вопросы и ответы</a></li></ul></nav>
+ <nav class="ft-col ft-blog" aria-label="Блог"><h2>Блог</h2><ul><li><a href="/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/">Нужно ли родителям смотреть YouTube вместе с ребёнком?</a></li><li><a href="/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/">10 безопасных YouTube-каналов для дошкольников</a></li><li><a href="/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/">Чем <em class="go-text">Mitti-GO</em> отличается от YouTube Kids?</a></li><li><a class="ft-all" href="/ru/blog/">Все статьи →</a></li></ul></nav>
+</div>
+<div class="ft-bottom"><span>© 2026 <em class="go-text">Mitti GO</em></span><span>Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC.</span><nav class="ft-langs" aria-label="Язык сайта"><a href="/uz/how-it-works/" hreflang="uz" lang="uz">O‘zbekcha</a><a href="/ru/how-it-works/" hreflang="ru" lang="ru" aria-current="page">Русский</a><a href="/en/how-it-works/" hreflang="en" lang="en">English</a></nav><a href="#top" class="ft-up">Наверх<span class="ms">arrow_upward</span></a></div>
+</div></footer>
+
+<script src="/assets/js/lang-keep.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

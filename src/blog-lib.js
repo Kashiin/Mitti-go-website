@@ -64,11 +64,12 @@ const homePath = l => `/${l}/`;
 const blogPath = l => `/${l}/blog/`;
 const pricingPath = l => `/${l}/pricing/`;
 const faqPath = l => `/${l}/faq/`;
+const howPath = l => `/${l}/how-it-works/`;
 
-/* main menu: same items on every page; `current` = "home" | "pricing" | "faq" | "blog" marks the open page.
+/* main menu: same items on every page; `current` = "home" | "how" | "pricing" | "faq" | "blog" marks the open page.
    mobile: the burger menu version (icon + label + arrow, bigger tap targets) */
 const NAV_ITEMS = [
-  ["how", "play_circle", l => `${homePath(l)}#how`, "home-how"],
+  ["how", "play_circle", howPath, "how"],
   ["model", "playlist_add_check", l => `${homePath(l)}#model`, "home-model"],
   ["parents", "shield_person", l => `${homePath(l)}#parents`, "home-parents"],
   ["plans", "workspace_premium", pricingPath, "pricing"],
@@ -108,7 +109,7 @@ function asidePost(o, l) {
 /* alternates: { uz: "/uz/…", ru: "/ru/…", en: "/en/…" } — the same page in each language */
 function footerHTML(l, posts, alternates) {
   const t = FT[l], home = homePath(l);
-  const hrefs = { plans: pricingPath(l), screentime: pricingPath(l), faq: faqPath(l), privacy: faqPath(l) + "#privacy" };
+  const hrefs = { how: howPath(l), plans: pricingPath(l), screentime: pricingPath(l), faq: faqPath(l), privacy: faqPath(l) + "#privacy" };
   const link = k => `<li><a href="${hrefs[k] || `${home}#${k}`}">${t.links[k]}</a></li>`;
   const store = (logo, name) => `<span class="soon store-badge"><img class="store-logo" src="/assets/images/${logo}" alt="" width="32" height="32" decoding="async"><span class="store-copy"><span>${t.soon}</span><b>${name}</b></span></span>`;
   const langs = LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""}>${LANG_NAMES[x]}</a>`).join("");
@@ -124,4 +125,4 @@ function footerHTML(l, posts, alternates) {
 </div>`;
 }
 
-module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };
+module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };

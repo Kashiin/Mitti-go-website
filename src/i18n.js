@@ -12,7 +12,7 @@ uz:{
 "s2.t":"Pleyerdan chiqib bo‘lmaydi","s2.p":"Logotip, havolalar, video oxiridagi tavsiyalar — YouTube’ga barcha o‘tishlar jimgina bloklanadi.",
 "s3.t":"Qidiruv faqat o‘zinikida","s3.p":"Faqat ota-ona qo‘shgan narsalar ichidan, to‘g‘ridan-to‘g‘ri qurilmada qidiradi.",
 
-"how.e":"Bir-ikki daqiqada sozlash","how.t":"Uch qadam — va tomosha qilish mumkin",
+"how.e":"Bir-ikki daqiqada sozlash","how.t":"Uch qadam — va tomosha qilish mumkin","how.more":"Hammasi qanday tuzilgani haqida batafsil",
 "h1.t":"Tilni tanlang","h1.p":"Butun ilova va kanallar tanlovi uchun.",
 "h2.t":"PIN o‘ylab toping","h2.p":"To‘rt raqam ota-onalar bo‘limini yopadi. Bolalar qismi PIN’siz ochiladi.",
 "h3.t":"Kanallar qo‘shing","h3.p":"Mitti GO tanlovidan yoki o‘zingiznikini — nomi, @nomi yoki havolasi bo‘yicha. Bu qadamni o‘tkazib yuborish mumkin.",
@@ -77,7 +77,7 @@ en:{
 "s2.t":"No way out of the player","s2.p":"Logo, links, end-screen suggestions — every jump to YouTube is quietly blocked.",
 "s3.t":"Search stays inside","s3.p":"It looks only through what a parent added, right on the device.",
 
-"how.e":"Set up in a couple of minutes","how.t":"Three steps, then press play",
+"how.e":"Set up in a couple of minutes","how.t":"Three steps, then press play","how.more":"See how it all works",
 "h1.t":"Pick a language","h1.p":"For the whole app — and for channel suggestions.",
 "h2.t":"Create a PIN","h2.p":"Four digits lock the parent area. The child's side opens without one.",
 "h3.t":"Add channels","h3.p":"From Mitti GO's suggestions or your own — by name, @handle or link. You can skip this step.",

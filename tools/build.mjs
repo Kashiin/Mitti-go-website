@@ -1,8 +1,8 @@
 /* Mitti GO static site build.
    Run from the project root:   node tools/build.mjs
-   Sources:  src/templates/*.html, src/i18n.js (landing UZ/EN), src/posts.js (blog), src/pages.js (pricing + FAQ pages),
+   Sources:  src/templates/*.html, src/i18n.js (landing UZ/EN), src/posts.js (blog), src/pages.js (pricing, FAQ, how-it-works pages),
              src/blog-lib.js (shared pieces), src/fonts.css (tools/fonts.py)
-   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/pricing/, /{lang}/faq/, /{lang}/blog/index.html,
+   Output:   /index.html (x-default language chooser), /{uz,ru,en}/index.html, /{lang}/pricing/, /{lang}/faq/, /{lang}/how-it-works/, /{lang}/blog/index.html,
              /{lang}/blog/<slug>/index.html, /404.html, legacy /blog.html + /post.html redirects,
              /sitemap.xml, /robots.txt, /site.webmanifest
    Every generated page has its own title, description, canonical, hreflang, Open Graph, Twitter card and JSON-LD. */
@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const lib = require(path.join(ROOT, "src/blog-lib.js"));
 const T = require(path.join(ROOT, "src/i18n.js"));
-const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
+const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
 const PAGES = require(path.join(ROOT, "src/pages.js"));
 
 const read = p => fs.readFileSync(path.join(ROOT, p), "utf8");
@@ -200,7 +200,7 @@ const fontPreloads = l => ["material-symbols-icons.woff2", "nunito-latin.woff2"]
 function langNav(l, alternates) {
   return `<nav class="lang" aria-label="${L[l].langLabel}">` + LANGS.map(x => `<a href="${alternates[x]}" hreflang="${x}" lang="${x}"${x === l ? ' aria-current="page"' : ""} title="${LANG_NAMES[x]}">${x.toUpperCase()}</a>`).join("") + `</nav>`;
 }
-/* current: "home" | "pricing" | "faq" | "blog" (highlighted in the menu) */
+/* current: "home" | "how" | "pricing" | "faq" | "blog" (highlighted in the menu) */
 function siteHeader(l, alternates, current) {
   return `<header class="top">
   <div class="wrap">
@@ -257,6 +257,7 @@ for (const l of LANGS) {
     HOME: homePath(l) + "#top",
     PRICING: pricingPath(l),
     FAQ: faqPath(l),
+    HOW: howPath(l),
     LANGNAV: langNav(l, HOME_ALT),
     NAV: navHTML(l, "home"),
     MNAV: navHTML(l, "home", true),
@@ -341,12 +342,13 @@ for (const p of POSTS) {
   }
 }
 
-/* ---------- stand-alone pages: /{lang}/pricing/ and /{lang}/faq/ (content in src/pages.js) ---------- */
+/* ---------- stand-alone pages: /{lang}/pricing/, /{lang}/faq/, /{lang}/how-it-works/ (content in src/pages.js) ---------- */
 const pageTpl = read("src/templates/page.html");
 const PRICING_ALT = Object.fromEntries(LANGS.map(l => [l, pricingPath(l)]));
 const FAQ_ALT = Object.fromEntries(LANGS.map(l => [l, faqPath(l)]));
-// {{PRICING}} {{FAQ}} {{BLOG}} {{HOME}} inside page texts → the page in the same language
-const pageLinks = (s, l) => s.replace(/\{\{(PRICING|FAQ|BLOG|HOME)\}\}/g, (m, k) => ({ PRICING: pricingPath(l), FAQ: faqPath(l), BLOG: blogPath(l), HOME: homePath(l) }[k]));
+const HOW_ALT = Object.fromEntries(LANGS.map(l => [l, howPath(l)]));
+// {{PRICING}} {{FAQ}} {{HOW}} {{BLOG}} {{HOME}} inside page texts → the page in the same language
+const pageLinks = (s, l) => s.replace(/\{\{(PRICING|FAQ|HOW|BLOG|HOME)\}\}/g, (m, k) => ({ PRICING: pricingPath(l), FAQ: faqPath(l), HOW: howPath(l), BLOG: blogPath(l), HOME: homePath(l) }[k]));
 const plain = s => s.replace(/<[^>]+>/g, "");
 const qaHTML = (items, l) => `<div class="faq faq-list in">${items.map(([q, a]) => `<details><summary><span>${q}</span><span class="ms">add</span></summary><p>${pageLinks(a, l)}</p></details>`).join("")}</div>`;
 const qaLD = (items, l) => ({ "@context": "https://schema.org", "@type": "FAQPage", inLanguage: l, mainEntity: items.map(([q, a]) => ({ "@type": "Question", name: plain(q), acceptedAnswer: { "@type": "Answer", text: plain(pageLinks(a, l)) } })) });
@@ -385,12 +387,43 @@ ${t.groups.map(g => `<section class="faq-group" id="${g.id}" style="--c:${g.c};-
 <h2 class="fg-h"><span class="ms">${g.icon}</span>${g.t}</h2>
 ${qaHTML(g.items, l)}
 </section>`).join("\n")}
-<div class="page-end"><div><b>${t.endT}</b><p>${t.endS}</p></div><div class="page-end-btns"><a class="btn primary" href="${homePath(l)}#how"><span>${t.endB}</span><span class="ms">arrow_forward</span></a><a class="btn ghost" href="${blogPath(l)}"><span class="ms">auto_stories</span><span>${t.endB2}</span></a></div></div>`;
+<div class="page-end"><div><b>${t.endT}</b><p>${t.endS}</p></div><div class="page-end-btns"><a class="btn primary" href="${howPath(l)}"><span>${t.endB}</span><span class="ms">arrow_forward</span></a><a class="btn ghost" href="${blogPath(l)}"><span class="ms">auto_stories</span><span>${t.endB2}</span></a></div></div>`;
+}
+
+/* app screenshots (assets/images/how/<name>.jpg, 540 px wide): one per setup step, and per section id */
+const HOW_STEP_SHOTS = ["splash", "language", "pin", "channels", "ready"];
+const HOW_SHOTS = { permissions: ["add-channel"], kids: ["home", "search", "library"], player: ["player"], parents: ["parent"] };
+function howHTML(t, l) {
+  const card = ([ic, c, bg, h, p]) => `<div class="lim" style="--c:${c};--bgc:${bg}"><span class="ic"><span class="ms">${ic}</span></span><div><h3>${h}</h3><p>${pageLinks(p, l)}</p></div></div>`;
+  const shot = name => `<span class="shot"><img src="/assets/images/how/${name}.jpg" alt="${esc(t.alt[name])}"></span>`;
+  const stepC = [["var(--sky)", "var(--pcyan)"], ["var(--blue)", "var(--pblue)"], ["var(--purple)", "var(--ppurple)"], ["#0A8C4B", "var(--pgreen)"]];
+  const last = t.steps.length - 1;
+  return `<ol class="how-flow">${t.flow.map(([ic, c, bg, h, p], i) => `<li class="fl" style="--c:${c};--bgc:${bg}"><span class="ic"><span class="ms">${ic}</span></span><h2>${h}</h2><p>${p}</p>${i < t.flow.length - 1 ? `<span class="ms fl-arr" aria-hidden="true">arrow_forward</span>` : ""}</li>`).join("")}</ol>
+<section class="how-sec" id="setup">
+<h2 class="info-h2">${t.stepsH}</h2>
+<ol class="how-steps">${t.steps.map(([h, p], i) => `<li class="hs${i === last ? " done" : ""}"${i < last ? ` style="--c:${stepC[i][0]};--bgc:${stepC[i][1]}"` : ""}>${shot(HOW_STEP_SHOTS[i])}<span class="n">${i === last ? `<span class="ms">check</span>` : i + 1}</span><h3>${h}</h3><p>${p}</p></li>`).join("")}</ol>
+<p class="shots-note"><span class="ms">info</span>${t.shotsNote}</p>
+</section>
+${t.sections.map(s => {
+    const shots = HOW_SHOTS[s.id] || [];
+    const cards = `<div class="lim-grid four">${s.items.map(card).join("")}</div>`;
+    return `<section class="how-sec" id="${s.id}">
+<h2 class="info-h2">${s.h}</h2>
+<p class="how-sub">${pageLinks(s.sub, l)}</p>
+${shots.length > 1 ? `<div class="how-shots">${shots.map(shot).join("")}</div>\n${cards}`
+    : shots.length ? `<div class="how-split"><div class="how-split-cards">${s.items.map(card).join("")}</div>${shot(shots[0])}</div>`
+    : cards}
+</section>`;
+  }).join("\n")}
+<h2 class="info-h2">${t.faqH}</h2>
+${qaHTML(t.faq, l)}
+<div class="page-end"><div><b>${t.endT}</b><p>${t.endS}</p></div><div class="page-end-btns"><a class="btn primary" href="${pricingPath(l)}"><span>${t.endB}</span><span class="ms">arrow_forward</span></a><a class="btn ghost" href="${faqPath(l)}"><span class="ms">help</span><span>${t.endB2}</span></a></div></div>`;
 }
 
 for (const [page, alts, icon, render, faqItems] of [
   ["pricing", PRICING_ALT, "workspace_premium", pricingHTML, t => t.faq],
-  ["faq", FAQ_ALT, "help", faqHTML, t => t.groups.flatMap(g => g.items)]
+  ["faq", FAQ_ALT, "help", faqHTML, t => t.groups.flatMap(g => g.items)],
+  ["how", HOW_ALT, "play_circle", howHTML, t => t.faq]
 ]) {
   for (const l of LANGS) {
     const t = PAGES[page][l];
@@ -409,7 +442,7 @@ for (const [page, alts, icon, render, faqItems] of [
       CONTENT: render(t, l),
       FOOTER: footerHTML(l, POSTS, alts)
     });
-    write(`${l}/${page}/index.html`, sizeImages(h));
+    write(alts[l].slice(1) + "index.html", sizeImages(h));
   }
 }
 
@@ -545,6 +578,7 @@ const entries = [urlEntry("/", HOME_ALT, "/", TODAY, "1.0")];
 for (const l of LANGS) entries.push(urlEntry(homePath(l), HOME_ALT, "/", TODAY, "1.0"));
 for (const l of LANGS) entries.push(urlEntry(pricingPath(l), PRICING_ALT, PRICING_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(faqPath(l), FAQ_ALT, FAQ_ALT.ru, TODAY, "0.8"));
+for (const l of LANGS) entries.push(urlEntry(howPath(l), HOW_ALT, HOW_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(blogPath(l), BLOG_ALT, "/ru/blog/", newest, "0.8"));
 for (const p of POSTS) {
   const alts = Object.fromEntries(LANGS.map(l => [l, postPath(p, l)]));
