@@ -321,6 +321,136 @@ ${t.main}
 ${mgCallout({img:B+"dev-balance.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:"index.html#how"})}`;
 }
 
+/* "How the Mitti-GO channel whitelist works" post: one layout, texts per language */
+const WL_TXT = {
+ru: {
+ intro: `<p><b>Белый список</b> — это список каналов и плейлистов, которые разрешили вы. В Mitti-GO ребёнок видит только его: никаких рекомендаций со всего YouTube, случайных каналов и «ещё одного видео» от алгоритма.</p>
+<p>Звучит просто, но в деталях есть важные мелочи: можно разрешить весь канал или только один плейлист, скрыть лишнее и защитить настройки PIN-кодом. Разбираем всё по шагам.</p>`,
+ facts: [["verified_user","Только разрешённое","ребёнок видит ваш список"],["playlist_add_check","Канал или плейлист","вы решаете, насколько широко"],["lock","Под защитой","настройки закрыты PIN-кодом"]],
+ vsH: "Белый и чёрный список: в чём разница",
+ vs: [["block","#E0457B","Чёрный список","Открыто всё, кроме того, что вы заблокировали. Новое и незнакомое попадает к ребёнку раньше, чем вы успеете это проверить."],["verified_user","#16C869","Белый список","Закрыто всё, кроме того, что вы разрешили. Новый канал не появится сам — только после вашего решения."]],
+ vsNote: "Mitti-GO работает только по белому списку: это не дополнительный режим, а основа приложения. Чем такой подход отличается от YouTube Kids — в статье <a href=\"/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/\">«Чем Mitti-GO отличается от YouTube Kids?»</a>.",
+ stepsH: "Как это работает: 6 шагов",
+ s: [
+  ["Родитель выбирает", "Добавьте канал из подборки Mitti-GO или найдите свой — по названию, @имени или ссылке."],
+  ["Весь канал или плейлист", "Разрешите весь канал, если доверяете автору. Или выберите отдельный плейлист — остальной канал останется закрытым, и ребёнок не сможет открыть его страницу."],
+  ["Только ваша библиотека", "Ребёнок видит только выбранный вами контент. Поиск работает только внутри разрешённой библиотеки — прямо на устройстве."],
+  ["Ненужное можно скрыть", "Не подходит плейлист в добавленном канале? Скройте его — эти видео исчезнут из детской библиотеки отовсюду. Скрытые плейлисты не входят в лимит."],
+  ["Настройки под защитой", "Родительский раздел закрыт PIN-кодом, по желанию — отпечатком или Face ID. Shorts выключены по умолчанию, а если их включить — только с разрешённых каналов."],
+  ["Важно помнить", "Новые видео разрешённого канала появляются у ребёнка автоматически. Поэтому время от времени проверяйте свой выбор, а для более точного отбора разрешайте отдельные плейлисты."]
+ ],
+ opts: [["subscriptions","var(--blue)","Весь канал","Все видео автора — и новые тоже."],["playlist_play","var(--purple)","Отдельный плейлист","Только выбранные видео, остальной канал закрыт."]],
+ pl: ["Добавленный канал", [["Мультики","12 видео",true],["Машинки","8 видео",false],["Песенки","10 видео",true]], "Скрыт"],
+ sh: ["Выключены по умолчанию"],
+ tipsH: "Как составить хороший белый список",
+ tips: ["<b>Начните с 3–5 каналов.</b> Небольшой список проще проверить, а ребёнку легче выбрать.", "<b>Большой канал — лучше плейлистами.</b> У популярных авторов бывают видео для разного возраста: разрешите только подходящие плейлисты.", "<b>Посмотрите пару видео сами.</b> Как быстро проверить канал — в статье <a href=\"/ru/blog/kak-vybrat-kanal-dlya-rebenka/\">«5 простых вопросов»</a>.", "<b>Отметьте любимые звёздочкой.</b> Избранные каналы встают первыми у ребёнка — доступ звёздочка не открывает и в лимит не входит.", "<b>Проверяйте список раз в неделю.</b> Загляните, что нового появилось, и скройте лишнее."],
+ tipsMore: "Не знаете, с чего начать? Вот готовая подборка: <a href=\"/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/\">«10 безопасных YouTube-каналов для дошкольников»</a>.",
+ faqH: "Частые вопросы",
+ faq: [["Можно разрешить или запретить одно видео?", "Нет, только каналы и плейлисты. Так проще следить, а новые видео появляются сами. Если в канале есть лишний плейлист — скройте его."], ["Что, если на разрешённом канале выйдет неподходящее видео?", "Скройте плейлист, в который оно попало, или удалите канал целиком — видео сразу исчезнет у ребёнка. Если хотите больше контроля, разрешайте у этого автора только отдельные плейлисты."], ["Увидит ли ребёнок, что канал скрыт или удалён?", "Нет. Всё, что перестало быть разрешено, просто тихо исчезает — без надписей «Заблокировано родителем»."], ["Сколько каналов можно добавить бесплатно?", "До 5 каналов целиком и до 10 отдельных плейлистов. Плейлисты уже добавленных каналов, скрытие и Избранное — без лимита. Подробнее — на странице <a href=\"/ru/pricing/\">Тарифы</a>."]],
+ call: {title:"Спокойная среда из того, что выбрали вы", text:"Белый список — это не набор запретов, а спокойная среда из того, что вы сами считаете хорошим.", pill:"Только разрешённое", link:"Как работает Mitti-GO", href:"/ru/how-it-works/"}
+},
+uz: {
+ intro: `<p><b>Oq ro‘yxat</b> — siz ruxsat bergan kanallar va pleylistlar ro‘yxati. Mitti-GO’da bola faqat uni ko‘radi: butun YouTube’dan tavsiyalar, tasodifiy kanallar va algoritmning «yana bitta videosi» yo‘q.</p>
+<p>Oddiy eshitiladi, lekin muhim jihatlari bor: butun kanalga yoki faqat bitta pleylistga ruxsat berish, keraksizini yashirish va sozlamalarni PIN bilan himoyalash mumkin. Hammasini qadamma-qadam ko‘rib chiqamiz.</p>`,
+ facts: [["verified_user","Faqat ruxsat berilgan","bola sizning ro‘yxatingizni ko‘radi"],["playlist_add_check","Kanal yoki pleylist","qanchalik keng — o‘zingiz hal qilasiz"],["lock","Himoya ostida","sozlamalar PIN bilan yopilgan"]],
+ vsH: "Oq va qora ro‘yxat: farqi nimada",
+ vs: [["block","#E0457B","Qora ro‘yxat","Siz bloklagandan tashqari hammasi ochiq. Yangi va notanish narsa siz tekshirib ulgurmasingizdan bolaga yetib boradi."],["verified_user","#16C869","Oq ro‘yxat","Siz ruxsat bergandan tashqari hammasi yopiq. Yangi kanal o‘zi paydo bo‘lmaydi — faqat sizning qaroringizdan keyin."]],
+ vsNote: "Mitti-GO faqat oq ro‘yxat asosida ishlaydi: bu qo‘shimcha rejim emas, ilovaning asosi. Bu yondashuv YouTube Kids’dan nimasi bilan farq qilishi — <a href=\"/uz/blog/mitti-go-va-youtube-kids-farqi/\">«Mitti-GO YouTube Kids’dan nimasi bilan farq qiladi?»</a> maqolasida.",
+ stepsH: "Qanday ishlaydi: 6 qadam",
+ s: [
+  ["Ota-ona tanlaydi", "Mitti-GO tanlovidan kanal qo‘shing yoki o‘zingiznikini toping — nomi, @nomi yoki havolasi bo‘yicha."],
+  ["Butun kanal yoki pleylist", "Muallifga ishonsangiz, butun kanalga ruxsat bering. Yoki alohida pleylistni tanlang — kanalning qolgan qismi yopiq qoladi va bola uning sahifasini ocha olmaydi."],
+  ["Faqat sizning kutubxonangiz", "Bola faqat siz tanlagan kontentni ko‘radi. Qidiruv faqat ruxsat berilgan kutubxona ichida — to‘g‘ridan-to‘g‘ri qurilmada ishlaydi."],
+  ["Keraksizini yashirish mumkin", "Qo‘shilgan kanaldagi pleylist mos kelmayaptimi? Uni yashiring — bu videolar bolalar kutubxonasidan hamma joydan yo‘qoladi. Yashirilgan pleylistlar limitga kirmaydi."],
+  ["Sozlamalar himoya ostida", "Ota-ona bo‘limi PIN bilan, xohishga ko‘ra barmoq izi yoki Face ID bilan yopilgan. Shorts odatda o‘chiq, yoqilsa — faqat ruxsat berilgan kanallardan."],
+  ["Esda tuting", "Ruxsat berilgan kanalning yangi videolari bolada avtomatik paydo bo‘ladi. Shuning uchun tanlovingizni vaqti-vaqti bilan tekshirib turing, aniqroq tanlash uchun esa alohida pleylistlarga ruxsat bering."]
+ ],
+ opts: [["subscriptions","var(--blue)","Butun kanal","Muallifning barcha videolari — yangilari ham."],["playlist_play","var(--purple)","Alohida pleylist","Faqat tanlangan videolar, kanalning qolgani yopiq."]],
+ pl: ["Qo‘shilgan kanal", [["Multfilmlar","12 ta video",true],["Mashinalar","8 ta video",false],["Qo‘shiqlar","10 ta video",true]], "Yashirilgan"],
+ sh: ["Odatda o‘chiq"],
+ tipsH: "Yaxshi oq ro‘yxatni qanday tuzish kerak",
+ tips: ["<b>3–5 ta kanaldan boshlang.</b> Kichik ro‘yxatni tekshirish oson, bolaga esa tanlash osonroq.", "<b>Katta kanal — pleylistlar bilan yaxshiroq.</b> Mashhur mualliflarda turli yosh uchun videolar bo‘ladi: faqat mos pleylistlarga ruxsat bering.", "<b>Bir-ikki videoni o‘zingiz ko‘ring.</b> Kanalni qanday tez tekshirish — <a href=\"/uz/blog/bola-uchun-kanal-tanlash/\">«5 ta oddiy savol»</a> maqolasida.", "<b>Sevimlilarni yulduzcha bilan belgilang.</b> Sevimli kanallar bolada birinchi turadi — yulduzcha ruxsat bermaydi va limitga kirmaydi.", "<b>Ro‘yxatni haftada bir tekshiring.</b> Nima yangi paydo bo‘lganini ko‘ring va keraksizini yashiring."],
+ tipsMore: "Nimadan boshlashni bilmaysizmi? Mana tayyor tanlov: <a href=\"/uz/blog/maktabgacha-yoshdagi-bolalar-uchun-xavfsiz-youtube-kanallar/\">«Maktabgacha yoshdagi bolalar uchun 10 ta xavfsiz YouTube kanali»</a>.",
+ faqH: "Ko‘p beriladigan savollar",
+ faq: [["Bitta videoga ruxsat berish yoki taqiqlash mumkinmi?", "Yo‘q, faqat kanallar va pleylistlar. Shunday kuzatish oson, yangi videolar esa o‘zi paydo bo‘ladi. Kanalda ortiqcha pleylist bo‘lsa — uni yashiring."], ["Ruxsat berilgan kanalda mos kelmaydigan video chiqsa-chi?", "U tushgan pleylistni yashiring yoki kanalni butunlay o‘chiring — video bolada darhol yo‘qoladi. Ko‘proq nazorat xohlasangiz, bu muallifning faqat alohida pleylistlariga ruxsat bering."], ["Bola kanal yashirilgani yoki o‘chirilganini ko‘radimi?", "Yo‘q. Ruxsat bekor qilingan hamma narsa shunchaki jimgina yo‘qoladi — «Ota-ona tomonidan bloklangan» yozuvlarisiz."], ["Bepul nechta kanal qo‘shish mumkin?", "5 tagacha butun kanal va 10 tagacha alohida pleylist. Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz. Batafsil — <a href=\"/uz/pricing/\">Tariflar</a> sahifasida."]],
+ call: {title:"Siz tanlagan narsalardan iborat sokin muhit", text:"Oq ro‘yxat — taqiqlar to‘plami emas, balki o‘zingiz yaxshi deb bilgan narsalardan iborat sokin muhit.", pill:"Faqat ruxsat berilgan", link:"Mitti-GO qanday ishlaydi", href:"/uz/how-it-works/"}
+},
+en: {
+ intro: `<p>A <b>whitelist</b> is a list of channels and playlists you've approved. In Mitti-GO that's all your child sees: no recommendations from across YouTube, no random channels and no “one more video” from the algorithm.</p>
+<p>It sounds simple, but the details matter: you can allow a whole channel or just one playlist, hide what you don't want and lock the settings with a PIN. Here's how it works, step by step.</p>`,
+ facts: [["verified_user","Only what you approve","your child sees your list"],["playlist_add_check","Channel or playlist","you decide how wide to go"],["lock","Protected","settings locked with a PIN"]],
+ vsH: "Whitelist vs blacklist: what's the difference",
+ vs: [["block","#E0457B","Blacklist","Everything is open except what you've blocked. New and unfamiliar content reaches your child before you get a chance to check it."],["verified_user","#16C869","Whitelist","Everything is closed except what you've allowed. A new channel never appears on its own — only after you decide."]],
+ vsNote: "Mitti-GO works only as a whitelist: it isn't an extra mode, it's the foundation of the app. How that differs from YouTube Kids — see <a href=\"/en/blog/mitti-go-vs-youtube-kids/\">“How is Mitti-GO different from YouTube Kids?”</a>.",
+ stepsH: "How it works: 6 steps",
+ s: [
+  ["The parent chooses", "Add a channel from Mitti-GO's suggestions or find your own — by name, @handle or link."],
+  ["Whole channel or a playlist", "Allow the whole channel if you trust the creator. Or pick a single playlist — the rest of the channel stays closed and your child can't open its page."],
+  ["Only your library", "Your child sees only the content you chose. Search works only inside the approved library, right on the device."],
+  ["Hide what you don't need", "Don't like a playlist in an added channel? Hide it — those videos disappear from your child's library everywhere. Hidden playlists don't count toward limits."],
+  ["Settings are protected", "The parent area is locked with a PIN, or a fingerprint or Face ID if you like. Shorts are off by default, and if you turn them on — only from approved channels."],
+  ["Worth remembering", "New videos from an approved channel appear for your child automatically. So check your choices from time to time, and for finer control allow separate playlists."]
+ ],
+ opts: [["subscriptions","var(--blue)","Whole channel","All the creator's videos — new ones too."],["playlist_play","var(--purple)","Single playlist","Only the chosen videos; the rest of the channel stays closed."]],
+ pl: ["Added channel", [["Cartoons","12 videos",true],["Cars","8 videos",false],["Songs","10 videos",true]], "Hidden"],
+ sh: ["Off by default"],
+ tipsH: "How to build a good whitelist",
+ tips: ["<b>Start with 3–5 channels.</b> A short list is easier to check and easier for your child to choose from.", "<b>Big channel? Use playlists.</b> Popular creators often have videos for different ages: allow only the playlists that fit.", "<b>Watch a couple of videos yourself.</b> A quick way to check a channel — <a href=\"/en/blog/how-to-choose-a-channel-for-kids/\">“5 simple questions”</a>.", "<b>Star the favourites.</b> Favorite channels come first for your child — a star grants no access and doesn't count toward limits.", "<b>Review the list once a week.</b> See what's new and hide what you don't want."],
+ tipsMore: "Not sure where to start? Here's a ready-made list: <a href=\"/en/blog/safe-youtube-channels-for-preschoolers/\">“10 safe YouTube channels for preschoolers”</a>.",
+ faqH: "Common questions",
+ faq: [["Can I allow or block a single video?", "No — only channels and playlists. It's easier to keep track, and new videos arrive on their own. If a channel has a playlist you don't want, hide it."], ["What if an unsuitable video appears on an approved channel?", "Hide the playlist it's in, or remove the channel entirely — the video disappears for your child right away. For more control, allow only separate playlists from that creator."], ["Will my child see that a channel was hidden or removed?", "No. Anything that's no longer allowed simply disappears — no “Blocked by your parent” messages."], ["How many channels can I add for free?", "Up to 5 whole channels and up to 10 separate playlists. Playlists of added channels, hiding and Favorites are unlimited. More on the <a href=\"/en/pricing/\">Plans</a> page."]],
+ call: {title:"A calm space made of what you chose", text:"A whitelist isn't a set of bans — it's a calm space made of what you yourself think is good.", pill:"Only what you approve", link:"How Mitti-GO works", href:"/en/how-it-works/"}
+}
+};
+/* labels inside the illustrated step cards (search text, flow banner) */
+const WL_UI = {
+  ru: { lead: "Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое.", search: "Синий трактор", flow: ["Родитель выбирает", "Mitti-GO показывает", "Ребёнок смотрит"] },
+  uz: { lead: "Siz kanal va pleylistlarni tanlaysiz — bola faqat ruxsat berilganini ko‘radi.", search: "Ko‘k traktor", flow: ["Ota-ona tanlaydi", "Mitti-GO ko‘rsatadi", "Bola tomosha qiladi"] },
+  en: { lead: "You choose channels and playlists — your child watches only what's approved.", search: "Blue tractor", flow: ["Parents choose", "Mitti-GO shows", "Kids watch"] }
+};
+/* six illustrated step cards in two columns + the "parent → Mitti-GO → child" banner (styled like the infographic) */
+function mgWlSteps(t, u){
+  const B = "/assets/images/blog/", im = (f, cls) => `<img class="${cls || ""}" src="${B}${f}.webp" alt="" loading="lazy">`;
+  const mini = ["wl-mini-bear", "wl-mini-car", "wl-mini-bunny"];
+  const visual = [
+    `<div class="wl-search"><span class="ms">search</span><span>${u.search}</span><span class="ms">close</span></div>
+     <div class="wl-thumbs">${im("wl-thumb-bear")}${im("wl-thumb-tractor")}${im("wl-thumb-bunny")}<span class="wl-plus ms">add</span></div>`,
+    `<div class="wl-two"><div class="wl-opts">
+       <div class="wl-opt"><span class="ms ok">check_circle</span><div><b>${t.opts[0][2]}</b><small>${t.opts[0][3]}</small></div></div>
+       <div class="wl-opt"><span class="ms play">play_circle</span><div><b>${t.opts[1][2]}</b><small>${t.opts[1][3]}</small></div></div></div>
+     <div class="wl-list">${t.pl[1].map(([name], i) => `<div class="wl-row">${im(mini[i])}<span>${name}</span><span class="ms ${i === 0 ? "ok" : "off"}">${i === 0 ? "check_circle" : "radio_button_unchecked"}</span></div>`).join("")}</div></div>`,
+    im("whitelist-kids-library", "wl-wide"),
+    `<div class="wl-hide"><div class="wl-list">${t.pl[1].map(([name, , on], i) => `<div class="wl-row${on ? "" : " is-hidden"}">${im(mini[i])}<span>${name}</span><span class="ms ${on ? "ok" : "eye"}">${on ? "check_circle" : "visibility_off"}</span></div>`).join("")}</div>
+     <span class="ms wl-to">arrow_forward</span>${im("wl-hidden-tile", "wl-ghost")}</div>`,
+    `<div class="wl-pin"><span>*</span><span>*</span><span>*</span><span>*</span></div>
+     <div class="wl-shorts"><span class="ms">slow_motion_video</span><div><b>Shorts</b><small>${t.sh[0]}</small></div><span class="mgt-sw" aria-hidden="true"></span></div>`,
+    ""
+  ];
+  const art = ["wl-art-mom", "", "", "", "wl-art-lock", "whitelist-check-regularly"];
+  const badge = ["", "wl-art-bear", "", "wl-art-bear", "", ""];
+  return `<div class="wl-grid">${t.s.map(([title, text], i) => `<div class="wl-card wl-c${i + 1}${art[i] ? " has-art" : ""}">
+  <div class="wl-head"><span class="wl-num">${i + 1}.</span><h3>${title}</h3></div>
+  <div class="wl-main"><div class="wl-body">${badge[i] ? im(badge[i], "wl-badge") : ""}<p>${text}</p>${visual[i]}</div>${art[i] ? im(art[i], "wl-art") : ""}</div>
+</div>`).join("")}</div>
+<div class="wl-flow"><div class="wl-fi">${im("wl-av-parent", "wl-av")}<b>${u.flow[0]}</b></div><span class="ms wl-arrow">arrow_forward</span><div class="wl-fi"><img class="wl-av wl-mascot" src="/assets/images/mascot.webp" alt="" loading="lazy"><b>${u.flow[1]}</b></div><span class="ms wl-arrow">arrow_forward</span><div class="wl-fi">${im("wl-av-kid", "wl-av")}<b>${u.flow[2]}</b></div></div>`;
+}
+function mgWlBody(l){
+  const t = WL_TXT[l], u = WL_UI[l], B = "/assets/images/blog/";
+  return `${t.intro}
+<p class="wl-lead">${u.lead}</p>
+<h2>${t.stepsH}</h2>
+${mgWlSteps(t, u)}
+<h2>${t.vsH}</h2>
+${mgCards(t.vs)}
+<div class="note"><span class="ms">info</span><p>${t.vsNote}</p></div>
+<h2>${t.tipsH}</h2>
+<ol class="steps">${t.tips.map(x => `<li><span>${x}</span></li>`).join("")}</ol>
+<p>${t.tipsMore}</p>
+<h2>${t.faqH}</h2>
+<div class="faq faq-list in">${t.faq.map(([q, a]) => `<details><summary><span>${q}</span><span class="ms">add</span></summary><p>${a}</p></details>`).join("")}</div>
+${mgCallout({img:B + "whitelist-family.webp", title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call.link, href:t.call.href})}`;
+}
+
 /* "Should parents watch YouTube with their child?" post: one layout, texts per language */
 const TW_TXT = {
 ru: {
@@ -737,6 +867,32 @@ ${mgCallout({title:t.call.title, text:t.call.text, pill:t.call.pill, link:t.call
 }
 
 window.MG_POSTS = [
+{
+  slug: "whitelist",
+  slugs: { ru: "belyj-spisok-kanalov-v-mitti-go", uz: "mitti-go-da-kanallar-oq-royxati", en: "mitti-go-channel-whitelist" },
+  date: "2026-10-21",
+  icon: "playlist_add_check",
+  color: "purple",
+  cover: "/assets/images/blog/how-the-mitti-go-channel-whitelist-works.webp",
+  imageAlt: {
+    ru: "Семья с ребёнком смотрит видео на планшете — белый список разрешённых каналов в Mitti-GO",
+    uz: "Bola bilan oila planshetda video ko‘rmoqda — Mitti-GO’dagi ruxsat berilgan kanallar oq ro‘yxati",
+    en: "A family watching videos on a tablet with their child — the Mitti-GO whitelist of approved channels"
+  },
+  related: ["vs-youtube-kids", "first-channels", "preschool-channels"],
+  tag: { ru: "Родительский контроль", uz: "Ota-ona nazorati", en: "Parental control" },
+  title: {
+    ru: "Как работает белый список каналов в Mitti-GO",
+    uz: "Mitti-GO’da kanallar oq ro‘yxati qanday ishlaydi",
+    en: "How the Mitti-GO channel whitelist works"
+  },
+  excerpt: {
+    ru: "Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.",
+    uz: "Siz kanal va pleylistlarni tanlaysiz — bola faqat ruxsat berilganini ko‘radi. Kanalni qanday qo‘shish, faqat pleylistga ruxsat berish, keraksizini yashirish va sozlamalarni himoyalash.",
+    en: "You choose channels and playlists — your child watches only what's approved. How to add a channel, allow just a playlist, hide what you don't want and protect the settings."
+  },
+  body: { ru: mgWlBody("ru"), uz: mgWlBody("uz"), en: mgWlBody("en") }
+},
 {
   slug: "watch-together",
   slugs: { ru: "nuzhno-li-smotret-youtube-vmeste-s-rebenkom", uz: "youtubeni-bola-bilan-birga-korish-kerakmi", en: "should-parents-watch-youtube-with-kids" },

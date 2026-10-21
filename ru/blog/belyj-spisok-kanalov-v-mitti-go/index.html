@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как работает белый список каналов в Mitti-GO</title>
+<meta name="description" content="Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/">
+<link rel="alternate" hreflang="uz" href="https://mitti-go.uz/uz/blog/mitti-go-da-kanallar-oq-royxati/">
+<link rel="alternate" hreflang="ru" href="https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/">
+<link rel="alternate" hreflang="en" href="https://mitti-go.uz/en/blog/mitti-go-channel-whitelist/">
+<link rel="alternate" hreflang="x-default" href="https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/">
+<meta name="theme-color" content="#0078FF">
+<meta name="google-site-verification" content="rJNAsnwTCOdMKbBCNrRhRH9m7SymnOPFsV2at637qJI">
+<meta name="yandex-verification" content="eb716e5b70ac3ca6">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:site_name" content="Mitti GO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Как работает белый список каналов в Mitti-GO">
+<meta property="og:description" content="Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.">
+<meta property="og:url" content="https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/">
+<meta property="og:image" content="https://mitti-go.uz/assets/og/post-whitelist.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Семья с ребёнком смотрит видео на планшете — белый список разрешённых каналов в Mitti-GO">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="uz_UZ">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="article:published_time" content="2026-10-21">
+<meta property="article:modified_time" content="2026-10-21">
+<meta property="article:publisher" content="https://mitti-go.uz/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Как работает белый список каналов в Mitti-GO">
+<meta name="twitter:description" content="Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.">
+<meta name="twitter:image" content="https://mitti-go.uz/assets/og/post-whitelist.jpg">
+<meta name="twitter:image:alt" content="Семья с ребёнком смотрит видео на планшете — белый список разрешённых каналов в Mitti-GO">
+<script>try{var t=localStorage.getItem("mg-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/material-symbols-icons.woff2?v=c06d0ae1" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito-latin.woff2?v=166202cc" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/nunito-cyrillic.woff2?v=fd4986b8" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css?v=mvhl405t">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R2BKTV7M09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R2BKTV7M09');
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113131100', 'ym');
+
+    ym(113131100, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->
+<style>@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-cyrillic.woff2?v=fd4986b8) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-latin-ext.woff2?v=ffdc8b0c) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face {font-family:'Nunito';font-style:normal;font-weight:500 900;font-display:swap;src:url(/assets/fonts/nunito-latin.woff2?v=166202cc) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-cyrillic.woff2?v=b30aa3db) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-latin-ext.woff2?v=2a8768f8) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face {font-family:'Caveat';font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-latin.woff2?v=2d9de14f) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face {font-family:'Material Symbols Rounded';font-style:normal;font-weight:500;font-display:block;src:url(/assets/fonts/material-symbols-icons.woff2?v=c06d0ae1) format('woff2')}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/#article","headline":"Как работает белый список каналов в Mitti-GO","description":"Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.","image":["https://mitti-go.uz/assets/og/post-whitelist.jpg","https://mitti-go.uz/assets/images/blog/how-the-mitti-go-channel-whitelist-works.webp"],"datePublished":"2026-10-21","dateModified":"2026-10-21","inLanguage":"ru","articleSection":"Родительский контроль","wordCount":595,"author":{"@type":"Organization","name":"Mitti GO","url":"https://mitti-go.uz/"},"publisher":{"@type":"Organization","@id":"https://mitti-go.uz/#organization","name":"Mitti GO","url":"https://mitti-go.uz/","logo":{"@type":"ImageObject","url":"https://mitti-go.uz/assets/images/logo-main.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/"},"url":"https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/","isPartOf":{"@id":"https://mitti-go.uz/ru/blog/#blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://mitti-go.uz/ru/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://mitti-go.uz/ru/blog/"},{"@type":"ListItem","position":3,"name":"Как работает белый список каналов в Mitti-GO","item":"https://mitti-go.uz/ru/blog/belyj-spisok-kanalov-v-mitti-go/"}]}</script>
+</head>
+<body data-page="post">
+<noscript><div><img src="https://mc.yandex.ru/watch/113131100" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<header class="top">
+  <div class="wrap">
+    <a href="/ru/" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp?v=b166c509" alt="Mitti GO" width="311" height="104" loading="eager" fetchpriority="high" decoding="async"><img class="logo d" src="/assets/images/logo-white.webp?v=170e7cb0" alt="Mitti GO" width="304" height="104" loading="eager" decoding="async"></a>
+    <nav class="nav" aria-label="Main"><a href="/ru/how-it-works/">Как это работает</a><a href="/ru/#model">Разрешения</a><a href="/ru/mission/">Наша миссия</a><a href="/ru/pricing/">Тарифы</a><a href="/ru/faq/">Вопросы</a><a href="/ru/blog/" aria-current="page">Блог</a></nav>
+    <button class="tbtn" id="themeBtn" type="button" aria-label="Светлая / тёмная тема"><span class="ms" id="themeIc">dark_mode</span></button>
+    <nav class="lang" aria-label="Язык"><a href="/uz/blog/mitti-go-da-kanallar-oq-royxati/" hreflang="uz" lang="uz" title="O‘zbekcha">UZ</a><a href="/ru/blog/belyj-spisok-kanalov-v-mitti-go/" hreflang="ru" lang="ru" aria-current="page" title="Русский">RU</a><a href="/en/blog/mitti-go-channel-whitelist/" hreflang="en" lang="en" title="English">EN</a></nav>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false"><span class="ms" id="burgerIc">menu</span></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="/ru/how-it-works/"><span class="ms mnav-ic">play_circle</span><span>Как это работает</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/#model"><span class="ms mnav-ic">playlist_add_check</span><span>Разрешения</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/mission/"><span class="ms mnav-ic">favorite</span><span>Наша миссия</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/pricing/"><span class="ms mnav-ic">workspace_premium</span><span>Тарифы</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/faq/"><span class="ms mnav-ic">help</span><span>Вопросы</span><span class="ms mnav-go">chevron_right</span></a><a href="/ru/blog/" aria-current="page"><span class="ms mnav-ic">auto_stories</span><span>Блог</span><span class="ms mnav-go">chevron_right</span></a></nav>
+</header>
+
+<main id="top">
+<section class="post-page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Навигация по разделам"><ol><li><a href="/ru/">Главная</a></li><li><a href="/ru/blog/">Блог</a></li><li aria-current="page">Как работает белый список каналов в <em class="go-text">Mitti-GO</em></li></ol></nav>
+    <div class="post-layout">
+      <article class="article">
+        <div class="post-cover big" style="--c:var(--purple);--bgc:var(--ppurple)"><img src="/assets/images/blog/how-the-mitti-go-channel-whitelist-works.webp?v=9f88153a" alt="Семья с ребёнком смотрит видео на планшете — белый список разрешённых каналов в Mitti-GO" width="1400" height="600" fetchpriority="high" decoding="async"></div>
+        <div class="post-meta" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="post-tag">Родительский контроль</span><time datetime="2026-10-21">21 октября 2026 г.</time><span class="post-read"><span class="ms">schedule</span>4 мин чтения</span></div>
+        <h1>Как работает белый список каналов в <em class="go-text">Mitti-GO</em></h1>
+        <p class="lede">Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое. Как добавить канал, разрешить только плейлист, скрыть лишнее и защитить настройки.</p>
+        <div class="article-body">
+<p><b>Белый список</b> — это список каналов и плейлистов, которые разрешили вы. В <em class="go-text">Mitti-GO</em> ребёнок видит только его: никаких рекомендаций со всего YouTube, случайных каналов и «ещё одного видео» от алгоритма.</p>
+<p>Звучит просто, но в деталях есть важные мелочи: можно разрешить весь канал или только один плейлист, скрыть лишнее и защитить настройки PIN-кодом. Разбираем всё по шагам.</p>
+<p class="wl-lead">Вы выбираете каналы и плейлисты — ребёнок смотрит только разрешённое.</p>
+<h2>Как это работает: 6 шагов</h2>
+<div class="wl-grid"><div class="wl-card wl-c1 has-art">
+  <div class="wl-head"><span class="wl-num">1.</span><h3>Родитель выбирает</h3></div>
+  <div class="wl-main"><div class="wl-body"><p>Добавьте канал из подборки <em class="go-text">Mitti-GO</em> или найдите свой — по названию, @имени или ссылке.</p><div class="wl-search"><span class="ms">search</span><span>Синий трактор</span><span class="ms">close</span></div>
+     <div class="wl-thumbs"><img class="" src="/assets/images/blog/wl-thumb-bear.webp?v=1093a87b" alt="" loading="lazy" width="88" height="76" decoding="async"><img class="" src="/assets/images/blog/wl-thumb-tractor.webp?v=54f21a2c" alt="" loading="lazy" width="90" height="76" decoding="async"><img class="" src="/assets/images/blog/wl-thumb-bunny.webp?v=2fc11204" alt="" loading="lazy" width="76" height="76" decoding="async"><span class="wl-plus ms">add</span></div></div><img class="wl-art" src="/assets/images/blog/wl-art-mom.webp?v=5de6a016" alt="" loading="lazy" width="168" height="241" decoding="async"></div>
+</div><div class="wl-card wl-c2">
+  <div class="wl-head"><span class="wl-num">2.</span><h3>Весь канал или плейлист</h3></div>
+  <div class="wl-main"><div class="wl-body"><img class="wl-badge" src="/assets/images/blog/wl-art-bear.webp?v=a1664373" alt="" loading="lazy" width="84" height="72" decoding="async"><p>Разрешите весь канал, если доверяете автору. Или выберите отдельный плейлист — остальной канал останется закрытым, и ребёнок не сможет открыть его страницу.</p><div class="wl-two"><div class="wl-opts">
+       <div class="wl-opt"><span class="ms ok">check_circle</span><div><b>Весь канал</b><small>Все видео автора — и новые тоже.</small></div></div>
+       <div class="wl-opt"><span class="ms play">play_circle</span><div><b>Отдельный плейлист</b><small>Только выбранные видео, остальной канал закрыт.</small></div></div></div>
+     <div class="wl-list"><div class="wl-row"><img class="" src="/assets/images/blog/wl-mini-bear.webp?v=ceaf8976" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Мультики</span><span class="ms ok">check_circle</span></div><div class="wl-row"><img class="" src="/assets/images/blog/wl-mini-car.webp?v=fbec518b" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Машинки</span><span class="ms off">radio_button_unchecked</span></div><div class="wl-row"><img class="" src="/assets/images/blog/wl-mini-bunny.webp?v=a872ca12" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Песенки</span><span class="ms off">radio_button_unchecked</span></div></div></div></div></div>
+</div><div class="wl-card wl-c3">
+  <div class="wl-head"><span class="wl-num">3.</span><h3>Только ваша библиотека</h3></div>
+  <div class="wl-main"><div class="wl-body"><p>Ребёнок видит только выбранный вами контент. Поиск работает только внутри разрешённой библиотеки — прямо на устройстве.</p><img class="wl-wide" src="/assets/images/blog/whitelist-kids-library.webp?v=48d023b8" alt="" loading="lazy" width="502" height="196" decoding="async"></div></div>
+</div><div class="wl-card wl-c4">
+  <div class="wl-head"><span class="wl-num">4.</span><h3>Ненужное можно скрыть</h3></div>
+  <div class="wl-main"><div class="wl-body"><img class="wl-badge" src="/assets/images/blog/wl-art-bear.webp?v=a1664373" alt="" loading="lazy" width="84" height="72" decoding="async"><p>Не подходит плейлист в добавленном канале? Скройте его — эти видео исчезнут из детской библиотеки отовсюду. Скрытые плейлисты не входят в лимит.</p><div class="wl-hide"><div class="wl-list"><div class="wl-row"><img class="" src="/assets/images/blog/wl-mini-bear.webp?v=ceaf8976" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Мультики</span><span class="ms ok">check_circle</span></div><div class="wl-row is-hidden"><img class="" src="/assets/images/blog/wl-mini-car.webp?v=fbec518b" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Машинки</span><span class="ms eye">visibility_off</span></div><div class="wl-row"><img class="" src="/assets/images/blog/wl-mini-bunny.webp?v=a872ca12" alt="" loading="lazy" width="63" height="42" decoding="async"><span>Песенки</span><span class="ms ok">check_circle</span></div></div>
+     <span class="ms wl-to">arrow_forward</span><img class="wl-ghost" src="/assets/images/blog/wl-hidden-tile.webp?v=a30c986b" alt="" loading="lazy" width="130" height="123" decoding="async"></div></div></div>
+</div><div class="wl-card wl-c5 has-art">
+  <div class="wl-head"><span class="wl-num">5.</span><h3>Настройки под защитой</h3></div>
+  <div class="wl-main"><div class="wl-body"><p>Родительский раздел закрыт PIN-кодом, по желанию — отпечатком или Face ID. Shorts выключены по умолчанию, а если их включить — только с разрешённых каналов.</p><div class="wl-pin"><span>*</span><span>*</span><span>*</span><span>*</span></div>
+     <div class="wl-shorts"><span class="ms">slow_motion_video</span><div><b>Shorts</b><small>Выключены по умолчанию</small></div><span class="mgt-sw" aria-hidden="true"></span></div></div><img class="wl-art" src="/assets/images/blog/wl-art-lock.webp?v=7f1d9314" alt="" loading="lazy" width="110" height="135" decoding="async"></div>
+</div><div class="wl-card wl-c6 has-art">
+  <div class="wl-head"><span class="wl-num">6.</span><h3>Важно помнить</h3></div>
+  <div class="wl-main"><div class="wl-body"><p>Новые видео разрешённого канала появляются у ребёнка автоматически. Поэтому время от времени проверяйте свой выбор, а для более точного отбора разрешайте отдельные плейлисты.</p></div><img class="wl-art" src="/assets/images/blog/whitelist-check-regularly.webp?v=ca569633" alt="" loading="lazy" width="493" height="157" decoding="async"></div>
+</div></div>
+<div class="wl-flow"><div class="wl-fi"><img class="wl-av" src="/assets/images/blog/wl-av-parent.webp?v=aaf171c7" alt="" loading="lazy" width="110" height="110" decoding="async"><b>Родитель выбирает</b></div><span class="ms wl-arrow">arrow_forward</span><div class="wl-fi"><img class="wl-av wl-mascot" src="/assets/images/mascot.webp?v=2804ef98" alt="" loading="lazy" width="640" height="378" decoding="async"><b><em class="go-text">Mitti-GO</em> показывает</b></div><span class="ms wl-arrow">arrow_forward</span><div class="wl-fi"><img class="wl-av" src="/assets/images/blog/wl-av-kid.webp?v=231c1619" alt="" loading="lazy" width="112" height="110" decoding="async"><b>Ребёнок смотрит</b></div></div>
+<h2>Белый и чёрный список: в чём разница</h2>
+<div class="icards"><div class="icard" style="--c:#E0457B"><span class="ms">block</span><div><b>Чёрный список</b><p>Открыто всё, кроме того, что вы заблокировали. Новое и незнакомое попадает к ребёнку раньше, чем вы успеете это проверить.</p></div></div><div class="icard" style="--c:#16C869"><span class="ms">verified_user</span><div><b>Белый список</b><p>Закрыто всё, кроме того, что вы разрешили. Новый канал не появится сам — только после вашего решения.</p></div></div></div>
+<div class="note"><span class="ms">info</span><p><em class="go-text">Mitti-GO</em> работает только по белому списку: это не дополнительный режим, а основа приложения. Чем такой подход отличается от YouTube Kids — в статье <a href="/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/">«Чем <em class="go-text">Mitti-GO</em> отличается от YouTube Kids?»</a>.</p></div>
+<h2>Как составить хороший белый список</h2>
+<ol class="steps"><li><span><b>Начните с 3–5 каналов.</b> Небольшой список проще проверить, а ребёнку легче выбрать.</span></li><li><span><b>Большой канал — лучше плейлистами.</b> У популярных авторов бывают видео для разного возраста: разрешите только подходящие плейлисты.</span></li><li><span><b>Посмотрите пару видео сами.</b> Как быстро проверить канал — в статье <a href="/ru/blog/kak-vybrat-kanal-dlya-rebenka/">«5 простых вопросов»</a>.</span></li><li><span><b>Отметьте любимые звёздочкой.</b> Избранные каналы встают первыми у ребёнка — доступ звёздочка не открывает и в лимит не входит.</span></li><li><span><b>Проверяйте список раз в неделю.</b> Загляните, что нового появилось, и скройте лишнее.</span></li></ol>
+<p>Не знаете, с чего начать? Вот готовая подборка: <a href="/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/">«10 безопасных YouTube-каналов для дошкольников»</a>.</p>
+<h2>Частые вопросы</h2>
+<div class="faq faq-list in"><details><summary><span>Можно разрешить или запретить одно видео?</span><span class="ms">add</span></summary><p>Нет, только каналы и плейлисты. Так проще следить, а новые видео появляются сами. Если в канале есть лишний плейлист — скройте его.</p></details><details><summary><span>Что, если на разрешённом канале выйдет неподходящее видео?</span><span class="ms">add</span></summary><p>Скройте плейлист, в который оно попало, или удалите канал целиком — видео сразу исчезнет у ребёнка. Если хотите больше контроля, разрешайте у этого автора только отдельные плейлисты.</p></details><details><summary><span>Увидит ли ребёнок, что канал скрыт или удалён?</span><span class="ms">add</span></summary><p>Нет. Всё, что перестало быть разрешено, просто тихо исчезает — без надписей «Заблокировано родителем».</p></details><details><summary><span>Сколько каналов можно добавить бесплатно?</span><span class="ms">add</span></summary><p>До 5 каналов целиком и до 10 отдельных плейлистов. Плейлисты уже добавленных каналов, скрытие и Избранное — без лимита. Подробнее — на странице <a href="/ru/pricing/">Тарифы</a>.</p></details></div>
+<div class="mg-callout photo"><img src="/assets/images/blog/whitelist-family.webp?v=95884d01" alt="" width="554" height="345" loading="lazy" decoding="async"><div><b>Спокойная среда из того, что выбрали вы</b><p>Белый список — это не набор запретов, а спокойная среда из того, что вы сами считаете хорошим.</p><span class="pill"><span class="ms">verified_user</span>Только разрешённое</span><a href="/ru/how-it-works/">Как работает <em class="go-text">Mitti-GO</em> →</a></div></div>
+        </div>
+      </article>
+      <aside class="post-aside">
+        <div class="aside-card">
+          <h2>Другие статьи</h2>
+          <div class="aside-list"><a class="aside-post" href="/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/" style="--c:var(--purple);--bgc:var(--ppurple)"><span class="aside-ic"><img src="/assets/images/blog/how-is-mitti-go-different-from-youtube-kids.webp?v=25900183" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span><b>Чем <em class="go-text">Mitti-GO</em> отличается от YouTube Kids?</b><time datetime="2026-09-28">28 сентября 2026 г.</time></span></a><a class="aside-post" href="/ru/blog/kak-vybrat-kanal-dlya-rebenka/" style="--c:var(--blue);--bgc:var(--pblue)"><span class="aside-ic"><img src="/assets/images/blog/5-simple-questions-should-you-allow-this-channel.webp?v=257904c5" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span><b>5 простых вопросов: стоит ли разрешать канал</b><time datetime="2026-09-20">20 сентября 2026 г.</time></span></a><a class="aside-post" href="/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/" style="--c:#0A8C4B;--bgc:var(--pgreen)"><span class="aside-ic"><img src="/assets/images/blog/10-safe-youtube-channels-for-preschoolers.webp?v=5c288e76" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span><b>10 безопасных YouTube-каналов для дошкольников</b><time datetime="2026-10-01">1 октября 2026 г.</time></span></a><a class="aside-post" href="/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/" style="--c:var(--pink);--bgc:var(--ppink)"><span class="aside-ic"><img src="/assets/images/blog/should-parents-watch-youtube-with-their-child.webp?v=a3e34f6e" alt="" width="52" height="52" loading="lazy" decoding="async"></span><span><b>Нужно ли родителям смотреть YouTube вместе с ребёнком?</b><time datetime="2026-10-06">6 октября 2026 г.</time></span></a></div>
+        </div>
+        <div class="aside-promo">
+          <img src="/assets/images/mascot.webp?v=2804ef98" alt="" width="640" height="378" loading="lazy" decoding="async">
+          <b>Попробуйте <em class="go-text">Mitti GO</em></b>
+          <p>Безопасное детское видео, которое выбираете вы.</p>
+          <a class="btn" href="/ru/"><span>Узнать больше</span><span class="ms">arrow_forward</span></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+<section class="post-more-sec">
+  <div class="wrap">
+    <h2>Читайте также</h2>
+    <div class="post-grid"><a class="post-card" href="/ru/blog/chem-mitti-go-otlichaetsya-ot-youtube-kids/" style="--c:var(--purple);--bgc:var(--ppurple)"><div class="post-cover" style="--c:var(--purple);--bgc:var(--ppurple)"><img src="/assets/images/blog/how-is-mitti-go-different-from-youtube-kids.webp?v=25900183" alt="Родители сравнивают Mitti GO и YouTube Kids: одобренный контент, Shorts, рекомендации и реклама" width="1400" height="600" loading="lazy" decoding="async"></div>
+<div class="post-body"><div class="post-meta"><span class="post-tag">Родительский контроль</span><time datetime="2026-09-28">28 сентября 2026 г.</time></div>
+<h3>Чем <em class="go-text">Mitti-GO</em> отличается от YouTube Kids?</h3><p>YouTube Kids подбирает видео по возрасту и рекомендациям, а в <em class="go-text">Mitti-GO</em> родитель сначала выбирает каналы — и ребёнок смотрит только их. Разбираем, в чём разница.</p><span class="post-more">Читать<span class="ms">arrow_forward</span></span></div></a><a class="post-card" href="/ru/blog/kak-vybrat-kanal-dlya-rebenka/" style="--c:var(--blue);--bgc:var(--pblue)"><div class="post-cover" style="--c:var(--blue);--bgc:var(--pblue)"><img src="/assets/images/blog/5-simple-questions-should-you-allow-this-channel.webp?v=257904c5" alt="Мама с малышом на планшете решают, стоит ли разрешать детский YouTube-канал" width="1400" height="600" loading="lazy" decoding="async"></div>
+<div class="post-body"><div class="post-meta"><span class="post-tag">Полезная статья</span><time datetime="2026-09-20">20 сентября 2026 г.</time></div>
+<h3>5 простых вопросов: стоит ли разрешать канал</h3><p>Бесплатно в <em class="go-text">Mitti GO</em> можно добавить до 5 каналов целиком — поэтому хочется выбрать их с умом. Вот что проверить перед тем, как разрешить канал.</p><span class="post-more">Читать<span class="ms">arrow_forward</span></span></div></a><a class="post-card" href="/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/" style="--c:#0A8C4B;--bgc:var(--pgreen)"><div class="post-cover" style="--c:#0A8C4B;--bgc:var(--pgreen)"><img src="/assets/images/blog/10-safe-youtube-channels-for-preschoolers.webp?v=5c288e76" alt="Мальчик с котёнком и планшетом, вокруг — карточки детских YouTube-каналов: безопасные каналы для дошкольников" width="1400" height="600" loading="lazy" decoding="async"></div>
+<div class="post-body"><div class="post-meta"><span class="post-tag">Полезно родителям</span><time datetime="2026-10-01">1 октября 2026 г.</time></div>
+<h3>10 безопасных YouTube-каналов для дошкольников</h3><p>Проверенные каналы, которые развивают речь, учат счёту и эмоциям: от Super Simple Songs до Numberblocks. Плюс сколько можно смотреть и как добавить их в <em class="go-text">Mitti-GO</em>.</p><span class="post-more">Читать<span class="ms">arrow_forward</span></span></div></a></div>
+    <p class="post-cta"><a class="btn primary" href="/ru/">Попробуйте <em class="go-text">Mitti GO</em><span class="ms">arrow_forward</span></a> <a class="btn ghost" href="/ru/blog/">Все статьи<span class="ms">auto_stories</span></a></p>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot" id="siteFoot"><div class="wrap">
+<div class="ft-top">
+ <div class="ft-brand"><a href="/ru/" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp?v=b166c509" alt="Mitti GO" width="311" height="104" loading="lazy" decoding="async"><img class="logo d" src="/assets/images/logo-white.webp?v=170e7cb0" alt="Mitti GO" width="304" height="104" loading="lazy" decoding="async"></a>
+  <p>Детское видео, которое выбираете вы. Безопасный контент — счастливые дети.</p><div class="stores"><span class="soon store-badge"><img class="store-logo" src="/assets/images/google-play.svg?v=5756d9f3" alt="" width="32" height="32" decoding="async" loading="lazy"><span class="store-copy"><span>Скоро</span><b>Google Play</b></span></span><span class="soon store-badge"><img class="store-logo" src="/assets/images/app-store.svg?v=f500d735" alt="" width="32" height="32" decoding="async" loading="lazy"><span class="store-copy"><span>Скоро</span><b>App Store</b></span></span></div></div>
+ <nav class="ft-col" aria-label="Продукт"><h2>Продукт</h2><ul><li><a href="/ru/">Главная</a></li><li><a href="/ru/how-it-works/">Как это работает</a></li><li><a href="/ru/#model">Разрешения</a></li><li><a href="/ru/#player">Плеер</a></li><li><a href="/ru/pricing/">Экранное время</a></li><li><a href="/ru/pricing/">Тарифы</a></li></ul></nav>
+ <nav class="ft-col" aria-label="Родителям"><h2>Родителям</h2><ul><li><a href="/ru/mission/">Наша миссия</a></li><li><a href="/ru/#parents">Для родителей</a></li><li><a href="/ru/faq/#privacy">Безопасность и приватность</a></li><li><a href="/ru/#devices">Android TV и устройства</a></li><li><a href="/ru/faq/">Вопросы и ответы</a></li></ul></nav>
+ <nav class="ft-col ft-blog" aria-label="Блог"><h2>Блог</h2><ul><li><a href="/ru/blog/belyj-spisok-kanalov-v-mitti-go/">Как работает белый список каналов в <em class="go-text">Mitti-GO</em></a></li><li><a href="/ru/blog/nuzhno-li-smotret-youtube-vmeste-s-rebenkom/">Нужно ли родителям смотреть YouTube вместе с ребёнком?</a></li><li><a href="/ru/blog/bezopasnye-youtube-kanaly-dlya-doshkolnikov/">10 безопасных YouTube-каналов для дошкольников</a></li><li><a class="ft-all" href="/ru/blog/">Все статьи →</a></li></ul></nav>
+</div>
+<div class="ft-bottom"><span>© 2026 <em class="go-text">Mitti GO</em></span><span>Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC.</span><nav class="ft-langs" aria-label="Язык сайта"><a href="/uz/blog/mitti-go-da-kanallar-oq-royxati/" hreflang="uz" lang="uz">O‘zbekcha</a><a href="/ru/blog/belyj-spisok-kanalov-v-mitti-go/" hreflang="ru" lang="ru" aria-current="page">Русский</a><a href="/en/blog/mitti-go-channel-whitelist/" hreflang="en" lang="en">English</a></nav><a href="#top" class="ft-up">Наверх<span class="ms">arrow_upward</span></a></div>
+</div></footer>
+
+<script src="/assets/js/lang-keep.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

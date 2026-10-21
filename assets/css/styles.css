@@ -1024,6 +1024,81 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 }
 @media (max-width:760px){.how-split{grid-template-columns:1fr}.how-split .shot{width:min(270px,80%);justify-self:center;grid-row:1}}
 @media (max-width:520px){.how-steps,.how-shots{grid-auto-columns:68%}}
+/* article: illustrated step cards in two columns (whitelist post) */
+.article-body .wl-lead{display:inline-block;background:var(--pyellow);color:var(--ink);font-weight:900;font-size:clamp(17px,2vw,20px);line-height:1.35;padding:14px 20px;border-radius:18px;margin:4px 0 8px;box-shadow:var(--shadow-s)}
+.wl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 16px}
+.wl-card{--c:#E0457B;background:var(--ppink);border-radius:24px;padding:18px 18px 0;display:flex;flex-direction:column;overflow:hidden;min-height:250px}
+.wl-c2{--c:#2F6BFF;background:var(--pblue)}
+.wl-c3{--c:#7B4DFF;background:var(--ppurple)}
+.wl-c4{--c:#16A34A;background:var(--pgreen)}
+.wl-c5{--c:#7B4DFF;background:var(--pcyan)}
+.wl-c6{--c:#E8A000;background:var(--pyellow)}
+.wl-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.wl-num{width:44px;height:44px;border-radius:14px;background:var(--c);color:#fff;font-weight:900;font-size:22px;display:grid;place-items:center;flex:none;box-shadow:0 8px 16px -8px var(--c)}
+.article-body .wl-head h3{margin:0;font-size:clamp(19px,2.2vw,23px);line-height:1.15;font-weight:900;color:var(--ink)}
+.wl-main{display:flex;gap:10px;flex:1;align-items:flex-start}
+.wl-body{flex:1;min-width:0;padding-bottom:18px}
+.article-body .wl-body p{margin:0 0 12px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.wl-art{width:34%;max-width:170px;height:auto;align-self:flex-end;border-radius:16px 16px 0 0;flex:none}
+.wl-c5 .wl-main{flex-direction:row-reverse}
+.wl-c5 .wl-art{width:22%;align-self:center;border-radius:16px;margin-bottom:18px}
+.wl-c6 .wl-main{flex-direction:column;align-items:stretch}
+.wl-c6 .wl-body{padding-bottom:4px}
+.wl-c6 .wl-art{width:100%;max-width:none;border-radius:16px 16px 0 0}
+.wl-badge{float:left;width:56px;height:auto;border-radius:12px;margin:2px 12px 4px 0}
+.wl-wide{display:block;width:100%;height:auto;border-radius:16px}
+.wl-c3 .wl-body{padding-bottom:0}
+.wl-search{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:14px;padding:10px 14px;color:var(--muted);font-weight:700;font-size:15px;box-shadow:var(--shadow-s);margin-bottom:10px}
+.wl-search span:nth-child(2){flex:1}
+.wl-thumbs{display:flex;align-items:center;gap:8px}
+.wl-thumbs img{width:25%;max-width:80px;height:auto;border-radius:12px}
+.wl-plus{width:44px;height:44px;border-radius:50%;background:#16C869;color:#fff;display:grid;place-items:center;font-size:30px;box-shadow:0 8px 16px -8px #16C869;flex:none}
+.wl-two{display:grid;grid-template-columns:1fr;gap:10px;clear:both}
+.wl-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
+.wl-opt{display:flex;gap:8px;align-items:center;background:var(--card);border-radius:14px;padding:9px 10px;box-shadow:var(--shadow-s)}
+.wl-opt b{display:block;font-size:14px;line-height:1.2;color:var(--ink)}
+.wl-opt small{display:block;font-size:12px;color:var(--muted);font-weight:700;line-height:1.3}
+.wl-opt .ok{color:#16C869;font-size:28px}
+.wl-opt .play{color:#2F6BFF;font-size:28px}
+.wl-list{display:grid;gap:6px;background:var(--card);border-radius:14px;padding:8px;box-shadow:var(--shadow-s)}
+.wl-row{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;color:var(--ink);border-radius:10px;padding:2px 4px 2px 2px}
+.wl-row img{width:44px;height:auto;border-radius:8px;flex:none}
+.wl-row span:nth-child(2){flex:1;min-width:0}
+.wl-row .ms{font-size:24px}
+.wl-row .ok{color:#16C869}
+.wl-row .off{color:var(--muted)}
+.wl-row .eye{color:var(--muted)}
+.wl-row.is-hidden{background:var(--soft);color:var(--muted)}
+.wl-row.is-hidden img{opacity:.55}
+.wl-hide{display:flex;align-items:center;gap:8px;clear:both}
+.wl-hide .wl-list{flex:1}
+.wl-to{color:var(--purple);font-size:30px;flex:none}
+.wl-ghost{width:24%;max-width:110px;height:auto;border-radius:14px;flex:none}
+.wl-pin{display:flex;gap:8px;margin-bottom:10px}
+.wl-pin span{width:46px;height:46px;border-radius:12px;background:var(--card);display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--ink);box-shadow:var(--shadow-s)}
+.wl-shorts{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow-s)}
+.wl-shorts > .ms{color:#E0457B;font-size:30px}
+.wl-shorts > div{flex:1;min-width:0}
+.wl-shorts b{display:block;font-size:16px;color:var(--ink)}
+.wl-shorts small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.wl-flow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(100deg,#3B1F9E,#6D3BE6 55%,#3B1F9E);color:#fff;border-radius:26px;padding:16px clamp(16px,3vw,28px);margin:0 0 26px}
+.wl-fi{display:flex;align-items:center;gap:12px;min-width:0}
+.wl-fi b{font-size:clamp(15px,1.8vw,19px);font-weight:900;line-height:1.2;color:#fff}
+.wl-av{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;flex:none;background:#fff}
+.wl-mascot{object-fit:contain;padding:6px;border-color:rgba(255,255,255,.6)}
+.wl-arrow{color:#FEBE06;font-size:30px;flex:none}
+.wl-flow .go-text{background:linear-gradient(90deg,#7CF3B5,#7FD7FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:1180px){.wl-grid{grid-template-columns:1fr}.wl-card{min-height:0}}
+@media (max-width:760px){
+  .wl-card{min-height:0}
+  .wl-flow{flex-direction:column;align-items:flex-start}
+  .wl-arrow{transform:rotate(90deg);margin-left:18px}
+}
+@media (max-width:420px){.wl-opts{grid-template-columns:1fr}.wl-art{width:30%}}
+/* article: picture inside a numbered step card (mgQ extra) */
+.qcard .q-img{display:block;width:100%;max-width:520px;height:auto;border-radius:14px}
+.article-body .qcard .icards{margin:0}
+.article-body .qcard .mgt{margin:0}
 /* article: channel cards (picture, name, age, text, ticks) */
 .topch{display:grid;gap:14px;margin:6px 0 22px}
 .tc{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;box-shadow:var(--shadow-s)}
