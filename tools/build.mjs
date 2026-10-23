@@ -17,7 +17,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const lib = require(path.join(ROOT, "src/blog-lib.js"));
 const T = require(path.join(ROOT, "src/i18n.js"));
-const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
+const { SITE, LANGS, LANG_NAMES, L, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, privacyPath, termsPath, postPath, abs, card, asidePost, cover, footerHTML, navHTML } = lib;
 const PAGES = require(path.join(ROOT, "src/pages.js"));
 
 const read = p => fs.readFileSync(path.join(ROOT, p), "utf8");
@@ -520,6 +520,65 @@ for (const l of LANGS) {
   write(`${l}/mission/index.html`, sizeImages(h));
 }
 
+/* ---------- legal: /{lang}/privacy/, /{lang}/terms/ (content and owner details in src/legal.js) ---------- */
+const LEGAL = require(path.join(ROOT, "src/legal.js"));
+const PRIVACY_ALT = Object.fromEntries(LANGS.map(l => [l, privacyPath(l)]));
+const TERMS_ALT = Object.fromEntries(LANGS.map(l => [l, termsPath(l)]));
+
+/* owner details (only the filled ones) and the public channels the app shows */
+function legalContacts(l) {
+  const o = LEGAL.OPERATOR, c = LEGAL.CONTACTS, t = LEGAL.LABELS[l];
+  const rows = [];
+  if (o.name) rows.push(`<li><b>${t.owner}:</b> ${esc(o.name)}</li>`);
+  if (o.inn) rows.push(`<li><b>${t.inn}:</b> ${esc(o.inn)}</li>`);
+  if (o.address) rows.push(`<li><b>${t.address}:</b> ${esc(o.address)}</li>`);
+  if (o.email) rows.push(`<li><b>${t.email}:</b> <a href="mailto:${esc(o.email)}">${esc(o.email)}</a></li>`);
+  rows.push(`<li><b>Telegram:</b> <a href="https://t.me/${c.telegram}" target="_blank" rel="noopener">@${c.telegram}</a></li>`);
+  rows.push(`<li><b>Instagram:</b> <a href="https://www.instagram.com/${c.instagram}/" target="_blank" rel="noopener">@${c.instagram}</a></li>`);
+  rows.push(`<li><b>Web:</b> <a href="${homePath(l)}">${c.website}</a></li>`);
+  const lead = o.name && o.inn && o.address ? "" : `<p>${t.onRequest}</p>`;
+  return `${lead}<ul class="legal-contacts">${rows.join("")}</ul><p>${t.reply}</p>`;
+}
+
+function legalText(s, l) {
+  const t = LEGAL.LABELS[l];
+  return pageLinks(s, l)
+    .replace(/\{\{PRIVACY\}\}/g, `<a href="${privacyPath(l)}">${t.PRIVACY}</a>`)
+    .replace(/\{\{TERMS\}\}/g, `<a href="${termsPath(l)}">${t.TERMS}</a>`);
+}
+
+function legalHTML(t, l) {
+  const block = x => Array.isArray(x)
+    ? `<ul>${x.map(li => `<li>${legalText(li, l)}</li>`).join("")}</ul>`
+    : x === "{{CONTACTS}}" ? legalContacts(l) : `<p>${legalText(x, l)}</p>`;
+  return `<div class="legal">
+<p class="legal-date">${t.updated}: <time datetime="${LEGAL.UPDATED}">${fmtDate(LEGAL.UPDATED, l)}</time></p>
+<nav class="legal-toc" aria-label="${t.toc}"><b>${t.toc}</b><ol>${t.sections.map(s => `<li><a href="#${s.id}">${s.h.replace(/^\d+\.\s*/, "")}</a></li>`).join("")}</ol></nav>
+${t.sections.map(s => `<section class="legal-sec" id="${s.id}"><h2>${s.h}</h2>${s.body.map(block).join("")}</section>`).join("\n")}
+</div>`;
+}
+
+for (const [page, alts, icon] of [["privacy", PRIVACY_ALT, "lock"], ["terms", TERMS_ALT, "gavel"]]) {
+  for (const l of LANGS) {
+    const t = LEGAL[page][l];
+    const items = [{ name: L[l].home, href: homePath(l) }, { name: t.crumb, href: alts[l] }];
+    const jsonld = [
+      { "@context": "https://schema.org", "@type": "WebPage", "@id": abs(alts[l]) + "#webpage", url: abs(alts[l]), name: t.title, description: t.desc, inLanguage: l, dateModified: LEGAL.UPDATED, isPartOf: { "@id": SITE + "/#website" }, about: { "@id": SITE + "/#app" }, publisher: ORG },
+      breadcrumbLD(items)
+    ];
+    const h = fill(pageTpl, {
+      LANG: l, PAGE: page, ICON: icon,
+      HEAD: head({ lang: l, title: brandTitle(t.title), desc: t.desc, canonical: alts[l], alternates: alts, xdefault: alts.ru, image: "/assets/og/mitti-go.jpg", imageAlt: t.h1, jsonld }),
+      HEADER: siteHeader(l, alts, page),
+      CRUMBS: crumbs(l, items),
+      EYEBROW: esc(t.eyebrow), H1: esc(t.h1), LEDE: esc(t.lede),
+      CONTENT: legalHTML(t, l),
+      FOOTER: footerHTML(l, POSTS, alts)
+    });
+    write(alts[l].slice(1) + "index.html", sizeImages(h));
+  }
+}
+
 /* ---------- root: x-default language chooser ---------- */
 const CHOOSER = {
   uz: { name: "O‘zbekcha", line: "Bolalar faqat siz tanlagan videolarni ko‘radi" },
@@ -654,6 +713,8 @@ for (const l of LANGS) entries.push(urlEntry(pricingPath(l), PRICING_ALT, PRICIN
 for (const l of LANGS) entries.push(urlEntry(faqPath(l), FAQ_ALT, FAQ_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(howPath(l), HOW_ALT, HOW_ALT.ru, TODAY, "0.8"));
 for (const l of LANGS) entries.push(urlEntry(missionPath(l), MISSION_ALT, MISSION_ALT.ru, TODAY, "0.6"));
+for (const l of LANGS) entries.push(urlEntry(privacyPath(l), PRIVACY_ALT, PRIVACY_ALT.ru, LEGAL.UPDATED, "0.3"));
+for (const l of LANGS) entries.push(urlEntry(termsPath(l), TERMS_ALT, TERMS_ALT.ru, LEGAL.UPDATED, "0.3"));
 for (const l of LANGS) entries.push(urlEntry(blogPath(l), BLOG_ALT, "/ru/blog/", newest, "0.8"));
 for (const p of POSTS) {
   const alts = Object.fromEntries(LANGS.map(l => [l, postPath(p, l)]));

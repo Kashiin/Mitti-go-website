@@ -38,12 +38,15 @@ const L = {
 const FT = {
   ru: { tag: "Детское видео, которое выбираете вы. Безопасный контент — счастливые дети.", soon: "Скоро", product: "Продукт", parents: "Родителям", blog: "Блог", all: "Все статьи", top: "Наверх", langs: "Язык сайта",
     links: { mission: "Наша миссия", home: "Главная", how: "Как это работает", model: "Разрешения", player: "Плеер", screentime: "Экранное время", plans: "Тарифы", parents: "Для родителей", privacy: "Безопасность и приватность", devices: "Android TV и устройства", faq: "Вопросы и ответы" },
+    legal: { label: "Документы", privacy: "Политика конфиденциальности", terms: "Условия использования" },
     note: "Сделано для семей в Узбекистане. YouTube — товарный знак Google LLC." },
   uz: { tag: "Siz tanlagan bolalar videolari. Xavfsiz kontent — baxtli bolalar.", soon: "Tez kunda", product: "Mahsulot", parents: "Ota-onalar uchun", blog: "Blog", all: "Barcha maqolalar", top: "Yuqoriga", langs: "Sayt tili",
     links: { mission: "Bizning missiyamiz", home: "Bosh sahifa", how: "Qanday ishlaydi", model: "Ruxsatlar", player: "Pleyer", screentime: "Ekran vaqti", plans: "Tariflar", parents: "Ota-onalar uchun", privacy: "Xavfsizlik va maxfiylik", devices: "Android TV va qurilmalar", faq: "Savol-javoblar" },
+    legal: { label: "Hujjatlar", privacy: "Maxfiylik siyosati", terms: "Foydalanish shartlari" },
     note: "O‘zbekistondagi oilalar uchun yaratilgan. YouTube — Google LLC’ning savdo belgisi." },
   en: { tag: "Kids' video you choose. Safe content, happy kids.", soon: "Coming soon", product: "Product", parents: "For parents", blog: "Blog", all: "All posts", top: "Back to top", langs: "Site language",
     links: { mission: "Our mission", home: "Home", how: "How it works", model: "Permissions", player: "Player", screentime: "Screen Time", plans: "Plans", parents: "For parents", privacy: "Safety & privacy", devices: "Android TV & devices", faq: "FAQ" },
+    legal: { label: "Legal", privacy: "Privacy Policy", terms: "Terms of Use" },
     note: "Made for families in Uzbekistan. YouTube is a trademark of Google LLC." }
 };
 
@@ -66,6 +69,8 @@ const pricingPath = l => `/${l}/pricing/`;
 const faqPath = l => `/${l}/faq/`;
 const howPath = l => `/${l}/how-it-works/`;
 const missionPath = l => `/${l}/mission/`;
+const privacyPath = l => `/${l}/privacy/`;
+const termsPath = l => `/${l}/terms/`;
 
 /* main menu: same items on every page; `current` = "home" | "how" | "mission" | "pricing" | "faq" | "blog" marks the open page.
    mobile: the burger menu version (icon + label + arrow, bigger tap targets) */
@@ -122,8 +127,8 @@ function footerHTML(l, posts, alternates) {
  <nav class="ft-col" aria-label="${t.parents}"><h2>${t.parents}</h2><ul>${["mission", "parents", "privacy", "devices", "faq"].map(link).join("")}</ul></nav>
  <nav class="ft-col ft-blog" aria-label="${t.blog}"><h2>${t.blog}</h2><ul>${posts.slice(0, 3).map(p => `<li><a href="${postPath(p, l)}">${esc(pick(p.title, l))}</a></li>`).join("")}<li><a class="ft-all" href="${blogPath(l)}">${t.all} →</a></li></ul></nav>
 </div>
-<div class="ft-bottom"><span>© ${new Date().getFullYear()} Mitti GO</span><span>${t.note}</span><nav class="ft-langs" aria-label="${t.langs}">${langs}</nav><a href="#top" class="ft-up">${t.top}<span class="ms">arrow_upward</span></a></div>
+<div class="ft-bottom"><span>© ${new Date().getFullYear()} Mitti GO</span><span>${t.note}</span><nav class="ft-legal" aria-label="${t.legal.label}"><a href="${privacyPath(l)}">${t.legal.privacy}</a><a href="${termsPath(l)}">${t.legal.terms}</a></nav><nav class="ft-langs" aria-label="${t.langs}">${langs}</nav><a href="#top" class="ft-up">${t.top}<span class="ms">arrow_upward</span></a></div>
 </div>`;
 }
 
-module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };
+module.exports = { SITE, LANGS, LANG_NAMES, COLORS, L, FT, pick, esc, fmtDate, readMin, homePath, blogPath, pricingPath, faqPath, howPath, missionPath, privacyPath, termsPath, postPath, abs, cover, card, asidePost, footerHTML, navHTML };
