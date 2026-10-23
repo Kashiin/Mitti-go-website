@@ -1152,8 +1152,8 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 .legal-toc li{margin:4px 0;break-inside:avoid}
 .legal-toc a{color:var(--ink2);font-weight:700;text-decoration:none}
 .legal-toc a:hover{text-decoration:underline}
-.legal-sec{scroll-margin-top:96px}
-.legal-sec h2{font-size:clamp(21px,2.4vw,26px);margin:36px 0 12px}
+.legal-sec{scroll-margin-top:96px;padding-block:0}
+.legal-sec h2{font-size:clamp(21px,2.4vw,26px);margin:32px 0 10px}
 .legal-sec p,.legal-sec li{color:var(--ink2);font-size:16.5px;line-height:1.62}
 .legal-sec ul{padding-left:22px;margin:10px 0}
 .legal-sec li{margin:6px 0}
