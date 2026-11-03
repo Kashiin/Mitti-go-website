@@ -16,7 +16,7 @@ const OPERATOR = {
 /* Public contacts the app already shows (app repo core/data/support/SupportConfig.kt). */
 const CONTACTS = { telegram: "mitti_go", instagram: "mitti_go", website: "mitti-go.uz" };
 
-const UPDATED = "2026-10-23";
+const UPDATED = "2026-11-03";
 
 const YT_TERMS = "https://www.youtube.com/t/terms";
 const G_PRIVACY = "https://policies.google.com/privacy";
@@ -40,7 +40,7 @@ ru: {
     { id: "short", h: "2. Коротко о главном", body: [[
       "О ребёнке мы ничего не собираем: у ребёнка нет профиля — ни имени, ни фото, ни возраста.",
       "Что смотрел ребёнок, его прогресс, поиск и экранное время хранятся только на устройстве и никуда не отправляются.",
-      "PIN не покидает устройство: он хранится в защищённом хранилище в виде стойкого хэша.",
+      "PIN не покидает устройство и надёжно защищён.",
       "Аккаунт Google необязателен. Он нужен только для восстановления PIN, Pro и связанных устройств.",
       "В приложении нет рекламы Mitti GO, сторонней аналитики и рекламных идентификаторов. Мы не продаём данные."
     ]]},
@@ -50,7 +50,7 @@ ru: {
         "разрешённые каналы и плейлисты, скрытые плейлисты, «Избранное» и настройки (язык, тема, Shorts, автовоспроизведение);",
         "история просмотров, прогресс видео и «Досмотреть», поиск ребёнка;",
         "экранное время: сколько ребёнок смотрел сегодня, лимит и время сна;",
-        "PIN и счётчик неверных попыток — в защищённом хранилище устройства (Android Keystore, iOS Keychain), PIN хранится только в виде хэша PBKDF2."
+        "PIN и счётчик неверных попыток — в защищённом хранилище устройства."
       ],
       "Удаление приложения удаляет эти данные. Из резервной копии устройства PIN и данные защиты не восстанавливаются."
     ]},
@@ -59,9 +59,9 @@ ru: {
       [
         "<b>Анонимный идентификатор установки</b> — случайный ключ, по которому сервер ограничивает частоту запросов. Он не связан с вашим аккаунтом и не содержит данных об устройстве.",
         "<b>Запросы к YouTube</b> — идентификаторы общедоступных каналов, плейлистов и видео, а также текст поиска, когда родитель ищет канал. Эти запросы не связаны с аккаунтом.",
-        "<b>Аккаунт Google (если вы его подключили)</b> — идентификатор Google, адрес почты и имя. Токены входа хранятся только в виде хэшей.",
-        "<b>Тариф и промокоды</b> — статус Pro и срок его действия, активации промокодов и пробного периода. Чтобы один промокод или пробный период нельзя было использовать повторно, хранится хэш идентификатора Google и случайный ключ устройства.",
-        "<b>Связанные устройства (если вы их используете)</b> — настройки семьи, которые нужно передать на детское устройство (разрешённые каналы и плейлисты, скрытые плейлисты, «Избранное», настройки Shorts и воспроизведения, экранное время каждого устройства), список устройств (название, модель, платформа, время последней синхронизации), хэш токена детского устройства и одноразовый код привязки, который действует 10 минут и хранится как хэш."
+        "<b>Аккаунт Google (если вы его подключили)</b> — идентификатор Google, адрес почты и имя.",
+        "<b>Тариф и промокоды</b> — статус Pro и срок его действия, активации промокодов и пробного периода. Чтобы один промокод или пробный период нельзя было использовать повторно, хранится отметка о его использовании для аккаунта и устройства.",
+        "<b>Связанные устройства (если вы их используете)</b> — настройки семьи, которые нужно передать на детское устройство (разрешённые каналы и плейлисты, скрытые плейлисты, «Избранное», настройки Shorts и воспроизведения, экранное время каждого устройства), список устройств (название, модель, платформа, время последней синхронизации), ключ доступа детского устройства и одноразовый код привязки, который действует 10 минут."
       ],
       "Сервер никогда не получает историю просмотров, прогресс, поиск ребёнка, использование экранного времени, PIN и что-либо введённое ребёнком."
     ]},
@@ -91,9 +91,10 @@ ru: {
       [
         "Google — вход через Google, YouTube API Services, Google Play;",
         "Apple — App Store, когда приложение там появится;",
-        "хостинг-провайдер, на серверах которого работает Mitti GO;",
+        "хостинг-провайдер в Республике Узбекистан, на серверах которого работает Mitti GO;",
         "государственные органы — только когда этого требует закон."
-      ]
+      ],
+      "Сервер Mitti GO и его резервные копии находятся в Республике Узбекистан: персональные данные хранятся на территории Узбекистана, как требует статья 27¹ Закона «О персональных данных». За границу их передают только Google и Apple — в той мере, в какой это нужно для входа через Google, YouTube и магазинов приложений."
     ]},
     { id: "retention", h: "10. Сколько хранятся данные", body: [[
       "аккаунт — пока вы его не удалите;",
@@ -113,7 +114,7 @@ ru: {
       ]
     ]},
     { id: "security", h: "12. Безопасность", body: [
-      "Обмен с сервером идёт по HTTPS. Токены и коды хранятся на сервере только в виде хэшей, PIN не покидает устройство. Экраны для родителей не попадают в снимки переключателя приложений. Если мы узнаем об утечке, которая касается вас, мы сообщим об этом."
+      "Мы защищаем данные организационными и техническими мерами: соединение с сервером зашифровано, ключи доступа и коды защищены, PIN не покидает устройство. Экраны для родителей не попадают в снимки переключателя приложений. Если мы узнаем об утечке, которая касается вас, мы сообщим об этом."
     ]},
     { id: "changes", h: "13. Изменения", body: [
       "Мы обновляем политику, когда меняется приложение. Дата вверху страницы показывает, с какого дня действует текущая редакция. О существенных изменениях сообщим в приложении или на сайте."
@@ -136,7 +137,7 @@ uz: {
     { id: "short", h: "2. Qisqacha", body: [[
       "Bola haqida hech narsa to‘plamaymiz: bolaning profili yo‘q — na ismi, na surati, na yoshi.",
       "Bola nimani ko‘rgani, tomosha davomi, qidiruvi va ekran vaqti faqat qurilmada saqlanadi va hech qayerga yuborilmaydi.",
-      "PIN qurilmadan chiqmaydi: u himoyalangan xotirada mustahkam xesh ko‘rinishida saqlanadi.",
+      "PIN qurilmadan chiqmaydi va ishonchli himoyalangan.",
       "Google akkaunti majburiy emas. U faqat PINni tiklash, Pro va bog‘langan qurilmalar uchun kerak.",
       "Ilovada Mitti GO reklamasi, uchinchi tomon analitikasi va reklama identifikatorlari yo‘q. Biz ma’lumotlarni sotmaymiz."
     ]]},
@@ -146,7 +147,7 @@ uz: {
         "ruxsat berilgan kanal va pleylistlar, yashirilgan pleylistlar, «Sevimlilar» va sozlamalar (til, mavzu, Shorts, avtomatik ijro);",
         "tomosha tarixi, video davomi va «Davom ettirish», bolaning qidiruvi;",
         "ekran vaqti: bola bugun qancha ko‘rgani, limit va uyqu vaqti;",
-        "PIN va noto‘g‘ri urinishlar hisoblagichi — qurilmaning himoyalangan xotirasida (Android Keystore, iOS Keychain); PIN faqat PBKDF2 xeshi ko‘rinishida saqlanadi."
+        "PIN va noto‘g‘ri urinishlar hisoblagichi — qurilmaning himoyalangan xotirasida."
       ],
       "Ilovani o‘chirish bu ma’lumotlarni o‘chiradi. PIN va himoya ma’lumotlari qurilmaning zaxira nusxasidan tiklanmaydi."
     ]},
@@ -155,9 +156,9 @@ uz: {
       [
         "<b>O‘rnatishning anonim identifikatori</b> — server so‘rovlar tezligini cheklaydigan tasodifiy kalit. U akkauntingizga bog‘lanmagan va qurilma haqida ma’lumotga ega emas.",
         "<b>YouTube so‘rovlari</b> — ochiq kanallar, pleylistlar va videolar identifikatorlari hamda ota-ona kanal qidirganda qidiruv matni. Bu so‘rovlar akkauntga bog‘lanmagan.",
-        "<b>Google akkaunti (agar ulagan bo‘lsangiz)</b> — Google identifikatori, elektron pochta manzili va ism. Kirish tokenlari faqat xesh ko‘rinishida saqlanadi.",
-        "<b>Tarif va promokodlar</b> — Pro holati va amal qilish muddati, promokod va sinov muddati faollashtirilishi. Bitta promokod yoki sinov muddatidan qayta foydalanib bo‘lmasligi uchun Google identifikatorining xeshi va qurilmaning tasodifiy kaliti saqlanadi.",
-        "<b>Bog‘langan qurilmalar (agar foydalansangiz)</b> — bola qurilmasiga yetkazilishi kerak bo‘lgan oila sozlamalari (ruxsat berilgan kanal va pleylistlar, yashirilgan pleylistlar, «Sevimlilar», Shorts va ijro sozlamalari, har bir qurilmaning ekran vaqti), qurilmalar ro‘yxati (nomi, modeli, platformasi, oxirgi sinxronlash vaqti), bola qurilmasi tokenining xeshi va 10 daqiqa amal qiladigan, xesh ko‘rinishida saqlanadigan bir martalik bog‘lash kodi."
+        "<b>Google akkaunti (agar ulagan bo‘lsangiz)</b> — Google identifikatori, elektron pochta manzili va ism.",
+        "<b>Tarif va promokodlar</b> — Pro holati va amal qilish muddati, promokod va sinov muddati faollashtirilishi. Bitta promokod yoki sinov muddatidan qayta foydalanib bo‘lmasligi uchun akkaunt va qurilma uchun undan foydalanilgani haqidagi belgi saqlanadi.",
+        "<b>Bog‘langan qurilmalar (agar foydalansangiz)</b> — bola qurilmasiga yetkazilishi kerak bo‘lgan oila sozlamalari (ruxsat berilgan kanal va pleylistlar, yashirilgan pleylistlar, «Sevimlilar», Shorts va ijro sozlamalari, har bir qurilmaning ekran vaqti), qurilmalar ro‘yxati (nomi, modeli, platformasi, oxirgi sinxronlash vaqti), bola qurilmasining kirish kaliti va 10 daqiqa amal qiladigan bir martalik bog‘lash kodi."
       ],
       "Server hech qachon tomosha tarixi, davomi, bolaning qidiruvi, ekran vaqtidan foydalanish, PIN va bola kiritgan biror narsani olmaydi."
     ]},
@@ -187,9 +188,10 @@ uz: {
       [
         "Google — Google orqali kirish, YouTube API Services, Google Play;",
         "Apple — ilova App Store’da paydo bo‘lganda;",
-        "Mitti GO serverlari ishlaydigan xosting provayderi;",
+        "Mitti GO serverlari ishlaydigan O‘zbekiston Respublikasidagi xosting provayderi;",
         "davlat organlari — faqat qonun talab qilganda."
-      ]
+      ],
+      "Mitti GO serveri va uning zaxira nusxalari O‘zbekiston Respublikasida joylashgan: shaxsga doir ma’lumotlar «Shaxsga doir ma’lumotlar to‘g‘risida»gi Qonunning 27¹-moddasi talabiga ko‘ra O‘zbekiston hududida saqlanadi. Ular chet elga faqat Google va Apple’ga — Google orqali kirish, YouTube va ilova do‘konlari uchun zarur bo‘lgan darajada beriladi."
     ]},
     { id: "retention", h: "10. Ma’lumotlar qancha saqlanadi", body: [[
       "akkaunt — uni o‘chirguningizcha;",
@@ -209,7 +211,7 @@ uz: {
       ]
     ]},
     { id: "security", h: "12. Xavfsizlik", body: [
-      "Server bilan aloqa HTTPS orqali amalga oshiriladi. Tokenlar va kodlar serverda faqat xesh ko‘rinishida saqlanadi, PIN qurilmadan chiqmaydi. Ota-onalar ekranlari ilovalar almashtirgichi suratlariga tushmaydi. Agar sizga tegishli ma’lumotlar sizib chiqqanini bilsak, sizga xabar beramiz."
+      "Ma’lumotlarni tashkiliy va texnik choralar bilan himoya qilamiz: server bilan aloqa shifrlangan, kirish kalitlari va kodlar himoyalangan, PIN qurilmadan chiqmaydi. Ota-onalar ekranlari ilovalar almashtirgichi suratlariga tushmaydi. Agar sizga tegishli ma’lumotlar sizib chiqqanini bilsak, sizga xabar beramiz."
     ]},
     { id: "changes", h: "13. O‘zgarishlar", body: [
       "Ilova o‘zgarganda siyosatni yangilaymiz. Sahifa tepasidagi sana amaldagi tahrir qaysi kundan kuchga kirganini ko‘rsatadi. Muhim o‘zgarishlar haqida ilovada yoki saytda xabar beramiz."
@@ -232,7 +234,7 @@ en: {
     { id: "short", h: "2. In short", body: [[
       "We collect nothing about your child: the child has no profile — no name, photo or age.",
       "What the child watched, their progress, searches and screen time stay on the device and are never sent anywhere.",
-      "The PIN never leaves the device: it is kept in secure storage as a strong hash.",
+      "The PIN never leaves the device and is well protected.",
       "A Google account is optional. It is needed only for PIN recovery, Pro and linked devices.",
       "The app has no ads of its own, no third-party analytics and no advertising IDs. We don't sell data."
     ]]},
@@ -242,7 +244,7 @@ en: {
         "allowed channels and playlists, hidden playlists, Favorites and settings (language, theme, Shorts, autoplay);",
         "watch history, video progress and “Keep watching”, the child's searches;",
         "screen time: how long the child watched today, the limit and bedtime;",
-        "the PIN and the wrong-attempt counter — in the device's secure storage (Android Keystore, iOS Keychain); the PIN is stored only as a PBKDF2 hash."
+        "the PIN and the wrong-attempt counter — in the device's secure storage."
       ],
       "Uninstalling the app deletes this data. The PIN and security data are not restored from a device backup."
     ]},
@@ -251,9 +253,9 @@ en: {
       [
         "<b>An anonymous install ID</b> — a random key the server uses to limit how often requests are made. It is not linked to your account and contains no device data.",
         "<b>YouTube requests</b> — IDs of public channels, playlists and videos, and the search text when a parent looks for a channel. These requests are not linked to an account.",
-        "<b>Your Google account (if you connect it)</b> — your Google ID, e-mail address and name. Sign-in tokens are stored only as hashes.",
-        "<b>Plan and promo codes</b> — your Pro status and its end date, promo-code and trial activations. So that a code or the trial can't be used twice, a hash of your Google ID and a random device key are kept.",
-        "<b>Linked devices (if you use them)</b> — the family settings that have to reach the child's device (allowed channels and playlists, hidden playlists, Favorites, Shorts and playback settings, each device's screen time), the device list (name, model, platform, last sync time), a hash of the child device's token and a one-time linking code, valid for 10 minutes and stored as a hash."
+        "<b>Your Google account (if you connect it)</b> — your Google ID, e-mail address and name.",
+        "<b>Plan and promo codes</b> — your Pro status and its end date, promo-code and trial activations. So that a code or the trial can't be used twice, a mark that it was used is kept for the account and the device.",
+        "<b>Linked devices (if you use them)</b> — the family settings that have to reach the child's device (allowed channels and playlists, hidden playlists, Favorites, Shorts and playback settings, each device's screen time), the device list (name, model, platform, last sync time), the child device's access key and a one-time linking code valid for 10 minutes."
       ],
       "The server never receives watch history, progress, the child's searches, screen-time usage, the PIN or anything the child types."
     ]},
@@ -283,9 +285,10 @@ en: {
       [
         "Google — Sign-in with Google, the YouTube API Services, Google Play;",
         "Apple — the App Store, once the app is there;",
-        "the hosting provider whose servers run Mitti GO;",
+        "the hosting provider in the Republic of Uzbekistan whose servers run Mitti GO;",
         "public authorities — only when the law requires it."
-      ]
+      ],
+      "The Mitti GO server and its backups are in the Republic of Uzbekistan: personal data is stored on the territory of Uzbekistan, as Article 27¹ of the Law “On Personal Data” requires. It goes abroad only to Google and Apple, as far as Sign-in with Google, YouTube and the app stores need it."
     ]},
     { id: "retention", h: "10. How long data is kept", body: [[
       "your account — until you delete it;",
@@ -305,7 +308,7 @@ en: {
       ]
     ]},
     { id: "security", h: "12. Security", body: [
-      "The app talks to the server over HTTPS. Tokens and codes are stored on the server only as hashes, and the PIN never leaves the device. Parent screens are kept out of the app-switcher snapshots. If we learn of a breach that affects you, we will tell you."
+      "We protect data with organisational and technical measures: the connection to the server is encrypted, access keys and codes are protected, and the PIN never leaves the device. Parent screens are kept out of the app-switcher snapshots. If we learn of a breach that affects you, we will tell you."
     ]},
     { id: "changes", h: "13. Changes", body: [
       "We update this policy when the app changes. The date at the top shows when the current version took effect. We'll tell you about significant changes in the app or on the website."
