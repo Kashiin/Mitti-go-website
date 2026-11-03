@@ -576,8 +576,37 @@ for (const [page, alts, icon] of [["privacy", PRIVACY_ALT, "lock"], ["terms", TE
       FOOTER: footerHTML(l, POSTS, alts)
     });
     write(alts[l].slice(1) + "index.html", sizeImages(h));
+    write(alts[l].slice(1) + "app/index.html", legalAppPage(t, l));
   }
 }
+
+/*
+ * The same text for the app's consent screen (Mitti GO app, C65): /{lang}/terms/app/, /{lang}/privacy/app/ — no header,
+ * footer, analytics or tracking (the policy promises none in the app), not indexed. ?theme=light|dark follows the app.
+ */
+function legalAppPage(t, l) {
+  return `<!doctype html>
+<html lang="${l}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>${esc(t.title)}</title>
+<script>(function(){var m=location.search.match(/[?&]theme=(light|dark)/);if(m)document.documentElement.setAttribute("data-theme",m[1])})()</script>
+${fontPreloads(l).map(f => `<link rel="preload" href="${fontURL(f)}" as="font" type="font/woff2" crossorigin>`).join("\n")}
+<link rel="stylesheet" href="/assets/css/styles.css?v=${BUILD_ID}">
+</head>
+<body data-page="legal-app" class="legal-app">
+<main class="info-page"><div class="wrap">
+<h1>${esc(t.h1)}</h1>
+${legalHTML(t, l)}
+</div></main>
+</body>
+</html>`;
+}
+
+/* The documents' edition, read by the app: a new one asks the parent to accept again before the next sign-in (C65). */
+write("legal-version.json", JSON.stringify({ version: LEGAL.UPDATED }) + "\n");
 
 /* ---------- root: x-default language chooser ---------- */
 const CHOOSER = {
