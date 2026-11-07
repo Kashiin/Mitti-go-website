@@ -10,7 +10,7 @@ const OPERATOR = {
   name: "",     // e.g. the full legal name of the company or the individual entrepreneur
   inn: "",      // tax ID (ИНН / STIR)
   address: "",  // legal address
-  email: ""     // privacy and support e-mail, e.g. support@mitti-go.uz (only once the mailbox exists)
+  email: "support@mitti-go.uz"  // privacy and support e-mail — a mailbox at ahost.uz (owner, 2026-11-07)
 };
 
 /* Public contacts the app already shows (app repo core/data/support/SupportConfig.kt). */
