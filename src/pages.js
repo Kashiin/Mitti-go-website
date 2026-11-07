@@ -7,11 +7,11 @@ module.exports = {
 pricing: {
 ru: {
   title: "Тарифы Mitti GO: что бесплатно и что даёт Pro",
-  desc: "Тарифы Mitti GO: бесплатно — до 5 каналов, 10 плейлистов, 2 устройства и вся защита ребёнка. Pro добавляет больше каналов, до 6 устройств и контроль экранного времени: вы решаете, сколько и когда смотрит ребёнок.",
+  desc: "Тарифы Mitti GO: бесплатно — до 5 каналов, 10 плейлистов, 3 устройства и вся защита ребёнка. Pro добавляет больше каналов, до 6 устройств и контроль экранного времени: вы решаете, сколько и когда смотрит ребёнок.",
   crumb: "Тарифы", eyebrow: "Тарифы", h1: "Тарифы Mitti GO",
   lede: "Защита никогда не бывает платной. Бесплатного тарифа хватает для спокойного просмотра, а Pro добавляет больше каналов и устройств и контроль экранного времени.",
   free: "Бесплатно", ch: "Каналы", pl: "Плейлисты", price: "Цены — к запуску", proAdds: "Что даёт Pro",
-  freeList: ["5 каналов целиком", "10 отдельных плейлистов", "Плейлисты добавленных каналов, скрытие и Избранное — без лимита", "PIN, биометрия и вся защита", "2 устройства"],
+  freeList: ["5 каналов целиком", "10 отдельных плейлистов", "Плейлисты добавленных каналов, скрытие и Избранное — без лимита", "PIN, биометрия и вся защита", "3 устройства"],
   proList: ["Можно добавить больше каналов и плейлистов", "Дополнительные устройства — до 6", "Контроль времени: вы задаёте, сколько ребёнок может смотреть видео в день — от 15 минут до 2 часов", "Досмотр видео: если время закончилось посреди видео, ребёнок спокойно его досмотрит", "Время сна: вы выбираете, в какие часы ребёнок может смотреть видео; на выходные — отдельно", "Ребёнок получает мягкое напоминание за 5 минут до перерыва"],
   proNote: "Всё из бесплатного тарифа остаётся. Защита никогда не бывает платной. Ребёнок не видит слов «Pro» и «лимит», а цены Pro мы объявим отдельно.",
   cmpH: "Сравнение тарифов", cmpFeature: "Возможность",
@@ -35,29 +35,29 @@ ru: {
   limH: "Как работают лимиты",
   lims: [
     ["block", "#B07A00", "var(--pyellow)", "Упёрлись в лимит", "Добавлять новое нельзя, но управлять можно всем: скрывать, отмечать звёздочкой, удалять. Или выберите отдельные плейлисты вместо целого канала."],
-    ["pause_circle", "var(--purple)", "var(--ppurple)", "Если Pro закончится", "Ничего не удаляется. У вас будет 7 дней, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении."],
+    ["pause_circle", "var(--purple)", "var(--ppurple)", "Если Pro закончится", "Ничего не удаляется. У вас будет 3 дня, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении."],
     ["visibility_off", "var(--blue)", "var(--pblue)", "Скрытые плейлисты не считаются", "Скрыли плейлист в добавленном канале — он пропадает у ребёнка и не входит в лимит."],
     ["star", "#0A8C4B", "var(--pgreen)", "Звёздочка бесплатна", "Избранное ставит канал первым у ребёнка. Доступ оно не открывает и в лимит не входит."]
   ],
   faqH: "Вопросы о тарифах",
   faq: [
-    ["Нужно ли платить, чтобы пользоваться Mitti GO?", "Нет. На бесплатном тарифе доступны до 5 каналов, 10 плейлистов, 2 устройства и вся защита ребёнка. Pro нужен, если хочется больше каналов и устройств или контроля экранного времени."],
+    ["Нужно ли платить, чтобы пользоваться Mitti GO?", "Нет. На бесплатном тарифе доступны до 5 каналов, 10 плейлистов, 3 устройства и вся защита ребёнка. Pro нужен, если хочется больше каналов и устройств или контроля экранного времени."],
     ["Сколько будет стоить Pro?", "Цены Pro мы объявим к запуску приложения в Google Play и App Store."],
-    ["На скольких устройствах можно пользоваться Mitti GO?", "На бесплатном тарифе — на 2 устройствах, с Pro — до 6."],
+    ["На скольких устройствах можно пользоваться Mitti GO?", "На бесплатном тарифе — на 3 устройствах, с Pro — до 6."],
     ["Нужен ли аккаунт для Pro?", "Да, Pro подключается к аккаунту Google. Поэтому он сохраняется после переустановки и переходит на новый телефон: достаточно войти тем же аккаунтом. Бесплатный тариф работает и без аккаунта."],
     ["Есть ли контроль экранного времени на бесплатном тарифе?", "Нет, контроль экранного времени — часть Pro. На бесплатном тарифе время не считается и ничего не блокируется."],
-    ["Что будет с каналами, если Pro закончится?", "Ничего не удалится. У вас будет 7 дней, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении."],
+    ["Что будет с каналами, если Pro закончится?", "Ничего не удалится. У вас будет 3 дня, чтобы выбрать, какие 5 каналов и 10 плейлистов оставить. Остальное встанет на паузу и вернётся при продлении."],
     ["Ребёнок узнает, что у нас бесплатный тариф или лимит?", "Нет. Ребёнок никогда не видит слов «Pro» и «лимит». Когда время вышло, он видит мягкий экран со спящим маскотом."]
   ],
   endT: "Остались вопросы?", endS: "Мы собрали ответы на всё, что обычно спрашивают родители: каналы, Shorts, PIN, приватность и устройства.", endB: "Все вопросы и ответы"
 },
 uz: {
   title: "Tariflar: Mitti GO’da nima bepul va Pro nima beradi",
-  desc: "Mitti GO tariflari: bepul — 5 tagacha kanal, 10 ta pleylist, 2 ta qurilma va bolani to‘liq himoya qilish. Pro ko‘proq kanal, 6 tagacha qurilma va ekran vaqtini nazorat qilishni qo‘shadi: bola qancha va qachon ko‘rishini siz hal qilasiz.",
+  desc: "Mitti GO tariflari: bepul — 5 tagacha kanal, 10 ta pleylist, 3 ta qurilma va bolani to‘liq himoya qilish. Pro ko‘proq kanal, 6 tagacha qurilma va ekran vaqtini nazorat qilishni qo‘shadi: bola qancha va qachon ko‘rishini siz hal qilasiz.",
   crumb: "Tariflar", eyebrow: "Tariflar", h1: "Mitti GO tariflari",
   lede: "Himoya hech qachon pullik bo‘lmaydi. Xotirjam tomosha uchun bepul tarif yetarli, Pro esa ko‘proq kanal va qurilma hamda ekran vaqtini nazorat qilishni qo‘shadi.",
   free: "Bepul", ch: "Kanallar", pl: "Pleylistlar", price: "Narxlar — ishga tushirishda", proAdds: "Pro nima beradi",
-  freeList: ["5 ta butun kanal", "10 ta alohida pleylist", "Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz", "PIN, biometriya va barcha himoya", "2 ta qurilma"],
+  freeList: ["5 ta butun kanal", "10 ta alohida pleylist", "Qo‘shilgan kanallar pleylistlari, yashirish va Sevimlilar — cheklovsiz", "PIN, biometriya va barcha himoya", "3 ta qurilma"],
   proList: ["Ko‘proq kanal va pleylist qo‘shish mumkin", "Qo‘shimcha qurilmalar — 6 tagacha", "Vaqt nazorati: bola kuniga qancha video ko‘rishi mumkinligini siz belgilaysiz — 15 daqiqadan 2 soatgacha", "Videoni oxirigacha ko‘rish: vaqt video o‘rtasida tugasa, bola uni bemalol oxirigacha ko‘radi", "Uyqu vaqti: bola qaysi soatlarda video ko‘rishi mumkinligini siz tanlaysiz; dam olish kunlari — alohida", "Bola tanaffusdan 5 daqiqa oldin yumshoq eslatma oladi"],
   proNote: "Bepul tarifdagi hamma narsa qoladi. Himoya hech qachon pullik bo‘lmaydi. Bola «Pro» va «limit» so‘zlarini ko‘rmaydi, Pro narxlarini esa alohida e’lon qilamiz.",
   cmpH: "Tariflarni solishtirish", cmpFeature: "Imkoniyat",
@@ -81,29 +81,29 @@ uz: {
   limH: "Limitlar qanday ishlaydi",
   lims: [
     ["block", "#B07A00", "var(--pyellow)", "Limitga yetdingiz", "Yangi qo‘shib bo‘lmaydi, lekin hammasini boshqarish mumkin: yashirish, yulduzcha qo‘yish, o‘chirish. Yoki butun kanal o‘rniga alohida pleylistlarni tanlang."],
-    ["pause_circle", "var(--purple)", "var(--ppurple)", "Pro tugasa", "Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 7 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi."],
+    ["pause_circle", "var(--purple)", "var(--ppurple)", "Pro tugasa", "Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 3 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi."],
     ["visibility_off", "var(--blue)", "var(--pblue)", "Yashirilgan pleylistlar hisoblanmaydi", "Qo‘shilgan kanaldagi pleylistni yashirsangiz, u boladan yo‘qoladi va limitga kirmaydi."],
     ["star", "#0A8C4B", "var(--pgreen)", "Yulduzcha bepul", "Sevimlilar kanalni bolada birinchi o‘ringa qo‘yadi. U ruxsat bermaydi va limitga kirmaydi."]
   ],
   faqH: "Tariflar haqida savollar",
   faq: [
-    ["Mitti GO’dan foydalanish uchun pul to‘lash kerakmi?", "Yo‘q. Bepul tarifda 5 tagacha kanal, 10 ta pleylist, 2 ta qurilma va bolaning barcha himoyasi mavjud. Ko‘proq kanal va qurilma yoki ekran vaqtini nazorat qilish kerak bo‘lsa, Pro kerak."],
+    ["Mitti GO’dan foydalanish uchun pul to‘lash kerakmi?", "Yo‘q. Bepul tarifda 5 tagacha kanal, 10 ta pleylist, 3 ta qurilma va bolaning barcha himoyasi mavjud. Ko‘proq kanal va qurilma yoki ekran vaqtini nazorat qilish kerak bo‘lsa, Pro kerak."],
     ["Pro qancha turadi?", "Pro narxlarini ilova Google Play va App Store’da ishga tushirilganda e’lon qilamiz."],
-    ["Mitti GO’dan nechta qurilmada foydalanish mumkin?", "Bepul tarifda — 2 ta qurilmada, Pro bilan — 6 tagacha."],
+    ["Mitti GO’dan nechta qurilmada foydalanish mumkin?", "Bepul tarifda — 3 ta qurilmada, Pro bilan — 6 tagacha."],
     ["Pro uchun akkaunt kerakmi?", "Ha, Pro Google akkauntiga ulanadi. Shuning uchun u ilova qayta o‘rnatilgandan keyin ham saqlanadi va yangi telefonga o‘tadi: o‘sha akkaunt bilan kirish kifoya. Bepul tarif akkauntsiz ham ishlaydi."],
     ["Bepul tarifda ekran vaqtini nazorat qilish bormi?", "Yo‘q, ekran vaqtini nazorat qilish — Pro’ning bir qismi. Bepul tarifda vaqt hisoblanmaydi va hech narsa bloklanmaydi."],
-    ["Pro tugasa, kanallar bilan nima bo‘ladi?", "Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 7 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi."],
+    ["Pro tugasa, kanallar bilan nima bo‘ladi?", "Hech narsa o‘chirilmaydi. Qaysi 5 kanal va 10 pleylist qolishini tanlash uchun 3 kuningiz bo‘ladi. Qolganlari pauzaga qo‘yiladi va uzaytirilganda qaytadi."],
     ["Bola bepul tarif yoki limit borligini biladimi?", "Yo‘q. Bola hech qachon «Pro» va «limit» so‘zlarini ko‘rmaydi. Vaqt tugaganda u uxlayotgan maskot bilan yumshoq ekranni ko‘radi."]
   ],
   endT: "Savollaringiz qoldimi?", endS: "Ota-onalar odatda so‘raydigan hamma narsaga javob to‘pladik: kanallar, Shorts, PIN, maxfiylik va qurilmalar.", endB: "Barcha savol-javoblar"
 },
 en: {
   title: "Plans and Pricing: What's Free in Mitti GO and What Pro Adds",
-  desc: "Mitti GO plans: free includes up to 5 channels, 10 playlists, 2 devices and every child-safety feature. Pro adds more channels, up to 6 devices and Screen Time control: you decide how much and when your child watches.",
+  desc: "Mitti GO plans: free includes up to 5 channels, 10 playlists, 3 devices and every child-safety feature. Pro adds more channels, up to 6 devices and Screen Time control: you decide how much and when your child watches.",
   crumb: "Plans", eyebrow: "Plans", h1: "Mitti GO plans",
   lede: "Safety is never behind a paywall. The free plan is enough for calm, safe watching; Pro adds more channels and devices, plus Screen Time control.",
   free: "Free", ch: "Channels", pl: "Playlists", price: "Pricing at launch", proAdds: "What Pro adds",
-  freeList: ["5 whole channels", "10 separate playlists", "Playlists of added channels, hiding and Favorites — unlimited", "PIN, biometrics and every security feature", "2 devices"],
+  freeList: ["5 whole channels", "10 separate playlists", "Playlists of added channels, hiding and Favorites — unlimited", "PIN, biometrics and every security feature", "3 devices"],
   proList: ["Add more channels and playlists", "Additional devices — up to 6", "Time control: you set how long your child can watch videos each day — 15 minutes to 2 hours", "Finish the video: if time runs out mid-video, your child can calmly watch it to the end", "Bedtime: you choose the hours your child can watch videos; weekends separately", "Your child gets a gentle reminder 5 minutes before the break"],
   proNote: "Everything on Free stays. Safety features are never paid. Your child never sees the words “Pro” or “limit”, and Pro pricing will be announced separately.",
   cmpH: "Compare plans", cmpFeature: "Feature",
@@ -127,18 +127,18 @@ en: {
   limH: "How limits work",
   lims: [
     ["block", "#B07A00", "var(--pyellow)", "Hit the limit", "You can't add more, but you can still manage everything: hide, star, remove. Or pick separate playlists instead of a whole channel."],
-    ["pause_circle", "var(--purple)", "var(--ppurple)", "If Pro ends", "Nothing is deleted. You get 7 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew."],
+    ["pause_circle", "var(--purple)", "var(--ppurple)", "If Pro ends", "Nothing is deleted. You get 3 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew."],
     ["visibility_off", "var(--blue)", "var(--pblue)", "Hidden playlists don't count", "Hide a playlist in an added channel and it disappears for your child — and doesn't count toward the limit."],
     ["star", "#0A8C4B", "var(--pgreen)", "Stars are free", "A Favorite puts a channel first for your child. It grants no access and doesn't count toward limits."]
   ],
   faqH: "Questions about plans",
   faq: [
-    ["Do I have to pay to use Mitti GO?", "No. The free plan includes up to 5 channels, 10 playlists, 2 devices and every child-safety feature. Pro is for families who want more channels and devices, or Screen Time control."],
+    ["Do I have to pay to use Mitti GO?", "No. The free plan includes up to 5 channels, 10 playlists, 3 devices and every child-safety feature. Pro is for families who want more channels and devices, or Screen Time control."],
     ["How much will Pro cost?", "We'll announce Pro pricing when the app launches on Google Play and the App Store."],
-    ["How many devices can use Mitti GO?", "2 devices on the free plan, up to 6 with Pro."],
+    ["How many devices can use Mitti GO?", "3 devices on the free plan, up to 6 with Pro."],
     ["Do I need an account for Pro?", "Yes, Pro is linked to your Google account. That's why it survives a reinstall and moves to a new phone: just sign in with the same account. The free plan works without an account."],
     ["Is Screen Time control part of the free plan?", "No, Screen Time control is part of Pro. On the free plan time isn't counted and nothing is blocked."],
-    ["What happens to my channels if Pro ends?", "Nothing is deleted. You get 7 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew."],
+    ["What happens to my channels if Pro ends?", "Nothing is deleted. You get 3 days to choose which 5 channels and 10 playlists stay. The rest are paused and come back when you renew."],
     ["Will my child know we're on a free plan or hit a limit?", "No. Your child never sees the words “Pro” or “limit”. When time is up, they see a gentle screen with the sleeping mascot."]
   ],
   endT: "Still have questions?", endS: "We've gathered answers to what parents usually ask: channels, Shorts, the PIN, privacy and devices.", endB: "All questions and answers"
