@@ -16,7 +16,7 @@ const OPERATOR = {
 /* Public contacts the app already shows (app repo core/data/support/SupportConfig.kt). */
 const CONTACTS = { telegram: "mitti_go", instagram: "mitti_go", website: "mitti-go.uz" };
 
-const UPDATED = "2026-11-03";
+const UPDATED = "2026-11-08";
 
 const YT_TERMS = "https://www.youtube.com/t/terms";
 const G_PRIVACY = "https://policies.google.com/privacy";
@@ -59,9 +59,12 @@ ru: {
       [
         "<b>Анонимный идентификатор установки</b> — случайный ключ, по которому сервер ограничивает частоту запросов. Он не связан с вашим аккаунтом и не содержит данных об устройстве.",
         "<b>Запросы к YouTube</b> — идентификаторы общедоступных каналов, плейлистов и видео, а также текст поиска, когда родитель ищет канал. Эти запросы не связаны с аккаунтом.",
-        "<b>Аккаунт Google (если вы его подключили)</b> — идентификатор Google, адрес почты и имя.",
-        "<b>Тариф и промокоды</b> — статус Pro и срок его действия, активации промокодов и пробного периода. Чтобы один промокод или пробный период нельзя было использовать повторно, хранится отметка о его использовании для аккаунта и устройства.",
-        "<b>Связанные устройства (если вы их используете)</b> — настройки семьи, которые нужно передать на детское устройство (разрешённые каналы и плейлисты, скрытые плейлисты, «Избранное», настройки Shorts и воспроизведения, экранное время каждого устройства), список устройств (название, модель, платформа, время последней синхронизации), ключ доступа детского устройства и одноразовый код привязки, который действует 10 минут."
+        "<b>Аккаунт Google (если вы его подключили)</b> — идентификатор Google, адрес почты и имя, когда аккаунт создан и когда был последний вход, а также какую редакцию Условий использования и Политики конфиденциальности вы приняли и когда.",
+        "<b>Тариф и промокоды</b> — статус Pro и срок его действия, активации промокодов и пробного периода. Чтобы один промокод или пробный период нельзя было использовать повторно, хранится отметка о его использовании для аккаунта и устройства. Отметка о пробном периоде хранится в виде хешей и остаётся после удаления аккаунта, чтобы пробный период нельзя было получить снова.",
+        "<b>Обращения в поддержку (если вы пишете нам из приложения)</b> — номер обращения, адрес почты вашего аккаунта Google (на него придёт ответ), тема и текст, ваш тариф и активированные промокоды, а если вы оставили галочку — версия приложения, платформа и режим работы, и о каком устройстве речь (название, модель, телефон родителя или детское). Письма, которые вы пишете на наши адреса почты, хранятся в почтовом ящике Mitti GO.",
+        "<b>IP-адрес</b> — сервер видит его при каждом запросе и использует только в оперативной памяти, чтобы ограничить частоту входа, привязки устройств, промокодов и регистраций. В базе данных IP-адрес не сохраняется.",
+        "<b>Устройства аккаунта (если вы подключили аккаунт)</b> — каждый телефон родителя, на котором выполнен вход в аккаунт, и каждое подключённое детское устройство записываются как отдельное устройство: роль (телефон родителя или детское устройство), название, модель и версия системы (например, «Samsung Galaxy A15 · Android 14»), платформа, когда устройство подключили и когда оно последний раз обращалось к серверу, а также случайный ключ устройства — только в виде хеша. По этим записям считаются устройства в тарифе и строится список «Устройства» в приложении. Ключ создаётся самим приложением, не связан с рекламными и системными идентификаторами и ничего не говорит о том, что смотрит ребёнок.",
+        "<b>Связанные устройства (если вы их используете)</b> — настройки семьи, которые нужно передать на детское устройство (разрешённые каналы и плейлисты, скрытые плейлисты, «Избранное», настройки Shorts и воспроизведения, экранное время каждого устройства), ключ доступа детского устройства и одноразовый код привязки, который действует 10 минут."
       ],
       "Сервер никогда не получает историю просмотров, прогресс, поиск ребёнка, использование экранного времени, PIN и что-либо введённое ребёнком."
     ]},
@@ -83,7 +86,10 @@ ru: {
       "чтобы приложение работало: показывало разрешённые видео и обновляло каналы;",
       "чтобы восстановить PIN и подключить Pro к аккаунту;",
       "чтобы передавать настройки на связанные детские устройства;",
-      "чтобы защищать сервис от злоупотреблений: ограничивать частоту запросов и повторное использование кодов;",
+      "чтобы считать устройства в тарифе и показывать вам, где выполнен вход и какие детские устройства подключены;",
+      "чтобы отвечать на обращения в поддержку;",
+      "чтобы защищать сервис от злоупотреблений: ограничивать частоту запросов и повторное использование кодов и пробного периода;",
+      "чтобы хранить подтверждение того, что вы приняли Условия использования и Политику конфиденциальности;",
       "чтобы выполнять требования закона: учёт платежей по договорам и налоги."
     ]]},
     { id: "share", h: "9. Кому передаются данные", body: [
@@ -91,7 +97,7 @@ ru: {
       [
         "Google — вход через Google, YouTube API Services, Google Play;",
         "Apple — App Store, когда приложение там появится;",
-        "хостинг-провайдер в Республике Узбекистан, на серверах которого работает Mitti GO;",
+        "хостинг-провайдер в Республике Узбекистан, на серверах которого работает Mitti GO и находятся наши почтовые ящики;",
         "государственные органы — только когда этого требует закон."
       ],
       "Сервер Mitti GO и его резервные копии находятся в Республике Узбекистан: персональные данные хранятся на территории Узбекистана, как требует статья 27¹ Закона «О персональных данных». За границу их передают только Google и Apple — в той мере, в какой это нужно для входа через Google, YouTube и магазинов приложений."
@@ -100,15 +106,18 @@ ru: {
       "аккаунт — пока вы его не удалите;",
       "токены входа — не дольше 60 дней после последнего использования;",
       "общедоступные данные YouTube — удаляются, если их не обновляли 30 дней;",
-      "устройство, которым не пользовались 60 дней, освобождает своё место в тарифе;",
+      "запись о телефоне родителя — пока вы не выйдете из аккаунта на этом телефоне (или в списке «Устройства»); телефон, которым не пользовались 60 дней, перестаёт занимать место в тарифе;",
+      "запись о детском устройстве — пока вы его не отключите или не удалите аккаунт;",
       "сведения о промокоде — до конца срока его действия;",
+      "отметка о пробном периоде (хеши) — бессрочно, чтобы его нельзя было получить повторно;",
+      "обращения в поддержку — пока они нужны, чтобы ответить и решить вопрос; по вашей просьбе удаляем раньше;",
       "документы по договорам и платежам — столько, сколько требует законодательство Республики Узбекистан."
     ]]},
     { id: "rights", h: "11. Ваши права и удаление данных", body: [
       "Вы можете узнать, какие данные о вас мы храним, исправить или удалить их и отозвать согласие. Для этого напишите нам — контакты ниже.",
       "<b>Как удалить данные:</b>",
       [
-        "аккаунт: в приложении «Профиль» → «Аккаунт» → «Удалить аккаунт» — аккаунт, токены и привязанные к нему данные удаляются с сервера, связанные устройства отключаются;",
+        "аккаунт: в приложении «Профиль» → «Аккаунт» → «Удалить аккаунт» — аккаунт, токены, устройства аккаунта и настройки семьи удаляются с сервера, связанные устройства отключаются. Остаются отметка о пробном периоде (в виде хешей) и обращения в поддержку — их удалим по вашей просьбе;",
         "данные на устройстве: удалите приложение;",
         "подписку отменяют в магазине: " + a(PLAY_SUBS, "Google Play → Подписки") + ". Удаление аккаунта не отменяет подписку в магазине."
       ]
@@ -156,9 +165,12 @@ uz: {
       [
         "<b>O‘rnatishning anonim identifikatori</b> — server so‘rovlar tezligini cheklaydigan tasodifiy kalit. U akkauntingizga bog‘lanmagan va qurilma haqida ma’lumotga ega emas.",
         "<b>YouTube so‘rovlari</b> — ochiq kanallar, pleylistlar va videolar identifikatorlari hamda ota-ona kanal qidirganda qidiruv matni. Bu so‘rovlar akkauntga bog‘lanmagan.",
-        "<b>Google akkaunti (agar ulagan bo‘lsangiz)</b> — Google identifikatori, elektron pochta manzili va ism.",
-        "<b>Tarif va promokodlar</b> — Pro holati va amal qilish muddati, promokod va sinov muddati faollashtirilishi. Bitta promokod yoki sinov muddatidan qayta foydalanib bo‘lmasligi uchun akkaunt va qurilma uchun undan foydalanilgani haqidagi belgi saqlanadi.",
-        "<b>Bog‘langan qurilmalar (agar foydalansangiz)</b> — bola qurilmasiga yetkazilishi kerak bo‘lgan oila sozlamalari (ruxsat berilgan kanal va pleylistlar, yashirilgan pleylistlar, «Sevimlilar», Shorts va ijro sozlamalari, har bir qurilmaning ekran vaqti), qurilmalar ro‘yxati (nomi, modeli, platformasi, oxirgi sinxronlash vaqti), bola qurilmasining kirish kaliti va 10 daqiqa amal qiladigan bir martalik bog‘lash kodi."
+        "<b>Google akkaunti (agar ulagan bo‘lsangiz)</b> — Google identifikatori, elektron pochta manzili va ism, akkaunt qachon yaratilgani va oxirgi marta qachon kirilgani, shuningdek Foydalanish shartlari va Maxfiylik siyosatining qaysi tahririni va qachon qabul qilganingiz.",
+        "<b>Tarif va promokodlar</b> — Pro holati va amal qilish muddati, promokod va sinov muddati faollashtirilishi. Bitta promokod yoki sinov muddatidan qayta foydalanib bo‘lmasligi uchun akkaunt va qurilma uchun undan foydalanilgani haqidagi belgi saqlanadi. Sinov muddati haqidagi belgi xesh ko‘rinishida saqlanadi va sinov muddatini qayta olib bo‘lmasligi uchun akkaunt o‘chirilgandan keyin ham qoladi.",
+        "<b>Qo‘llab-quvvatlashga murojaatlar (agar ilovadan bizga yozsangiz)</b> — murojaat raqami, Google akkauntingizning elektron pochta manzili (javob shunga keladi), mavzu va matn, tarifingiz va faollashtirilgan promokodlar, belgini qoldirgan bo‘lsangiz — ilova versiyasi, platforma va ish rejimi, hamda gap qaysi qurilma haqida ekani (nomi, modeli, ota-ona telefoni yoki bola qurilmasi). Bizning pochta manzillarimizga yozgan xatlaringiz Mitti GO pochta qutisida saqlanadi.",
+        "<b>IP-manzil</b> — server uni har bir so‘rovda ko‘radi va faqat tezkor xotirada kirish, qurilmalarni bog‘lash, promokodlar va ro‘yxatdan o‘tish tezligini cheklash uchun ishlatadi. IP-manzil ma’lumotlar bazasida saqlanmaydi.",
+        "<b>Akkaunt qurilmalari (agar akkaunt ulagan bo‘lsangiz)</b> — akkauntga kirilgan har bir ota-ona telefoni va ulangan har bir bola qurilmasi alohida qurilma sifatida yoziladi: roli (ota-ona telefoni yoki bola qurilmasi), nomi, modeli va tizim versiyasi (masalan, «Samsung Galaxy A15 · Android 14»), platformasi, qurilma qachon ulangani va serverga oxirgi marta qachon murojaat qilgani, shuningdek qurilmaning tasodifiy kaliti — faqat xesh ko‘rinishida. Bu yozuvlar bo‘yicha tarifdagi qurilmalar hisoblanadi va ilovadagi «Qurilmalar» ro‘yxati tuziladi. Kalitni ilovaning o‘zi yaratadi, u reklama va tizim identifikatorlariga bog‘lanmagan va bola nimani ko‘rishi haqida hech narsa aytmaydi.",
+        "<b>Bog‘langan qurilmalar (agar foydalansangiz)</b> — bola qurilmasiga yetkazilishi kerak bo‘lgan oila sozlamalari (ruxsat berilgan kanal va pleylistlar, yashirilgan pleylistlar, «Sevimlilar», Shorts va ijro sozlamalari, har bir qurilmaning ekran vaqti), bola qurilmasining kirish kaliti va 10 daqiqa amal qiladigan bir martalik bog‘lash kodi."
       ],
       "Server hech qachon tomosha tarixi, davomi, bolaning qidiruvi, ekran vaqtidan foydalanish, PIN va bola kiritgan biror narsani olmaydi."
     ]},
@@ -180,7 +192,10 @@ uz: {
       "ilova ishlashi uchun: ruxsat berilgan videolarni ko‘rsatish va kanallarni yangilash;",
       "PINni tiklash va Pro’ni akkauntga ulash uchun;",
       "sozlamalarni bog‘langan bola qurilmalariga yetkazish uchun;",
-      "xizmatni suiiste’moldan himoya qilish uchun: so‘rovlar tezligini va kodlardan qayta foydalanishni cheklash;",
+      "tarifdagi qurilmalarni hisoblash va sizga qayerda akkauntga kirilgani hamda qaysi bola qurilmalari ulanganini ko‘rsatish uchun;",
+      "qo‘llab-quvvatlashga murojaatlarga javob berish uchun;",
+      "xizmatni suiiste’moldan himoya qilish uchun: so‘rovlar tezligini, kodlar va sinov muddatidan qayta foydalanishni cheklash;",
+      "Foydalanish shartlari va Maxfiylik siyosatini qabul qilganingiz tasdig‘ini saqlash uchun;",
       "qonun talablarini bajarish uchun: shartnomalar bo‘yicha to‘lovlar hisobi va soliqlar."
     ]]},
     { id: "share", h: "9. Ma’lumotlar kimga beriladi", body: [
@@ -188,7 +203,7 @@ uz: {
       [
         "Google — Google orqali kirish, YouTube API Services, Google Play;",
         "Apple — ilova App Store’da paydo bo‘lganda;",
-        "Mitti GO serverlari ishlaydigan O‘zbekiston Respublikasidagi xosting provayderi;",
+        "Mitti GO serverlari ishlaydigan va pochta qutilarimiz joylashgan O‘zbekiston Respublikasidagi xosting provayderi;",
         "davlat organlari — faqat qonun talab qilganda."
       ],
       "Mitti GO serveri va uning zaxira nusxalari O‘zbekiston Respublikasida joylashgan: shaxsga doir ma’lumotlar «Shaxsga doir ma’lumotlar to‘g‘risida»gi Qonunning 27¹-moddasi talabiga ko‘ra O‘zbekiston hududida saqlanadi. Ular chet elga faqat Google va Apple’ga — Google orqali kirish, YouTube va ilova do‘konlari uchun zarur bo‘lgan darajada beriladi."
@@ -197,15 +212,18 @@ uz: {
       "akkaunt — uni o‘chirguningizcha;",
       "kirish tokenlari — oxirgi foydalanishdan keyin 60 kundan ko‘p emas;",
       "YouTube’ning ochiq ma’lumotlari — 30 kun yangilanmasa o‘chiriladi;",
-      "60 kun foydalanilmagan qurilma tarifdagi o‘rnini bo‘shatadi;",
+      "ota-ona telefoni haqidagi yozuv — shu telefonda (yoki «Qurilmalar» ro‘yxatida) akkauntdan chiqquningizcha; 60 kun foydalanilmagan telefon tarifdagi o‘rinni egallashni to‘xtatadi;",
+      "bola qurilmasi haqidagi yozuv — uni uzguningizcha yoki akkauntni o‘chirguningizcha;",
       "promokod haqidagi ma’lumot — uning amal qilish muddati tugaguncha;",
+      "sinov muddati haqidagi belgi (xeshlar) — muddatsiz, uni qayta olib bo‘lmasligi uchun;",
+      "qo‘llab-quvvatlashga murojaatlar — javob berish va masalani hal qilish uchun kerak bo‘lguncha; so‘rovingiz bo‘yicha oldinroq o‘chiramiz;",
       "shartnoma va to‘lov hujjatlari — O‘zbekiston Respublikasi qonunchiligi talab qilgan muddat davomida."
     ]]},
     { id: "rights", h: "11. Huquqlaringiz va ma’lumotlarni o‘chirish", body: [
       "Siz haqingizda qanday ma’lumotlar saqlanayotganini bilish, ularni tuzatish yoki o‘chirish va roziligingizni qaytarib olish huquqiga egasiz. Buning uchun bizga yozing — aloqa ma’lumotlari quyida.",
       "<b>Ma’lumotlarni qanday o‘chirish mumkin:</b>",
       [
-        "akkaunt: ilovada «Profil» → «Akkaunt» → «Akkauntni o‘chirish» — akkaunt, tokenlar va unga bog‘langan ma’lumotlar serverdan o‘chiriladi, bog‘langan qurilmalar uziladi;",
+        "akkaunt: ilovada «Profil» → «Akkaunt» → «Akkauntni o‘chirish» — akkaunt, tokenlar, akkaunt qurilmalari va oila sozlamalari serverdan o‘chiriladi, bog‘langan qurilmalar uziladi. Sinov muddati haqidagi belgi (xesh ko‘rinishida) va qo‘llab-quvvatlashga murojaatlar qoladi — so‘rovingiz bo‘yicha ularni o‘chiramiz;",
         "qurilmadagi ma’lumotlar: ilovani o‘chiring;",
         "obuna do‘konda bekor qilinadi: " + a(PLAY_SUBS, "Google Play → Obunalar") + ". Akkauntni o‘chirish do‘kondagi obunani bekor qilmaydi."
       ]
@@ -253,9 +271,12 @@ en: {
       [
         "<b>An anonymous install ID</b> — a random key the server uses to limit how often requests are made. It is not linked to your account and contains no device data.",
         "<b>YouTube requests</b> — IDs of public channels, playlists and videos, and the search text when a parent looks for a channel. These requests are not linked to an account.",
-        "<b>Your Google account (if you connect it)</b> — your Google ID, e-mail address and name.",
-        "<b>Plan and promo codes</b> — your Pro status and its end date, promo-code and trial activations. So that a code or the trial can't be used twice, a mark that it was used is kept for the account and the device.",
-        "<b>Linked devices (if you use them)</b> — the family settings that have to reach the child's device (allowed channels and playlists, hidden playlists, Favorites, Shorts and playback settings, each device's screen time), the device list (name, model, platform, last sync time), the child device's access key and a one-time linking code valid for 10 minutes."
+        "<b>Your Google account (if you connect it)</b> — your Google ID, e-mail address and name, when the account was created and when you last signed in, and which edition of the Terms of Use and Privacy Policy you accepted and when.",
+        "<b>Plan and promo codes</b> — your Pro status and its end date, promo-code and trial activations. So that a code or the trial can't be used twice, a mark that it was used is kept for the account and the device. The trial mark is kept as hashes and stays after the account is deleted, so the trial can't be taken again.",
+        "<b>Support requests (if you write to us from the app)</b> — the request number, your Google account's e-mail address (the reply goes there), the topic and text, your plan and activated promo codes, and, if you leave the box ticked, the app version, platform and mode and which device it is about (name, model, parent phone or child device). Letters you send to our e-mail addresses are kept in the Mitti GO mailbox.",
+        "<b>IP address</b> — the server sees it with every request and uses it only in memory to limit how often sign-ins, device linking, promo codes and registrations can be tried. The IP address is not stored in the database.",
+        "<b>Your account's devices (if you connect an account)</b> — every parent phone signed in with the account and every linked child device is recorded as a separate device: its role (parent phone or child device), name, model and system version (for example, “Samsung Galaxy A15 · Android 14”), platform, when it was added and when it last contacted the server, and a random device key — stored only as a hash. These records are used to count the devices in your plan and to build the Devices list in the app. The key is made by the app itself, is not linked to advertising or system identifiers and says nothing about what the child watches.",
+        "<b>Linked devices (if you use them)</b> — the family settings that have to reach the child's device (allowed channels and playlists, hidden playlists, Favorites, Shorts and playback settings, each device's screen time), the child device's access key and a one-time linking code valid for 10 minutes."
       ],
       "The server never receives watch history, progress, the child's searches, screen-time usage, the PIN or anything the child types."
     ]},
@@ -277,7 +298,10 @@ en: {
       "to make the app work: show allowed videos and refresh channels;",
       "to recover the PIN and link Pro to an account;",
       "to pass settings to linked child devices;",
-      "to protect the service from abuse: rate limits and one-time use of codes;",
+      "to count the devices in your plan and show you where you are signed in and which child devices are linked;",
+      "to answer support requests;",
+      "to protect the service from abuse: rate limits and one-time use of codes and the trial;",
+      "to keep a record that you accepted the Terms of Use and Privacy Policy;",
       "to meet legal duties: records of payments under agreements and taxes."
     ]]},
     { id: "share", h: "9. Who receives data", body: [
@@ -285,7 +309,7 @@ en: {
       [
         "Google — Sign-in with Google, the YouTube API Services, Google Play;",
         "Apple — the App Store, once the app is there;",
-        "the hosting provider in the Republic of Uzbekistan whose servers run Mitti GO;",
+        "the hosting provider in the Republic of Uzbekistan whose servers run Mitti GO and hold our mailboxes;",
         "public authorities — only when the law requires it."
       ],
       "The Mitti GO server and its backups are in the Republic of Uzbekistan: personal data is stored on the territory of Uzbekistan, as Article 27¹ of the Law “On Personal Data” requires. It goes abroad only to Google and Apple, as far as Sign-in with Google, YouTube and the app stores need it."
@@ -294,15 +318,18 @@ en: {
       "your account — until you delete it;",
       "sign-in tokens — no longer than 60 days after last use;",
       "public YouTube data — deleted if not refreshed for 30 days;",
-      "a device unused for 60 days frees its place in the plan;",
+      "a parent phone's record — until you sign out on that phone (or from the Devices list); a phone unused for 60 days stops taking a place in the plan;",
+      "a child device's record — until you unlink it or delete the account;",
       "promo-code records — until the code's validity ends;",
+      "the trial mark (hashes) — without a time limit, so the trial can't be taken again;",
+      "support requests — as long as they are needed to answer and solve the issue; we delete them earlier on request;",
       "agreement and payment records — as long as the law of the Republic of Uzbekistan requires."
     ]]},
     { id: "rights", h: "11. Your rights and deleting data", body: [
       "You can ask what data we hold about you, correct or delete it, and withdraw your consent. Write to us — the contacts are below.",
       "<b>How to delete data:</b>",
       [
-        "your account: in the app, Profile → Account → Delete account — the account, tokens and the data linked to it are deleted from the server and linked devices are disconnected;",
+        "your account: in the app, Profile → Account → Delete account — the account, tokens, the account's devices and the family settings are deleted from the server and linked devices are disconnected. The trial mark (as hashes) and support requests stay — we delete them on request;",
         "data on the device: uninstall the app;",
         "a subscription is cancelled in the store: " + a(PLAY_SUBS, "Google Play → Subscriptions") + ". Deleting the account doesn't cancel a store subscription."
       ]
