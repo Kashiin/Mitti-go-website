@@ -1186,3 +1186,6 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .price-save{color:#4BE08D}}
 @media (max-width:900px){.price-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.price-cards{grid-template-columns:1fr}}
+/* Comparison in dark mode: the Pro header and «в 5 раз больше» in the brand yellow — the light theme's brown (#8A5A00) disappears */
+:root[data-theme="dark"] .price-cmp thead th.pro,:root[data-theme="dark"] .price-cmp b.more{color:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .price-cmp thead th.pro,:root:not([data-theme="light"]) .price-cmp b.more{color:var(--yellow)}}
