@@ -362,7 +362,7 @@ const PRICES_API = "https://api.mitti-go.uz/api/v1/public/prices";
 function pricesHTML(t) {
   const skeleton = t.months.map(() => `<div class="price-card is-loading"><span class="sk sk-s"></span><span class="sk sk-l"></span><span class="sk sk-m"></span></div>`).join("");
   const cfg = { api: PRICES_API, currency: t.currency, months: t.months, perMonth: t.perMonth, save: t.save, popular: t.popular,
-    fromMonth: t.fromMonth, note: t.pricesNote, err: t.pricesErr };
+    fromMonth: t.fromMonth, note: t.pricesNote, err: t.pricesErr, times: t.times };
 
   return `<h2 class="info-h2" id="prices">${t.pricesH}</h2>
 <p class="prices-sub">${t.pricesSub}</p>
@@ -376,7 +376,12 @@ function money(p,m){if(c.currency==="uzs"&&p.priceUzs!=null){return {all:sum(p.p
 return {all:usd(p.priceUsd),month:usd(Number(p.priceUsd)/m)};}
 function label(m){return c.months[[1,3,6,12].indexOf(m)]||m;}
 function fail(){box.innerHTML="";note.textContent=c.err;}
+function times(n){var m=n%10,h=n%100;return c.times[(m>=2&&m<=4&&(h<12||h>14))?1:0].replace("{n}",String(n).replace(".",","));}
+function limits(L){if(!L)return;var free={channels:5,playlists:10},pro={channels:L.proChannels,playlists:L.proPlaylists};
+document.querySelectorAll("[data-limit]").forEach(function(td){var k=td.getAttribute("data-limit"),f=free[k],p=pro[k];if(!f||!p)return;
+var n=Math.round(p/f*10)/10;if(n>1)td.innerHTML='<b class="more">'+times(n)+"</b>";});}
 fetch(c.api,{headers:{Accept:"application/json"}}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+limits(d.limits);
 var plans=(d.plans||[]).filter(function(p){return p.priceUsd;});if(!plans.length)return fail();
 var best=plans.reduce(function(a,p){return (p.discountPercent||0)>(a.discountPercent||0)?p:a;},plans[0]);
 box.innerHTML=plans.map(function(p){var m=p.periodMonths,x=money(p,m),top=p===best&&p.discountPercent;
@@ -411,7 +416,12 @@ ${pricesHTML(t)}
 <h2 class="info-h2">${t.cmpH}</h2>
 <div class="price-cmp-wrap"><table class="price-cmp">
   <thead><tr><th>${t.cmpFeature}</th><th>Free</th><th class="pro">Pro</th></tr></thead>
-  <tbody>${t.cmp.map(([f, a, b]) => `<tr><td>${f}</td><td>${cell(a, t)}</td><td class="pro">${cell(b, t)}</td></tr>`).join("")}</tbody>
+  <tbody>${t.cmp.map(([f, a, b], i) => {
+    // The first two rows are channels and playlists (same order in every language): the price script writes «в 5 раз больше» from
+    // the server's Pro limits; «Больше» stays when the server doesn't answer. Devices keep «до 6» (owner, 2026-11-08).
+    const key = ["channels", "playlists"][i];
+    return `<tr><td>${f}</td><td>${cell(a, t)}</td><td class="pro"${key ? ` data-limit="${key}"` : ""}>${cell(b, t)}</td></tr>`;
+  }).join("")}</tbody>
 </table></div>
 <h2 class="info-h2">${t.limH}</h2>
 <div class="lim-grid four">${t.lims.map(([ic, c, bg, h, p]) => `<div class="lim" style="--c:${c};--bgc:${bg}"><span class="ic"><span class="ms">${ic}</span></span><div><h3>${h}</h3><p>${p}</p></div></div>`).join("")}</div>
