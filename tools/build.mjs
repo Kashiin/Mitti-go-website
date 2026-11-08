@@ -354,6 +354,43 @@ const qaHTML = (items, l) => `<div class="faq faq-list in">${items.map(([q, a]) 
 const qaLD = (items, l) => ({ "@context": "https://schema.org", "@type": "FAQPage", inLanguage: l, mainEntity: items.map(([q, a]) => ({ "@type": "Question", name: plain(q), acceptedAnswer: { "@type": "Answer", text: plain(pageLinks(a, l)) } })) });
 const cell = (v, t) => v === 1 ? `<span class="ms yes">check_circle</span>` : v === 0 ? `<span class="ms no">remove</span>` : v === "more" ? `<b class="more">${t.more}</b>` : `<b>${v}</b>`;
 
+/* The Pro prices (owner, 2026-11-08): never written into the page — the server's /public/prices gives each period in dollars (set
+   in the admin panel) and in so'm at the Central Bank's rate, so nobody edits the site when a price or the rate changes. The Uzbek
+   pages show so'm, the Russian and English ones dollars. Until the answer: shimmering cards; no answer: a calm line. */
+const PRICES_API = "https://api.mitti-go.uz/api/v1/public/prices";
+
+function pricesHTML(t) {
+  const skeleton = t.months.map(() => `<div class="price-card is-loading"><span class="sk sk-s"></span><span class="sk sk-l"></span><span class="sk sk-m"></span></div>`).join("");
+  const cfg = { api: PRICES_API, currency: t.currency, months: t.months, perMonth: t.perMonth, save: t.save, popular: t.popular,
+    fromMonth: t.fromMonth, note: t.pricesNote, err: t.pricesErr };
+
+  return `<h2 class="info-h2" id="prices">${t.pricesH}</h2>
+<p class="prices-sub">${t.pricesSub}</p>
+<div class="price-cards" data-prices aria-live="polite">${skeleton}</div>
+<p class="prices-note" data-prices-note></p>
+<script>(function(){var c=${JSON.stringify(cfg).replace(/</g, "\\u003c")};
+var box=document.querySelector("[data-prices]"),note=document.querySelector("[data-prices-note]"),from=document.querySelector("[data-pro-from]");
+function sum(n){return String(n).replace(/\\B(?=(\\d{3})+(?!\\d))/g,"\\u00a0")+"\\u00a0so\\u2018m";}
+function usd(v){return "$"+Number(v).toFixed(2);}
+function money(p,m){if(c.currency==="uzs"&&p.priceUzs!=null){return {all:sum(p.priceUzs),month:sum(Math.round(p.priceUzs/m/1000)*1000)};}
+return {all:usd(p.priceUsd),month:usd(Number(p.priceUsd)/m)};}
+function label(m){return c.months[[1,3,6,12].indexOf(m)]||m;}
+function fail(){box.innerHTML="";note.textContent=c.err;}
+fetch(c.api,{headers:{Accept:"application/json"}}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+var plans=(d.plans||[]).filter(function(p){return p.priceUsd;});if(!plans.length)return fail();
+var best=plans.reduce(function(a,p){return (p.discountPercent||0)>(a.discountPercent||0)?p:a;},plans[0]);
+box.innerHTML=plans.map(function(p){var m=p.periodMonths,x=money(p,m),top=p===best&&p.discountPercent;
+return '<div class="price-card'+(top?' is-best':'')+'">'+(top?'<span class="price-best">'+c.popular+'</span>':'')
++'<span class="price-period">'+label(m)+'</span><b class="price-all">'+x.all+'</b>'
++(m>1?'<span class="price-month">'+c.perMonth.replace("{p}",x.month)+'</span>':'<span class="price-month">&nbsp;</span>')
++(p.discountPercent?'<span class="price-save">'+c.save.replace("{n}",p.discountPercent)+'</span>':'')+'</div>';}).join("");
+var cheapest=plans.reduce(function(a,p){return Number(p.priceUsd)/p.periodMonths<Number(a.priceUsd)/a.periodMonths?p:a;},plans[0]);
+if(from)from.textContent=c.fromMonth.replace("{p}",money(cheapest,cheapest.periodMonths).month);
+var date=d.rateDate?d.rateDate.split("-").reverse().join("."):"";
+note.textContent=c.note.replace("{date}",date).replace("{rate}",d.uzsPerUsd?sum(Math.round(Number(d.uzsPerUsd))).replace("\\u00a0so\\u2018m",""):"");
+}).catch(fail);})();</script>`;
+}
+
 function pricingHTML(t, l) {
   const li = (icon, s) => `<li><span class="ms">${icon}</span><span>${s}</span></li>`;
   return `<div class="plan-grid">
@@ -364,12 +401,13 @@ function pricingHTML(t, l) {
     <ul>${t.freeList.map(s => li("check_circle", s)).join("")}</ul>
   </div>
   <div class="plan pro">
-    <div class="plan-h"><span class="pro-pill"><span class="ms">workspace_premium</span>Pro</span><span>${t.price}</span></div>
+    <div class="plan-h"><span class="pro-pill"><span class="ms">workspace_premium</span>Pro</span><span data-pro-from>${t.price}</span></div>
     <b class="plan-sub">${t.proAdds}</b>
-    <ul>${t.proList.map((s, i) => li(["playlist_add_check", "devices", "schedule", "hourglass_bottom", "bedtime", "timer"][i], s)).join("")}</ul>
+    <ul>${t.proList.map((s, i) => li(["playlist_add_check", "devices", "schedule", "hourglass_bottom", "bedtime", "timer", "hourglass_top", "auto_stories", "forum"][i], s)).join("")}</ul>
     <small class="note">${t.proNote}</small>
   </div>
 </div>
+${pricesHTML(t)}
 <h2 class="info-h2">${t.cmpH}</h2>
 <div class="price-cmp-wrap"><table class="price-cmp">
   <thead><tr><th>${t.cmpFeature}</th><th>Free</th><th class="pro">Pro</th></tr></thead>

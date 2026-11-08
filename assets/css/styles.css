@@ -1167,3 +1167,22 @@ body.chooser{min-height:100vh;display:grid;place-items:center}
 .legal-app .info-page { padding-top: 20px; padding-bottom: 32px; }
 .legal-app h1 { font-size: 26px; margin: 0 0 8px; }
 .legal-app .legal-toc { display: none; }
+
+/* Pricing: the Pro prices block (owner, 2026-11-08) — filled from the server; shimmering cards until then */
+.prices-sub{color:var(--ink2);font-size:16px;margin:-6px 0 18px}
+.price-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.price-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);padding:22px 18px 18px;display:grid;gap:6px;align-content:start;min-height:150px}
+.price-card.is-best{border:2px solid var(--yellow);box-shadow:var(--shadow-s)}
+.price-best{position:absolute;top:-12px;left:16px;background:var(--yellow);color:var(--onyellow);font-weight:900;font-size:12px;padding:3px 10px;border-radius:999px}
+.price-period{font-weight:800;color:var(--ink2);font-size:15px}
+.price-all{font-size:28px;font-weight:900;line-height:1.15;overflow-wrap:anywhere}
+.price-month{color:var(--muted);font-size:14px;font-weight:700}
+.price-save{justify-self:start;background:var(--pgreen);color:#0A8C4B;font-weight:900;font-size:13px;padding:3px 10px;border-radius:999px;margin-top:4px}
+.prices-note{color:var(--muted);font-size:14px;margin:14px 0 0;max-width:780px}
+.price-card .sk{display:block;border-radius:8px;background:var(--soft);animation:mgPricePulse 1.6s ease-in-out infinite}
+.price-card .sk-s{width:45%;height:14px}.price-card .sk-l{width:70%;height:30px;margin-top:6px}.price-card .sk-m{width:55%;height:12px;margin-top:4px}
+@keyframes mgPricePulse{0%,100%{opacity:.55}50%{opacity:1}}
+:root[data-theme="dark"] .price-save{color:#4BE08D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .price-save{color:#4BE08D}}
+@media (max-width:900px){.price-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.price-cards{grid-template-columns:1fr}}
