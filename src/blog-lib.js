@@ -122,7 +122,8 @@ function footerHTML(l, posts, alternates) {
   return `<div class="wrap">
 <div class="ft-top">
  <div class="ft-brand"><a href="${home}" aria-label="Mitti GO"><img class="logo l" src="/assets/images/logo-main.webp" alt="Mitti GO" width="311" height="104" loading="lazy"><img class="logo d" src="/assets/images/logo-white.webp" alt="Mitti GO" width="304" height="104" loading="lazy"></a>
-  <p>${t.tag}</p><div class="stores">${store("google-play.svg", "Google Play")}${store("app-store.svg", "App Store")}</div></div>
+  <p>${t.tag}</p><div class="stores">${store("google-play.svg", "Google Play")}${store("app-store.svg", "App Store")}</div>
+  <span class="yt-dev"><img class="yt-badge l" src="/assets/images/developed-with-youtube.png" alt="Developed with YouTube" width="517" height="86" loading="lazy"><img class="yt-badge d" src="/assets/images/developed-with-youtube-white.png" alt="Developed with YouTube" width="517" height="86" loading="lazy"></span></div>
  <nav class="ft-col" aria-label="${t.product}"><h2>${t.product}</h2><ul><li><a href="${home}">${t.links.home}</a></li>${["how", "model", "player", "screentime", "plans"].map(link).join("")}</ul></nav>
  <nav class="ft-col" aria-label="${t.parents}"><h2>${t.parents}</h2><ul>${["mission", "parents", "privacy", "devices", "faq"].map(link).join("")}</ul></nav>
  <nav class="ft-col ft-blog" aria-label="${t.blog}"><h2>${t.blog}</h2><ul>${posts.slice(0, 3).map(p => `<li><a href="${postPath(p, l)}">${esc(pick(p.title, l))}</a></li>`).join("")}<li><a class="ft-all" href="${blogPath(l)}">${t.all} →</a></li></ul></nav>

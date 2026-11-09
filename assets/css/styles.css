@@ -387,6 +387,7 @@ section{padding-block:clamp(64px,9vw,112px)}
 .ft-brand .stores{flex-wrap:nowrap}
 .ft-brand{display:grid;gap:16px;align-content:start}
 .ft-brand .logo{height:44px}
+.yt-dev{display:block;line-height:0}.yt-badge{height:22px;width:auto}.yt-badge.l{display:var(--logo-l)}.yt-badge.d{display:var(--logo-d)}
 .ft-brand p{max-width:34ch;line-height:1.55}
 .ft-brand .store-badge{min-width:0;min-height:56px;padding:8px 14px}
 .ft-brand .store-logo{width:26px;height:26px;flex-basis:26px}
